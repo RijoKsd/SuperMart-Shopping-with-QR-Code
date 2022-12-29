@@ -1,30 +1,31 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Shop Rating</title>
 </head>
 
 <body>
 <form action="" method="get">
-<table width="272" border="1">
-  <tr>
-    <th width="10" scope="col">#</th>
-    <th width="45" scope="col">username</th>
-    <th width="37" scope="col">date</th>
-    <th width="50" scope="col">rating</th>
-    <th width="96" scope="col">shopname</th>
-  </tr>
-    {% for i in data %}
-  <tr>
-    <td> {{ loop.index}}</td>
-    <td>&nbsp;{{ i.username }}</td>
-    <td>&nbsp;{{ i.date}}</td>
-    <td>&nbsp;{{ i.rating }}</td>
-    <td>&nbsp;{{ i.shopname }}</td>
-  </tr>
-    {% endfor %}
-</table>
+    <table width="272" border="1">
+        <tr>
+            <th width="10" scope="col">#</th>
+            <th width="45" scope="col">username</th>
+            <th width="37" scope="col">date</th>
+            <th width="50" scope="col">rating</th>
+            <th width="96" scope="col">shopname</th>
+        </tr>
+        {% for i in data %}
+            <tr>
+                <td> {{ loop.index }}</td>
+                <td>&nbsp;{{ i.username }}</td>
+                <td>&nbsp;{{ i.date }}</td>
+                <td>&nbsp;{{ i.rating }}</td>
+                <td>&nbsp;{{ i.shopname }}</td>
+            </tr>
+        {% endfor %}
+    </table>
 </form>
 </body>
 </html>

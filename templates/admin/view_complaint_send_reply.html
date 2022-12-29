@@ -1,53 +1,52 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>View complaint & send reply</title>
 </head>
 
 <body>
 <form action="" method="post">
     <table>
         <tr>
-            <td>choose type</td>
+            <td>Choose complaint type</td>
             <td>
                 <select name="select">
-{#                    <option >complaints</option>#}
+                    <option selected disabled>complaints</option>
                     <option>shop</option>
                     <option>user</option>
                 </select>
             </td>
-        </tr>
-        <tr>
             <td>
                 <input type="submit" value="search">
             </td>
         </tr>
     </table>
     <table width="461" border="1">
-  <tr>
-    <th width="10" scope="col">#</th>
-    <th width="37" scope="col">type</th>
-    <th width="81" scope="col">username</th>
-    <th width="81" scope="col">complaint</th>
-    <th width="42" scope="col">date </th>
-    <th width="89" scope="col">reply_date</th>
-    <th width="75" scope="col">reply</th>
-  </tr>
-    {%for i in data  %}
-  <tr>
+        <tr>
+            <th width="10" scope="col">#</th>
+            <th width="37" scope="col">type</th>
+            <th width="81" scope="col">username</th>
+            <th width="81" scope="col">complaint</th>
+            <th width="42" scope="col">date</th>
+            <th width="89" scope="col">reply_date</th>
+            <th width="75" scope="col">reply</th>
+        </tr>
+        {% for i in data %}
+            <tr>
 
-    <td>{{ loop.index }}</td>
-    <td>&nbsp;{{ i.type }}</td>
-    <td>&nbsp;{{ i.name }}</td>
-    <td>&nbsp;{{ i.complaint }}</td>
-    <td>&nbsp;{{ i.date }}</td>
-    <td><a href="#">send reply</a></td>
-      <td>{{ i.reply_date }}</td>
-    <td>&nbsp;{{ i.ready}}</td>
-  </tr>
-    {%endfor%}
-</table>
+                <td>{{ loop.index }}</td>
+                <td>&nbsp;{{ i.type }}</td>
+                <td>&nbsp;{{ i.name }}</td>
+                <td>&nbsp;{{ i.complaint }}</td>
+                <td>&nbsp;{{ i.date }}</td>
+                <td><a href="#">send reply</a></td>
+                <td>{{ i.reply_date }}</td>
+                <td>&nbsp;{{ i.ready }}</td>
+            </tr>
+        {% endfor %}
+    </table>
 </form>
 </body>
 </html>
