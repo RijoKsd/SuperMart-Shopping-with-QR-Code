@@ -13,7 +13,7 @@
             <td>Choose complaint type</td>
             <td>
                 <select name="select">
-                    <option selected disabled>complaints</option>
+                    {#                    <option selected disabled>type</option>#}
                     <option>shop</option>
                     <option>user</option>
                 </select>
@@ -41,9 +41,12 @@
                 <td>&nbsp;{{ i.name }}</td>
                 <td>&nbsp;{{ i.complaint }}</td>
                 <td>&nbsp;{{ i.date }}</td>
-                <td><a href="#">send reply</a></td>
-                <td>{{ i.reply_date }}</td>
-                <td>&nbsp;{{ i.ready }}</td>
+                {% if i.reply == 'pending' %}
+                    <td><a href="/reply/{{ i.complaint_id }}">send reply</a></td>
+                {% else %}
+                    <td>{{ i.reply_date }}</td>
+                    <td>&nbsp;{{ i.reply }}</td>
+                {% endif %}
             </tr>
         {% endfor %}
     </table>

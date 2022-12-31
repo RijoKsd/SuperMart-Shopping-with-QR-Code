@@ -14,15 +14,15 @@
             <th width="45" scope="col">username</th>
             <th width="37" scope="col">date</th>
             <th width="50" scope="col">rating</th>
-            <th width="96" scope="col">shopname</th>
+            <th width="96" scope="col">shop name</th>
         </tr>
         {% for i in data %}
             <tr>
                 <td> {{ loop.index }}</td>
-                <td>&nbsp;{{ i.username }}</td>
+                <td>&nbsp;{{ i.name }}</td>
                 <td>&nbsp;{{ i.date }}</td>
                 <td>&nbsp;{{ i.rating }}</td>
-                <td>&nbsp;{{ i.shopname }}</td>
+                <td>&nbsp;{{ i.name }}</td>
             </tr>
         {% endfor %}
     </table>

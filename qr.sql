@@ -62,7 +62,7 @@ CREATE TABLE `complaint` (
 
 /*Data for the table `complaint` */
 
-insert  into `complaint`(`complaint_id`,`type`,`user_id`,`complaint`,`date`,`reply_date`,`reply`) values (1,'user',2,'worst app','2022-12-28','0000-00-00','pending'),(2,'user',3,'use more memmory','2022-12-26','0000-00-00','pending'),(3,'user',4,'more ads','2022-12-29','0000-00-00','pending'),(4,'shop',5,'worst payment method','2023-01-01','0000-00-00','pending'),(5,'shop',6,'bill payment error','2022-12-23','0000-00-00','pending'),(6,'shop',7,'gst not include','2023-01-02','0000-00-00','pending');
+insert  into `complaint`(`complaint_id`,`type`,`user_id`,`complaint`,`date`,`reply_date`,`reply`) values (1,'user',2,'worst app','2022-12-28','2022-12-30','ok'),(2,'user',3,'use more memmory','2022-12-26','2022-12-30','we fixed it\r\n'),(3,'user',4,'more ads','2022-12-29','0000-00-00','pending'),(4,'shop',5,'worst payment method','2023-01-01','2022-12-30','thankyou'),(5,'shop',6,'bill payment error','2022-12-23','0000-00-00','pending'),(6,'shop',7,'gst not include','2023-01-02','2022-12-30','gt');
 
 /*Table structure for table `feedback` */
 
@@ -75,9 +75,11 @@ CREATE TABLE `feedback` (
   `date` date DEFAULT NULL,
   `feedback` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`feedback_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `feedback` */
+
+insert  into `feedback`(`feedback_id`,`sender_id`,`type`,`date`,`feedback`) values (1,2,'user','2022-02-02','N/W slow'),(2,9,'shop','2022-05-12','good application'),(3,8,'shop','2022-04-12','thankyou'),(4,3,'user','2022-02-22','GOOD');
 
 /*Table structure for table `login` */
 
@@ -89,11 +91,11 @@ CREATE TABLE `login` (
   `password` varchar(40) DEFAULT NULL,
   `user_type` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`login_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 /*Data for the table `login` */
 
-insert  into `login`(`login_id`,`user_name`,`password`,`user_type`) values (1,'admin','admin','admin'),(2,'rijo','rijo','user'),(3,'salman','salman','user'),(4,'sachin','sachin','user'),(5,'rk_trades','rk','shop'),(6,'not_null','notNull','shop'),(7,'s&s','s&s','shop');
+insert  into `login`(`login_id`,`user_name`,`password`,`user_type`) values (1,'admin','admin','admin'),(2,'rijo','rijo','user'),(3,'salman','salman','user'),(4,'sachin','sachin','user'),(5,'rk_trades','rk','shop'),(7,'s&s','s&s','shop'),(9,'job','job','pending');
 
 /*Table structure for table `offer` */
 
@@ -132,14 +134,16 @@ DROP TABLE IF EXISTS `rating`;
 
 CREATE TABLE `rating` (
   `rating_id` int(20) NOT NULL AUTO_INCREMENT,
-  `date` date DEFAULT NULL,
+  `date` varchar(20) DEFAULT NULL,
   `user_id` int(20) DEFAULT NULL,
   `rating` int(20) DEFAULT NULL,
   `shop_id` int(20) DEFAULT NULL,
   PRIMARY KEY (`rating_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `rating` */
+
+insert  into `rating`(`rating_id`,`date`,`user_id`,`rating`,`shop_id`) values (1,'2012-01-01',2,5,5);
 
 /*Table structure for table `shop` */
 
@@ -154,11 +158,11 @@ CREATE TABLE `shop` (
   `phone` bigint(20) DEFAULT NULL,
   `image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`shop_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 /*Data for the table `shop` */
 
-insert  into `shop`(`shop_id`,`name`,`place`,`pincode`,`mail`,`phone`,`image`) values (5,'rk_trades','ksd',671541,'rk@gmail.com',9854762147,NULL),(6,'not_null','knr',671123,'notnull@gmail.com',9874562146,NULL),(7,'s&s','ksd',647584,'ss@gmail.com',9895555555,NULL);
+insert  into `shop`(`shop_id`,`name`,`place`,`pincode`,`mail`,`phone`,`image`) values (5,'rk_trades','ksd',671541,'rk@gmail.com',9854762147,NULL),(7,'s&s','ksd',647584,'ss@gmail.com',9895555555,NULL),(9,'job','knr',974562,'job@gmail.com',9874526546,NULL);
 
 /*Table structure for table `stock` */
 

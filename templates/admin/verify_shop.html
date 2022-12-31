@@ -18,17 +18,19 @@
     <th width="50" scope="col">image</th>
     <th colspan="2" scope="col">&nbsp;</th>
   </tr>
+    {% for i in data  %}
   <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td width="65"><a href="#">approve</a></td>
-    <td width="47"><a href="#"> reject</a></td>
+    <td>&nbsp;{{ loop.index }}</td>
+    <td>&nbsp;{{ i.name }}</td>
+    <td>&nbsp;{{ i.place }}</td>
+    <td>&nbsp;{{ i.pincode}}</td>
+    <td>&nbsp;{{ i.mail }}</td>
+    <td>&nbsp;{{ i.phone }}</td>
+    <td> <img src=" {{ i.image }}" width="100" height="100"/></td>
+    <td width="65"><a href="/approve/{{ i.login_id }}">approve</a></td>
+    <td width="47"><a href="/reject/{{ i.login_id }}"> reject</a></td>
   </tr>
+    {% endfor %}
 </table>
 
 </form>

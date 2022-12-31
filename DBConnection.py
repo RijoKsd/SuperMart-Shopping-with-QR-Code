@@ -3,9 +3,8 @@ import mysql.connector
 
 class Database:
     def __init__(self):
-        self.cnx = mysql.connector.connect(host="localhost",user="root",password="",database="qr_shopping")
+        self.cnx = mysql.connector.connect(host="localhost", user="root", password="", database="qr_shopping")
         self.cur = self.cnx.cursor(dictionary=True)
-
 
     def select(self, q):
         self.cur.execute(q)
@@ -14,7 +13,6 @@ class Database:
     def selectOne(self, q):
         self.cur.execute(q)
         return self.cur.fetchone()
-
 
     def insert(self, q):
         self.cur.execute(q)
@@ -30,4 +28,3 @@ class Database:
         self.cur.execute(q)
         self.cnx.commit()
         return self.cur.rowcount
-

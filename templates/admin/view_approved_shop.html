@@ -17,16 +17,22 @@
             <th width="35" scope="col">mail</th>
             <th width="51" scope="col">phone</th>
             <th width="64" scope="col">image</th>
+            <th colspan="2" scope="col">&nbsp;</th>
         </tr>
         {% for i in data %}
             <tr>
                 <td>{{ loop.index }}</td>
-                <td>{{ i.name }}</td>
+                <td>{{ i.name }}</td>d
                 <td>{{ i.place }}</td>
                 <td>{{ i.pincode }}</td>
                 <td>{{ i.mail }}</td>
                 <td>{{ i.phone }}</td>
-                <td>{{ i.image }}</td>
+                 <td> <img src=" {{ i.image }}" width="100" height="100"/></td>d
+                {% if i['user_type'] == 'shop' %}
+                    <td width="65"><a href="/block/{{ i.login_id }}">block</a></td>
+                {% else %}
+                    <td width="47"><a href="/unblock/{{ i.login_id }}"> unblock</a></td>
+                {% endif %}
             </tr>
         {% endfor %}
 

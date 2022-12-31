@@ -1,28 +1,113 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Login</title>
+    
+    <style>
+        /* reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+
+            font-family: Helvetica, sans-serif;
+            color: #333;
+            background: rgb(28, 189, 47);
+            background: linear-gradient(90deg, rgba(28, 189, 47, 1) 0%,  rgba(0, 212, 255, 1) 100%);
+            animation: background-move 6000ms ease-in-out infinite alternate-reverse;
+        }
+        @keyframes background-move {
+            0% {  background: linear-gradient(270deg, rgba(35, 219, 57, 0.94) 0%,  rgba(0, 212, 255, 1) 100%);}
+            50% {  background: linear-gradient(180deg, rgba(0, 212, 255, 1) 0%, rgba(35, 219, 57, 0.94) 100%);}
+            100% {background: linear-gradient(90deg, rgba(0, 212, 255, 1) 0%,  rgba(78, 229, 96, 0.904) 100%);}
+        }
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+        }
+        h1{
+            text-align: center;
+            margin-bottom: 20px;
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color:#fff;
+        }
+        table {
+            width: 300px;
+            height: 200px;
+            border: 0;
+            border-radius: 5px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        table th,td {
+            padding: 5px;
+            font-weight: normal;
+            border:none;
+        }
+        input[type="text"],input[type="password"]{
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            
+        }
+        input[type="submit"]{
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            background-color: #fff;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            
+        }
+        input[type="submit"]:hover{
+            background-color: #ccc;
+        }
+  
+
+    </style>
 </head>
 
 <body>
-<form id="form1" name="form1" method="post" action="" autocomplete="off">
-    <table width="200" border="1">
-        <tr>
-            <th scope="row">username</th>
-            <td><label for="username"></label>
-                <input type="text" name="username" id="textfield"/></td>
-        </tr>
-        <tr>
-            <th scope="row">password</th>
-            <td><label for="password"></label>
-                <input type="password" name="password" id="textfield2"/></td>
-        </tr>
-        <tr>
-            <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="Login"/></th>
-        </tr>
-    </table>
-</form>
+    <form id="form1" name="form1" method="post" action="" autocomplete="off">
+            <h1>Login in</h1>
+         
+        <table width="200" border="1">
+         
+            <tr>
+                <th scope="row">username</th>
+                
+                <td><label for="username"></label>
+                    <input type="text" name="username" id="textfield" />
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">password</th>
+                <td><label for="password"></label>
+                    <input type="password" name="password" id="textfield2" />
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="Login" /></th>
+            </tr>
+        </table>
+    </form>
 </body>
+
 </html>
