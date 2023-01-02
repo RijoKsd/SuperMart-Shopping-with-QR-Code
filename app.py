@@ -219,27 +219,91 @@ def edit_product(product_id):
         date = datetime.datetime.now().strftime("%y%m%d-%H%M%S ")
         image.save(r"E:\QR shopping\python\static\images\\" + date + '.jpg')
         image_path = "/static/images/" + date + '.jpg'
-
-        db = Database()
-        if request.files != " ":
+        if request.files != "":
             if image.filename != "":
                 db = Database()
-                data = db.update("update product set name='" + product_name + "',price = '" + price + "',details = '" + details + "',image = '" + image_path + "' where product_id = '"+product_id+"' ")
-                return '<script>alert("updated successfully  ");window.location="/edit_product"</script>'
+                db.update(
+                    "update product set name='" + product_name + "',price = '" + price + "',details = '" + details + "',image = '" + image_path + "' where product_id = '" + product_id + "' ")
+                return '<script>alert("updated successfully  ");window.location="/view_product"</script>'
             else:
                 db = Database()
-                data = db.update(
+                db.update(
                     "update product set name='" + product_name + "',price = '" + price + "',details = '" + details + "' where product_id = '" + product_id + "' ")
-                return '<script>alert("updated successfully  ");window.location="/edit_product"</script>'
+                return '<script>alert("updated successfully  ");window.location="/view_product"</script>'
         else:
             db = Database()
-            data = db.update(
+            db.update(
                 "update product set name='" + product_name + "',price = '" + price + "',details = '" + details + "' where product_id = '" + product_id + "' ")
-            return '<script>alert("updated successfully  ");window.location="/edit_product"</script>'
+            return '<script>alert("updated successfully  ");window.location="/view_product"</script>'
     else:
         db = Database()
-        db.selectOne("select * from product where product_id = '"+ product_id+"' ")
-        return render_template("shop/view_product.html")
+        data = db.selectOne("select * from product where product_id = '" + product_id + "' ")
+        return render_template("shop/update_product.html", data=data)
+
+
+@app.route('/delete_product/<product_id>')
+def delete_product(product_id):
+    db = Database()
+    db.delete("delete from   product where product_id = '" + product_id + "'")
+
+    return redirect('/view_product')
+
+
+# salman leaves from this section---------
+# 03 - 01 - 2023
+
+@app.route('/add_offer/<product_id>', methods=['post', 'get'])
+def add_offer(product_id):
+    if request.method == 'POST':
+        offer = request.form['offer']
+        date_from = request.form['date_from']
+        date_to = request.form['date_to']
+
+        db = Database()
+        db.insert("insert into offer values ('', '" + str(
+            product_id) + "','" + offer + "','" + date_from + "','" + date_to + "') ")
+        return '<script>alert("updated successfully  ");window.location="/view_product"</script>'
+    else:
+        return render_template("shop/add_offer.html")
+
+
+@app.route('/view_offer/<product_id>')
+def view_offer(product_id):
+    db = Database()
+    data = db.select("select * from offer where product_id = '" + product_id + "' ")
+    return render_template("shop/view_offer.html", data=data)
+
+
+@app.route('/edit_offer/<offer_id>', methods=['post', 'get'])
+def edit_offer(offer_id):
+    if request.method == 'POST':
+        offer = request.form['offer']
+        date_from = request.form['date_from']
+        date_to = request.form['date_to']
+        db = Database()
+        db.update(
+            "update offer set offer = '" + offer + "',date_from = '" + date_from + "', date_to = '" + date_to + "' where offer_id = '" + offer_id + "'")
+        return redirect('/view_product')
+    else:
+        db = Database()
+        data = db.selectOne("select * from offer where offer_id = '" + offer_id + "'")
+        return render_template("shop/update_offer.html", data=data)
+
+
+@app.route('/delete_offer/<offer_id>')
+def delete_offer(offer_id):
+    db = Database()
+    db.delete("delete from offer where offer_id = '" + offer_id + "'")
+    return redirect('/view_product')
+
+
+# stock section
+
+@app.route('/add_stock')
+def add_stock():
+
+
+
 
 
 if __name__ == '__main__':

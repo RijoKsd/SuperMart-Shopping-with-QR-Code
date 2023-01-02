@@ -7,27 +7,28 @@
 </head>
 
 <body>
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/form-data">
     <h1> update product</h1>
     <table width="401" border="1">
         <tr>
             <td width="53" scope="col">name</td>
             <td width="336" scope="col"><label for="textfield"></label>
-                <input type="text" name="product_name" id="textfield"/></td>
+                <input type="text" name="product_name" id="textfield" value="{{ data.name}}"/></td>
         </tr>
         <tr>
             <td>price</td>
             <td><label for="textfield2"></label>
-                <input type="text" name="price" id="textfield2"/></td>
+                <input type="text" name="price" id="textfield2" value="{{data.price}}"/></td>
         </tr>
         <tr>
             <td>details</td>
             <td><label for="textarea"></label>
-                <textarea name="details" id="textarea" cols="35" rows="5"></textarea></td>
+                <textarea name="details" id="textarea" cols="35" rows="5">{{data.details}}</textarea></td>
         </tr>
         <tr>
             <td>image</td>
             <td><label for="textfield3"></label>
+                <img src="{{data.image}}" width="100" height="100"/>
                 <input type="file" name="image" id="textfield3"/></td>
         </tr>
         <tr>

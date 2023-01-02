@@ -62,7 +62,7 @@ CREATE TABLE `complaint` (
 
 /*Data for the table `complaint` */
 
-insert  into `complaint`(`complaint_id`,`type`,`user_id`,`complaint`,`date`,`reply_date`,`reply`) values (1,'user',2,'worst app','2022-12-28','2022-12-30','ok'),(2,'user',3,'use more memmory','2022-12-26','2022-12-30','we fixed it\r\n'),(3,'user',4,'more ads','2022-12-29','0000-00-00','pending'),(4,'shop',5,'worst payment method','2023-01-01','2022-12-30','thankyou'),(5,'shop',6,'bill payment error','2022-12-23','0000-00-00','pending'),(6,'shop',7,'gst not include','2023-01-02','2022-12-30','gt');
+insert  into `complaint`(`complaint_id`,`type`,`user_id`,`complaint`,`date`,`reply_date`,`reply`) values (1,'user',2,'worst app','2022-12-28','2022-12-30','ok'),(2,'user',3,'use more memmory','2022-12-26','2022-12-30','we fixed it\r\n'),(3,'user',4,'more ads','2022-12-29','2023-01-02','we fixed it'),(4,'shop',5,'worst payment method','2023-01-01','2022-12-30','thankyou'),(5,'shop',6,'bill payment error','2022-12-23','0000-00-00','pending'),(6,'shop',7,'gst not include','2023-01-02','2022-12-30','gt');
 
 /*Table structure for table `feedback` */
 
@@ -95,7 +95,7 @@ CREATE TABLE `login` (
 
 /*Data for the table `login` */
 
-insert  into `login`(`login_id`,`user_name`,`password`,`user_type`) values (1,'admin','admin','admin'),(2,'rijo','rijo','user'),(3,'salman','salman','user'),(4,'sachin','sachin','user'),(5,'rk_trades','rk','shop'),(7,'s&s','s&s','shop'),(9,'job','job','pending');
+insert  into `login`(`login_id`,`user_name`,`password`,`user_type`) values (1,'admin','admin','admin'),(2,'rijo','rijo','user'),(3,'salman','salman','user'),(4,'sachin','sachin','user'),(7,'s&s','s&s','shop'),(8,'riss@gmail.com','1234','shop'),(9,'abc@gmail.com','abc','shop');
 
 /*Table structure for table `offer` */
 
@@ -108,9 +108,11 @@ CREATE TABLE `offer` (
   `date_from` date DEFAULT NULL,
   `date_to` date DEFAULT NULL,
   PRIMARY KEY (`offer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `offer` */
+
+insert  into `offer`(`offer_id`,`product_id`,`offer`,`date_from`,`date_to`) values (1,5,33,'2023-01-03','2023-01-10'),(2,5,4,'2023-01-04','2023-01-10'),(3,1,12,'2023-01-05','2023-01-19');
 
 /*Table structure for table `product` */
 
@@ -124,9 +126,11 @@ CREATE TABLE `product` (
   `shop_id` int(20) DEFAULT NULL,
   `image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 /*Data for the table `product` */
+
+insert  into `product`(`product_id`,`name`,`price`,`details`,`shop_id`,`image`) values (1,'salman',400,'dfdsf',8,'/static/images/230102-125502 .jpg'),(5,'iphone 14',189000,'iphone 14, deep purple 1tb',9,'/static/images/230102-142314 .jpg'),(6,'new',334,'sdf',9,'/static/images/230102-153549 .jpg');
 
 /*Table structure for table `rating` */
 
@@ -150,19 +154,18 @@ insert  into `rating`(`rating_id`,`date`,`user_id`,`rating`,`shop_id`) values (1
 DROP TABLE IF EXISTS `shop`;
 
 CREATE TABLE `shop` (
-  `shop_id` int(20) NOT NULL AUTO_INCREMENT,
+  `shop_id` int(20) DEFAULT NULL,
   `name` varchar(30) DEFAULT NULL,
   `place` varchar(30) DEFAULT NULL,
   `pincode` int(30) DEFAULT NULL,
   `mail` varchar(30) DEFAULT NULL,
   `phone` bigint(20) DEFAULT NULL,
-  `image` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`shop_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+  `image` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `shop` */
 
-insert  into `shop`(`shop_id`,`name`,`place`,`pincode`,`mail`,`phone`,`image`) values (5,'rk_trades','ksd',671541,'rk@gmail.com',9854762147,NULL),(7,'s&s','ksd',647584,'ss@gmail.com',9895555555,NULL),(9,'job','knr',974562,'job@gmail.com',9874526546,NULL);
+insert  into `shop`(`shop_id`,`name`,`place`,`pincode`,`mail`,`phone`,`image`) values (7,'s&s','ksd',647584,'ss@gmail.com',9895555555,NULL),(8,'riss ','knr',9475632,'riss@gmail.com',9785452455,'/static/images/230102-120856 .jpg'),(9,'abc','ksd',641752,'abc@gmail.com',9745624984,'/static/images/230102-131410 .jpg');
 
 /*Table structure for table `stock` */
 

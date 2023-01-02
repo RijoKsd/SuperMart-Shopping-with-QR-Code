@@ -10,22 +10,24 @@
 <form action="" method="post">
     <table width="449" border="1">
         <tr>
-            <th width="10" scope="col">#</th>
-            <th width="63" scope="col">product details</th>
+           <th width="10" scope="col">#</th>
+          <!--   <th width="63" scope="col">product details</th> -->
             <th width="40" scope="col">offer</th>
             <th width="73" scope="col">date from</th>
             <th width="61" scope="col">date to</th>
             <th colspan="2" scope="col">&nbsp;</th>
         </tr>
+        {% for i in data %}
         <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td width="30"><a href="#">edit</a></td>
-            <td width="126"><a href="#">delete</a></td>
+            <td>&nbsp;{{loop.index}}</td>
+            <!-- <td>&nbsp;{{i.product_id}}</td> -->
+            <td>&nbsp;{{i.offer}}%</td>
+            <td>&nbsp;{{i.date_from}}</td>
+            <td>&nbsp;{{i.date_to}}</td>
+            <td width="30"><a href="/edit_offer/{{i.offer_id}}">edit</a></td>
+            <td width="126"><a href="/delete_offer/{{i.offer_id}}" onclick="return confirm('Are you sure')">delete</a></td>
         </tr>
+        {%endfor%}
     </table>
 
 </form>

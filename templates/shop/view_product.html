@@ -27,9 +27,9 @@
                 <img src="{{i.image}}" alt="img" width="50" height="50">
             </td>
             <td width="41"><a href="edit_product/{{ i.product_id }}">edit</a></td>
-            <td width="141"><a href="#">delete</a></td>
-            <td width="141"><p><a href="#">Add offer</a></p>
-            <p><a href="#">view offer</a></p></td>
+            <td width="141"><a href="delete_product/{{i.product_id}}" onclick="return confirm('Are you sure?')">delete</a></td>
+            <td width="141"><p><a href="add_offer/{{i.product_id}}">Add offer</a></p>
+            <p><a href="view_offer/{{i.product_id}}">view offer</a></p></td>
         </tr>
         {% endfor %}
     </table>
