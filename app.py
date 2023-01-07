@@ -156,6 +156,8 @@ def view_complaint_send_reply():
     return redirect('/')
 
 
+#  TODO database query has some error in viewing
+
 @app.route('/view_rating')
 def view_rating():
     if session['lin'] == "1":
@@ -175,9 +177,7 @@ def view_user():
     return redirect('/')
 
 
-# This page load after the admin entered correct username and password
-
-# TODO Dont need to pass to this page when giving a GET request
+# TODO Don't need to pass to this page when giving a GET request
 
 @app.route('/admin_home')
 def admin_home():
@@ -212,7 +212,6 @@ def shop_home():
     if session['lin'] == "1":
         return render_template("shop/shop_home.html")
     return redirect('/')
-
 
 
 @app.route('/register', methods=['post', 'get'])
@@ -407,21 +406,22 @@ def update_stock(stock_id):
         select_option = request.form['select']
         quantity = request.form['quantity']
         db = Database()
-        data=db.update("update stock set quantity = '"+quantity+"' where stock_id = '"+stock_id+"'")
+        data = db.update("update stock set quantity = '" + quantity + "' where stock_id = '" + stock_id + "'")
 
         return "<script>alert('Stock updated successfully');window.location = '/view_stock'</script>"
     else:
         db = Database()
-        data=db.select("select * from stock,product where stock.product_id = product.product_id and  stock_id = '"+stock_id+"'")
+        data = db.select(
+            "select * from stock,product where stock.product_id = product.product_id and  stock_id = '" + stock_id + "'")
         return render_template("shop/update_stock.html", data=data)
-
 
 
 @app.route('/delete_stock/<stock_id>')
 def delete_stock(stock_id):
     db = Database()
-    db.delete("delete from   stock WHERE stock_id='"+stock_id+"'")
+    db.delete("delete from   stock WHERE stock_id='" + stock_id + "'")
     return redirect('/view_stock')
+
 
 #
 # @app.route('/view_bill')
