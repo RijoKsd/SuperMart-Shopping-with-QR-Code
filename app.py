@@ -5,7 +5,7 @@ from DBConnection import Database
 app = Flask(__name__)
 app.secret_key = "djljsdl"
 
-
+# ---------------------------------------------- Global section started----------------------------------------------
 @app.route('/logout')
 def logout():
     session.clear()
@@ -31,20 +31,18 @@ def login():
                 return redirect('/admin_home')
             elif query['user_type'] == 'shop':
                 session['lid'] = query['login_id']
-
                 return redirect('/shop_home')
             else:
                 return '<script>alert("invalid credentials");window.location = "/"</script>'
         else:
             return '<script>alert("invalid username or password");window.location = "/"</script>'
-
     else:
         return render_template("login.html")
 
+# ---------------------------------------------- Global section finished----------------------------------------------
 
-# admin section starts
+# ---------------------------------------------- admin section started ----------------------------------------------
 
-# approve or verify shop
 @app.route('/verify_shop')
 def verify_shop():
     if session['lin'] == "1":
@@ -85,9 +83,6 @@ def view_approved_shop():
 def block(shop_id):
     db = Database()
     db.update("update login set user_type = 'block' where login_id = '" + str(shop_id) + "'")
-    # db.delete("delete from login where login_id = '" + str(shop_id) + "'")
-    # Change block to blocked in web page
-
     return redirect('/view_approved_shop')
 
 
@@ -98,7 +93,7 @@ def unblock(shop_id):
     return redirect('/view_approved_shop')
 
 
-# dont know is this section imp##################
+# don't know is this section imp##################
 ##########------------------#####################v
 
 @app.route('/delete_shop/<shop_id>')
@@ -112,9 +107,6 @@ def delete_shop(shop_id):
 
 
 ##################################################
-
-
-
 
 @app.route('/view_feedback', methods=['get', 'post'])
 def view_feedback():
@@ -139,7 +131,6 @@ def view_feedback():
 @app.route('/view_complaint_send_reply', methods=['get', 'post'])
 def view_complaint_send_reply():
     if session['lin'] == "1":
-
         if request.method == "POST":
             select_option = request.form['select']
             if select_option == "user":
@@ -152,11 +143,10 @@ def view_complaint_send_reply():
                 return render_template("admin/view_complaint_send_reply.html", data=data)
         else:
             return render_template("admin/view_complaint_send_reply.html")
-
     return redirect('/')
 
 
-#  TODO database query has some error in viewing
+#  TODO rating database query has some error in viewing
 
 @app.route('/view_rating')
 def view_rating():
@@ -196,16 +186,9 @@ def reply(complaint_id):
         return render_template('admin/reply.html')
 
 
-# admin section finished
+# ---------------------------------------------- admin section finished ----------------------------------------------
 
-# ----------------------------------------------
-
-
-# shop section started
-# --------------------------------------------------
-# =========================================================
-
-
+# ---------------------------------------------- shop section started ----------------------------------------------
 
 @app.route('/shop_home')
 def shop_home():
@@ -232,7 +215,6 @@ def register():
         db.insert("insert into shop values('" + str(
             login_id) + "','" + shop_name + "','" + place + "','" + pin + "','" + email + "','" + phone + "','" + str(
             image_path) + "') ")
-
         return '<script>alert("Registered successfully completed");window.location="/"</script>'
     else:
         return render_template("shop/register.html")
@@ -241,19 +223,15 @@ def register():
 @app.route('/add_product', methods=['post', 'get'])
 def add_product():
     if session['lin'] == "1":
-
         if request.method == 'POST':
             product_name = request.form['product_name']
             price = request.form['price']
             details = request.form['details']
             image = request.files['image']
-
             # image path
-
             date = datetime.datetime.now().strftime("%y%m%d-%H%M%S ")
             image.save(r"E:\QR shopping\python\static\images\\" + date + '.jpg')
             image_path = "/static/images/" + date + '.jpg'
-
             db = Database()
             data = db.insert(
                 "insert into product VALUE ('','" + product_name + "','" + price + "','" + details + "','" + str(
@@ -261,7 +239,6 @@ def add_product():
             return '<script>alert("Added successfully ");window.location="/shop_home"</script>'
         else:
             return render_template('shop/add_product.html')
-
     return redirect('/')
 
 
@@ -283,9 +260,7 @@ def edit_product(product_id):
             price = request.form['price']
             details = request.form['details']
             image = request.files['image']
-
             # image path
-
             date = datetime.datetime.now().strftime("%y%m%d-%H%M%S ")
             image.save(r"E:\QR shopping\python\static\images\\" + date + '.jpg')
             image_path = "/static/images/" + date + '.jpg'
@@ -317,7 +292,6 @@ def delete_product(product_id):
     if session['lin'] == "1":
         db = Database()
         db.delete("delete from   product where product_id = '" + product_id + "'")
-
         return redirect('/view_product')
     return redirect('/')
 
@@ -328,7 +302,6 @@ def add_offer(product_id):
         offer = request.form['offer']
         date_from = request.form['date_from']
         date_to = request.form['date_to']
-
         db = Database()
         db.insert("insert into offer values ('', '" + str(
             product_id) + "','" + offer + "','" + date_from + "','" + date_to + "') ")
@@ -367,19 +340,13 @@ def delete_offer(offer_id):
     return redirect('/view_product')
 
 
-# stock section
-
-
-
 @app.route('/add_stock', methods=['post', 'get'])
 def add_stock():
     if session['lin'] == "1":
-
         if request.method == "POST":
             select_option = request.form['select']
             quantity = request.form['quantity']
             db = Database()
-
             db.insert("insert into stock values ( '','" + select_option + "','" + quantity + "') ")
             return "<script>alert('Stock added successfully');window.location = '/shop_home'</script>"
         else:
