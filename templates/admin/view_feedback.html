@@ -6,7 +6,22 @@
 </head>
 
 <body>
-<form action="" method="get">
+<form action="" method="post">
+    <table>
+        <tr>
+            <td>Choose feedback type</td>
+            <td>
+                <select name="select">
+                    {#                    <option selected disabled>type</option>#}
+                    <option>shop</option>
+                    <option>user</option>
+                </select>
+            </td>
+            <td>
+                <input type="submit" value="search">
+            </td>
+        </tr>
+    </table>
 <table width="200" border="1">
   <tr>
     <th scope="col">#</th>

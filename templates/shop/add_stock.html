@@ -12,12 +12,16 @@
     <table width="296" border="1">
         <tr>
             <th width="165" scope="col">product</th>
-            <th width="115" scope="col"><select name="select" id="select">
+            <th width="115" scope="col"><select name="select" id="select" >
+            {% for i in data %}
+            <option value="{{i.product_id}}">{{i.name}}</option>
+            {% endfor %}
             </select></th>
         </tr>
+
         <tr>
             <td>quantity</td>
-            <td><input type="text" name="textfield" id="textfield"/></td>
+            <td><input type="text" name="quantity" id="textfield"/> </td>
         </tr>
         <tr>
             <td colspan="2"><input type="submit" name="button" id="button" value="add"/></td>

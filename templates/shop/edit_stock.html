@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Update stock</title>
+    <title>Add stock</title>
 </head>
 
 <body>
@@ -12,15 +12,21 @@
     <table width="296" border="1">
         <tr>
             <th width="165" scope="col">product</th>
-            <th width="115" scope="col"><select name="select" id="select">
+            <th width="115" scope="col"><select name="select" id="select" >
+            {% for i in data %}
+            <option value="{{i.product_id}}">{{i.name}}</option>
+            {% endfor %}
             </select></th>
         </tr>
+{% for i in data%}
         <tr>
+
             <td>quantity</td>
-            <td><input type="text" name="textfield" id="textfield"/></td>
+            <td><input type="text" name="quantity" id="textfield" value="{{i.quantity}}"/> </td>
         </tr>
+        {% endfor %}
         <tr>
-            <td colspan="2"><input type="submit" name="button" id="button" value="update"/></td>
+            <td colspan="2"><input type="submit" name="button" id="button" value="Update"/></td>
         </tr>
     </table>
 

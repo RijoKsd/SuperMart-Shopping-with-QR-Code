@@ -41,7 +41,7 @@ CREATE TABLE `bill_master` (
   `date` date DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`master_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `bill_master` */
 
@@ -75,11 +75,11 @@ CREATE TABLE `feedback` (
   `date` date DEFAULT NULL,
   `feedback` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`feedback_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `feedback` */
 
-insert  into `feedback`(`feedback_id`,`sender_id`,`type`,`date`,`feedback`) values (1,2,'user','2022-02-02','N/W slow'),(2,9,'shop','2022-05-12','good application'),(3,8,'shop','2022-04-12','thankyou'),(4,3,'user','2022-02-22','GOOD');
+insert  into `feedback`(`feedback_id`,`sender_id`,`type`,`date`,`feedback`) values (1,2,'user','2022-02-02','N/W slow'),(2,9,'shop','2022-05-12','good application'),(3,8,'shop','2022-04-12','thankyou'),(4,3,'user','2022-02-22','GOOD'),(5,7,'shop','2023-01-07','thank you developing this app');
 
 /*Table structure for table `login` */
 
@@ -91,11 +91,11 @@ CREATE TABLE `login` (
   `password` varchar(40) DEFAULT NULL,
   `user_type` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`login_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Data for the table `login` */
 
-insert  into `login`(`login_id`,`user_name`,`password`,`user_type`) values (1,'admin','admin','admin'),(2,'rijo','rijo','user'),(3,'salman','salman','user'),(4,'sachin','sachin','user'),(7,'s&s','s&s','shop'),(8,'riss@gmail.com','1234','shop'),(9,'abc@gmail.com','abc','shop');
+insert  into `login`(`login_id`,`user_name`,`password`,`user_type`) values (1,'admin','admin','admin'),(2,'rijo','rijo','user'),(3,'salman','salman','user'),(4,'sachin','sachin','user'),(5,'apple@gmail.com','apple','shop'),(6,'abc@gmail.com','abc','shop');
 
 /*Table structure for table `offer` */
 
@@ -108,11 +108,11 @@ CREATE TABLE `offer` (
   `date_from` date DEFAULT NULL,
   `date_to` date DEFAULT NULL,
   PRIMARY KEY (`offer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 /*Data for the table `offer` */
 
-insert  into `offer`(`offer_id`,`product_id`,`offer`,`date_from`,`date_to`) values (1,5,33,'2023-01-03','2023-01-10'),(2,5,4,'2023-01-04','2023-01-10'),(3,1,12,'2023-01-05','2023-01-19');
+insert  into `offer`(`offer_id`,`product_id`,`offer`,`date_from`,`date_to`) values (5,7,11,'2023-01-03','2023-01-05'),(6,1,33,'2023-01-04','2023-01-09'),(7,5,45,'2023-01-07','2023-01-08'),(8,1,0,'0000-00-00','0000-00-00');
 
 /*Table structure for table `product` */
 
@@ -130,7 +130,7 @@ CREATE TABLE `product` (
 
 /*Data for the table `product` */
 
-insert  into `product`(`product_id`,`name`,`price`,`details`,`shop_id`,`image`) values (1,'salman',400,'dfdsf',8,'/static/images/230102-125502 .jpg'),(5,'iphone 14',189000,'iphone 14, deep purple 1tb',9,'/static/images/230102-142314 .jpg'),(6,'new',334,'sdf',9,'/static/images/230102-153549 .jpg');
+insert  into `product`(`product_id`,`name`,`price`,`details`,`shop_id`,`image`) values (1,'Iphone',500,'iphone 13',5,'/static/images/230104-223837 .jpg'),(2,'Bread',40,'Brown Bread',6,'/static/images/230106-183341 .jpg'),(3,'Bread ',50,'White bread',6,'/static/images/230106-183402 .jpg'),(4,'Bread',65,'Wheat Bread',6,'/static/images/230106-183424 .jpg'),(5,'pototo',45,'potato new crop',7,'/static/images/230107-114542 .jpg'),(6,'rice',34,'basmathi rice',6,'/static/images/230107-160222 .jpg');
 
 /*Table structure for table `rating` */
 
@@ -165,7 +165,7 @@ CREATE TABLE `shop` (
 
 /*Data for the table `shop` */
 
-insert  into `shop`(`shop_id`,`name`,`place`,`pincode`,`mail`,`phone`,`image`) values (7,'s&s','ksd',647584,'ss@gmail.com',9895555555,NULL),(8,'riss ','knr',9475632,'riss@gmail.com',9785452455,'/static/images/230102-120856 .jpg'),(9,'abc','ksd',641752,'abc@gmail.com',9745624984,'/static/images/230102-131410 .jpg');
+insert  into `shop`(`shop_id`,`name`,`place`,`pincode`,`mail`,`phone`,`image`) values (5,'apple','knr',67451,'apple@gmail.com',95464654,'/static/images/230104-223112 .jpg'),(6,'abc-mart','knr',671545,'abc@gmail.com',874574574,'/static/images/230106-183240 .jpg'),(7,'mart ','knr',45649,'mart@gmail.com',54,'/static/images/230107-114405 .jpg');
 
 /*Table structure for table `stock` */
 
@@ -176,9 +176,11 @@ CREATE TABLE `stock` (
   `product_id` int(20) DEFAULT NULL,
   `quantity` int(20) DEFAULT NULL,
   PRIMARY KEY (`stock_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 /*Data for the table `stock` */
+
+insert  into `stock`(`stock_id`,`product_id`,`quantity`) values (6,1,2),(12,6,34);
 
 /*Table structure for table `user` */
 
@@ -198,7 +200,7 @@ CREATE TABLE `user` (
 
 /*Data for the table `user` */
 
-insert  into `user`(`user_id`,`name`,`place`,`pincode`,`email`,`gender`,`phone_no`,`image`) values (2,'rijo','ksd',671541,'rijo@gmail.com','male',9446626926,NULL),(3,'salman','ksd',671123,'salman@gmail.com','male',9456324789,NULL),(4,'sachin','ksd',671541,'sachin@gmail.com','male',7584126574,NULL);
+insert  into `user`(`user_id`,`name`,`place`,`pincode`,`email`,`gender`,`phone_no`,`image`) values (2,'rijo','ksd',671541,'rijo@gmail.com','male',9446626926,'/static/images/230104-223112 .jpg'),(3,'salman','ksd',671123,'salman@gmail.com','male',9456324789,'/static/images/230104-223112 .jpg'),(4,'sachin','ksd',671541,'sachin@gmail.com','male',7584126574,'/static/images/230104-223112 .jpg');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

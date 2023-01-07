@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>view_user</title>
+</head>
+
+<body>
+<form action="" method="post">
+ 
+<table width="725" border="1">
+  <tr>
+     <th width="55" height="53" scope="col">#</th>
+    <th width="95" height="53" scope="col">Name</th>
+    <th width="66" scope="col">Place</th>
+    <th width="74" scope="col">Pincode</th>
+    <th width="104" scope="col">E-mail</th>
+    <th width="109" scope="col">Phone NO</th>
+    <th width="80" scope="col">Gender</th>
+    <th width="90" scope="col">Image</th>
+  </tr>
+  {%for i in data %}
+  <tr>
+    <td>&nbsp;{{loop.index}}</td>
+    <td>&nbsp;{{i.name}}</td>
+    <td>&nbsp;{{i.place}}</td>
+    <td>&nbsp;{{i.pincode}}</td>
+    <td>&nbsp;{{i.email}}</td>
+    <td>&nbsp;{{i.phone_no}}</td>
+        <td>&nbsp;{{i.gender}}</td>
+
+    <td>&nbsp;
+    <img src="{{i.image}}" alt="img" width="100" height="100">
+    </td>
+  </tr>
+  {%endfor%}
+</table>
+
+
+</form>
+</body>
+</html>
