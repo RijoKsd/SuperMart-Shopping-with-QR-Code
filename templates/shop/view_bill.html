@@ -16,13 +16,15 @@
             <th width="62" scope="col">amount</th>
             <th width="91" scope="col">&nbsp;</th>
         </tr>
+        {% for i in data%}
         <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td><a href="#">view more</a></td>
+            <td>&nbsp; {{loop.index}}</td>
+            <td>&nbsp;{{i.date}}</td>
+            <td>&nbsp;{{i.name}}</td>
+            <td>&nbsp;{{i.amount}}</td>
+            <td><a href="/view_bill_items">view more</a></td>
         </tr>
+        {% endfor %}
     </table>
 
 </form>

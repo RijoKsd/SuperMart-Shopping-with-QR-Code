@@ -1,111 +1,98 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title> shop Home</title>
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body{
-            font-family: Helvetica, sans-serif;
-            color: #333;
-            background: rgb(28, 189, 47);
-            background: linear-gradient(90deg, rgba(28, 189, 47, 1) 0%,  rgba(0, 212, 255, 1) 100%);
-            animation: background-move 7 000ms ease-in-out infinite alternate-reverse;
-        }
-        @keyframes background-move {
-            0% {  background: linear-gradient(270deg, rgba(35, 219, 57, 0.94) 0%,  rgba(0, 212, 255, 1) 100%);}
-            50% {  background: linear-gradient(180deg, rgba(0, 212, 255, 1) 0%, rgba(35, 219, 57, 0.94) 100%);}
-            100% {background: linear-gradient(90deg, rgba(0, 212, 255, 1) 0%,  rgba(78, 229, 96, 0.904) 100%);}
-        }
-        form{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            width: 100%;
-        }
-        table{
-            border-collapse: collapse;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0,0,0,0.15);
-            width: 305px;
-            margin: 0 auto;
-            height: 300px;
-            background-color: #fff;
-        }
-        table tr{
-            width: 100%;
-            height: 50px;
-            line-height: 50px;
-            text-align: center;
-            font-size: 20px;
-            font-weight: 600;
-            color: #333;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        table tr:hover{
-            background-color: #f5f5f5;
-        }
-        table tr td{
-            width: 100%;
-            text-align: center;
-            font-size: 20px;
-            font-weight: 600;
-            color: #333;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        table tr:nth-child(even){
-            background-color: #d3d3d3;
-        }
-        td a{
-            text-decoration: none;
-            color: #333;
-        }
-        table:hover{
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-        }
-        a:hover{
-            color: blue;
-            text-decoration: underline;
-        }
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Home</title>
+    <!-- 
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./bootstrap-icons/bootstrap-icons.css"> -->
+    <link rel="stylesheet" href="../../static/assests/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/assests/css/bootstrap-icons/bootstrap-icons.css">
+    <!-- <link rel="stylesheet" href="./dashboard.css"> -->
+    <link rel="stylesheet" href="../../static/assests/css/dashboard.css">
 
-    </style>
+
 </head>
+
 <body>
-<form action="" method="get">
-    <table width="200" border="1">
-     <tr>
-            <td><a href="add_product" target="_blank"> add product</a></td>
-        </tr>
-        <tr>
-            <td><a href="view_product" target="_blank"> view product</a></td>
-        </tr>
+    <!-- ====================Dashboard section start====================== -->
+    <!--Main Navigation-->
+    <header>
+        <!-- Sidebar -->
+        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+            <div class="position-sticky">
+                <div class="list-group list-group-flush mx-3 mt-4">
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple active" aria-current="true">
+                        <i class="bi bi-house me-3"></i><span>Dashboard</span>
+                    </a>
+                    <a href="view_product" class="list-group-item list-group-item-action py-2 ripple "
+                        aria-current="true">
+                        <i class="bi bi-bag-check me-3"></i><span>View Product</span>
+                    </a>
 
-         <tr>
-            <td><a href="add_stock" target="_blank">add stock</a></td>
-        </tr>
-        <tr>
-            <td><a href="view_stock" target="_blank">view stock</a></td>
-        </tr>
-        <tr>
-            <td><a href="" target="_blank">  view bill items </a></td>
-        </tr>
-        <tr>
-            <td><a href="" target="_blank"> view bill</a></td>
-        </tr>
-         <tr>
-            <td><a href="/logout" target="_blank"> logout</a></td>
-        </tr>
-    </table>
+                    <a href="add_product" class="list-group-item list-group-item-action py-2 ripple  ">
+                        <i class="bi bi-grid me-3"></i><span>Add Product</span>
+                    </a>
 
-</form>
+                    <a href="add_stock" class="list-group-item list-group-item-action py-2 ripple  ">
+                        <i class="bi bi-grid me-3"></i><span>Add Stock</span>
+                    </a>
+                    <a href="view_stock" class="list-group-item list-group-item-action py-2 ripple">
+                        <i class="bi bi-search me-3"></i><span>View Stock</span></a>
+
+
+                    <!-- Need to  add this in every section -->
+                    <a href="send_feedback" class="list-group-item list-group-item-action py-2 ripple">
+                        <i class="bi bi-chat-left me-3"></i><span>Send Feedback</span></a>
+                        <a href="send_complaint" class="list-group-item list-group-item-action py-2 ripple">
+                            <i class="bi bi-reply me-3"></i><span>Send complaint </span></a>
+                        <a href="view_reply" class="list-group-item list-group-item-action py-2 ripple">
+                            <i class="bi bi-reply me-3"></i><span>View Reply </span></a>
+                    <a href="view_user_rating" class="list-group-item list-group-item-action py-2 ripple">
+                        <i class="bi bi-star me-3"></i><span>View Rating</span></a>
+                        <a href="view_bill" class="list-group-item list-group-item-action py-2 ripple">
+                            <i class="bi bi-receipt me-3"></i><span>View Bill</span>
+                        </a>
+
+                    <a href="view_bill_items" class="list-group-item list-group-item-action py-2 ripple ">
+                        <i class="bi bi-card-checklist me-3"></i><span>View Bill Items</span></a>
+                </div>
+            </div>
+        </nav>
+        <!-- Sidebar -->
+        <!-- Navbar -->
+        <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow">
+            <!-- Container wrapper -->
+            <div class="container-fluid">
+                <!-- Toggle button -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu"
+                    aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="bi bi-list"></i>
+                </button>
+                <!-- Brand -->
+                <a class="navbar-brand" href="#">
+                    <img src="../../static/assests/images/full-logo.png" height="40" class="ms-1" alt=""
+                        loading="lazy" />
+                </a>
+
+                <ul class="navbar-nav ms-auto d-flex flex-row">
+                    <a href="/logout" class="btn btn-primary"> <i class="bi bi-box-arrow-right me-2"></i>Logout</a>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main style="margin-top: 58px">
+        <div class="container pt-4">
+            <!-- <img src="./full-logo.png" class="m" alt=""> -->
+
+        </div>
+    </main>
+    <!--Main layout-->
+    <!-- <script src="./bootstrap.min.js"></script> -->
+    <script src="../../static/assests/js/bootstrap.min.js"></script>
 </body>
+
 </html>

@@ -1,25 +1,110 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title> reply</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send reply</title>
+
+  <!-- <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="./bootstrap-icons/bootstrap-icons.css"> -->
+  <link rel="stylesheet" href="../../static/assests/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../static/assests/css/bootstrap-icons/bootstrap-icons.css">
+
+  <!-- custom link -->
+  <link rel="stylesheet" href="../../static/assests/css/dashboard.css">
+
 </head>
 
-
 <body>
-<form action="" method="post">
-<table width="477" border="1">
-  <tr>
-    <th width="59" scope="col">Reply</th>
-    <th width="196" scope="col"><label for="textfield"></label>
-      <label for="textarea"></label>
-      <textarea name="reply" id="textarea" cols="45" rows="5" placeholder="reply"></textarea></th>
-  </tr>
-  <tr>
-    <td colspan="2"> <center><input type="submit" name="button" id="button" value="Submit" /> </center></td>
-  </tr>
-</table>
+  <!-- ====================Dashboard section start====================== -->
+  <!--Main Navigation-->
+  <header>
+    <!-- Sidebar -->
+    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+      <div class="position-sticky">
+        <div class="list-group list-group-flush mx-3 mt-4">
+          <a href="/admin_home" class="list-group-item list-group-item-action py-2 ripple " aria-current="true">
+            <i class="bi bi-house me-3"></i><span>Dashboard</span>
+          </a>
+          <a href="/view_approved_shop" class="list-group-item list-group-item-action py-2 ripple  "
+            aria-current="true">
+            <i class="bi bi-bag-check me-3"></i><span>View approved shop</span>
+          </a>
+          <a href="/verify_shop" class="list-group-item list-group-item-action py-2 ripple  ">
+            <i class="bi bi-bag-plus me-3"></i><span>Verify shop</span>
+          </a>
+          <a href="/view_feedback" class="list-group-item list-group-item-action py-2 ripple">
+            <i class="bi bi-chat-left me-3"></i><span>View feedback</span></a>
+          <a href="/view_complaint_send_reply" class="list-group-item list-group-item-action py-2 ripple active ">
+            <i class="bi bi-reply me-3"></i><span>View complaint & send reply</span></a>
+          <a href="/view_rating" class="list-group-item list-group-item-action py-2 ripple">
+            <i class="bi bi-star me-3"></i><span>View rating</span>
+          </a>
+          <a href="/view_user" class="list-group-item list-group-item-action py-2 ripple">
+            <i class="bi bi-person-check me-3"></i><span>View User</span>
+          </a>
 
-</form>
+
+        </div>
+      </div>
+    </nav>
+    <!-- Sidebar -->
+    <!-- Navbar -->
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow">
+      <!-- Container wrapper -->
+      <div class="container-fluid">
+        <!-- Toggle button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu"
+          aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="bi bi-list"></i>
+        </button>
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">
+          <img src="../../static/assests/images/full-logo.png" height="40" class="ms-1" alt="" loading="lazy" />
+        </a>
+
+        <ul class="navbar-nav ms-auto d-flex flex-row">
+          <a href="/logout" class="btn btn-primary"> <i class="bi bi-box-arrow-right me-2"></i>Logout</a>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main style="margin-top: 58px">
+    <div class="container pt-4 table-responsive-sm">
+      <!-- back button -->
+      <a href="/view_complaint_send_reply" class="btn btn-secondary ms-5 mt-4"> <i
+          class="bi bi-arrow-left me-2"></i>Back</a>
+      <form action="" method="post" class="d-flex justify-content-center my-5  ">
+        <div class="w-50 ">
+          <table class="table text-center">
+            <tr>
+              <th scope="col">Reply</th>
+              <th scope="col"><label for="textfield"></label>
+                <label for="textarea" class="label label-default"></label>
+                <textarea name="reply" id="textarea" required placeholder="reply" class="form-control"></textarea>
+              </th>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <div class="text-center">
+                  <input type="submit" name="button" id="button" value="Submit" class="btn btn-primary " />
+              </td>
+        </div>
+        </tr>
+        </table>
+    </div>
+
+    </form>
+
+
+    </div>
+  </main>
+  <!--Main layout-->
+  <!-- <script src="./bootstrap.min.js"></script> -->
+  <script src="../../static/assests/js/bootstrap.min.js"></script>
+
 </body>
+
 </html>

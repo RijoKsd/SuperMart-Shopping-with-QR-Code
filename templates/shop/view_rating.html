@@ -1,0 +1,41 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>View rating</title>
+</head>
+
+<body>
+  <form action="" method="post">
+
+
+    <table width="483" border="1">
+      <tr>
+        <th width="27" scope="col">#</th>
+        <th width="72" scope="col">Date</th>
+        <th width="117" scope="col">User Name</th>
+        <th width="95" scope="col">Shop</th>
+        <th width="138" scope="col">Rating</th>
+      </tr>
+      {% for i in range(0,ln) %} <tr>
+        <td>&nbsp;{{loop.index}}</td>
+        <td>&nbsp;{{ data[i]['date']}}</td>
+        <!-- here two column have same name  for  user  table and shop table -->
+        <td>&nbsp;{{ data[i]['name']}}</td>
+        <td>&nbsp;{{ data[i]['name']}}</td>
+        <td><img src="{{ r1[i][0] }}" width="20" height="20">
+          <img src="{{ r1[i][1] }}" width="20" height="20">
+          <img src="{{ r1[i][2] }}" width="20" height="20">
+          <img src="{{ r1[i][3] }}" width="20" height="20">
+          <img src="{{ r1[i][4] }}" width="20" height="20">
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </form>
+
+</body>
+
+</html>

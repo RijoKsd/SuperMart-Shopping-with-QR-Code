@@ -1,60 +1,86 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>register</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.png">
+    <!-- Bootstrap css -->
+    <!-- <link rel="stylesheet" href="./bootstrap.min.css"> -->
+    <link rel="stylesheet" href="../../static/assests/css/bootstrap.min.css">
+    <!--Custom css -->
+    <style>
+        .form-signin {  max-width: 430px;padding: 15px; }
+    </style>
 </head>
-
 <body>
-<form action="" method="post" enctype="multipart/form-data">
-    <table width="314" border="1">
-        <tr>
-            <td width="78" scope="col">shop name</td>
-            <td width="220" scope="col">
-                <label for="textfield10"></label>
-                <input type="text" name="shop_name" id="textfield10"/>
-        </tr>
-        <tr>
-            <td>place</td>
-            <td><label for="textfield2"></label>
-                <input type="text" name="place" id="textfield2"/></td>
-        </tr>
-        <tr>
-            <td>pin</td>
-            <td><label for="textfield3"></label>
-                <input type="text" name="pin" id="textfield3"/></td>
-        </tr>
-        <tr>
-            <td>email</td>
-            <td><label for="textfield4"></label>
-                <input type="email" name="email" id="textfield4"/></td>
-        </tr>
-        <tr>
-            <td>phone</td>
-            <td><label for="textfield5"></label>
-                <input type="text" name="phone" id="textfield5"/></td>
-        </tr>
-        <tr>
-            <td>image</td>
-            <td><label for="textfield6"></label>
-                <input type="file" name="image" id="textfield6"/></td>
-        </tr>
-        <tr>
-            <td>password</td>
-            <td><label for="textfield8"></label>
+    <!-- ====================Navigation section starts====================== -->
+    <header class="border-bottom shadow py-2  ">
+        <div class="container text-center ">
+            <div class="row align-items-start bg-gradient      align-items-center ">
+                <div class="col-6 text-start ">
+                    <img src="../../static/assests/images/full-logo.png" width="" height="50">
+                </div>
+                <div class="col-6 text-end ">
+                    <a href="/">
+                        <button type="button" class="btn btn-primary ">Login</button>
 
-                <input type="password" name="password" id="textfield8"/></td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <center>
-                    <input type="submit" name="button" id="button" value="Register"/>
-                </center>
-            </td>
-        </tr>
-    </table>
+                    </a>
+                 </div>
+            </div>
+        </div>
+    </header>
+    <!-- ====================Navigation section ends====================== -->
+    <!-- ====================Registration form section starts====================== -->
+    <main class="form-signin w-100 m-auto text-center mt-3 shadow-sm rounded ">
+        <form method="post" enctype="multipart/form-data" autocomplete="off" >
+            <img class="mb-4" src="../../static/assests/images/logo.png" alt="" width="72" height="57">
+            <h1 class="h3 mb-3 fw-normal">Register your shop</h1>
 
-</form>
+            <div class="form-floating mb-2">
+                <input type="text" class="form-control h-25"  id="floatingInput" placeholder="shop-name" name="shop_name" required autofocus>
+                <label for="floatingInput">Shop name</label>
+            </div>
+            <div class="form-floating mb-2">
+                <input type="text" class="form-control h-25" id="floatingInput" placeholder="place" name="place" required>
+                <label for="floatingInput">Place</label>
+            </div>
+            <div class="form-floating mb-2">
+                <input type="text" class="form-control h-25" id="floatingInput" placeholder="pin" name="pin" required>
+                <label for="floatingInput">pin</label>
+            </div>
+            <div class="form-floating mb-2">
+                <input type="text" class="form-control h-25" id="floatingInput" placeholder="name@example.com" name="email" required>
+                <label for="floatingInput">Mail</label>
+            </div>
+            <div class="form-floating mb-2">
+                <input type="text" class="form-control h-25" id="floatingInput" placeholder="name@example.com" name="phone" required>
+                <label for="floatingInput">Phone</label>
+            </div>
+            <div class="mb-2 text-start">
+                <label for="formFile" class="form-label ">Shop image</label>
+                <input class="form-control h-25" type="file" id="formFile" name="image">
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control h-25" id="floatingPassword" placeholder="Password" name="password" required>
+                <label for="floatingPassword">Password</label>
+            </div>
+
+            <!-- <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div> -->
+            <button class="w-100 btn btn-lg btn-primary mt-2" type="submit">Register</button>
+        </form>
+    </main>
+    <!-- ====================Registration form section ends====================== -->
+
+
+
+
 </body>
+
 </html>

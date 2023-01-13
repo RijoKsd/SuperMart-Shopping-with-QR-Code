@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>view bill items</title>
+</head>
+
+<body>
+<table width="334" border="1">
+    <tr>
+        <th width="10" scope="col">#</th>
+        <th width="68" scope="col">product name</th>
+        <th width="49" scope="col">price</th>
+        <th width="69" scope="col">quantity</th>
+        <th width="104" scope="col">amount</th>
+    </tr>
+    {% for i in data%}
+    <tr>
+        <td>&nbsp; {{loop.index}}</td>
+        <td>&nbsp;{{i.name}}</td>
+        <td>&nbsp;{{i.price}}</td>
+        <td>&nbsp;{{i.quantity}}</td>
+        <td>&nbsp;{{i.amount}}</td>
+    </tr>
+    {% endfor %}
+    <tr>
+        <td colspan="5" align="right">Total :</td>
+    </tr>
+</table>
+
+</body>
+</html>

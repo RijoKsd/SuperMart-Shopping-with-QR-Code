@@ -1,55 +1,134 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>View complaint & send reply</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>view_complaint_send_reply</title>
+
+    <!-- <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="./bootstrap-icons/bootstrap-icons.css"> -->
+    <link rel="stylesheet" href="../../static/assests/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/assests/css/bootstrap-icons/bootstrap-icons.css">
+
+  <!-- custom link -->
+  <link rel="stylesheet" href="../../static/assests/css/dashboard.css">
+ 
 </head>
 
 <body>
-<form action="" method="post">
-    <table>
-        <tr>
-            <td>Choose complaint type</td>
-            <td>
-                <select name="select">
-                    {#                    <option selected disabled>type</option>#}
-                    <option>shop</option>
-                    <option>user</option>
-                </select>
-            </td>
-            <td>
-                <input type="submit" value="search">
-            </td>
-        </tr>
-    </table>
-    <table width="461" border="1">
-        <tr>
-            <th width="10" scope="col">#</th>
-            <th width="37" scope="col">type</th>
-            <th width="81" scope="col">username</th>
-            <th width="81" scope="col">complaint</th>
-            <th width="42" scope="col">date</th>
-            <th width="89" scope="col">reply_date</th>
-            <th width="75" scope="col">reply</th>
-        </tr>
-        {% for i in data %}
-            <tr>
+    <!-- ====================Dashboard section start====================== -->
+    <!--Main Navigation-->
+    <header>
+        <!-- Sidebar -->
+        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+            <div class="position-sticky">
+                <div class="list-group list-group-flush mx-3 mt-4">
+                    <a href="/admin_home" class="list-group-item list-group-item-action py-2 ripple " aria-current="true">
+                        <i class="bi bi-house me-3"></i><span>Dashboard</span>
+                    </a>
+                    <a href="/view_approved_shop" class="list-group-item list-group-item-action py-2 ripple  " aria-current="true">
+                        <i class="bi bi-bag-check me-3"></i><span>View approved shop</span>
+                    </a>
+                    <a href="/verify_shop" class="list-group-item list-group-item-action py-2 ripple  ">
+                        <i class="bi bi-bag-plus me-3"></i><span>Verify shop</span>
+                    </a>
+                    <a href="/view_feedback" class="list-group-item list-group-item-action py-2 ripple">
+                        <i class="bi bi-chat-left me-3"></i><span>View feedback</span></a>
+                    <a href="/view_complaint_send_reply" class="list-group-item list-group-item-action py-2 ripple active ">
+                        <i class="bi bi-reply me-3"></i><span>View complaint & send reply</span></a>
+                    <a href="/view_rating" class="list-group-item list-group-item-action py-2 ripple">
+                        <i class="bi bi-star me-3"></i><span>View rating</span>
+                    </a>
+                    <a href="/view_user" class="list-group-item list-group-item-action py-2 ripple">
+                        <i class="bi bi-person-check me-3"></i><span>View User</span>
+                    </a>
 
-                <td>{{ loop.index }}</td>
-                <td>&nbsp;{{ i.type }}</td>
-                <td>&nbsp;{{ i.name }}</td>
-                <td>&nbsp;{{ i.complaint }}</td>
-                <td>&nbsp;{{ i.date }}</td>
-                {% if i.reply == 'pending' %}
-                    <td><a href="/reply/{{ i.complaint_id }}">send reply</a></td>
-                {% else %}
-                    <td>{{ i.reply_date }}</td>
-                    <td>&nbsp;{{ i.reply }}</td>
-                {% endif %}
-            </tr>
-        {% endfor %}
-    </table>
-</form>
+
+                </div>
+            </div>
+        </nav>
+        <!-- Sidebar -->
+        <!-- Navbar -->
+        <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow">
+            <!-- Container wrapper -->
+            <div class="container-fluid">
+                <!-- Toggle button -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu"
+                    aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="bi bi-list"></i>
+                </button>
+                <!-- Brand -->
+                <a class="navbar-brand" href="#">
+                    <img src="../../static/assests/images/full-logo.png" height="40" class="ms-1" alt="" loading="lazy" />
+                </a>
+
+                <ul class="navbar-nav ms-auto d-flex flex-row">
+                    <a href="/logout" class="btn btn-primary"> <i class="bi bi-box-arrow-right me-2"></i>Logout</a>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main style="margin-top: 58px">
+        <div class="container pt-4 table-responsive-sm">
+            <form method="post">
+                <table class="table"> 
+                    <tr>
+                        <td class="fw-bold">Choose complaint type</td>
+                        <td> 
+                            <select name="select" class=" form-control   form-select ">
+                                <option>shop</option>
+                                <option>user</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="submit" value="search " class=" btn btn-secondary">
+                        </td>
+                    </tr>
+                </table>
+                
+                <table class="table table-hover table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">  Name</th>
+                            <th scope="col">Complaint</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Reply Date</th>
+                            <th scope="col">Reply</th>
+                           
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in data %}
+                        <tr>
+            
+                            <td>{{ loop.index }}</td>
+                            <td>&nbsp;{{ i.type }}</td>
+                            <td>&nbsp;{{ i.name }}</td>
+                            <td>&nbsp;{{ i.complaint }}</td>
+                            <td>&nbsp;{{ i.date }}</td>
+                            {% if i.reply == 'pending' %}
+                                <td><a href="/reply/{{ i.complaint_id }}" class="btn btn-success">send reply</a></td>
+                            {% else %}
+                                <td>{{ i.reply_date }}</td>
+                                <td>&nbsp;{{ i.reply }}</td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </form>
+
+        </div>
+    </main>
+    <!--Main layout-->
+    <!-- <script src="./bootstrap.min.js"></script> -->
+    <script src="../../static/assests/js/bootstrap.min.js"></script>
+
 </body>
+
 </html>

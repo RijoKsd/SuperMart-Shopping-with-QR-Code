@@ -1,35 +1,122 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>add offer</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Offer</title>
+
+
+    <link rel="stylesheet" href="../../static/assests/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/assests/css/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../static/assests/css/dashboard.css">
+    <style>
+        .form-signin {
+            max-width: 430px;
+            padding: 15px;
+        }
+    </style>
 </head>
 
 <body>
-<form action="" method="post">
-    <table width="267" border="1">
-        <tr>
-            <th width="168" scope="col">offer</th>
-            <th width="83" scope="col"><label for="textfield2"></label>
-                <input type="text" name="offer" id="textfield2"/></th>
-        </tr>
-        <tr>
-            <td>date from</td>
-            <td><label for="textfield3"></label>
-                <input type="date" name="date_from" id="textfield3"/></td>
-        </tr>
-        <tr>
-            <td>date to</td>
-            <td><label for="textfield4"></label>
-                <input type="date" name="date_to" id="textfield4"/></td>
-        </tr>
-        <tr>
-            <td colspan="2"><input type="submit" name="button" id="button" value="Add"/></td>
-        </tr>
-    </table>
+    <!-- ====================Dashboard section start====================== -->
+    <!--Main Navigation-->
+    <header>
+        <!-- Sidebar -->
+        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+            <div class="position-sticky">
+                <div class="list-group list-group-flush mx-3 mt-4">
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple " aria-current="true">
+                        <i class="bi bi-house me-3"></i><span>Dashboard</span>
+                    </a>
+                    <a href="view_product" class="list-group-item list-group-item-action py-2 ripple active"
+                        aria-current="true">
+                        <i class="bi bi-bag-check me-3"></i><span>View Product</span>
+                    </a>
+
+                    <a href="add_product" class="list-group-item list-group-item-action py-2 ripple  ">
+                        <i class="bi bi-grid me-3"></i><span>Add Product</span>
+                    </a>
+
+                    <a href="add_stock" class="list-group-item list-group-item-action py-2 ripple  ">
+                        <i class="bi bi-grid me-3"></i><span>Add Stock</span>
+                    </a>
+                    <a href="view_stock" class="list-group-item list-group-item-action py-2 ripple">
+                        <i class="bi bi-search me-3"></i><span>View Stock</span></a>
+                    <a href="" class="list-group-item list-group-item-action py-2 ripple">
+                        <i class="bi bi-chat-left me-3"></i><span>Send Feedback</span></a>
+                    <a href="" class="list-group-item list-group-item-action py-2 ripple">
+                        <i class="bi bi-reply me-3"></i><span>Send complaint </span></a>
+                    <a href="" class="list-group-item list-group-item-action py-2 ripple">
+                        <i class="bi bi-reply me-3"></i><span>View Reply </span></a>
+                    <a href="" class="list-group-item list-group-item-action py-2 ripple">
+                        <i class="bi bi-star me-3"></i><span>View Rating</span></a>
+                    <a href="" class="list-group-item list-group-item-action py-2 ripple ">
+                        <i class="bi bi-card-checklist me-3"></i><span>View Bill Items</span></a>
+                    <a href="" class="list-group-item list-group-item-action py-2 ripple">
+                        <i class="bi bi-receipt me-3"></i><span>View Bill</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <!-- Sidebar -->
+        <!-- Navbar -->
+        <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow">
+            <!-- Container wrapper -->
+            <div class="container-fluid">
+                <!-- Toggle button -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu"
+                    aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="bi bi-list"></i>
+                </button>
+                <!-- Brand -->
+                <a class="navbar-brand" href="#">
+                    <img src="../../static/assests/images/full-logo.png" height="40" class="ms-1" alt=""
+                        loading="lazy" />
+                </a>
+
+                <ul class="navbar-nav ms-auto d-flex flex-row">
+                    <a href="/logout" class="btn btn-primary"> <i class="bi bi-box-arrow-right me-2"></i>Logout</a>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main style="margin-top: 58px">
+        <!-- back button -->
+        <a href="/view_product" class="btn btn-secondary ms-5 mt-4"> <i class="bi bi-arrow-left me-2"></i>Back</a>
+        <div class="container pt-4 form-signin w-100 m-auto text-center mt-5">
 
 
-</form>
+
+            <form method="post" enctype="multipart/form-data" autocomplete="off" class="mt-5">
+                <div class="form-floating mb-2">
+                    <input type="text" class="form-control h-25" id="floatingInput" placeholder="offer" name="offer"
+                        required>
+                    <label for="floatingInput">Offer</label>
+                </div>
+                <div class="form-floating mb-2">
+                    <input type="date" class="form-control h-25" id="floatingInput" placeholder="date from"
+                        name="date_from" required>
+                    <label for="floatingInput">From Date</label>
+                </div>
+                <div class="form-floating mb-2">
+                    <input type="date" class="form-control h-25" id="floatingInput" placeholder="date to" name="date_to"
+                        required>
+                    <label for="floatingInput">To Date</label>
+
+                </div>
+
+
+                <button class="w-100 btn btn-lg btn-primary mt-2" type="submit">Add Offer</button>
+            </form>
+
+
+        </div>
+    </main>
+    <!--Main layout-->
+    <!-- <script src="./bootstrap.min.js"></script> -->
+    <script src="../../static/assests/js/bootstrap.min.js"></script>
 </body>
+
 </html>

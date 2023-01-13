@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>view reply</title>
+</head>
+
+<body>
+<form action="" method="post">
+<table width="570" border="1">
+  <tr>
+    <th width="10" scope="col">#</th>
+    <th width="118" scope="col">complaint</th>
+    <th width="163" scope="col"> complaint date</th>
+    <th width="151" scope="col">reply</th>
+        <th width="163" scope="col"> reply date</th>
+
+  </tr>
+  {% for i in data%}
+  <tr>
+    <td>&nbsp;{{loop.index}}</td>
+    <td>&nbsp;{{i.complaint}}</td>
+    <td>&nbsp;{{i.date}}</td>
+    <td>&nbsp;{{i.reply}}</td>
+      <td>&nbsp;{{i.reply_date}}</td>
+
+
+  </tr>
+  {% endfor %}
+</table>
+
+</form>
+</body>
+</html>
