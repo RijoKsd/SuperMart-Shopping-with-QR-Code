@@ -21,11 +21,11 @@
         <td>&nbsp;{{i.name}}</td>
         <td>&nbsp;{{i.price}}</td>
         <td>&nbsp;{{i.quantity}}</td>
-        <td>&nbsp;{{i.amount}}</td>
+        <td>&nbsp;{{i.price|int * i.quantity|int }}</td>
     </tr>
     {% endfor %}
     <tr>
-        <td colspan="5" align="right">Total :</td>
+        <td colspan="5" align="right">Total :{{ total }}</td>
     </tr>
 </table>
 

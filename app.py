@@ -165,7 +165,7 @@ def view_rating():
     if session['lin'] == "1":
         db = Database()
         res = db.select(
-            "select rating.rating_id, rating.rating,user.user_id,shop.shop_id,user.name,shop.name,rating.date from rating,user,shop where shop.shop_id = rating.shop_id and user.user_id = rating.user_id")
+            "select rating.rating_id, rating.rating,user.user_id,shop.shop_id,user.name as un,shop.name as sn,rating.date from rating,user,shop where shop.shop_id = rating.shop_id and user.user_id = rating.user_id")
         ar_rt = []
 
         for im in range(0, len(res)):
@@ -449,16 +449,16 @@ def add_stock():
             select_option = request.form['select']
             quantity = request.form['quantity']
             db = Database()
-    #         db.insert("insert into stock values ( '','" +
-    #                   select_option + "','" + quantity + "') ")
-    #         return "<script>alert('Stock added successfully');window.location = '/view_stock'</script>"
-    #     else:
-    #         db = Database()
-    #         data = db.select(
-    #             "select * from product where shop_id='" + str(session['lid']) + "'")
-    #         return render_template("shop/add_stock.html", data=data)
-    # return redirect('/')
-    # if stock already exist then update stock else add stock
+            #         db.insert("insert into stock values ( '','" +
+            #                   select_option + "','" + quantity + "') ")
+            #         return "<script>alert('Stock added successfully');window.location = '/view_stock'</script>"
+            #     else:
+            #         db = Database()
+            #         data = db.select(
+            #             "select * from product where shop_id='" + str(session['lid']) + "'")
+            #         return render_template("shop/add_stock.html", data=data)
+            # return redirect('/')
+            # if stock already exist then update stock else add stock
             res = db.selectOne(
                 "select * from stock where product_id ='" + select_option + "'")
             if res is not None:
@@ -477,18 +477,17 @@ def add_stock():
     return redirect('/')
 
 
-
 @app.route('/view_stock')
 def view_stock():
     if session['lin'] == "1":
         db = Database()
-    #     data = db.select(
-    #         "select * from product,stock where product.product_id = stock.product_id  and shop_id= '" + str(
-    #             session['lid']) + "' ")
-    #     return render_template("shop/view_stock.html", data=data)
-    # return redirect('/')
+        #     data = db.select(
+        #         "select * from product,stock where product.product_id = stock.product_id  and shop_id= '" + str(
+        #             session['lid']) + "' ")
+        #     return render_template("shop/view_stock.html", data=data)
+        # return redirect('/')
 
-    # if no stock found then show no stock found message and redirect to view product page else show stock details in view stock page
+        # if no stock found then show no stock found message and redirect to view product page else show stock details in view stock page
 
         res = db.select(
             "select * from product,stock where product.product_id = stock.product_id  and shop_id= '" + str(
@@ -501,7 +500,6 @@ def view_stock():
         else:
             return '<script>alert("No stock found ");window.location="/view_product"</script>'
     return redirect('/')
-
 
 
 @app.route('/update_stock/<stock_id>', methods=['get', 'post'])
@@ -569,19 +567,9 @@ def view_reply():
 @app.route('/view_user_rating')
 def view_user_rating():
     db = Database()
-    # res = db.select("select * from rating,shop,user where shop.shop_id = '" + str(
-    #     session['lid']) + "' and user.user_id = rating.user_id and shop.shop_id = rating.shop_id ")
+    res = db.select(
+        "select rating.date, user.name as un,rating.rating, shop.name as sn from rating,shop,user where user.user_id = rating.user_id and shop.shop_id = rating.shop_id and rating.shop_id = '" + str(session['lid']) + "'")
 
-
-    # same database coloumn name for shop and user table so we have to use alias name for shop table
-    # res = db.select("select * from rating,shop as s,user as u where s.shop_id = '" + str(
-    #     session['lid']) + "' and u.user_id = rating.user_id and s.shop_id = rating.shop_id ")
-    res = db.select("select rating.date, user.name,rating.rating, shop.name from rating,shop,user where user.user_id = rating.user_id and shop.shop_id = rating.shop_id")
-    print(res)
-    # not printing username in view rating page
-    
- 
-  
 
     ar_rt = []
     for im in range(0, len(res)):
@@ -655,19 +643,24 @@ def view_user_rating():
     return render_template("shop/view_rating.html", resu=res, r1=arr, ln=len(arr), data=res)
 
 
-
-
 # View Bill
 
 @app.route('/view_bill')
 def view_bill():
-    return render_template("shop/view_bill.html")
+    db = Database()
+    data = db.select(
+        "select * from bill_master,user,product,bill where bill_master.user_id = user.user_id and bill_master.master_id = bill.master_id and product.product_id = bill.product_id  and bill_master.shop_id = '" + str(session['lid']) + "'")
+    return render_template("shop/view_bill.html",data = data)
+
 
 # View Bill items
 
-@app.route('/view_bill_items')
-def view_bill_items():
-    return render_template("shop/view_bill_items.html")
+@app.route('/view_bill_items/<master_id>')
+def view_bill_items(master_id):
+    db = Database()
+    data = db.select("select * from product,bill where product.product_id = bill.product_id and  bill.master_id = '"+master_id+"'")
+    total = db.selectOne("select sum(quantity*price) as t from product,bill where product.product_id = bill.product_id and  bill.master_id = '"+master_id+"'")
+    return render_template("shop/view_bill_items.html",data = data,total=total['t'])
 
 
 if __name__ == '__main__':

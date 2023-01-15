@@ -91,7 +91,7 @@
                             {% for i in range(0,ln) %}
                         <tr>
                             <td> {{ loop.index }}</td>
-                            <td>&nbsp;{{ data[i]['name'] }}</td>
+                            <td>&nbsp;{{ data[i]['un']}}</td>
                             <td>&nbsp;{{ data[i]['date'] }}</td>
 <td>
                 <img src="{{ r1[i][0] }}" width="20" height="20">
@@ -100,7 +100,7 @@
                 <img src="{{ r1[i][3] }}" width="20" height="20">
                 <img src="{{ r1[i][4] }}" width="20" height="20">
             </td>
-            <td>&nbsp;{{ data[i]['name'] }}</td>
+            <td>&nbsp;{{ data[i]['sn']}}</td>
                         </tr>
                     {% endfor %}
                     </tbody>

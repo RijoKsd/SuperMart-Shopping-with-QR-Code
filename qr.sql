@@ -25,9 +25,11 @@ CREATE TABLE `bill` (
   `product_id` int(20) DEFAULT NULL,
   `quantity` int(20) DEFAULT NULL,
   PRIMARY KEY (`bill_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `bill` */
+
+insert  into `bill`(`bill_id`,`master_id`,`product_id`,`quantity`) values (1,1,10,1);
 
 /*Table structure for table `bill_master` */
 
@@ -41,9 +43,11 @@ CREATE TABLE `bill_master` (
   `date` date DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`master_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `bill_master` */
+
+insert  into `bill_master`(`master_id`,`shop_id`,`user_id`,`amount`,`date`,`status`) values (1,12,2,25,'2023-01-01','pending');
 
 /*Table structure for table `complaint` */
 
@@ -58,11 +62,11 @@ CREATE TABLE `complaint` (
   `reply_date` varchar(200) DEFAULT 'pending',
   `reply` varchar(200) DEFAULT 'pending',
   PRIMARY KEY (`complaint_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 /*Data for the table `complaint` */
 
-insert  into `complaint`(`complaint_id`,`type`,`user_id`,`complaint`,`date`,`reply_date`,`reply`) values (1,'user',2,'worst app','2022-12-28','2022-12-30','ok'),(2,'user',3,'use more memmory','2022-12-26','2022-12-30','we fixed it\r\n'),(3,'user',4,'more ads','2022-12-29','2023-01-02','we fixed it'),(10,'shop',12,'UI is not easy','2023-12-01','2023-01-12','tes555'),(11,'shop',12,'checking','2023-01-12','0000-00-00','pending'),(12,'shop',12,'test xx','2023-01-12','2023-01-12','ok t'),(13,'shop',12,'sfdsf','2023-01-12','2023-01-12','111'),(14,'shop',14,'maxxxxxxxxxx','2023-01-12','2023-01-12','test 1'),(15,'shop',14,'second phase','2023-01-12','0000-00-00','pending'),(16,'shop',14,'varchar\r\n','2023-01-12','2023-01-12','changed from date');
+insert  into `complaint`(`complaint_id`,`type`,`user_id`,`complaint`,`date`,`reply_date`,`reply`) values (1,'user',2,'worst app','2022-12-28','2022-12-30','ok'),(2,'user',3,'use more memmory','2022-12-26','2022-12-30','we fixed it\r\n'),(3,'user',4,'more ads','2022-12-29','2023-01-02','we fixed it'),(10,'shop',12,'UI is not easy','2023-12-01','2023-01-12','tes555'),(11,'shop',12,'checking','2023-01-12','0000-00-00','pending'),(12,'shop',12,'test xx','2023-01-12','2023-01-12','ok t'),(13,'shop',12,'sfdsf','2023-01-12','2023-01-12','111'),(14,'shop',14,'maxxxxxxxxxx','2023-01-12','2023-01-12','test 1'),(15,'shop',14,'second phase','2023-01-12','0000-00-00','pending'),(16,'shop',14,'varchar\r\n','2023-01-12','2023-01-12','changed from date'),(17,'shop',14,'successfully completed','2023-01-14','pending','pending');
 
 /*Table structure for table `feedback` */
 
@@ -75,11 +79,11 @@ CREATE TABLE `feedback` (
   `date` date DEFAULT NULL,
   `feedback` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`feedback_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 /*Data for the table `feedback` */
 
-insert  into `feedback`(`feedback_id`,`sender_id`,`type`,`date`,`feedback`) values (1,2,'user','2022-02-02','N/W slow'),(4,3,'user','2022-02-22','GOOD'),(7,12,'shop','2023-01-11','checking purpose'),(14,12,'shop','2023-01-12','asfa'),(15,12,'shop','2023-01-12','Thanyou for fixing\r\n'),(16,14,'shop','2023-01-12','maxxxxxxxxx\r\n');
+insert  into `feedback`(`feedback_id`,`sender_id`,`type`,`date`,`feedback`) values (1,2,'user','2022-02-02','N/W slow'),(4,3,'user','2022-02-22','GOOD'),(7,12,'shop','2023-01-11','checking purpose'),(14,12,'shop','2023-01-12','asfa'),(15,12,'shop','2023-01-12','Thanyou for fixing\r\n'),(16,14,'shop','2023-01-12','maxxxxxxxxx\r\n'),(17,14,'shop','2023-01-14','today 12-01-2023 \r\ntime 02-34 AM');
 
 /*Table structure for table `login` */
 
@@ -108,11 +112,9 @@ CREATE TABLE `offer` (
   `date_from` date DEFAULT NULL,
   `date_to` date DEFAULT NULL,
   PRIMARY KEY (`offer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `offer` */
-
-insert  into `offer`(`offer_id`,`product_id`,`offer`,`date_from`,`date_to`) values (22,12,'12','2023-01-18','2023-01-17'),(23,13,'3','2023-01-20','2023-01-27'),(24,13,'12','2023-01-12','2023-01-24'),(25,12,'23','2023-01-14','2023-01-21');
 
 /*Table structure for table `product` */
 
@@ -126,11 +128,11 @@ CREATE TABLE `product` (
   `shop_id` int(20) DEFAULT NULL,
   `image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 /*Data for the table `product` */
 
-insert  into `product`(`product_id`,`name`,`price`,`details`,`shop_id`,`image`) values (10,'Carrot',50,'Fresh Carrot 1kg',12,'/static/images/230111-214635 .jpg'),(11,'Capsicum',60,'Green Capsicum\r\n500g',12,'/static/images/230111-214721 .jpg'),(12,'Dabur Paste',50,'Red dabur 600g',14,'/static/images/230111-220831 .jpg'),(13,'Colgate',50,'Colgate 200g ',14,'/static/images/230111-220900 .jpg'),(14,'Dettol',79,'Dettol 150g',14,'/static/images/230112-123252 .jpg');
+insert  into `product`(`product_id`,`name`,`price`,`details`,`shop_id`,`image`) values (10,'Carrot',50,'Fresh Carrot 1kg',12,'/static/images/230111-214635 .jpg'),(11,'Capsicum',60,'Green Capsicum\r\n500g',12,'/static/images/230111-214721 .jpg'),(12,'Dabur Paste',50,'Red dabur 600g',14,'/static/images/230111-220831 .jpg'),(13,'Colgate',50,'Colgate 200g ',14,'/static/images/230111-220900 .jpg'),(14,'Dettol',79,'Dettol 150g',14,'/static/images/230112-123252 .jpg'),(15,'Potato',45,'Potato 1kg',12,'/static/images/230114-022246 .jpg');
 
 /*Table structure for table `rating` */
 
@@ -143,11 +145,11 @@ CREATE TABLE `rating` (
   `rating` int(20) DEFAULT NULL,
   `shop_id` int(20) DEFAULT NULL,
   PRIMARY KEY (`rating_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Data for the table `rating` */
 
-insert  into `rating`(`rating_id`,`date`,`user_id`,`rating`,`shop_id`) values (3,'2023-01-11',2,4,12),(4,'2022-12-30',2,5,13);
+insert  into `rating`(`rating_id`,`date`,`user_id`,`rating`,`shop_id`) values (3,'2023-01-11',2,4,12),(4,'2022-12-30',2,5,13),(5,'2023-01-12',3,3,12),(6,'2023-01-01',4,1,12),(7,'2023-01-12',2,1,14);
 
 /*Table structure for table `shop` */
 
@@ -176,11 +178,11 @@ CREATE TABLE `stock` (
   `product_id` int(20) DEFAULT NULL,
   `quantity` int(20) DEFAULT NULL,
   PRIMARY KEY (`stock_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 
 /*Data for the table `stock` */
 
-insert  into `stock`(`stock_id`,`product_id`,`quantity`) values (23,10,3),(24,11,10),(25,12,15),(26,13,3),(27,12,1),(28,10,5),(29,10,2);
+insert  into `stock`(`stock_id`,`product_id`,`quantity`) values (32,12,2),(33,15,3),(34,11,2),(36,10,112);
 
 /*Table structure for table `user` */
 
