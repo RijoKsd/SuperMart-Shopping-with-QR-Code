@@ -2,120 +2,199 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
     <title>Approved Shop</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
 
-    <!-- <link rel="stylesheet" href="./bootstrap.min.css">
-    <link rel="stylesheet" href="./bootstrap-icons/bootstrap-icons.css"> -->
-    <link rel="stylesheet" href="../../static/assests/css/bootstrap.min.css">
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="../../static/assests/css/fontawesome-free-6.2.1-web/css/all.css">
     <link rel="stylesheet" href="../../static/assests/css/bootstrap-icons/bootstrap-icons.css">
-    <!-- custom link -->
-    <link rel="stylesheet" href="../../static/assests/css/dashboard.css">
- 
+
+    <!-- Libraries Stylesheet -->
+    <link rel="stylesheet" href="../../static/assests/lib/animate/animate.min.css">
+    <link rel="stylesheet" href="../../static/assests/lib/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../static/assests/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link rel="stylesheet" href="../../static/assests/css/bootstrap.min.css">
+
+    <!-- Template Stylesheet -->
+    <link rel="stylesheet" href="../../static/assests/css/style.css">
 </head>
 
 <body>
-    <!-- ====================Dashboard section start====================== -->
-    <!--Main Navigation-->
-    <header>
-        <!-- Sidebar -->
-        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
-            <div class="position-sticky">
-                <div class="list-group list-group-flush mx-3 mt-4">
-                    <a href="/admin_home" class="list-group-item list-group-item-action py-2 ripple " aria-current="true">
-                        <i class="bi bi-house me-3"></i><span>Dashboard</span>
-                    </a>
-                    <a href="view_approved_shop" class="list-group-item list-group-item-action py-2 ripple active " aria-current="true">
-                        <i class="bi bi-bag-check me-3"></i><span>View approved shop</span>
-                    </a>
-                    <a href="/verify_shop" class="list-group-item list-group-item-action py-2 ripple  ">
-                        <i class="bi bi-bag-plus me-3"></i><span>Verify shop</span>
-                    </a>
-                    <a href="/view_feedback" class="list-group-item list-group-item-action py-2 ripple">
-                        <i class="bi bi-chat-left me-3"></i><span>View feedback</span></a>
-                    <a href="view_complaint_send_reply" class="list-group-item list-group-item-action py-2 ripple ">
-                        <i class="bi bi-reply me-3"></i><span>View complaint & send reply</span></a>
-                    <a href="/view_rating" class="list-group-item list-group-item-action py-2 ripple">
-                        <i class="bi bi-star me-3"></i><span>View rating</span>
-                    </a>
-                    <a href="/view_user" class="list-group-item list-group-item-action py-2 ripple">
-                        <i class="bi bi-person-check me-3"></i><span>View User</span>
-                    </a>
+    <div class="container-xxl bg-white p-0"> 
+        <!-- Spinner Start   -->
+        <div id="spinner"
+            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End   -->
 
 
+        <!-- Navbar & Hero Start -->
+        <div class="container-xxl position-relative p-0" id="login-section">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
+                <a href="/shop_home" class="navbar-brand p-0">
+                    <h1 class="text-primary m-0">
+                        <i class="fa fa-store me-2"></i>
+                        SuperMart
+                    </h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0 pe-4">
+                        <a href="/admin_home" class="nav-item nav-link  ">Home</a>
+                        <a href="/view_approved_shop" class="nav-item nav-link  active">Approved Shop</a>
+                        <a href="/verify_shop" class="nav-item nav-link">Verify Shop</a>
+                        <a href="/view_complaint_send_reply" class="nav-item nav-link">View complaint and send reply</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">More</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="/view_user" class="dropdown-item">View User</a>
+                                <a href="/view_feedback" class="dropdown-item">View feedback</a>
+                                <a href="/view_rating" class="dropdown-item">View rating</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/logout" class="btn btn-primary py-2 px-4">Logout</a>
+                </div>
+            </nav>
+
+            <div class="container-xxl py-5 bg-dark hero-header mb-5">
+                <div class="container text-center my-5 pt-5 pb-4">
+                    <h1 class="display-3 text-white mb-3 animated slideInDown">Approved Shop</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center text-uppercase">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Approved Shop</li>
+                        </ol>
+                    </nav>
                 </div>
             </div>
-        </nav>
-        <!-- Sidebar -->
-        <!-- Navbar -->
-        <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow">
-            <!-- Container wrapper -->
-            <div class="container-fluid">
-                <!-- Toggle button -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu"
-                    aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="bi bi-list"></i>
-                </button>
-                <!-- Brand -->
-                <a class="navbar-brand" href="#">
-                    <img src="../../static/assests/images/full-logo.png" height="40" class="ms-1" alt="" loading="lazy" />
-                </a>
-
-                <ul class="navbar-nav ms-auto d-flex flex-row">
-                    <a href="/logout" class="btn btn-primary"> <i class="bi bi-box-arrow-right me-2"></i>Logout</a>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <main style="margin-top: 58px">
-        <div class="container pt-4 table-responsive-sm">
-            <form action="get">
-                <table class="table table-hover table-sm">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Shop Name</th>
-                            <th scope="col">Place</th>
-                            <th scope="col">Pincode</th>
-                            <th scope="col">E-mail</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">Image</th>
-                            <th scope="col" colspan="2"> </th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for i in data %}
-                        <tr>
-                            <td>{{ loop.index }}</td>
-                            <td>{{ i.name }}</td>
-                            <td>{{ i.place }}</td>
-                            <td>{{ i.pincode }}</td>
-                            <td>{{ i.mail }}</td>
-                            <td>{{ i.phone }}</td>
-                            <td> <img src=" {{ i.image }}" width="50" height="50" /></td>
-                            {% if i['user_type'] == 'shop' %}
-                            <td><a href="/block/{{ i.login_id }}" class="btn btn-warning">block</a></td>
-                            {% else %}
-                            <td><a href="/unblock/{{ i.login_id }}" class="btn btn-success"> unblock</a></td>
-                            <td><a href="/delete_shop/{{ i.login_id }}" onclick="return confirm('Are you sure')" class="btn btn-danger"> delete
-                                    shop</a></td>
-
-                            {% endif %}
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </form>
-
         </div>
-    </main>
-    <!--Main layout-->
-    <!-- <script src="./bootstrap.min.js"></script> -->
-    <script src="../../static/assests/js/bootstrap.min.js"></script>
+        <!-- Navbar & Hero End -->
 
+
+        <!-- Contact Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Approved Shop</h5>
+                  
+                </div>
+                <div class="container pt-4 table-responsive ">
+                    <form method="post">
+                        <table class="table table-hover table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Shop Name</th>
+                                    <th scope="col">Place</th>
+                                    <th scope="col">Pincode</th>
+                                    <th scope="col">E-mail</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col" colspan="2"> </th>
+        
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in data %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ i.name }}</td>
+                                    <td>{{ i.place }}</td>
+                                    <td>{{ i.pincode }}</td>
+                                    <td>{{ i.mail }}</td>
+                                    <td>{{ i.phone }}</td>
+                                    <td> <img src=" {{ i.image }}" width="50" height="50" /></td>
+                                    {% if i['user_type'] == 'shop' %}
+                                    <td><a href="/block/{{ i.login_id }}" class="btn btn-warning">block</a></td>
+                                    {% else %}
+                                    <td><a href="/unblock/{{ i.login_id }}" class="btn btn-success"> unblock</a></td>
+                                    <td><a href="/delete_shop/{{ i.login_id }}" onclick="return confirm('Are you sure')" class="btn btn-danger"> delete
+                                            shop</a></td>
+        
+                                    {% endif %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            </tbody>
+                        </table>
+                    </form>
+        
+                </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact End -->
+
+
+        <!-- Footer Start -->
+        <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+             
+            <div class="container">
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                            &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
+                            Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a><br><br>
+                            Distributed By <a class="border-bottom" href="https://themewagon.com"
+                                target="_blank">ThemeWagon</a>
+                        </div>
+                        <div class="col-md-6 text-center text-md-end">
+                            <div class="footer-menu">
+                                <a href="">Home</a>
+                                <a href="">Cookies</a>
+                                <a href="">Help</a>
+                                <a href="">FQAs</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+ 
+ <script src="../../static/assests/lib/wow/wow.min.js"></script>
+ <script src="../../static/assests/lib/easing/easing.min.js"></script>
+ <script src="../../static/assests/lib/waypoints/waypoints.min.js"></script>
+ <script src="../../static/assests/lib/counterup/counterup.min.js"></script>
+ <script src="../../static/assests/lib/owlcarousel/assets/owl.carousel.min.css"></script>
+ <script src="../../static/assests/lib/tempusdominus/js/moment.min.js"></script>
+ <script src="../../static/assests/lib/tempusdominus/js/moment-timezone.min.js"></script>
+ <script src="../../static/assests/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+
+ <!-- Template Javascript -->
+<script src="../../static/assests/js/main.js"></script>
 
 </body>
 

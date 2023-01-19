@@ -5,16 +5,184 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2caaea73-e7a3-4115-af7d-b5ad6c7174e0" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/.gitattributes" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/LICENSE.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/READ-ME.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/about.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/bg.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/booking.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/bootstrap-restaurant-template.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/css/bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/css/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/hero.avif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/img/about-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/img/about-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/img/about-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/img/about-4.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/img/bg-hero.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/img/hero.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/img/menu-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/img/menu-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/img/menu-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/img/menu-4.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/img/menu-5.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/img/menu-6.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/img/menu-7.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/img/menu-8.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/img/team-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/img/team-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/img/team-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/img/team-4.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/img/testimonial-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/img/testimonial-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/img/testimonial-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/img/testimonial-4.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/img/video.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/js/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/animate/animate.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/animate/animate.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/counterup/counterup.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/easing/easing.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/easing/easing.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/owlcarousel/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/owlcarousel/assets/ajax-loader.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/owlcarousel/assets/owl.carousel.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/owlcarousel/assets/owl.carousel.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/owlcarousel/assets/owl.theme.default.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/owlcarousel/assets/owl.theme.default.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/owlcarousel/assets/owl.theme.green.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/owlcarousel/assets/owl.theme.green.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/owlcarousel/assets/owl.video.play.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/owlcarousel/owl.carousel.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/owlcarousel/owl.carousel.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/tempusdominus/css/tempusdominus-bootstrap-4.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/tempusdominus/js/moment-timezone.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/tempusdominus/js/moment.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/tempusdominus/js/tempusdominus-bootstrap-4.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/waypoints/links.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/waypoints/waypoints.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/wow/wow.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/lib/wow/wow.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/login.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/menu.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/register.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_accordion.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_alert.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_badge.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_breadcrumb.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_button-group.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_buttons.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_card.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_carousel.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_close.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_containers.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_dropdown.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_forms.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_functions.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_grid.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_helpers.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_images.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_list-group.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_mixins.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_modal.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_nav.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_navbar.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_offcanvas.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_pagination.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_popover.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_progress.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_reboot.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_root.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_spinners.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_tables.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_toasts.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_tooltip.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_transitions.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_type.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_utilities.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/_variables.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/bootstrap-grid.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/bootstrap-reboot.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/bootstrap-utilities.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/bootstrap.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/forms/_floating-labels.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/forms/_form-check.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/forms/_form-control.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/forms/_form-range.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/forms/_form-select.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/forms/_form-text.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/forms/_input-group.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/forms/_labels.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/forms/_validation.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/helpers/_clearfix.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/helpers/_colored-links.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/helpers/_position.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/helpers/_ratio.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/helpers/_stretched-link.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/helpers/_text-truncation.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/helpers/_visually-hidden.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/mixins/_alert.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/mixins/_border-radius.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/mixins/_box-shadow.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/mixins/_breakpoints.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/mixins/_buttons.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/mixins/_caret.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/mixins/_clearfix.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/mixins/_color-scheme.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/mixins/_container.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/mixins/_deprecate.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/mixins/_forms.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/mixins/_gradients.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/mixins/_grid.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/mixins/_image.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/mixins/_list-group.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/mixins/_lists.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/mixins/_pagination.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/mixins/_reset-text.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/mixins/_resize.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/mixins/_table-variants.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/mixins/_text-truncate.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/mixins/_transition.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/mixins/_utilities.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/mixins/_visually-hidden.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/utilities/_api.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/scss/bootstrap/scss/vendor/_rfs.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/service.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/team.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/testimonial.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/qr frontend/thomas-le-pRJhn4MbsMM-unsplash.jpg" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.py" afterPath="$PROJECT_DIR$/app.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/qr.sql" afterPath="$PROJECT_DIR$/qr.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/assests/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/static/assests/css/bootstrap.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/style.css" afterPath="$PROJECT_DIR$/static/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/admin_home.html" afterPath="$PROJECT_DIR$/templates/admin/admin_home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/reply.html" afterPath="$PROJECT_DIR$/templates/admin/reply.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/verify_shop.html" afterPath="$PROJECT_DIR$/templates/admin/verify_shop.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/view_approved_shop.html" afterPath="$PROJECT_DIR$/templates/admin/view_approved_shop.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/view_complaint_send_reply.html" afterPath="$PROJECT_DIR$/templates/admin/view_complaint_send_reply.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/view_feedback.html" afterPath="$PROJECT_DIR$/templates/admin/view_feedback.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/view_rating.html" afterPath="$PROJECT_DIR$/templates/admin/view_rating.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/view_user.html" afterPath="$PROJECT_DIR$/templates/admin/view_user.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/login.html" afterPath="$PROJECT_DIR$/templates/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/shop/add_offer.html" afterPath="$PROJECT_DIR$/templates/shop/add_offer.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/shop/add_product.html" afterPath="$PROJECT_DIR$/templates/shop/add_product.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/shop/add_stock.html" afterPath="$PROJECT_DIR$/templates/shop/add_stock.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/shop/register.html" afterPath="$PROJECT_DIR$/templates/shop/register.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/shop/send_complaint.html" afterPath="$PROJECT_DIR$/templates/shop/send_complaint.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/shop/send_feedback.html" afterPath="$PROJECT_DIR$/templates/shop/send_feedback.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/shop/shop_home.html" afterPath="$PROJECT_DIR$/templates/shop/shop_home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/shop/update_offer.html" afterPath="$PROJECT_DIR$/templates/shop/update_offer.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/shop/update_product.html" afterPath="$PROJECT_DIR$/templates/shop/update_product.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/shop/update_stock.html" afterPath="$PROJECT_DIR$/templates/shop/update_stock.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/shop/view_bill.html" afterPath="$PROJECT_DIR$/templates/shop/view_bill.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/shop/view_bill_items.html" afterPath="$PROJECT_DIR$/templates/shop/view_bill_items.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/shop/view_offer.html" afterPath="$PROJECT_DIR$/templates/shop/view_offer.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/shop/view_product.html" afterPath="$PROJECT_DIR$/templates/shop/view_product.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/shop/view_rating.html" afterPath="$PROJECT_DIR$/templates/shop/view_rating.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/shop/view_reply.html" afterPath="$PROJECT_DIR$/templates/shop/view_reply.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/shop/view_stock.html" afterPath="$PROJECT_DIR$/templates/shop/view_stock.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,7 +193,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/python$python.coverage" NAME="python Coverage Results" MODIFIED="1672211631454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/python$app.coverage" NAME="app Coverage Results" MODIFIED="1673754237265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/python$app.coverage" NAME="app Coverage Results" MODIFIED="1674119066345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -45,8 +213,8 @@
       <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="639" column="26" lean-forward="true" selection-start-line="639" selection-start-column="26" selection-end-line="639" selection-end-column="26" />
+            <state relative-caret-position="-420">
+              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
                 <element signature="e#0#68#0" expanded="true" />
                 <marker date="1673679965972" expanded="true" signature="693:782" ph="select * fro... login" />
@@ -116,10 +284,63 @@
       <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3465">
-              <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+            <state relative-caret-position="255">
+              <caret line="84" column="35" lean-forward="false" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="35" />
               <folding>
-                <marker date="1673692733034" expanded="true" signature="38934:38999" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="8849:8886" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="8849:8921" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="8849:8952" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="8849:8979" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="8849:9133" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="8849:9148" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="9249:12816" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="9285:12801" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="9342:12782" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="9385:10487" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="9431:10460" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="9490:9667" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="9726:9962" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="9866:9927" ph="..." />
+                <marker date="1674120176344" expanded="false" signature="9910:9926" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="10019:10195" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="10252:10429" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="10530:12759" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="10683:10778" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="10819:10844" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="10847:11251" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="11302:12635" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="11353:11956" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="11467:11921" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="11583:11627" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="11682:11882" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="12007:12604" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="12121:12569" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="12237:12281" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="12336:12530" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="12929:15278" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="12963:15263" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="13023:13251" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="13063:13228" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="13390:15244" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="13463:15221" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="13721:15194" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="13771:15162" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="13827:14068" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="13891:14068" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="14008:14068" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="14544:14663" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="14544:14702" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="14755:14903" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="14969:15127" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="15414:16895" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="15462:16880" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="15502:16861" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="15540:16838" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="15626:16409" ph="..." />
+                <marker date="1674120176344" expanded="false" signature="15656:15662" ph="©" />
+                <marker date="1674120176344" expanded="true" signature="16316:16378" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="16480:16811" ph="..." />
+                <marker date="1674120176344" expanded="true" signature="16534:16780" ph="..." />
               </folding>
             </state>
           </provider>
@@ -128,8 +349,8 @@
       <file leaf-file-name="view_bill_items.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/shop/view_bill_items.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="945">
-              <caret line="27" column="53" lean-forward="false" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="53" />
+            <state relative-caret-position="1610">
+              <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -138,8 +359,8 @@
       <file leaf-file-name="view_bill.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/shop/view_bill.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="24" column="57" lean-forward="false" selection-start-line="24" selection-start-column="57" selection-end-line="24" selection-end-column="57" />
+            <state relative-caret-position="1610">
+              <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -156,7 +377,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>view_complaint_send_reply</find>
       <find>block</find>
       <find>edit_offer</find>
       <find>admin</find>
@@ -186,6 +406,7 @@
       <find>view_user_rating</find>
       <find>print</find>
       <find>view_rating</find>
+      <find>login</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -257,8 +478,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -287,6 +506,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -539,7 +760,7 @@
   <component name="ToolWindowManager">
     <frame x="-9" y="0" width="1938" height="1038" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1820623" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18743287" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32873562" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30114943" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1243,34 +1464,87 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/shop/view_bill.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="24" column="57" lean-forward="false" selection-start-line="24" selection-start-column="57" selection-end-line="24" selection-end-column="57" />
+        <state relative-caret-position="1610">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/shop/view_bill_items.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="27" column="53" lean-forward="false" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="53" />
+        <state relative-caret-position="1610">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3465">
-          <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+        <state relative-caret-position="255">
+          <caret line="84" column="35" lean-forward="false" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="35" />
           <folding>
-            <marker date="1673692733034" expanded="true" signature="38934:38999" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="8849:8886" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="8849:8921" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="8849:8952" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="8849:8979" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="8849:9133" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="8849:9148" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="9249:12816" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="9285:12801" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="9342:12782" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="9385:10487" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="9431:10460" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="9490:9667" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="9726:9962" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="9866:9927" ph="..." />
+            <marker date="1674120176344" expanded="false" signature="9910:9926" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="10019:10195" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="10252:10429" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="10530:12759" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="10683:10778" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="10819:10844" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="10847:11251" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="11302:12635" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="11353:11956" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="11467:11921" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="11583:11627" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="11682:11882" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="12007:12604" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="12121:12569" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="12237:12281" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="12336:12530" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="12929:15278" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="12963:15263" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="13023:13251" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="13063:13228" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="13390:15244" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="13463:15221" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="13721:15194" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="13771:15162" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="13827:14068" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="13891:14068" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="14008:14068" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="14544:14663" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="14544:14702" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="14755:14903" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="14969:15127" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="15414:16895" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="15462:16880" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="15502:16861" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="15540:16838" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="15626:16409" ph="..." />
+            <marker date="1674120176344" expanded="false" signature="15656:15662" ph="©" />
+            <marker date="1674120176344" expanded="true" signature="16316:16378" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="16480:16811" ph="..." />
+            <marker date="1674120176344" expanded="true" signature="16534:16780" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="639" column="26" lean-forward="true" selection-start-line="639" selection-start-column="26" selection-end-line="639" selection-end-column="26" />
+        <state relative-caret-position="-420">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
             <element signature="e#0#68#0" expanded="true" />
             <marker date="1673679965972" expanded="true" signature="693:782" ph="select * fro... login" />
