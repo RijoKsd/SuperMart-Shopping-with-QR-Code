@@ -128,7 +128,7 @@
                                     <td>&nbsp;{{ i.phone }}</td>
                                     <td> <img src=" {{ i.image }}" width="100" height="100" /></td>
                                     <td><a href="/approve/{{ i.login_id }}" class="btn btn-success">Approve</a></td>
-                                    <td><a href="/reject/{{ i.login_id }}" class="btn btn-danger "> Reject</a></td>
+                                    <td><a href="/reject/{{ i.login_id }}" onclick="return confirm('Are you sure?')" class="btn btn-danger "> Reject</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

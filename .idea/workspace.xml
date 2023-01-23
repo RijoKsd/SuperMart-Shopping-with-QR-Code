@@ -5,9 +5,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2caaea73-e7a3-4115-af7d-b5ad6c7174e0" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Android/app/src/main/res/values/ids.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/img/about-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/img/about-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/img/about-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/img/about-4.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/img/bg-hero.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/img/hero.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/img/menu-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/img/menu-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/img/menu-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/img/menu-4.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/img/menu-5.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/img/menu-6.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/img/menu-7.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/img/menu-8.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/img/team-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/img/team-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/img/team-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/img/team-4.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/img/testimonial-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/img/testimonial-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/img/testimonial-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/img/testimonial-4.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/img/video.jpg" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.py" afterPath="$PROJECT_DIR$/app.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/qr.sql" afterPath="$PROJECT_DIR$/qr.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/Registration.java" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/Registration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/addRating.java" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/addRating.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/customViewBill.java" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/customViewBill.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/customViewProduct.java" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/customViewProduct.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/customViewReply.java" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/customViewReply.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/customViewShop.java" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/customViewShop.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/ip.java" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/ip.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/sendComplaint.java" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/sendComplaint.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/sendFeedback.java" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/sendFeedback.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android/app/src/main/res/layout/activity_send_complaint.xml" afterPath="$PROJECT_DIR$/Android/app/src/main/res/layout/activity_send_complaint.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/verify_shop.html" afterPath="$PROJECT_DIR$/templates/admin/verify_shop.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/shop/update_product.html" afterPath="$PROJECT_DIR$/templates/shop/update_product.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/shop/update_stock.html" afterPath="$PROJECT_DIR$/templates/shop/update_stock.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/shop/view_offer.html" afterPath="$PROJECT_DIR$/templates/shop/view_offer.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,7 +54,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/python$python.coverage" NAME="python Coverage Results" MODIFIED="1672211631454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/python$app.coverage" NAME="app Coverage Results" MODIFIED="1674281192140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/python$app.coverage" NAME="app Coverage Results" MODIFIED="1674395308822" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -35,11 +71,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="35">
-              <caret line="520" column="29" lean-forward="false" selection-start-line="520" selection-start-column="29" selection-end-line="520" selection-end-column="29" />
+            <state relative-caret-position="85">
+              <caret line="46" column="19" lean-forward="false" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="19" />
               <folding>
                 <element signature="e#0#68#0" expanded="true" />
                 <marker date="1674123863106" expanded="true" signature="693:782" ph="select * fro... login" />
@@ -106,33 +142,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/login.html">
+      <file leaf-file-name="verify_shop.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/admin/verify_shop.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2940">
-              <caret line="84" column="35" lean-forward="false" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="35" />
-              <folding>
-                <marker date="1674120176344" expanded="true" signature="8849:8886" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="view_bill_items.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/shop/view_bill_items.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1610">
-              <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="view_bill.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/shop/view_bill.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1610">
-              <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+            <state relative-caret-position="418">
+              <caret line="129" column="116" lean-forward="true" selection-start-line="129" selection-start-column="116" selection-end-line="129" selection-end-column="116" />
               <folding />
             </state>
           </provider>
@@ -149,8 +163,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>block</find>
-      <find>edit_offer</find>
       <find>admin</find>
       <find>unblock</find>
       <find>reject</find>
@@ -164,7 +176,6 @@
       <find>view_comp</find>
       <find>edit_product</find>
       <find>product</find>
-      <find>view_product</find>
       <find>user</find>
       <find>rating</find>
       <find>admin_home</find>
@@ -179,6 +190,9 @@
       <find>print</find>
       <find>view_rating</find>
       <find>login</find>
+      <find>delete_pro</find>
+      <find>view_product</find>
+      <find>verify</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -191,7 +205,6 @@
         <option value="$PROJECT_DIR$/templates/login.html" />
         <option value="$PROJECT_DIR$/templates/admin/block_shop.html" />
         <option value="$PROJECT_DIR$/templates/admin/view_complaint_send_reply.html" />
-        <option value="$PROJECT_DIR$/templates/admin/verify_shop.html" />
         <option value="$PROJECT_DIR$/templates/shop/view bill items.html" />
         <option value="$PROJECT_DIR$/DBConnection.py" />
         <option value="$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/mysql/connector/cursor_cext.py" />
@@ -220,6 +233,7 @@
         <option value="$PROJECT_DIR$/templates/shop/view_bill.html" />
         <option value="$PROJECT_DIR$/templates/shop/view_bill_items.html" />
         <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/templates/admin/verify_shop.html" />
       </list>
     </option>
   </component>
@@ -252,6 +266,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -280,7 +295,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -531,15 +545,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1038" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1038" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19011815" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19280344" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32873562" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30114943" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988507" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32873562" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21494253" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21494253" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988507" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -1042,13 +1057,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/verify_shop.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="28" column="3" lean-forward="false" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/shop/register.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -1105,20 +1113,6 @@
         <state relative-caret-position="204">
           <caret line="431" column="8" lean-forward="false" selection-start-line="431" selection-start-column="8" selection-end-line="431" selection-end-column="8" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/shop/update_product.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="20" column="75" lean-forward="true" selection-start-line="20" selection-start-column="73" selection-end-line="20" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/shop/view_product.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="29" column="112" lean-forward="false" selection-start-line="29" selection-start-column="70" selection-end-line="29" selection-end-column="112" />
         </state>
       </provider>
     </entry>
@@ -1261,10 +1255,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/shop/update_product.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4375">
+          <caret line="20" column="33" lean-forward="true" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/shop/view_product.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="147" column="40" lean-forward="true" selection-start-line="147" selection-start-column="40" selection-end-line="147" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="35">
-          <caret line="520" column="29" lean-forward="false" selection-start-line="520" selection-start-column="29" selection-end-line="520" selection-end-column="29" />
+        <state relative-caret-position="85">
+          <caret line="46" column="19" lean-forward="false" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="19" />
           <folding>
             <element signature="e#0#68#0" expanded="true" />
             <marker date="1674123863106" expanded="true" signature="693:782" ph="select * fro... login" />
@@ -1327,6 +1337,14 @@
             <marker date="1674123863106" expanded="true" signature="24563:24674" ph="select * fro... product" />
             <marker date="1674123863106" expanded="true" signature="24720:24854" ph="select * fro... product" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/verify_shop.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="129" column="116" lean-forward="true" selection-start-line="129" selection-start-column="116" selection-end-line="129" selection-end-column="116" />
+          <folding />
         </state>
       </provider>
     </entry>

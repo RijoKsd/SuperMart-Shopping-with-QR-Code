@@ -10,8 +10,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 public class ip extends AppCompatActivity {
-    EditText ip_address;
-    Button ip_register;
+    EditText ipAddress;
+    Button ipRegister;
 
 
     @SuppressLint("MissingInflatedId")
@@ -20,8 +20,8 @@ public class ip extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ip);
 
-        ip_address = findViewById(R.id.ip_address);
-        ip_register = findViewById(R.id.ip_register);
+        ipAddress = findViewById(R.id.ip_address);
+        ipRegister = findViewById(R.id.ip_register);
 
     }
 }
