@@ -7,6 +7,9 @@ app.secret_key = "djljsdl"
 
 
 # ---------------------------------------------- Global section started----------------------------------------------
+
+# ********************************************** Logout ********************************************** 
+
 @app.route('/logout')
 def logout():
     session.clear()
@@ -14,8 +17,7 @@ def logout():
     return redirect('/')
 
 
-# login page  for all user types[admin, shop, user]
-
+# ********************************************** Login ********************************************** 
 
 @app.route('/', methods=['get', 'post'])
 def login():
@@ -37,12 +39,14 @@ def login():
         else:
             return '<script>alert("invalid username or password");window.location = "/"</script>'
     else:
-        return render_template("login.html")
+        return render_template("index.html")
 
 
 # ---------------------------------------------- Global section finished----------------------------------------------
 
-# ---------------------------------------------- admin section started ----------------------------------------------
+# ---------------------------------------------- Admin section started -----------------------------------------------
+
+# ********************************************** Verify Shop   **********************************************
 
 @app.route('/verify_shop')
 def verify_shop():
@@ -54,6 +58,8 @@ def verify_shop():
     return redirect('/')
 
 
+# ********************************************** Approve Shop   **********************************************
+
 @app.route('/approve/<shop_id>')
 def approve(shop_id):
     if session['lin'] == "1":
@@ -64,6 +70,8 @@ def approve(shop_id):
     return redirect('/')
 
 
+# ********************************************** Reject Shop   **********************************************
+
 @app.route('/reject/<shop_id>')
 def reject(shop_id):
     db = Database()
@@ -71,6 +79,8 @@ def reject(shop_id):
     db.delete("delete from shop where shop_id = '" + str(shop_id) + "'")
     return redirect('/verify_shop')
 
+
+# ********************************************** View approved Shop   **********************************************
 
 @app.route('/view_approved_shop')
 def view_approved_shop():
@@ -82,6 +92,8 @@ def view_approved_shop():
     return redirect('/')
 
 
+# ********************************************** Block Shop   **********************************************
+
 @app.route('/block/<shop_id>')
 def block(shop_id):
     db = Database()
@@ -89,6 +101,8 @@ def block(shop_id):
         "update login set user_type = 'block' where login_id = '" + str(shop_id) + "'")
     return redirect('/view_approved_shop')
 
+
+# ********************************************** Unblock Shop   **********************************************
 
 @app.route('/unblock/<shop_id>')
 def unblock(shop_id):
@@ -98,8 +112,7 @@ def unblock(shop_id):
     return redirect('/view_approved_shop')
 
 
-# don't know is this section imp##################
-# ------------------#####################v
+# ********************************************** Delete Shop   **********************************************
 
 @app.route('/delete_shop/<shop_id>')
 def delete_shop(shop_id):
@@ -110,11 +123,11 @@ def delete_shop(shop_id):
     db.delete("delete from feedback where sender_id = '" + str(shop_id) + "'")
     db.delete("delete from complaint where user_id = '" + str(shop_id) + "'")
     db.delete("delete from rating where shop_id = '" + str(shop_id) + "'")
-
     return redirect('/view_approved_shop')
 
 
-##################################################
+# ********************************************** View feedback   **********************************************
+
 
 @app.route('/view_feedback', methods=['get', 'post'])
 def view_feedback():
@@ -137,7 +150,8 @@ def view_feedback():
     return redirect('/')
 
 
-# filter using select option user and shop
+# ********************************************** View complaint and send reply   **********************************************
+
 @app.route('/view_complaint_send_reply', methods=['get', 'post'])
 def view_complaint_send_reply():
     if session['lin'] == "1":
@@ -157,6 +171,8 @@ def view_complaint_send_reply():
             return render_template("admin/view_complaint_send_reply.html")
     return redirect('/')
 
+
+# ********************************************** View rating  **********************************************
 
 @app.route('/view_rating')
 def view_rating():
@@ -233,10 +249,11 @@ def view_rating():
                 ar = [fs, fs, fs, fs, fs]
                 arr.append(ar)
             print(arr)
-        # return render_template('admin/view_r',data=re33,r1=ar,ln=len(ar55))
         return render_template("admin/view_rating.html", resu=res, r1=arr, ln=len(arr), data=res)
     return redirect('/')
 
+
+# ********************************************** View user **********************************************
 
 @app.route('/view_user')
 def view_user():
@@ -247,7 +264,7 @@ def view_user():
     return redirect('/')
 
 
-# TODO Don't need to pass to this page when giving a GET request
+# ********************************************** Admin dashboard **********************************************
 
 @app.route('/admin_home')
 def admin_home():
@@ -270,12 +287,16 @@ def reply(complaint_id):
 
 # ---------------------------------------------- shop section started ----------------------------------------------
 
+# ********************************************** Shop dashboard  **********************************************
+
 @app.route('/shop_home')
 def shop_home():
     if session['lin'] == "1":
         return render_template("shop/shop_home.html")
     return redirect('/')
 
+
+# ********************************************** Shop register  **********************************************
 
 @app.route('/register', methods=['post', 'get'])
 def register():
@@ -301,6 +322,8 @@ def register():
         return render_template("shop/register.html")
 
 
+# ********************************************** Add product **********************************************
+
 @app.route('/add_product', methods=['post', 'get'])
 def add_product():
     if session['lin'] == "1":
@@ -323,6 +346,8 @@ def add_product():
     return redirect('/')
 
 
+# ********************************************** View product **********************************************
+
 @app.route('/view_product')
 def view_product():
     if session['lin'] == "1":
@@ -332,6 +357,8 @@ def view_product():
         return render_template('shop/view_product.html', data=data)
     return redirect('/')
 
+
+# ********************************************** Edit product **********************************************
 
 @app.route('/edit_product/<product_id>', methods=['get', 'post'])
 def edit_product(product_id):
@@ -370,6 +397,8 @@ def edit_product(product_id):
     return redirect('/')
 
 
+# ********************************************** Delete product **********************************************
+
 @app.route('/delete_product/<product_id>')
 def delete_product(product_id):
     if session['lin'] == "1":
@@ -379,6 +408,8 @@ def delete_product(product_id):
     return redirect('/')
 
 
+# ********************************************** Add offer **********************************************
+
 @app.route('/add_offer/<product_id>', methods=['post', 'get'])
 def add_offer(product_id):
     if session['lin'] == "1":
@@ -387,7 +418,6 @@ def add_offer(product_id):
             date_from = request.form['date_from']
             date_to = request.form['date_to']
             db = Database()
-            # if offer already exist then update offer else add offer
             res = db.selectOne(
                 "select * from offer where product_id ='" + product_id + "'")
             if res is not None:
@@ -404,6 +434,8 @@ def add_offer(product_id):
     return redirect('/')
 
 
+# ********************************************** View offer **********************************************
+
 @app.route('/view_offer/<product_id>')
 def view_offer(product_id):
     if session['lin'] == "1":
@@ -418,6 +450,8 @@ def view_offer(product_id):
             return '<script>alert("No offer found ");window.location="/view_product"</script>'
     return redirect('/')
 
+
+# ********************************************** Edit offer **********************************************
 
 @app.route('/edit_offer/<offer_id>', methods=['post', 'get'])
 def edit_offer(offer_id):
@@ -438,12 +472,16 @@ def edit_offer(offer_id):
     return redirect('/')
 
 
+# ********************************************** Delete offer **********************************************
+
 @app.route('/delete_offer/<offer_id>')
 def delete_offer(offer_id):
     db = Database()
     db.delete("delete from offer where offer_id = '" + offer_id + "'")
     return redirect('/view_product')
 
+
+# ********************************************** Add stock **********************************************
 
 @app.route('/add_stock', methods=['post', 'get'])
 def add_stock():
@@ -471,11 +509,12 @@ def add_stock():
     return redirect('/')
 
 
+# ********************************************** View stock **********************************************
+
 @app.route('/view_stock')
 def view_stock():
     if session['lin'] == "1":
         db = Database()
-
         res = db.select(
             "select * from product,stock where product.product_id = stock.product_id  and shop_id= '" + str(
                 session['lid']) + "' ")
@@ -489,6 +528,8 @@ def view_stock():
     return redirect('/')
 
 
+# ********************************************** Update stock **********************************************
+
 @app.route('/update_stock/<stock_id>', methods=['get', 'post'])
 def update_stock(stock_id):
     if session['lin'] == "1":
@@ -498,7 +539,6 @@ def update_stock(stock_id):
             db = Database()
             data = db.update("update stock set quantity = '" +
                              quantity + "' where stock_id = '" + stock_id + "'")
-
             return "<script>alert('Stock updated successfully');window.location = '/view_stock'</script>"
         else:
             db = Database()
@@ -508,6 +548,8 @@ def update_stock(stock_id):
     return redirect('/')
 
 
+# ********************************************** Delete stock **********************************************
+
 @app.route('/delete_stock/<stock_id>')
 def delete_stock(stock_id):
     db = Database()
@@ -515,7 +557,8 @@ def delete_stock(stock_id):
     return redirect('/view_stock')
 
 
-# Feedback
+# ********************************************** Send feedback **********************************************
+
 @app.route('/send_feedback', methods=['post', 'get'])
 def send_feedback():
     if session['lin'] == "1":
@@ -530,7 +573,8 @@ def send_feedback():
     return redirect('/')
 
 
-# Complaint
+# ********************************************** Send complaint **********************************************
+
 @app.route('/send_complaint', methods=['post', 'get'])
 def send_complaint():
     if session['lin'] == "1":
@@ -545,7 +589,7 @@ def send_complaint():
     return redirect('/')
 
 
-# Reply
+# ********************************************** View  complaints reply **********************************************
 
 @app.route('/view_reply')
 def view_reply():
@@ -558,7 +602,8 @@ def view_reply():
     return redirect('/')
 
 
-# View Rating
+# ********************************************** View user rating to shop **********************************************
+
 @app.route('/view_user_rating')
 def view_user_rating():
     if session['lin'] == "1":
@@ -640,7 +685,7 @@ def view_user_rating():
     return redirect('/')
 
 
-# View Bill
+# ********************************************** Viw bill **********************************************
 
 @app.route('/view_bill')
 def view_bill():
@@ -653,7 +698,7 @@ def view_bill():
     return redirect('/')
 
 
-# View Bill items
+# ********************************************** View bill items **********************************************
 
 @app.route('/view_bill_items/<master_id>')
 def view_bill_items(master_id):
@@ -665,6 +710,8 @@ def view_bill_items(master_id):
             "select sum(quantity*price) as t from product,bill where product.product_id = bill.product_id and  bill.master_id = '" + master_id + "'")
         return render_template("shop/view_bill_items.html", data=data, total=total['t'])
     return redirect('/')
+
+# ---------------------------------------------- shop section End ----------------------------------------------
 
 
 if __name__ == '__main__':
