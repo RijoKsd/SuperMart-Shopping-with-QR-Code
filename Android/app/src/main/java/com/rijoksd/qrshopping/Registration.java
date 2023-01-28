@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.media.Image;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -28,7 +29,6 @@ public class Registration extends AppCompatActivity {
         pincode.findViewById(R.id.pincode);
         mail.findViewById(R.id.mail);
         phone.findViewById(R.id.phone);
-        username.findViewById(R.id.username);
         registerPassword.findViewById(R.id.register_password);
 
         registerBtn.findViewById(R.id.register_btn);
@@ -38,6 +38,21 @@ public class Registration extends AppCompatActivity {
         female.findViewById(R.id.female);
         other.findViewById(R.id.other);
 
+
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String registerUsername = username.getText().toString();
+                final String registerUserPlace = place.getText().toString();
+                final String registerUserPincode = pincode.getText().toString();
+                final String registerUserMail = mail.getText().toString();
+                final String registerUserPhone = phone.getText().toString();
+                final String registerUserPassword = registerPassword.getText().toString();
+
+
+
+            }
+        });
 
 
 
