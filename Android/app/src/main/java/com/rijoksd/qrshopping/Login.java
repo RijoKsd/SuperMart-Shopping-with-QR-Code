@@ -60,19 +60,17 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 final String userEmail = email.getText().toString();
                 final String userPassword = password.getText().toString();
-
-
                 sh= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 sh.getString("ip","");
-                url=sh.getString("url","")+"/and_login";
+                url=sh.getString("url","")+"and_login";
 
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
                 StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                         new Response.Listener<String>() {
+
                             @Override
                             public void onResponse(String response) {
                                 //  Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
-
                                 try {
                                     JSONObject jsonObj = new JSONObject(response);
                                     if (jsonObj.getString("status").equalsIgnoreCase("ok")) {

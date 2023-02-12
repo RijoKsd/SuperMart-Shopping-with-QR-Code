@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, jsonify
 import datetime
 from DBConnection import Database
 
@@ -711,8 +711,65 @@ def view_bill_items(master_id):
         return render_template("shop/view_bill_items.html", data=data, total=total['t'])
     return redirect('/')
 
+
 # ---------------------------------------------- shop section End ----------------------------------------------
 
 
+# ----------Android-----------
+# and means android
+
+@app.route('/and_user_register', methods=['post'])
+def and_user_register():
+    and_register_user_name = request.form['andUserName']
+    and_register_user_place = request.form['andUserPlace']
+    and_register_user_pin = request.form['andUserPIN']
+    and_register_user_mail = request.form['andUserMail']
+    and_register_user_phone = request.form['andUserPhone']
+    and_register_user_password = request.form['andUserPassword']
+    db = Database()
+
+
+
+
+
+@app.route('/and_login', methods=['post'])
+def and_login():
+        and_user_name = request.form['u']
+        and_user_password = request.form['p']
+        db = Database()
+        query = db.selectOne("select * from login where user_name = '" + and_user_name + "'and password = '" +and_user_password +"'")
+        if query is not None:
+            # if query['user_type'] == 'user'
+                return jsonify(status="OK", lid=query['login_id'],type=query['user_type'])
+        else:
+                return jsonify(status="NO")
+        # else:
+        #     return jsonify(status="Invalid")
+    # return jsonify(status='OK')
+
+
+
+# view shop
+
+@app.route('/and_view_shop',methods=['post'])
+def and_view_shop():
+    db = Database()
+    data=db.select("select * from shop,login where shop.shop_id = login.login_id and login.user_type = 'shop'")
+
+    return jsonify(status="ok",data=data)
+
+
+@app.route('/and_view_product',methods=['post'])
+def and_view_product():
+    and_shop_id = request.form['shopID']
+    db = Database()
+    data = db.select("select * from product,stock where product.product_id = stock.product_id and  product.shop_id ='"+and_shop_id+"' ")
+    return jsonify(status="ok",data=data)
+
+
+
+
+
+
 if __name__ == '__main__':
-    app.run(debug=True, port=4000,host="0.0.0.0")
+    app.run(debug=True, port=4000, host="0.0.0.0")

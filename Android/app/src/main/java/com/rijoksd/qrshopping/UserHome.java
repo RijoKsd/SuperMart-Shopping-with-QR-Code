@@ -71,17 +71,32 @@ public class UserHome extends AppCompatActivity implements NavigationView.OnNavi
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-//        if ( id == nav_home){
-//            Intent i = new Intent(getApplicationContext(),viewShop.class);
-//            startActivity(i);
-//        }else if(id == nav_complaint){
-//            Intent i = new Intent(getApplicationContext(),viewReply.class);
-//            startActivity(i);
-//        }else if(id == nav_feedback){
-//            Intent i = new Intent(getApplicationContext(),sendFeedback.class);
+        if ( id == R.id.nav_shop){
+            Intent i = new Intent(getApplicationContext(),viewShop.class);
+            startActivity(i);
+        }
+//        else if(id == R.id.nav_scan){
+//            Intent i = new Intent(getApplicationContext(), .class);
 //            startActivity(i);
 //        }
+        else if(id == R.id.nav_bill){
+            Intent i = new Intent(getApplicationContext(),ViewBill.class);
+            startActivity(i);
+        } else if(id == R.id.nav_rating){
+            Intent i = new Intent(getApplicationContext(),addRating.class);
+            startActivity(i);
+        } else if(id == R.id.nav_feedback){
+            Intent i = new Intent(getApplicationContext(),sendFeedback.class);
+            startActivity(i);
+        }else if(id == R.id.nav_complaint){
+            Intent i = new Intent(getApplicationContext(),sendComplaint.class);
+            startActivity(i);
+        }
+        else if(id == R.id.nav_logout){
+            Intent i = new Intent(getApplicationContext(),Login.class);
+            startActivity(i);
+        }
 
-        return false;
+        return true;
     }
 }

@@ -25,9 +25,9 @@ import java.util.Map;
 public class viewShop extends AppCompatActivity {
     ListView list;
     SharedPreferences sh;
-    String ip, url,url1, lid;
+    String ip, url, url1, lid;
 
-    String[] shopID,shopName,shopAddress,shopMail,shopPhone,shopImage;
+    String[] shopID, shopName, shopAddress, shopMail, shopPhone, shopImage;
 
 
     @Override
@@ -40,7 +40,7 @@ public class viewShop extends AppCompatActivity {
         sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         sh.getString("ip", "");
         sh.getString("url", "");
-        url = sh.getString("url", "") + "/viewpost";
+        url = sh.getString("url", "") + "and_view_shop";
 
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -64,13 +64,12 @@ public class viewShop extends AppCompatActivity {
                                 shopImage = new String[js.length()];
 
 
-
                                 for (int i = 0; i < js.length(); i++) {
                                     JSONObject u = js.getJSONObject(i);
                                     //dbcolumn name in double quotes
                                     shopID[i] = u.getString("shop_id");
                                     shopName[i] = u.getString("name");
-                                    shopAddress[i] = u.getString("place")+"\n"+u.getString("pincode");
+                                    shopAddress[i] = u.getString("place") + "\n" + u.getString("pincode");
 
                                     shopMail[i] = u.getString("mail");
                                     shopPhone[i] = u.getString("phone");

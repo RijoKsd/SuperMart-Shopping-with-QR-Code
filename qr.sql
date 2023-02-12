@@ -25,11 +25,9 @@ CREATE TABLE `bill` (
   `product_id` int(20) DEFAULT NULL,
   `quantity` int(20) DEFAULT NULL,
   PRIMARY KEY (`bill_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `bill` */
-
-insert  into `bill`(`bill_id`,`master_id`,`product_id`,`quantity`) values (1,1,10,1);
 
 /*Table structure for table `bill_master` */
 
@@ -43,11 +41,9 @@ CREATE TABLE `bill_master` (
   `date` date DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`master_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `bill_master` */
-
-insert  into `bill_master`(`master_id`,`shop_id`,`user_id`,`amount`,`date`,`status`) values (1,12,2,25,'2023-01-01','pending');
 
 /*Table structure for table `complaint` */
 
@@ -62,11 +58,11 @@ CREATE TABLE `complaint` (
   `reply_date` varchar(200) DEFAULT 'pending',
   `reply` varchar(200) DEFAULT 'pending',
   PRIMARY KEY (`complaint_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 /*Data for the table `complaint` */
 
-insert  into `complaint`(`complaint_id`,`type`,`user_id`,`complaint`,`date`,`reply_date`,`reply`) values (1,'user',2,'worst app','2022-12-28','2022-12-30','ok'),(2,'user',3,'use more memmory','2022-12-26','2022-12-30','we fixed it\r\n'),(3,'user',4,'more ads','2022-12-29','2023-01-02','we fixed it'),(10,'shop',12,'UI is not easy','2023-12-01','2023-01-12','tes555'),(11,'shop',12,'checking','2023-01-12','2023-01-19','test'),(12,'shop',12,'test xx','2023-01-12','2023-01-12','ok t'),(13,'shop',12,'sfdsf','2023-01-12','2023-01-12','111'),(14,'shop',14,'maxxxxxxxxxx','2023-01-12','2023-01-12','test 1'),(15,'shop',14,'second phase','2023-01-12','0000-00-00','pending'),(16,'shop',14,'varchar\r\n','2023-01-12','2023-01-12','changed from date'),(17,'shop',14,'successfully completed','2023-01-14','pending','pending'),(18,'shop',12,'Hello guys','2023-01-15','2023-01-15','Hai\r\n'),(19,'shop',12,'','2023-01-19','pending','pending'),(20,'shop',16,'Using more internet','2023-01-19','2023-01-19','Please update your software to latest version, We fixed this bug in latest version');
+insert  into `complaint`(`complaint_id`,`type`,`user_id`,`complaint`,`date`,`reply_date`,`reply`) values (1,'user',2,'worst app','2022-12-28','2022-12-30','ok'),(2,'user',3,'use more memmory','2022-12-26','2022-12-30','we fixed it\r\n'),(3,'user',4,'more ads','2022-12-29','2023-01-02','we fixed it'),(22,'shop',18,'some glitches in dashboard','2023-01-25','2023-01-25','We fixed this problem in this update, please update to latest version');
 
 /*Table structure for table `feedback` */
 
@@ -79,11 +75,11 @@ CREATE TABLE `feedback` (
   `date` date DEFAULT NULL,
   `feedback` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`feedback_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 /*Data for the table `feedback` */
 
-insert  into `feedback`(`feedback_id`,`sender_id`,`type`,`date`,`feedback`) values (1,2,'user','2022-02-02','N/W slow'),(4,3,'user','2022-02-22','GOOD'),(7,12,'shop','2023-01-11','checking purpose'),(14,12,'shop','2023-01-12','asfa'),(15,12,'shop','2023-01-12','Thanyou for fixing\r\n'),(16,14,'shop','2023-01-12','maxxxxxxxxx\r\n'),(17,14,'shop','2023-01-14','today 12-01-2023 \r\ntime 02-34 AM'),(18,12,'shop','2023-01-15','Thankyou for this software'),(19,16,'shop','2023-01-19','Thankyou for building this software');
+insert  into `feedback`(`feedback_id`,`sender_id`,`type`,`date`,`feedback`) values (1,2,'user','2022-02-02','N/W slow'),(4,3,'user','2022-02-22','GOOD'),(21,18,'shop','2023-01-25','very use full app');
 
 /*Table structure for table `login` */
 
@@ -95,11 +91,11 @@ CREATE TABLE `login` (
   `password` varchar(40) DEFAULT NULL,
   `user_type` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`login_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 /*Data for the table `login` */
 
-insert  into `login`(`login_id`,`user_name`,`password`,`user_type`) values (1,'admin','admin','admin'),(2,'rijo','rijo','user'),(3,'salman','salman','user'),(4,'sachin','sachin','user'),(12,'spicy@gmail.com','spicy','shop'),(13,'aaa@gmail.com','aaa','shop'),(14,'max@gmail.com','max','shop'),(15,'lucky@gmail.com','lucky','pending'),(16,'jiomart@gmail.com','jiomart','shop');
+insert  into `login`(`login_id`,`user_name`,`password`,`user_type`) values (1,'admin','admin','admin'),(2,'rijo','rijo','user'),(3,'salman','salman','user'),(4,'sachin','sachin','user'),(18,'jio@gmail.com','jio','shop'),(19,'lenin','lenin','user'),(20,'spicy@gmail.com','spicy','shop'),(21,'max@gmail.com','max','shop'),(22,'lucky@gmail.com','lucky','pending'),(23,'aaa@gmail.com','aaa','pending');
 
 /*Table structure for table `offer` */
 
@@ -112,11 +108,11 @@ CREATE TABLE `offer` (
   `date_from` date DEFAULT NULL,
   `date_to` date DEFAULT NULL,
   PRIMARY KEY (`offer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Data for the table `offer` */
 
-insert  into `offer`(`offer_id`,`product_id`,`offer`,`date_from`,`date_to`) values (1,10,'3','2023-01-24','2023-01-18'),(2,11,'99','2023-01-28','2023-01-31'),(3,17,'5','2023-01-20','2023-01-27');
+insert  into `offer`(`offer_id`,`product_id`,`offer`,`date_from`,`date_to`) values (7,20,'4','2023-01-25','2023-01-27');
 
 /*Table structure for table `product` */
 
@@ -130,11 +126,11 @@ CREATE TABLE `product` (
   `shop_id` int(20) DEFAULT NULL,
   `image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 /*Data for the table `product` */
 
-insert  into `product`(`product_id`,`name`,`price`,`details`,`shop_id`,`image`) values (10,'Carrot',100,'Fresh Carrot 2kg',12,'/static/images/230111-214635 .jpg'),(11,'Capsicum',60,'Green Capsicum\r\n500g',12,'/static/images/230111-214721 .jpg'),(12,'Dabur Paste',50,'Red dabur 600g',14,'/static/images/230111-220831 .jpg'),(13,'Colgate',50,'Colgate 200g ',14,'/static/images/230111-220900 .jpg'),(14,'Dettol',79,'Dettol 150g',14,'/static/images/230112-123252 .jpg'),(15,'Potato',45,'Potato 1kg',12,'/static/images/230114-022246 .jpg'),(16,'Cauliflower',67,'Fresh Cauliflower',12,'/static/images/230115-091725 .jpg'),(17,'Amul Butter',50,'   Made with fresh ingredients, Amul Butter is a multi-purpose butter that can be used as a spread on bread, paratha, roti, naan and sandwiches. It also makes an excellent topping for Pav-bhaji, dal, soups, salads, rice as well as a great cooking medium for butter Paneer, Dal Makhni and a variety of delightful recipes.',16,'/static/images/230119-151735 .jpg');
+insert  into `product`(`product_id`,`name`,`price`,`details`,`shop_id`,`image`) values (20,'Salt',15,'     1kg salt',18,'/static/images/230127-231204 .jpg'),(21,'Butter',54,'jdsl',20,'/static/images/230211-130940 .jpg'),(22,'Rice',35,'edf',21,'/static/images/230211-131014 .jpg'),(23,'Onion',58,'fdj',18,'/static/images/230211-143217 .jpg');
 
 /*Table structure for table `rating` */
 
@@ -147,11 +143,9 @@ CREATE TABLE `rating` (
   `rating` int(20) DEFAULT NULL,
   `shop_id` int(20) DEFAULT NULL,
   PRIMARY KEY (`rating_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `rating` */
-
-insert  into `rating`(`rating_id`,`date`,`user_id`,`rating`,`shop_id`) values (3,'2023-01-11',2,4,12),(4,'2022-12-30',2,5,13),(5,'2023-01-12',3,3,12),(6,'2023-01-01',4,1,12),(7,'2023-01-12',2,1,14);
 
 /*Table structure for table `shop` */
 
@@ -169,7 +163,7 @@ CREATE TABLE `shop` (
 
 /*Data for the table `shop` */
 
-insert  into `shop`(`shop_id`,`name`,`place`,`pincode`,`mail`,`phone`,`image`) values (12,'spicy','Bandaduka',671541,'spicy@gmail.com',9874521456,'/static/images/230111-214139 .jpg'),(13,'Aaa','Munnad',954265,'aaa@mail.com',9541236547,'/static/images/230111-214341 .jpg'),(14,'Max','Kasargod',674524,'max@gmail.com',857412365,'/static/images/230111-214507 .jpg'),(15,'Lucky','Kannur',658712,'lucky@gmail.com',9853214536,'/static/images/230111-215936 .jpg'),(16,'JioMart','Kochi',654265,'jiomart@gmail.com',98745261242,'/static/images/230119-151209 .jpg');
+insert  into `shop`(`shop_id`,`name`,`place`,`pincode`,`mail`,`phone`,`image`) values (18,'Jio Mart','Kasargod',671541,'jio@gmail.com',9562147895,'/static/images/230125-072019 .jpg'),(20,'Spicy','knr',64646,'spicy@gmail.com',4554,'/static/images/230211-123914 .jpg'),(21,'Max','liuo',565,'max@gmail.com',3132154,'/static/images/230211-124100 .jpg'),(22,'Lucky','ld',66565,'lucky@gmail.com',64664,'/static/images/230211-131049 .jpg'),(23,'aaa','sdf',1654,'aaa@gmail.com',645645,'/static/images/230211-131523 .jpg');
 
 /*Table structure for table `stock` */
 
@@ -180,11 +174,11 @@ CREATE TABLE `stock` (
   `product_id` int(20) DEFAULT NULL,
   `quantity` int(20) DEFAULT NULL,
   PRIMARY KEY (`stock_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
 
 /*Data for the table `stock` */
 
-insert  into `stock`(`stock_id`,`product_id`,`quantity`) values (32,12,2),(34,11,2),(37,16,2),(38,15,4),(39,17,32);
+insert  into `stock`(`stock_id`,`product_id`,`quantity`) values (43,20,15),(44,21,34),(45,22,34),(46,23,5);
 
 /*Table structure for table `user` */
 
@@ -204,7 +198,7 @@ CREATE TABLE `user` (
 
 /*Data for the table `user` */
 
-insert  into `user`(`user_id`,`name`,`place`,`pincode`,`email`,`gender`,`phone_no`,`image`) values (2,'rijo','ksd',671541,'rijo@gmail.com','male',9446626926,'/static/images/230104-223112 .jpg'),(3,'salman','ksd',671123,'salman@gmail.com','male',9456324789,'/static/images/230104-223112 .jpg'),(4,'sachin','ksd',671541,'sachin@gmail.com','male',7584126574,'/static/images/230104-223112 .jpg');
+insert  into `user`(`user_id`,`name`,`place`,`pincode`,`email`,`gender`,`phone_no`,`image`) values (2,'rijo','ksd',671541,'rijo@gmail.com','male',9446626926,'/static/images/230125-073807 .jpg'),(3,'salman','ksd',671123,'salman@gmail.com','male',9456324789,'/static/images/230125-211830 .jpg'),(4,'sachin','ksd',671541,'sachin@gmail.com','male',7584126574,'/static/images/230104-223112 .jpg');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
