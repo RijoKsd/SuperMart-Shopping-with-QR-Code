@@ -27,11 +27,10 @@ import java.util.Map;
 
 public class Login extends AppCompatActivity {
     EditText email,password;
-    Button login,register;
+    Button login,registerBtn;
 
     SharedPreferences sh;
     String url;
-
 
 
 
@@ -44,12 +43,12 @@ public class Login extends AppCompatActivity {
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         login = findViewById(R.id.login);
-        register = findViewById(R.id.register);
+        registerBtn = findViewById(R.id.register);
 
-        register.setOnClickListener(new View.OnClickListener() {
+        registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent  i = new Intent(getApplicationContext(),Registration.class);
+                Intent  i = new Intent(getApplicationContext(), Registration.class);
                 startActivity(i);
 
             }
@@ -81,12 +80,12 @@ public class Login extends AppCompatActivity {
                                         ed.putString("lid", id);
                                         ed.commit();
                                         if (typ.equalsIgnoreCase("user")) {
-                                            Toast.makeText(getApplicationContext(), "Welcome", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(getApplicationContext(), "Welcome to supermart", Toast.LENGTH_LONG).show();
                                             Intent i = new Intent(getApplicationContext(), UserHome.class);
                                             startActivity(i);
                                         }
                                     } else {
-                                        Toast.makeText(getApplicationContext(), "Not found", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getApplicationContext(), "Invalid username or password", Toast.LENGTH_LONG).show();
                                     }
 
                                 } catch (Exception e) {

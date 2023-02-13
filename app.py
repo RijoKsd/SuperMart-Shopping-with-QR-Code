@@ -718,15 +718,15 @@ def view_bill_items(master_id):
 # ----------Android-----------
 # and means android
 
-@app.route('/and_user_register', methods=['post'])
-def and_user_register():
-    and_register_user_name = request.form['andUserName']
-    and_register_user_place = request.form['andUserPlace']
-    and_register_user_pin = request.form['andUserPIN']
-    and_register_user_mail = request.form['andUserMail']
-    and_register_user_phone = request.form['andUserPhone']
-    and_register_user_password = request.form['andUserPassword']
-    db = Database()
+# @app.route('/and_user_register', methods=['post'])
+# def and_user_register():
+#     and_register_user_name = request.form['andUserName']
+#     and_register_user_place = request.form['andUserPlace']
+#     and_register_user_pin = request.form['andUserPIN']
+#     and_register_user_mail = request.form['andUserMail']
+#     and_register_user_phone = request.form['andUserPhone']
+#     and_register_user_password = request.form['andUserPassword']
+#     db = Database()
 
 
 

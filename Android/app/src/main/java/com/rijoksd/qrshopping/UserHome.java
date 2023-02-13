@@ -71,8 +71,11 @@ public class UserHome extends AppCompatActivity implements NavigationView.OnNavi
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if ( id == R.id.nav_shop){
-            Intent i = new Intent(getApplicationContext(),viewShop.class);
+        if(id == R.id.nav_view_profile){
+            Intent i = new Intent(getApplicationContext(),viewProfile.class);
+            startActivity(i);
+        } else if ( id == R.id.nav_shop){
+            Intent i = new Intent(getApplicationContext(), viewShop.class);
             startActivity(i);
         }
 //        else if(id == R.id.nav_scan){

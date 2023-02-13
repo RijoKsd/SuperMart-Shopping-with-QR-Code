@@ -52,7 +52,7 @@ public class Registration extends AppCompatActivity {
     String url = "";
     Button reg;
     SharedPreferences sh;
-    String gender= "Male";
+//    String gender= "Male";
     RadioButton r1,r2,r3;
 
 
@@ -100,7 +100,7 @@ public class Registration extends AppCompatActivity {
                 final String registerUserMail = mail.getText().toString();
                 final String registerUserPhone = phone.getText().toString();
                 final String registerUserPassword = registerPassword.getText().toString();
-                final String registerUserGender =gender.getTōext().toString();
+//                final String registerUserGender =gender.getTōext().toString();
 
                 uploadBitmap( registerUsername,registerUserPlace,registerUserPincode,registerUserMail,registerUserPhone,registerUserPassword );
 
@@ -189,7 +189,7 @@ public class Registration extends AppCompatActivity {
                 params.put("andUserMail", registerUserMail);
                 params.put("andUserPhone", registerUserPhone);
                 params.put("andUserPassword", registerUserPassword);
-                params.put("andUserGender", registerUserGender);
+//                params.put("andUserGender", registerUserGender);
 
                 return params;
             }
