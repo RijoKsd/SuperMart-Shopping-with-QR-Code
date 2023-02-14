@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".customViewProduct">
 
     <TextView
@@ -40,14 +40,12 @@
 
     <TextView
         android:id="@+id/textView19"
-        android:layout_width="0dp"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="35dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView18"
+        app:layout_constraintStart_toEndOf="@+id/textView20"
         app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
     <TextView
@@ -85,16 +83,29 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/offerBtn"
+        android:layout_width="139dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="28dp"
+        android:text="View Offer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView19"
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+    <Button
         android:id="@+id/add_to_cart_btn"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="354dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="30dp"
         android:background="#FEAF39"
         android:text="Add to cart"
         android:textColor="#FEFEFE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        app:layout_constraintTop_toBottomOf="@+id/offerBtn" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -718,15 +718,26 @@ def view_bill_items(master_id):
 # ----------Android-----------
 # and means android
 
-# @app.route('/and_user_register', methods=['post'])
-# def and_user_register():
-#     and_register_user_name = request.form['andUserName']
-#     and_register_user_place = request.form['andUserPlace']
-#     and_register_user_pin = request.form['andUserPIN']
-#     and_register_user_mail = request.form['andUserMail']
-#     and_register_user_phone = request.form['andUserPhone']
-#     and_register_user_password = request.form['andUserPassword']
-#     db = Database()
+@app.route('/and_user_register', methods=['post'])
+def and_user_register():
+    and_register_user_name = request.form['andUserName']
+    and_register_user_place = request.form['andUserPlace']
+    and_register_user_pin = request.form['andUserPIN']
+    and_register_user_mail = request.form['andUserMail']
+    and_register_user_phone = request.form['andUserPhone']
+    and_register_user_password = request.form['andUserPassword']
+    and_register_gender = request.form['andUserGender']
+    and_register_image = request.files['pic']
+
+    date = datetime.datetime.now().strftime("%y%m%d-%H%M%S ")
+    and_register_image.save(r"E:\QR shopping\python\static\images\\" + date + '.jpg')
+    image_path = "/static/images/" + date + '.jpg'
+
+    db = Database()
+    q= db.insert("insert into login VALUES ('','"+and_register_user_mail+"','"+and_register_user_password+"','user')")
+
+    db.insert("insert into `user` VALUES ('"+str(q)+"','"+and_register_user_name+"','"+and_register_user_place+"','"+and_register_user_pin+"','"+and_register_user_mail+"','"+and_register_gender+"','"+and_register_user_phone+"','"+str(image_path)+"')")
+    return jsonify(status="ok")
 
 
 
@@ -734,10 +745,10 @@ def view_bill_items(master_id):
 
 @app.route('/and_login', methods=['post'])
 def and_login():
-        and_user_name = request.form['u']
+        and_user_email = request.form['u']
         and_user_password = request.form['p']
         db = Database()
-        query = db.selectOne("select * from login where user_name = '" + and_user_name + "'and password = '" +and_user_password +"'")
+        query = db.selectOne("select * from login where user_name = '" + and_user_email + "'and password = '" +and_user_password +"'")
         if query is not None:
             # if query['user_type'] == 'user'
                 return jsonify(status="OK", lid=query['login_id'],type=query['user_type'])
@@ -747,6 +758,15 @@ def and_login():
         #     return jsonify(status="Invalid")
     # return jsonify(status='OK')
 
+
+# View profile
+@app.route('/and_view_profile',methods=['post'])
+def and_view_profile():
+    user_id = request.form['userID']
+    db = Database()
+    res=db.selectOne("select * from `user` where user_id ='"+user_id+"'")
+
+    return jsonify(status="ok",data=res)
 
 
 # view shop
@@ -766,6 +786,47 @@ def and_view_product():
     data = db.select("select * from product,stock where product.product_id = stock.product_id and  product.shop_id ='"+and_shop_id+"' ")
     return jsonify(status="ok",data=data)
 
+
+@app.route('/and_view_offer',methods = ['post'])
+def and_view_offer():
+     # Discount = ActualPrice - (ActualPrice * Discount_Rate / 100)
+
+    product_id = request.form['productID']
+    db = Database()
+    data= db.select("select product.price-(product.price*offer.offer/100) as total,offer.* from product,offer where offer.product_id=product.product_id and  product.product_id = '"+product_id+"'")
+    # data= db.select("select * from offer where offer.product_id = '"+product_id+"'")
+    if len(data)>0:
+        return jsonify(status="ok", data=data)
+    else:
+        return jsonify(status="no")
+
+
+
+@app.route('/and_sendComplaint',methods=['post'])
+def and_sendComplaint():
+    complaint = request.form['comp']
+    uid = request.form['id']
+    db = Database()
+    db.insert("insert into complaint values('','user','"+uid+"','"+complaint+"',curdate(),'pending','pending')")
+    return jsonify(status="ok")
+
+
+
+
+@app.route('/and_view_reply',methods = ['post'])
+def and_view_reply():
+    user_id = request.form['id']
+    db = Database()
+    data= db.select("select * from complaint where user_id = '"+user_id+"' ")
+    return jsonify(status="ok",data=data)
+
+
+
+
+
+# @app.route('/and_send_feedback',methods=['post'])
+# def and_send_feedback():
+#
 
 
 

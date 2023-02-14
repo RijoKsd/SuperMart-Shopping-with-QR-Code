@@ -52,7 +52,7 @@ public class customViewReply extends BaseAdapter {
         if (view == null) {
             gridView = new View(context);
             //gridView=inflator.inflate(R.layout.customview, null);
-            gridView = inflator.inflate(R.layout.activity_custom_view_shop, null);//same class name
+            gridView = inflator.inflate(R.layout.activity_custom_view_reply, null);//same class name
 
         } else {
             gridView = (View) view;
@@ -74,8 +74,8 @@ public class customViewReply extends BaseAdapter {
 
         tv1.setText(complaintDate[i]);
         tv2.setText(complaint[i]);
-        tv2.setText(replyDate[i]);
-        tv3.setText(reply[i]);
+        tv3.setText(replyDate[i]);
+        tv4.setText(reply[i]);
 
 //
         return gridView;

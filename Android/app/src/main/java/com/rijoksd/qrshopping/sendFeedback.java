@@ -34,8 +34,8 @@ public class sendFeedback extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_feedback);
-        feedback.findViewById(R.id.editTextTextPersonName4);
-        feedbackBtn.findViewById(R.id.button6);
+        feedback=findViewById(R.id.editTextTextPersonName4);
+        feedbackBtn=findViewById(R.id.button6);
 
         feedbackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +45,7 @@ public class sendFeedback extends AppCompatActivity {
                 sh= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 sh.getString("ip","");
                 sh.getString("url","");
-                url=sh.getString("url","")+"/addfeedback";
+                url=sh.getString("url","")+"/and_send_feedback";
 
 
 

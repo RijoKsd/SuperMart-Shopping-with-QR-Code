@@ -36,8 +36,9 @@ public class sendComplaint extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_complaint);
-        complaint.findViewById(R.id.editTextTextPersonName5);
-        complaintBtn.findViewById(R.id.button8);
+
+        complaint=findViewById(R.id.editTextTextPersonName5);
+        complaintBtn=findViewById(R.id.button8);
 
 
         complaintBtn.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +62,7 @@ public class sendComplaint extends AppCompatActivity {
                                     JSONObject jsonObj = new JSONObject(response);
                                     if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
                                         Toast.makeText(sendComplaint.this, "complaint send", Toast.LENGTH_SHORT).show();
-                                        Intent i =new Intent(getApplicationContext(),sendComplaint.class);
+                                        Intent i =new Intent(getApplicationContext(),viewReply.class);
                                         startActivity(i);
                                     } else {
                                         Toast.makeText(getApplicationContext(), "Not found", Toast.LENGTH_LONG).show();

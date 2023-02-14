@@ -61,6 +61,7 @@ public class viewProduct extends AppCompatActivity {
                                 productQuantity = new String[js.length()];
                                 productPrice = new String[js.length()];
 
+
                                 for (int i = 0; i < js.length(); i++) {
                                     JSONObject u = js.getJSONObject(i);
                                     //dbcolumn name in double quotes
@@ -69,6 +70,7 @@ public class viewProduct extends AppCompatActivity {
                                     productName[i] = u.getString("name");
                                     productQuantity[i] = u.getString("quantity");
                                     productPrice[i] = u.getString("price");
+
                                 }
                                 list.setAdapter(new customViewProduct(getApplicationContext(), productID, productImage, productName, productQuantity, productPrice));//custom_view_service.xml and li is the listview object
 

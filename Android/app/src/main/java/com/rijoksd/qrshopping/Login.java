@@ -48,7 +48,7 @@ public class Login extends AppCompatActivity {
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent  i = new Intent(getApplicationContext(), Registration.class);
+                Intent i = new Intent(getApplicationContext(), Registration.class);
                 startActivity(i);
 
             }
@@ -85,7 +85,7 @@ public class Login extends AppCompatActivity {
                                             startActivity(i);
                                         }
                                     } else {
-                                        Toast.makeText(getApplicationContext(), "Invalid username or password", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getApplicationContext(), "Invalid email or password", Toast.LENGTH_LONG).show();
                                     }
 
                                 } catch (Exception e) {

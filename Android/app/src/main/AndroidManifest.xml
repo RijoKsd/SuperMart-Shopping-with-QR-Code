@@ -17,6 +17,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".customViewOffer"
+            android:exported="false" />
+        <activity
+            android:name=".viewOffer"
+            android:exported="false" />
+
+        <uses-library android:name="org.apache.http.legacy" />
+
+        <activity
             android:name=".UserHome"
             android:exported="false"
             android:label="@string/title_activity_user_home"
@@ -33,11 +42,9 @@
         <activity
             android:name=".addRating"
             android:exported="false" />
-
-        <uses-library
-            android:name="org.apache.http.legacy"
-            android:required="true"></uses-library>
-
+        <activity
+            android:name=".viewProfile"
+            android:exported="false" />
         <activity
             android:name=".sendFeedback"
             android:exported="false" />

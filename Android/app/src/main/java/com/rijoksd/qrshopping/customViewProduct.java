@@ -20,10 +20,11 @@ import com.squareup.picasso.Picasso;
 
 public class customViewProduct extends BaseAdapter {
 
-    String[] productID,productImage,productName,productQuantity,productPrice;
+
+    String[] productID,productImage,productName,productQuantity,productPrice ;
     private Context context;
 
-    public customViewProduct(Context applicationContext, String[] productID, String[] productImage, String[] productName, String[] productQuantity, String[] productPrice) {
+    public customViewProduct(Context applicationContext, String[] productID, String[] productImage, String[] productName, String[] productQuantity, String[] productPrice ) {
 
         this.context = applicationContext;
         this.productID = productID;
@@ -31,6 +32,7 @@ public class customViewProduct extends BaseAdapter {
         this.productName = productName;
         this.productQuantity = productQuantity;
         this.productPrice = productPrice;
+
     }
 
     @Override
@@ -67,7 +69,28 @@ public class customViewProduct extends BaseAdapter {
         TextView tv2 = (TextView) gridView.findViewById(R.id.textView21);
         TextView tv3 = (TextView) gridView.findViewById(R.id.textView19);
 
+
         Button bt1 = (Button) gridView.findViewById(R.id.add_to_cart_btn);
+
+        Button offerBtn = (Button) gridView.findViewById(R.id.offerBtn);
+        offerBtn.setTag(i);
+        offerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int pos = (int) view.getTag();
+                SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
+
+                SharedPreferences.Editor ed=sh.edit();
+                ed.putString("productID",productID[pos]);
+                ed.commit();
+                Intent i=new Intent(context.getApplicationContext(),viewOffer.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(i);
+
+
+            }
+        });
+
 
         bt1.setTag(i);
 
@@ -94,10 +117,15 @@ public class customViewProduct extends BaseAdapter {
         tv3.setTextColor(Color.BLACK);
 
 
+        //    Discount = Actual Price - (Actual Price * Discount_Rate/100)
+//        tv4 = productPrice - (productPrice * productOffer/100);
+
+
 
         tv1.setText(productName[i]);
         tv2.setText(productQuantity[i]);
         tv3.setText(productPrice[i]);
+
 
 
         SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);

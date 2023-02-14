@@ -92,7 +92,7 @@ public class UserHome extends AppCompatActivity implements NavigationView.OnNavi
             Intent i = new Intent(getApplicationContext(),sendFeedback.class);
             startActivity(i);
         }else if(id == R.id.nav_complaint){
-            Intent i = new Intent(getApplicationContext(),sendComplaint.class);
+            Intent i = new Intent(getApplicationContext(),viewReply.class);
             startActivity(i);
         }
         else if(id == R.id.nav_logout){

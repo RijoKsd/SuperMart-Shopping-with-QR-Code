@@ -2,9 +2,11 @@ package com.rijoksd.qrshopping;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -15,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -26,6 +29,7 @@ public class viewReply extends AppCompatActivity {
     ListView list;
     SharedPreferences sh;
     String ip, url,url1, lid;
+    FloatingActionButton fab;
 
     String[]  complaintDate,complaint,replyDate,reply;
 
@@ -36,12 +40,20 @@ public class viewReply extends AppCompatActivity {
         setContentView(R.layout.activity_view_reply);
 
         list = (ListView) findViewById(R.id.list);
+        fab = findViewById(R.id.floatingActionButton);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),sendComplaint.class);
+                startActivity(i);
+            }
+        });
 
 
         sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         sh.getString("ip", "");
         sh.getString("url", "");
-        url = sh.getString("url", "") + "/viewpost";
+        url = sh.getString("url", "") + "and_view_reply";
 
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());

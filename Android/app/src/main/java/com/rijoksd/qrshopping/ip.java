@@ -18,7 +18,6 @@ public class ip extends AppCompatActivity {
     Button ipRegister;
     SharedPreferences sh;
 
-
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

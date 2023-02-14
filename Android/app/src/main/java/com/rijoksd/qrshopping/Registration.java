@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.media.Image;
+
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -41,34 +41,40 @@ import java.util.Map;
 
 
 public class Registration extends AppCompatActivity {
-    EditText username,place,pincode,mail,phone,registerPassword;
-    RadioGroup gender;
+    EditText username,place,pinCode,mail,phone,registerPassword;
     RadioButton male,female,other;
-    ImageView image;
+    ImageView pho;
+    RadioGroup gen;
     Button registerBtn;
 
     Bitmap bitmap = null;
     ProgressDialog pd;
-    String url = "";
-    Button reg;
+    String url;
+
     SharedPreferences sh;
-//    String gender= "Male";
-    RadioButton r1,r2,r3;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+
+        sh= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        sh.getString("ip","");
+        url=sh.getString("url","")+"and_user_register";
+
         username=findViewById(R.id.username);
         place=findViewById(R.id.place);
-        pincode=findViewById(R.id.pincode);
+        pinCode=findViewById(R.id.pincode);
         mail=findViewById(R.id.mail);
         phone=findViewById(R.id.phone);
+        pho=findViewById(R.id.image);
         registerPassword=findViewById(R.id.register_password);
 
         registerBtn=findViewById(R.id.register_btn);
-//       gender=findViewById(R.id.gender);
+
+        gen=findViewById(R.id.radioGroup);
         male=findViewById(R.id.male);
         female=findViewById(R.id.female);
         other=findViewById(R.id.other);
@@ -82,7 +88,7 @@ public class Registration extends AppCompatActivity {
             startActivity(intent);
             return;
         }
-        image.setOnClickListener(new View.OnClickListener() {
+        pho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -94,15 +100,15 @@ public class Registration extends AppCompatActivity {
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String registerUsername = username.getText().toString();
-                final String registerUserPlace = place.getText().toString();
-                final String registerUserPincode = pincode.getText().toString();
-                final String registerUserMail = mail.getText().toString();
-                final String registerUserPhone = phone.getText().toString();
-                final String registerUserPassword = registerPassword.getText().toString();
-//                final String registerUserGender =gender.getTōext().toString();
+                String registerUsername = username.getText().toString();
+                String registerUserPlace = place.getText().toString();
+                String registerUserPinCode = pinCode.getText().toString();
+                String registerUserMail = mail.getText().toString();
+                String registerUserPhone = phone.getText().toString();
+                String registerUserPassword = registerPassword.getText().toString();
+                String registerUserGender =((RadioButton)findViewById(gen.getCheckedRadioButtonId())).getText().toString();
 
-                uploadBitmap( registerUsername,registerUserPlace,registerUserPincode,registerUserMail,registerUserPhone,registerUserPassword );
+                uploadBitmap(registerUsername,registerUserPlace,registerUserPinCode,registerUserMail,registerUserGender,registerUserPhone,registerUserPassword );
 
 
 
@@ -121,7 +127,7 @@ public class Registration extends AppCompatActivity {
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
 
-                image.setImageBitmap(bitmap);
+                pho.setImageBitmap(bitmap);
 
 
             } catch (IOException e) {
@@ -130,10 +136,7 @@ public class Registration extends AppCompatActivity {
         }
     }
 
-    //converting to bitarray
-    public byte[] getFileDataFromDrawable() {
-        return getFileDataFromDrawable(null);
-    }
+
 
     //converting to bitarray
     public byte[] getFileDataFromDrawable(Bitmap bitmap) {
@@ -141,7 +144,7 @@ public class Registration extends AppCompatActivity {
         bitmap.compress(Bitmap.CompressFormat.PNG, 80, byteArrayOutputStream);
         return byteArrayOutputStream.toByteArray();
     }
-    private void uploadBitmap(final String registerUsername, final String registerUserPlace, final String registerUserPincode, final String registerUserMail, final String registerUserPhone, final String registerUserPassword) {
+    private void uploadBitmap(final String registerUsername, final String registerUserPlace, final String registerUserPincode, final String registerUserMail, final String registerUserGender, final String registerUserPhone, final String registerUserPassword) {
 
 
         pd = new ProgressDialog(Registration.this);
@@ -158,7 +161,7 @@ public class Registration extends AppCompatActivity {
                             JSONObject obj = new JSONObject(new String(response.data));
 
                             if(obj.getString("status").equals("ok")){
-                                Toast.makeText(getApplicationContext(), "Registration success", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Registration successfully", Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(getApplicationContext(), Login.class);
                                 startActivity(i);
                             }
@@ -179,17 +182,19 @@ public class Registration extends AppCompatActivity {
                 }) {
 
 
+
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                SharedPreferences o = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 params.put("andUserName", registerUsername);//passing to python
                 params.put("andUserPlace", registerUserPlace);//passing to python
                 params.put("andUserPIN", registerUserPincode);
                 params.put("andUserMail", registerUserMail);
                 params.put("andUserPhone", registerUserPhone);
                 params.put("andUserPassword", registerUserPassword);
-//                params.put("andUserGender", registerUserGender);
+                params.put("andUserGender", registerUserGender);
+//                params.put("g",gender);
 
                 return params;
             }
@@ -205,10 +210,6 @@ public class Registration extends AppCompatActivity {
         };
 
         Volley.newRequestQueue(this).add(volleyMultipartRequest);
-
-
-
-}
-    {
     }
+
 }
