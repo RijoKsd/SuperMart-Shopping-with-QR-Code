@@ -66,7 +66,7 @@ public class customViewReply extends BaseAdapter {
 
 
 
-        tv1.setTextColor(Color.RED);//color setting
+        tv1.setTextColor(Color.BLACK);//color setting
         tv2.setTextColor(Color.BLACK);
         tv3.setTextColor(Color.BLACK);
         tv4.setTextColor(Color.BLACK);

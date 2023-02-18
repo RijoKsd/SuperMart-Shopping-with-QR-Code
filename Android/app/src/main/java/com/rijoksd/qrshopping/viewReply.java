@@ -28,10 +28,10 @@ import java.util.Map;
 public class viewReply extends AppCompatActivity {
     ListView list;
     SharedPreferences sh;
-    String ip, url,url1, lid;
+    String ip, url, url1, lid;
     FloatingActionButton fab;
 
-    String[]  complaintDate,complaint,replyDate,reply;
+    String[] complaintDate, complaint, replyDate, reply;
 
 
     @Override
@@ -44,7 +44,7 @@ public class viewReply extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),sendComplaint.class);
+                Intent i = new Intent(getApplicationContext(), sendComplaint.class);
                 startActivity(i);
             }
         });
@@ -83,7 +83,7 @@ public class viewReply extends AppCompatActivity {
 
 
                                 }
-                                list.setAdapter(new customViewReply(getApplicationContext(), complaintDate, complaint, replyDate,reply));//custom_view_service.xml and li is the listview object
+                                list.setAdapter(new customViewReply(getApplicationContext(), complaintDate, complaint, replyDate, reply));//custom_view_service.xml and li is the listview object
 
 
                             } else {
@@ -122,7 +122,6 @@ public class viewReply extends AppCompatActivity {
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(postRequest);
-
 
 
     }

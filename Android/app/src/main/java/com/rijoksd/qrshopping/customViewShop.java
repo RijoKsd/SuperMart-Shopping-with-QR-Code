@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.media.Image;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -103,18 +104,17 @@ public class customViewShop extends BaseAdapter {
         });
 
 
-
-
-
-        tv1.setTextColor(Color.RED);//color setting
+        tv1.setTextColor(Color.parseColor("#fea116"));
         tv2.setTextColor(Color.BLACK);
         tv3.setTextColor(Color.BLACK);
         tv4.setTextColor(Color.BLACK);
 
+        tv1.setAllCaps(true);
+        Typeface typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD);
+        tv1.setTypeface(typeface);
 
         tv1.setText(shopName[i]);
         tv2.setText(shopAddress[i]);
-
         tv3.setText(shopMail[i]);
         tv4.setText(shopPhone[i]);
 

@@ -95,15 +95,14 @@
 
     <Button
         android:id="@+id/add_to_cart_btn"
-        android:layout_width="354dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="30dp"
+        android:layout_width="338dp"
+        android:layout_height="38dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="30dp"
         android:background="#FEAF39"
         android:text="Add to cart"
         android:textColor="#FEFEFE"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/offerBtn" />
 

@@ -715,8 +715,11 @@ def view_bill_items(master_id):
 # ---------------------------------------------- shop section End ----------------------------------------------
 
 
-# ----------Android-----------
+# ---------------------------------------------- Android section ----------------------------------------------
+
 # and means android
+
+# ********************************************** Android user registration *********************************************
 
 @app.route('/and_user_register', methods=['post'])
 def and_user_register():
@@ -734,102 +737,110 @@ def and_user_register():
     image_path = "/static/images/" + date + '.jpg'
 
     db = Database()
-    q= db.insert("insert into login VALUES ('','"+and_register_user_mail+"','"+and_register_user_password+"','user')")
+    q = db.insert(
+        "insert into login VALUES ('','" + and_register_user_mail + "','" + and_register_user_password + "','user')")
 
-    db.insert("insert into `user` VALUES ('"+str(q)+"','"+and_register_user_name+"','"+and_register_user_place+"','"+and_register_user_pin+"','"+and_register_user_mail+"','"+and_register_gender+"','"+and_register_user_phone+"','"+str(image_path)+"')")
+    db.insert("insert into `user` VALUES ('" + str(
+        q) + "','" + and_register_user_name + "','" + and_register_user_place + "','" + and_register_user_pin + "','" + and_register_user_mail + "','" + and_register_gender + "','" + and_register_user_phone + "','" + str(
+        image_path) + "')")
     return jsonify(status="ok")
 
 
-
-
+# ********************************************** Android user login *********************************************
 
 @app.route('/and_login', methods=['post'])
 def and_login():
-        and_user_email = request.form['u']
-        and_user_password = request.form['p']
-        db = Database()
-        query = db.selectOne("select * from login where user_name = '" + and_user_email + "'and password = '" +and_user_password +"'")
-        if query is not None:
-            # if query['user_type'] == 'user'
-                return jsonify(status="OK", lid=query['login_id'],type=query['user_type'])
-        else:
-                return jsonify(status="NO")
+    and_user_email = request.form['u']
+    and_user_password = request.form['p']
+    db = Database()
+    query = db.selectOne(
+        "select * from login where user_name = '" + and_user_email + "'and password = '" + and_user_password + "'")
+    if query is not None:
+        # if query['user_type'] == 'user'
+        return jsonify(status="OK", lid=query['login_id'], type=query['user_type'])
+    else:
+        return jsonify(status="NO")
         # else:
         #     return jsonify(status="Invalid")
-    # return jsonify(status='OK')
+        # return jsonify(status='OK')
 
 
-# View profile
-@app.route('/and_view_profile',methods=['post'])
+# ********************************************** Android user view profile *********************************************
+
+@app.route('/and_view_profile', methods=['post'])
 def and_view_profile():
     user_id = request.form['userID']
     db = Database()
-    res=db.selectOne("select * from `user` where user_id ='"+user_id+"'")
+    res = db.selectOne("select * from `user` where user_id ='" + user_id + "'")
 
-    return jsonify(status="ok",data=res)
+    return jsonify(status="ok", data=res)
 
 
-# view shop
+# ********************************************** Android user view shop *********************************************
 
-@app.route('/and_view_shop',methods=['post'])
+@app.route('/and_view_shop', methods=['post'])
 def and_view_shop():
     db = Database()
-    data=db.select("select * from shop,login where shop.shop_id = login.login_id and login.user_type = 'shop'")
+    data = db.select("select * from shop,login where shop.shop_id = login.login_id and login.user_type = 'shop'")
 
-    return jsonify(status="ok",data=data)
+    return jsonify(status="ok", data=data)
 
+# ********************************************** Android user view product *********************************************
 
-@app.route('/and_view_product',methods=['post'])
+@app.route('/and_view_product', methods=['post'])
 def and_view_product():
     and_shop_id = request.form['shopID']
     db = Database()
-    data = db.select("select * from product,stock where product.product_id = stock.product_id and  product.shop_id ='"+and_shop_id+"' ")
-    return jsonify(status="ok",data=data)
+    data = db.select(
+        "select * from product,stock where product.product_id = stock.product_id and  product.shop_id ='" + and_shop_id + "' ")
+    return jsonify(status="ok", data=data)
 
 
-@app.route('/and_view_offer',methods = ['post'])
+@app.route('/and_view_offer', methods=['post'])
 def and_view_offer():
-     # Discount = ActualPrice - (ActualPrice * Discount_Rate / 100)
+    # Discount = ActualPrice - (ActualPrice * Discount_Rate / 100)
 
     product_id = request.form['productID']
     db = Database()
-    data= db.select("select product.price-(product.price*offer.offer/100) as total,offer.* from product,offer where offer.product_id=product.product_id and  product.product_id = '"+product_id+"'")
+    data = db.select(
+        "select product.price-(product.price*offer.offer/100) as total,offer.* from product,offer where offer.product_id=product.product_id and  product.product_id = '" + product_id + "'")
     # data= db.select("select * from offer where offer.product_id = '"+product_id+"'")
-    if len(data)>0:
+    if len(data) > 0:
         return jsonify(status="ok", data=data)
     else:
         return jsonify(status="no")
 
 
+# ********************************************** Android user send complaint *********************************************
 
-@app.route('/and_sendComplaint',methods=['post'])
+@app.route('/and_sendComplaint', methods=['post'])
 def and_sendComplaint():
     complaint = request.form['comp']
     uid = request.form['id']
     db = Database()
-    db.insert("insert into complaint values('','user','"+uid+"','"+complaint+"',curdate(),'pending','pending')")
+    db.insert("insert into complaint values('','user','" + uid + "','" + complaint + "',curdate(),'pending','pending')")
     return jsonify(status="ok")
 
 
+# ********************************************** Android user view reply *********************************************
 
-
-@app.route('/and_view_reply',methods = ['post'])
+@app.route('/and_view_reply', methods=['post'])
 def and_view_reply():
     user_id = request.form['id']
     db = Database()
-    data= db.select("select * from complaint where user_id = '"+user_id+"' ")
-    return jsonify(status="ok",data=data)
+    data = db.select("select * from complaint where user_id = '" + user_id + "' ")
+    return jsonify(status="ok", data=data)
 
 
+# ********************************************* Android user send feedback *********************************************
 
-
-
-# @app.route('/and_send_feedback',methods=['post'])
-# def and_send_feedback():
-#
-
-
-
+@app.route('/and_send_feedback', methods=['post'])
+def and_send_feedback():
+    feedback = request.form['fed']
+    uid = request.form['id']
+    db = Database()
+    db.insert("insert into feedback values('','" + uid + "','user',curdate(),'" + feedback + "')")
+    return jsonify(status="ok")
 
 
 if __name__ == '__main__':

@@ -70,7 +70,7 @@ public class customViewBill extends BaseAdapter {
         if (view == null) {
             gridView = new View(context);
             //gridView=inflator.inflate(R.layout.customview, null);
-            gridView = inflator.inflate(R.layout.activity_custom_view_shop, null);//same class name
+            gridView = inflator.inflate(R.layout.activity_custom_view_bill, null);//same class name
 
         } else {
             gridView = (View) view;

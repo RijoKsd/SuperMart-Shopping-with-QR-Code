@@ -73,9 +73,6 @@
             android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-        <activity
             android:name=".ip"
             android:exported="true">
             <intent-filter>

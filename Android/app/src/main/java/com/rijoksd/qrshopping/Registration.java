@@ -161,7 +161,7 @@ public class Registration extends AppCompatActivity {
                             JSONObject obj = new JSONObject(new String(response.data));
 
                             if(obj.getString("status").equals("ok")){
-                                Toast.makeText(getApplicationContext(), "Registration successfully", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Registration successfully completed", Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(getApplicationContext(), Login.class);
                                 startActivity(i);
                             }

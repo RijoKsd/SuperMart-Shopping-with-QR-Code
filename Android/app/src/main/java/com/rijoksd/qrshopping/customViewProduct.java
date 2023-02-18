@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -112,10 +113,13 @@ public class customViewProduct extends BaseAdapter {
 
 
 
-        tv1.setTextColor(Color.RED);//color setting
+        tv1.setTextColor(Color.BLACK);//color setting
         tv2.setTextColor(Color.BLACK);
         tv3.setTextColor(Color.BLACK);
 
+//        tv1.setAllCaps(true);
+        Typeface typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD);
+        tv1.setTypeface(typeface);
 
         //    Discount = Actual Price - (Actual Price * Discount_Rate/100)
 //        tv4 = productPrice - (productPrice * productOffer/100);

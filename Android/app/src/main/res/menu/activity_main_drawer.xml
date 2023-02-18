@@ -13,6 +13,10 @@
             android:icon="@drawable/shop"
             android:title="Shop" />
         <item
+            android:id="@+id/nav_cart"
+            android:icon="@drawable/cart"
+            android:title="Cart" />
+        <item
             android:id="@+id/nav_scan"
             android:icon="@drawable/qrcode"
             android:title="Scan" />

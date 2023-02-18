@@ -41,7 +41,7 @@ public class ViewBill extends AppCompatActivity {
         sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         sh.getString("ip", "");
         sh.getString("url", "");
-        url = sh.getString("url", "") + "/viewpost";
+        url = sh.getString("url", "") + "/and_view_bill";
 
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());

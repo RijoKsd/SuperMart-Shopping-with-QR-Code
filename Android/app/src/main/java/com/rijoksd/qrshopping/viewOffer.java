@@ -2,6 +2,7 @@ package com.rijoksd.qrshopping;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -28,7 +29,7 @@ public class viewOffer extends AppCompatActivity {
     SharedPreferences sh;
     String ip, url, lid;
 
-    String[]  offerPer, offerPrice,offerStartDate,offerEndDate;
+    String[] offerPer, offerPrice, offerStartDate, offerEndDate;
 
 
     @Override
@@ -60,23 +61,20 @@ public class viewOffer extends AppCompatActivity {
                                 offerStartDate = new String[js.length()];
                                 offerEndDate = new String[js.length()];
 
-
-
                                 for (int i = 0; i < js.length(); i++) {
                                     JSONObject u = js.getJSONObject(i);
                                     offerPer[i] = u.getString("offer");//dbcolumn name in double quotes
                                     offerPrice[i] = u.getString("total");
                                     offerStartDate[i] = u.getString("date_from");
                                     offerEndDate[i] = u.getString("date_to");
-
-
-
                                 }
-                                li.setAdapter(new customViewOffer(getApplicationContext(), offerPer,offerPrice,offerStartDate,offerEndDate));//custom_view_service.xml and li is the listview object
+                                li.setAdapter(new customViewOffer(getApplicationContext(), offerPer, offerPrice, offerStartDate, offerEndDate));//custom_view_service.xml and li is the listview object
 
 
                             } else {
-                                Toast.makeText(getApplicationContext(), "Not found", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "No offer for this product", Toast.LENGTH_LONG).show();
+//                                Intent i = new Intent(getApplicationContext(), viewProduct.class);
+//                                startActivity(i);
                             }
 
                         } catch (Exception e) {
@@ -98,8 +96,8 @@ public class viewOffer extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("loginID", sh.getString("lid",""));//passing to python
-                    params.put("productID", sh.getString("productID",""));//passing to python
+                params.put("loginID", sh.getString("lid", ""));//passing to python
+                params.put("productID", sh.getString("productID", ""));//passing to python
                 return params;
             }
         };
