@@ -1,12 +1,13 @@
 package com.rijoksd.qrshopping;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -22,25 +23,25 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class viewProduct extends AppCompatActivity {
+public class view_product_cart extends AppCompatActivity {
+
     ListView list;
     SharedPreferences sh;
     String ip, url, url1, lid;
-
-    String[] productID, productImage,productName,productQuantity,productPrice,sId,productDetails;
+    String[] productID, productImage,productName,productQuantity,productPrice,sId,billID;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_product);
+        setContentView(R.layout.activity_view_product_cart);
         list = (ListView) findViewById(R.id.list);
 
 
         sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         sh.getString("ip", "");
         sh.getString("url", "");
-        url = sh.getString("url", "") + "and_view_product";
+        url = sh.getString("url", "") + "and_view_product_cart";
 
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -61,7 +62,7 @@ public class viewProduct extends AppCompatActivity {
                                 productQuantity = new String[js.length()];
                                 productPrice = new String[js.length()];
                                 sId = new String[js.length()];
-                                productDetails = new String[js.length()];
+                                billID = new String[js.length()];
 
 
                                 for (int i = 0; i < js.length(); i++) {
@@ -70,13 +71,13 @@ public class viewProduct extends AppCompatActivity {
                                     productID[i] = u.getString("product_id");
                                     productImage[i] = u.getString("image");
                                     productName[i] = u.getString("name");
-                                    productDetails[i] = u.getString("details");
                                     productQuantity[i] = u.getString("quantity");
                                     productPrice[i] = u.getString("price");
                                     sId[i] = u.getString("shop_id");
+                                    billID[i] = u.getString("bill_id");
 
                                 }
-                                list.setAdapter(new customViewProduct(getApplicationContext(), productID, productImage, productName,productDetails, productQuantity, productPrice,sId ));//custom_view_service.xml and li is the listview object
+                                list.setAdapter(new custom_View_Product_cart(getApplicationContext(), productID, productImage, productName, productQuantity, productPrice,sId,billID));//custom_view_service.xml and li is the listview object
 
 
                             } else {

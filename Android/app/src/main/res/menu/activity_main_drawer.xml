@@ -24,10 +24,10 @@
             android:id="@+id/nav_bill"
             android:icon="@drawable/bill"
             android:title="Bill" />
-        <item
-            android:id="@+id/nav_rating"
-            android:icon="@drawable/rating"
-            android:title="Rating" />
+<!--        <item-->
+<!--            android:id="@+id/nav_rating"-->
+<!--            android:icon="@drawable/rating"-->
+<!--            android:title="Rating" />-->
         <item
             android:id="@+id/nav_feedback"
             android:icon="@drawable/feedback"

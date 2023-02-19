@@ -1,13 +1,10 @@
 package com.rijoksd.qrshopping;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,10 +19,10 @@ import com.squareup.picasso.Picasso;
 public class customViewProduct extends BaseAdapter {
 
 
-    String[] productID,productImage,productName,productQuantity,productPrice ;
+    String[] productID,productImage,productName,productQuantity,productPrice,sId,productDetails ;
     private Context context;
 
-    public customViewProduct(Context applicationContext, String[] productID, String[] productImage, String[] productName, String[] productQuantity, String[] productPrice ) {
+    public customViewProduct(Context applicationContext, String[] productID, String[] productImage, String[] productName, String[] productQuantity, String[] productPrice, String[] sId,String[] productDetails ) {
 
         this.context = applicationContext;
         this.productID = productID;
@@ -33,6 +30,8 @@ public class customViewProduct extends BaseAdapter {
         this.productName = productName;
         this.productQuantity = productQuantity;
         this.productPrice = productPrice;
+        this.sId = sId;
+        this.productDetails = productDetails;
 
     }
 
@@ -66,12 +65,14 @@ public class customViewProduct extends BaseAdapter {
 
         }
         TextView tv1 = (TextView) gridView.findViewById(R.id.textView17);
-        ImageView imageView = (ImageView) gridView.findViewById(R.id.imageView3);
+        ImageView imageView = (ImageView) gridView.findViewById(R.id.productImage);
         TextView tv2 = (TextView) gridView.findViewById(R.id.textView21);
         TextView tv3 = (TextView) gridView.findViewById(R.id.textView19);
+        TextView tv4 = (TextView) gridView.findViewById(R.id.details);
 
 
-        Button bt1 = (Button) gridView.findViewById(R.id.add_to_cart_btn);
+
+//        Button bt1 = (Button) gridView.findViewById(R.id.add_to_cart_btn);
 
         Button offerBtn = (Button) gridView.findViewById(R.id.offerBtn);
         offerBtn.setTag(i);
@@ -92,9 +93,7 @@ public class customViewProduct extends BaseAdapter {
             }
         });
 
-
-        bt1.setTag(i);
-
+//        bt1.setTag(i);
 //        bt1.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -103,19 +102,25 @@ public class customViewProduct extends BaseAdapter {
 //
 //                SharedPreferences.Editor ed=sh.edit();
 //                ed.putString("productID",productID[pos]);
+//                ed.putString("shopID",sId[pos]);
+//                ed.putString("productPrice",productPrice[pos]);
 //                ed.commit();
-//                Intent i=new Intent(context.getApplicationContext(),viewProduct.class);
+//                Intent i=new Intent(context.getApplicationContext(),quantity.class);
 //                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //                context.startActivity(i);
+//
 //
 //            }
 //        });
 
 
 
+
+
         tv1.setTextColor(Color.BLACK);//color setting
         tv2.setTextColor(Color.BLACK);
         tv3.setTextColor(Color.BLACK);
+        tv4.setTextColor(Color.BLACK);
 
 //        tv1.setAllCaps(true);
         Typeface typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD);
@@ -129,6 +134,7 @@ public class customViewProduct extends BaseAdapter {
         tv1.setText(productName[i]);
         tv2.setText(productQuantity[i]);
         tv3.setText(productPrice[i]);
+        tv4.setText(productPrice[i]);
 
 
 

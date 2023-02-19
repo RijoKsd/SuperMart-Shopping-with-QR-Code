@@ -17,6 +17,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".quantity"
+            android:exported="false" />
+        <activity
+            android:name=".view_product_cart"
+            android:exported="false" />
+        <activity
+            android:name=".custom_View_Product_cart"
+            android:exported="false" />
+        <activity
             android:name=".customViewOffer"
             android:exported="false" />
         <activity

@@ -25,9 +25,11 @@ CREATE TABLE `bill` (
   `product_id` int(20) DEFAULT NULL,
   `quantity` int(20) DEFAULT NULL,
   PRIMARY KEY (`bill_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 /*Data for the table `bill` */
+
+insert  into `bill`(`bill_id`,`master_id`,`product_id`,`quantity`) values (3,3,21,10),(4,3,26,4),(5,3,25,4),(6,4,20,5),(7,4,23,7),(8,3,27,1),(9,3,29,5),(10,5,25,1),(11,5,21,1),(12,5,26,1),(13,5,25,1),(14,5,26,1),(15,5,20,10),(16,5,23,1),(17,5,25,0);
 
 /*Table structure for table `bill_master` */
 
@@ -41,9 +43,11 @@ CREATE TABLE `bill_master` (
   `date` date DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`master_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `bill_master` */
+
+insert  into `bill_master`(`master_id`,`shop_id`,`user_id`,`amount`,`date`,`status`) values (3,20,2,54,'2023-02-19','add to cart'),(4,18,32,100,'2023-02-19','add to cart'),(5,20,3,30,'2023-02-19','add to cart');
 
 /*Table structure for table `complaint` */
 
@@ -58,11 +62,11 @@ CREATE TABLE `complaint` (
   `reply_date` varchar(200) DEFAULT 'pending',
   `reply` varchar(200) DEFAULT 'pending',
   PRIMARY KEY (`complaint_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 
 /*Data for the table `complaint` */
 
-insert  into `complaint`(`complaint_id`,`type`,`user_id`,`complaint`,`date`,`reply_date`,`reply`) values (1,'user',2,'worst app','2022-12-28','2022-12-30','ok'),(2,'user',3,'use more memmory','2022-12-26','2022-12-30','we fixed it\r\n'),(3,'user',4,'more ads','2022-12-29','2023-01-02','we fixed it'),(22,'shop',18,'some glitches in dashboard','2023-01-25','2023-01-25','We fixed this problem in this update, please update to latest version'),(23,'shop',20,'complaint is sending...\r\n','2023-02-12','2023-02-12','reply is sending...\r\n'),(24,'user',2,'image section not showing in registration section','2023-02-14','pending','pending'),(25,'user',4,'xheck','2023-02-14','pending','pending'),(26,'user',4,'xheck','2023-02-14','pending','pending'),(27,'user',2,'checkkkk','2023-02-14','pending','pending'),(28,'user',2,'28387rbdnf','2023-02-14','pending','pending'),(29,'user',2,'chev','2023-02-14','pending','pending'),(30,'user',3,'zbjdu','2023-02-14','2023-02-14','fixed\r\n');
+insert  into `complaint`(`complaint_id`,`type`,`user_id`,`complaint`,`date`,`reply_date`,`reply`) values (33,'user',2,'registration image selection not found','2023-02-15','2023-02-19','We fixed it in this update, please use latest version'),(34,'user',30,'More memmory using','2023-02-15','pending','pending'),(35,'user',31,'bad UI','2023-02-15','pending','pending'),(36,'user',31,'using more memmory ','2023-02-15','pending','pending');
 
 /*Table structure for table `feedback` */
 
@@ -75,11 +79,11 @@ CREATE TABLE `feedback` (
   `date` date DEFAULT NULL,
   `feedback` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`feedback_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 /*Data for the table `feedback` */
 
-insert  into `feedback`(`feedback_id`,`sender_id`,`type`,`date`,`feedback`) values (1,2,'user','2022-02-02','N/W slow'),(4,3,'user','2022-02-22','GOOD'),(21,18,'shop','2023-01-25','very use full app'),(22,20,'shop','2023-02-12','Feedback is sending...');
+insert  into `feedback`(`feedback_id`,`sender_id`,`type`,`date`,`feedback`) values (25,30,'user','2023-02-15','good app????????'),(26,31,'user','2023-02-15','good application '),(27,2,'user','2023-02-19','today');
 
 /*Table structure for table `login` */
 
@@ -91,11 +95,11 @@ CREATE TABLE `login` (
   `password` varchar(40) DEFAULT NULL,
   `user_type` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`login_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
 /*Data for the table `login` */
 
-insert  into `login`(`login_id`,`user_name`,`password`,`user_type`) values (1,'admin','admin','admin'),(2,'rijo@gmail.com','rijo','user'),(3,'salman','salman','user'),(4,'sachin','sachin','user'),(18,'jio@gmail.com','jio','shop'),(19,'lenin','lenin','user'),(20,'spicy@gmail.com','spicy','shop'),(21,'max@gmail.com','max','shop'),(22,'lucky@gmail.com','lucky','pending'),(23,'aaa@gmail.com','aaa','shop'),(24,'test@gmail.com','test','pending'),(25,'aarijo@gmail.com','123','user'),(26,'aa@gmail.com','123','user'),(27,'aaaa@gmail.com','123','user'),(28,'h@gmail.com','111','user'),(29,'sanesh@gmail.com','sanesh','user');
+insert  into `login`(`login_id`,`user_name`,`password`,`user_type`) values (1,'admin','admin','admin'),(2,'rijo@gmail.com','rijo','user'),(3,'salman@gmail.com','salman','user'),(18,'jio@gmail.com','jio','shop'),(20,'spicy@gmail.com','spicy','shop'),(21,'max@gmail.com','max','shop'),(22,'lucky@gmail.com','lucky','pending'),(23,'aaa@gmail.com','aaa','shop'),(24,'test@gmail.com','test','pending'),(29,'sanesh@gmail.com','sanesh','user'),(30,'lenin@gmail.com','lenin','user'),(31,'sachin@gmail.com','sachin','user'),(32,'akash@gmail.com','akash','user');
 
 /*Table structure for table `offer` */
 
@@ -108,7 +112,7 @@ CREATE TABLE `offer` (
   `date_from` date DEFAULT NULL,
   `date_to` date DEFAULT NULL,
   PRIMARY KEY (`offer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 /*Data for the table `offer` */
 
@@ -143,9 +147,11 @@ CREATE TABLE `rating` (
   `rating` int(20) DEFAULT NULL,
   `shop_id` int(20) DEFAULT NULL,
   PRIMARY KEY (`rating_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `rating` */
+
+insert  into `rating`(`rating_id`,`date`,`user_id`,`rating`,`shop_id`) values (1,'2023-02-19',31,0,18),(2,'2023-02-19',31,0,20),(3,'2023-02-19',2,1,18),(4,'2023-02-19',2,5,20),(5,'2023-02-19',2,4,21);
 
 /*Table structure for table `shop` */
 
@@ -194,11 +200,11 @@ CREATE TABLE `user` (
   `phone_no` bigint(20) DEFAULT NULL,
   `image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
 /*Data for the table `user` */
 
-insert  into `user`(`user_id`,`name`,`place`,`pincode`,`email`,`gender`,`phone_no`,`image`) values (2,'rijo','ksd',671541,'rijo@gmail.com','male',9446626926,'/static/images/230125-073807 .jpg'),(3,'salman','ksd',671123,'salman@gmail.com','male',9456324789,'/static/images/230125-211830 .jpg'),(4,'sachin','ksd',671541,'sachin@gmail.com','male',7584126574,'/static/images/230104-223112 .jpg'),(27,'aa','hs',976546,'aaaa@gmail.com','Female',9977664433,'/static/images/230214-112029 .jpg'),(28,'from','CCM',879,'h@gmail.com','Other',55879776,'/static/images/230214-112629 .jpg'),(29,'Sanesh','kasargod ',671541,'sanesh@gmail.com','Male',9468123564,'/static/images/230214-141007 .jpg');
+insert  into `user`(`user_id`,`name`,`place`,`pincode`,`email`,`gender`,`phone_no`,`image`) values (2,'rijo','ksd',671541,'rijo@gmail.com','male',9446626926,'/static/images/230125-073807 .jpg'),(3,'salman','ksd',671123,'salman@gmail.com','male',9456324789,'/static/images/230125-211830 .jpg'),(29,'Sanesh','kasargod ',671541,'sanesh@gmail.com','Male',9468123564,'/static/images/230214-141007 .jpg'),(30,'Lenin','Kasargod',671541,'lenin@gmail.com','Male',9421386480,'/static/images/230215-073018 .jpg'),(31,'Sachin','Kannur',671544,'sachin@gmail.com','Male',9564812398,'/static/images/230215-195411 .jpg'),(32,'Akash','Udma',671543,'akash@gmail.com','Male',9547832159,'/static/images/230219-130138 .jpg');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

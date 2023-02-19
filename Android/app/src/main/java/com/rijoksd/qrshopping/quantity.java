@@ -1,15 +1,15 @@
 package com.rijoksd.qrshopping;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RatingBar;
+import android.widget.EditText;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -24,28 +24,30 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class addRating extends AppCompatActivity {
-    RatingBar ratingBar;
-    Button ratingButton;
+public class quantity extends AppCompatActivity {
+    EditText quantity;
+    Button quantityBtn;
     SharedPreferences sh;
     String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_rating);
-        ratingBar=findViewById(R.id.ratingBar);
-        ratingButton=findViewById(R.id.button7);
+        setContentView(R.layout.activity_quantity);
+        quantity=findViewById(R.id.quantity);
+        quantityBtn=findViewById(R.id.quantityBtn);
 
-        ratingButton.setOnClickListener(new View.OnClickListener() {
+        quantityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String rating = String.valueOf(ratingBar.getRating());
+                final String productQuantity = quantity.getText().toString();
 
                 sh= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 sh.getString("ip","");
                 sh.getString("url","");
-                url=sh.getString("url","")+"and_add_rating";
+                url=sh.getString("url","")+"and_quantity";
+
+
 
 
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -56,16 +58,20 @@ public class addRating extends AppCompatActivity {
                                 //  Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
 
                                 try {
-
                                     JSONObject jsonObj = new JSONObject(response);
                                     if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
-                                        Toast.makeText(addRating.this, "Rating Send", Toast.LENGTH_SHORT).show();
-                                        Intent i =new Intent(getApplicationContext(),viewShop.class);
+                                        Toast.makeText(quantity.this, "Quantity send", Toast.LENGTH_SHORT).show();
+                                        Intent i =new Intent(getApplicationContext(),viewProduct.class);
                                         startActivity(i);
 
-                                    }else if (jsonObj.getString("status").equalsIgnoreCase("updated")) {
-                                        Toast.makeText(addRating.this, "Rating Send", Toast.LENGTH_SHORT).show();
-                                        Intent i =new Intent(getApplicationContext(),viewShop.class);
+                                    } if (jsonObj.getString("status").equalsIgnoreCase("cart")) {
+                                        Toast.makeText(quantity.this, "Add to cart", Toast.LENGTH_SHORT).show();
+                                        Intent i =new Intent(getApplicationContext(),viewProduct.class);
+                                        startActivity(i);
+
+                                    } if (jsonObj.getString("status").equalsIgnoreCase("greater")) {
+                                        Toast.makeText(quantity.this, "Out of stock", Toast.LENGTH_SHORT).show();
+                                        Intent i =new Intent(getApplicationContext(),viewProduct.class);
                                         startActivity(i);
 
                                     } else {
@@ -86,18 +92,17 @@ public class addRating extends AppCompatActivity {
                         }
                 ) {
 
-                    //                value Passing android to python
+                    //            value Passing android to python
                     @Override
                     protected Map<String, String> getParams() {
                         SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                         Map<String, String> params = new HashMap<String, String>();
 
-                        params.put("rate", rating);//passing to python
+                        params.put("qua",productQuantity);//passing to python
                         params.put("id", sh.getString("lid",""));//passing to python
                         params.put("shopID", sh.getString("shopID",""));//passing to python
-
-
-
+                        params.put("productPrice", sh.getString("productPrice",""));//passing to python
+                        params.put("productID", sh.getString("productID",""));//passing to python
                         return params;
                     }
                 };

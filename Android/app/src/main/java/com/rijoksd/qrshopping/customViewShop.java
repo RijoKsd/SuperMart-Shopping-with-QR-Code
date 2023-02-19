@@ -86,6 +86,23 @@ public class customViewShop extends BaseAdapter {
         TextView tv4 = (TextView) gridView.findViewById(R.id.textView11);
         Button bt1 = (Button) gridView.findViewById(R.id.view_product_btn);
 
+        ImageView star= (ImageView) gridView.findViewById(R.id.star);
+        star.setTag(i);
+        star.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int pos=(int) view.getTag();
+                SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
+
+                SharedPreferences.Editor ed=sh.edit();
+                ed.putString("shopID",shopID[pos]);
+                ed.commit();
+                Intent i=new Intent(context.getApplicationContext(),addRating.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(i);
+
+            }
+        });
         bt1.setTag(i);
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
