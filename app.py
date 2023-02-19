@@ -785,6 +785,7 @@ def and_view_shop():
 
     return jsonify(status="ok", data=data)
 
+
 # ********************************************** Android user view product *********************************************
 
 @app.route('/and_view_product', methods=['post'])
@@ -796,10 +797,11 @@ def and_view_product():
     return jsonify(status="ok", data=data)
 
 
+# ********************************************** Android user view offer *********************************************
+
 @app.route('/and_view_offer', methods=['post'])
 def and_view_offer():
     # Discount = ActualPrice - (ActualPrice * Discount_Rate / 100)
-
     product_id = request.form['productID']
     db = Database()
     data = db.select(
@@ -842,24 +844,28 @@ def and_send_feedback():
     db.insert("insert into feedback values('','" + uid + "','user',curdate(),'" + feedback + "')")
     return jsonify(status="ok")
 
+
 @app.route('/and_add_rating', methods=['post'])
 def and_add_rating():
     rate = request.form['rate']
     uid = request.form['id']
     shopID = request.form['shopID']
     db = Database()
-    res = db.selectOne("select * from rating where shop_id = '"+shopID+"' and user_id = '"+uid+"'")
+    res = db.selectOne("select * from rating where shop_id = '" + shopID + "' and user_id = '" + uid + "'")
     if res is not None:
         db = Database()
-        db.update("update rating set rating = '"+rate+"' where  shop_id = '"+shopID+"' and user_id = '"+uid+"'")
-        return  jsonify(status="updated")
+        db.update(
+            "update rating set rating = '" + rate + "' where  shop_id = '" + shopID + "' and user_id = '" + uid + "'")
+        return jsonify(status="updated")
     else:
         db = Database()
-        db.insert("insert into rating VALUES ('',curdate(),'"+uid+"','"+rate+"','"+shopID+"')")
+        db.insert("insert into rating VALUES ('',curdate(),'" + uid + "','" + rate + "','" + shopID + "')")
         return jsonify(status="ok")
 
 
-@app.route('/and_quantity',methods=['post'])
+# ********************************************** Android user view quantity *********************************************
+
+@app.route('/and_quantity', methods=['post'])
 def and_quantity():
     productID = request.form['productID']
     product_quantity = request.form['qua']
@@ -867,36 +873,43 @@ def and_quantity():
     product_price = request.form['productPrice']
     shop_ID = request.form['shopID']
     db = Database()
-    res1 = db.selectOne("select * from stock,product where stock.product_id = product.product_id and product.product_id = '"+productID+"'")
+    res1 = db.selectOne(
+        "select * from stock,product where stock.product_id = product.product_id and product.product_id = '" + productID + "'")
     if product_quantity >= str(res1['quantity']):
-        return  jsonify(status="greater")
+        return jsonify(status="greater")
     else:
-        res0=db.selectOne("select * from bill_master where user_id = '"+uid+"'")
+        res0 = db.selectOne("select * from bill_master where user_id = '" + uid + "'")
         if res0 is not None:
             db = Database()
-            db.insert("insert into bill VALUES ('','"+str(res0['master_id'])+"','" + productID + "','" + product_quantity + "')")
+            db.insert("insert into bill VALUES ('','" + str(
+                res0['master_id']) + "','" + productID + "','" + product_quantity + "')")
             return jsonify(status="cart")
         else:
             db = Database()
-            res=db.insert("insert into bill_master VALUES ('','"+shop_ID+"','"+uid+"','"+product_price+"',curdate(),'add to cart')")
-            db.insert("insert into bill VALUES ('','"+str(res)+"','" + productID + "','" + product_quantity + "')")
+            res = db.insert(
+                "insert into bill_master VALUES ('','" + shop_ID + "','" + uid + "','" + product_price + "',curdate(),'add to cart')")
+            db.insert("insert into bill VALUES ('','" + str(res) + "','" + productID + "','" + product_quantity + "')")
             return jsonify(status="ok")
 
 
-@app.route('/and_view_product_cart',methods=['post'])
+# ********************************************** Android user view product cart *********************************************
+
+@app.route('/and_view_product_cart', methods=['post'])
 def and_view_product_cart():
     uid = request.form['id']
     db = Database()
-    res=db.select("select * from bill,bill_master,product where bill.master_id=bill_master.master_id and bill_master.user_id='"+uid+"' and bill.product_id = product.product_id")
+    res = db.select(
+        "select * from bill,bill_master,product where bill.master_id=bill_master.master_id and bill_master.user_id='" + uid + "' and bill.product_id = product.product_id")
+    return jsonify(status="ok", data=res)
 
 
-    return jsonify(status="ok",data=res)
+# ********************************************** Android user delete cart product *********************************************
 
-@app.route('/and_product_cart_delete',methods=['post'])
+@app.route('/and_product_cart_delete', methods=['post'])
 def and_product_cart_delete():
     bill_ID = request.form['bill']
     db = Database()
-    db.delete("delete from bill where bill_id = '"+bill_ID+"' ")
+    db.delete("delete from bill where bill_id = '" + bill_ID + "' ")
     return jsonify(status="ok")
 
 
