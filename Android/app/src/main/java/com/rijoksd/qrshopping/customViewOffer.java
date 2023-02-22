@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-
-
 public class customViewOffer extends BaseAdapter {
     String[] offerPercentage,offerPrice,offerStartDate,offerEndDate;
     private Context context;

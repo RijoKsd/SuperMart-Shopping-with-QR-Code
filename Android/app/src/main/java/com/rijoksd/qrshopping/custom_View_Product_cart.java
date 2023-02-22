@@ -79,13 +79,14 @@ public class custom_View_Product_cart extends BaseAdapter {
             gridView = (View) view;
 
         }
-        TextView tv1 = (TextView) gridView.findViewById(R.id.textView17);
+        TextView tv1 = (TextView) gridView.findViewById(R.id.billProduct);
         ImageView imageView = (ImageView) gridView.findViewById(R.id.productImage);
-        TextView tv2 = (TextView) gridView.findViewById(R.id.textView21);
-        TextView tv3 = (TextView) gridView.findViewById(R.id.textView19);
+        TextView tv2 = (TextView) gridView.findViewById(R.id.billQuantity);
+        TextView tv3 = (TextView) gridView.findViewById(R.id.billPrice);
 
         ImageView delete = (ImageView) gridView.findViewById(R.id.delete);
         delete.setTag(i);
+
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,7 +99,7 @@ public class custom_View_Product_cart extends BaseAdapter {
                 url=sh.getString("url","")+"and_product_cart_delete";
 
                 RequestQueue requestQueue = Volley.newRequestQueue(context.getApplicationContext());
-                StringRequest postRequest = new StringRequest(Request.Method.POST, url1,
+                StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -107,12 +108,14 @@ public class custom_View_Product_cart extends BaseAdapter {
                                 try {
                                     JSONObject jsonObj = new JSONObject(response);
                                     if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
+                                        Toast.makeText(context, "Product deleted", Toast.LENGTH_SHORT).show();
 //                                        Toast.makeText(custom_View_Product_cart.this, "Product deleted", Toast.LENGTH_SHORT).show();
-                                        Intent i =new Intent(context.getApplicationContext(),UserHome.class);
+                                        Intent i =new Intent(context.getApplicationContext(),view_product_cart.class);
 //                                                        i.putExtra("pid",id);
+                                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                         context.startActivity(i);
                                     } else {
-                                        Toast.makeText(context.getApplicationContext(), "Not found", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(context.getApplicationContext(), "Cart is empty", Toast.LENGTH_LONG).show();
                                     }
 
                                 } catch (Exception e) {
@@ -160,7 +163,7 @@ public class custom_View_Product_cart extends BaseAdapter {
 
 
 
-        Button bt1 = (Button) gridView.findViewById(R.id.add_to_cart_btn);
+        Button bt1 = (Button) gridView.findViewById(R.id.buyProduct);
 
 
         Button offerBtn = (Button) gridView.findViewById(R.id.offerBtn);
@@ -188,7 +191,6 @@ public class custom_View_Product_cart extends BaseAdapter {
             public void onClick(View view) {
                 int pos = (int) view.getTag();
                 SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
-
                 SharedPreferences.Editor ed=sh.edit();
                 ed.putString("productID",productID[pos]);
                 ed.putString("shopID",sId[pos]);
@@ -203,7 +205,7 @@ public class custom_View_Product_cart extends BaseAdapter {
         });
 
 
-        bt1.setTag(i);
+//        bt1.setTag(i);
 
 //        bt1.setOnClickListener(new View.OnClickListener() {
 //            @Override

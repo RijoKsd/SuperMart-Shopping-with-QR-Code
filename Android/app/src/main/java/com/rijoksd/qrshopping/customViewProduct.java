@@ -22,16 +22,17 @@ public class customViewProduct extends BaseAdapter {
     String[] productID,productImage,productName,productQuantity,productPrice,sId,productDetails ;
     private Context context;
 
-    public customViewProduct(Context applicationContext, String[] productID, String[] productImage, String[] productName, String[] productQuantity, String[] productPrice, String[] sId,String[] productDetails ) {
+    public customViewProduct(Context applicationContext, String[] productID, String[] productImage, String[] productName,String[] productDetails, String[] productQuantity, String[] productPrice, String[] sId ) {
 
         this.context = applicationContext;
         this.productID = productID;
         this.productImage = productImage;
         this.productName = productName;
+        this.productDetails = productDetails;
         this.productQuantity = productQuantity;
         this.productPrice = productPrice;
         this.sId = sId;
-        this.productDetails = productDetails;
+
 
     }
 
@@ -64,15 +65,15 @@ public class customViewProduct extends BaseAdapter {
             gridView = (View) view;
 
         }
-        TextView tv1 = (TextView) gridView.findViewById(R.id.textView17);
+        TextView tv1 = (TextView) gridView.findViewById(R.id.billProduct);
         ImageView imageView = (ImageView) gridView.findViewById(R.id.productImage);
-        TextView tv2 = (TextView) gridView.findViewById(R.id.textView21);
-        TextView tv3 = (TextView) gridView.findViewById(R.id.textView19);
-        TextView tv4 = (TextView) gridView.findViewById(R.id.details);
+        TextView tv2 = (TextView) gridView.findViewById(R.id.billQuantity);
+        TextView tv3 = (TextView) gridView.findViewById(R.id.billPrice);
+        TextView tv4 = (TextView) gridView.findViewById(R.id.billTotal);
 
 
 
-//        Button bt1 = (Button) gridView.findViewById(R.id.add_to_cart_btn);
+        Button bt1 = (Button) gridView.findViewById(R.id.buyProduct);
 
         Button offerBtn = (Button) gridView.findViewById(R.id.offerBtn);
         offerBtn.setTag(i);
@@ -93,28 +94,25 @@ public class customViewProduct extends BaseAdapter {
             }
         });
 
-//        bt1.setTag(i);
-//        bt1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                int pos = (int) view.getTag();
-//                SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
-//
-//                SharedPreferences.Editor ed=sh.edit();
-//                ed.putString("productID",productID[pos]);
-//                ed.putString("shopID",sId[pos]);
-//                ed.putString("productPrice",productPrice[pos]);
-//                ed.commit();
-//                Intent i=new Intent(context.getApplicationContext(),quantity.class);
-//                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                context.startActivity(i);
-//
-//
-//            }
-//        });
+        bt1.setTag(i);
+        bt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int pos = (int) view.getTag();
+                SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
+
+                SharedPreferences.Editor ed=sh.edit();
+                ed.putString("productID",productID[pos]);
+                ed.putString("shopID",sId[pos]);
+                ed.putString("productPrice",productPrice[pos]);
+                ed.commit();
+                Intent i=new Intent(context.getApplicationContext(),quantity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(i);
 
 
-
+            }
+        });
 
 
         tv1.setTextColor(Color.BLACK);//color setting
@@ -134,7 +132,7 @@ public class customViewProduct extends BaseAdapter {
         tv1.setText(productName[i]);
         tv2.setText(productQuantity[i]);
         tv3.setText(productPrice[i]);
-        tv4.setText(productPrice[i]);
+        tv4.setText(productDetails[i]);
 
 
 

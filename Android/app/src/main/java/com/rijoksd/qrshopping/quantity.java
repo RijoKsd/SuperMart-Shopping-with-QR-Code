@@ -64,6 +64,11 @@ public class quantity extends AppCompatActivity {
                                         Intent i =new Intent(getApplicationContext(),viewProduct.class);
                                         startActivity(i);
 
+                                    }if (jsonObj.getString("status").equalsIgnoreCase("update")) {
+                                        Toast.makeText(quantity.this, "Quantity updated", Toast.LENGTH_SHORT).show();
+                                        Intent i =new Intent(getApplicationContext(),viewProduct.class);
+                                        startActivity(i);
+
                                     } if (jsonObj.getString("status").equalsIgnoreCase("cart")) {
                                         Toast.makeText(quantity.this, "Add to cart", Toast.LENGTH_SHORT).show();
                                         Intent i =new Intent(getApplicationContext(),viewProduct.class);

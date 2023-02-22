@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".customViewReply">
 
+
     <TextView
         android:id="@+id/textView22"
         android:layout_width="wrap_content"

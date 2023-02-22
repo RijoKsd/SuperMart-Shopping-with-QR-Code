@@ -2,11 +2,13 @@ package com.rijoksd.qrshopping;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -30,10 +32,12 @@ public class viewReply extends AppCompatActivity {
     SharedPreferences sh;
     String ip, url, url1, lid;
     FloatingActionButton fab;
+    ImageView arrow;
 
     String[] complaintDate, complaint, replyDate, reply;
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +45,14 @@ public class viewReply extends AppCompatActivity {
 
         list = (ListView) findViewById(R.id.list);
         fab = findViewById(R.id.floatingActionButton);
+        arrow = (ImageView) findViewById(R.id.arrowLeft);
+        arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),UserHome.class);
+                startActivity(i);
+            }
+        });
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

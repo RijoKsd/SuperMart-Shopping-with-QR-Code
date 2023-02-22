@@ -3,6 +3,7 @@ package com.rijoksd.qrshopping;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -32,18 +34,22 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import kotlin.jvm.internal.PackageReference;
+
 public class customViewBill extends BaseAdapter {
-    String[] billDate,billAmount;
+    String[] billDate,billAmount,billID,billShopName;
 
     private Context context;
 
-    Button b1;
 
-    public customViewBill(Context applicationContext, String[] billDate, String[] billAmount) {
+
+    public customViewBill(Context applicationContext,String[] billShopName, String[] billDate, String[] billAmount, String[] billID) {
 
         this.context = applicationContext;
+        this.billShopName = billShopName;
         this.billDate = billDate;
         this.billAmount = billAmount;
+        this.billID = billID;
     }
 
 
@@ -51,7 +57,6 @@ public class customViewBill extends BaseAdapter {
     public int getCount() {
         return billAmount.length;
     }
-
     @Override
     public Object getItem(int i) {
         return null;
@@ -78,22 +83,36 @@ public class customViewBill extends BaseAdapter {
         }
         TextView tv1 = (TextView) gridView.findViewById(R.id.textView14);
         TextView tv2 = (TextView) gridView.findViewById(R.id.textView16);
+        TextView tv3 = (TextView) gridView.findViewById(R.id.billShopName);
+        Button viewAll = (Button) gridView.findViewById(R.id.viewBillProduct);
+
+        viewAll.setTag(i);
+        viewAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int pos = (int) view.getTag();
+                SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
+
+                SharedPreferences.Editor ed=sh.edit();
+                ed.putString("billID",billID[pos]);
+                ed.commit();
+                Intent i=new Intent(context.getApplicationContext(),viewBillProduct.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(i);
+            }
+        });
 
 
 
 
-
-        tv1.setTextColor(Color.RED);//color setting
+        tv1.setTextColor(Color.BLACK);//color setting
         tv2.setTextColor(Color.BLACK);
+        tv3.setTextColor(Color.BLACK);
 
 
         tv1.setText(billDate[i]);
         tv2.setText(billAmount[i]);
-
-
-
-
-//
+        tv3.setText(billShopName[i]);
         return gridView;
     }
 }

@@ -32,6 +32,14 @@ public class Login extends AppCompatActivity {
     SharedPreferences sh;
     String url;
 
+   //Logout section start
+    @Override
+    public void onBackPressed() {
+         Intent i = new Intent(getApplicationContext(),ip.class);
+         startActivity(i);
+
+    }
+    //Logout section end
 
 
     @SuppressLint("MissingInflatedId")

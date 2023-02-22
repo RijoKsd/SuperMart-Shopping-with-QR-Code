@@ -2,9 +2,11 @@ package com.rijoksd.qrshopping;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,7 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class viewProfile extends AppCompatActivity {
-    ImageView profileImage;
+    ImageView profileImage,arrow;
     TextView profileName, profileGender, profileMail, profilePlace, profilePin, profilePhone;
 
     SharedPreferences sh;
@@ -41,6 +43,14 @@ public class viewProfile extends AppCompatActivity {
         profilePlace = (TextView)findViewById(R.id.profilePlace);
         profilePin  =(TextView) findViewById(R.id.profilePin);
         profilePhone = (TextView)findViewById(R.id.profilePhone);
+        arrow = (ImageView) findViewById(R.id.arrowLeft);
+        arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i= new Intent(getApplicationContext(),UserHome.class);
+                startActivity(i);
+            }
+        });
 
         sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         ip = sh.getString("ip", "");

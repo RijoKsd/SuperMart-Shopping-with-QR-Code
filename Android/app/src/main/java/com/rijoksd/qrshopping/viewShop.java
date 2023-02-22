@@ -2,9 +2,13 @@ package com.rijoksd.qrshopping;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -24,17 +28,29 @@ import java.util.Map;
 
 public class viewShop extends AppCompatActivity {
     ListView list;
+    ImageView arrow;
     SharedPreferences sh;
     String ip, url, url1, lid;
 
     String[] shopID, shopName, shopAddress, shopMail, shopPhone, shopImage;
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_shop);
-        list = (ListView) findViewById(R.id.view_shop);
+        list = (ListView) findViewById(R.id.list);
+
+        arrow = (ImageView)findViewById(R.id.arrowLeft);
+
+        arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i= new Intent(getApplicationContext(),UserHome.class);
+                startActivity(i);
+            }
+        });
 
 
         sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());

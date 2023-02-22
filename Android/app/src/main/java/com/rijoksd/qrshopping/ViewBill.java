@@ -2,9 +2,14 @@ package com.rijoksd.qrshopping;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,23 +30,38 @@ import java.util.Map;
 public class ViewBill extends AppCompatActivity {
 
     ListView list;
+
     SharedPreferences sh;
     String ip, url, url1, lid;
+    ImageView arrow;
 
-    String[] billDate,billAmount;
+    String[] billDate,billAmount,billID,billShopName;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_bill);
 
         list = (ListView) findViewById(R.id.list);
+        arrow = (ImageView) findViewById(R.id.arrowLeft);
+        arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),UserHome.class);
+                startActivity(i);
+            }
+        });
+
+
+
+
 
 
         sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         sh.getString("ip", "");
         sh.getString("url", "");
-        url = sh.getString("url", "") + "/and_view_bill";
+        url = sh.getString("url", "") + "and_view_bill";
 
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -56,19 +76,25 @@ public class ViewBill extends AppCompatActivity {
                             if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
 
                                 JSONArray js = jsonObj.getJSONArray("data");//from python
+                                billShopName = new String[js.length()];
                                 billDate = new String[js.length()];
                                 billAmount = new String[js.length()];
+                                billID = new String[js.length()];
 
 
                                 for (int i = 0; i < js.length(); i++) {
                                     JSONObject u = js.getJSONObject(i);
                                     //dbcolumn name in double quotes
+                                    billShopName[i] = u.getString("name");
                                     billDate[i] = u.getString("date");
                                     billAmount[i] = u.getString("amount");
+                                    billID[i] = u.getString("bill_id");
+
+
 
 
                                 }
-                                list.setAdapter(new customViewBill(getApplicationContext(), billDate, billAmount));//custom_view_service.xml and li is the listview object
+                                list.setAdapter(new customViewBill(getApplicationContext(),billShopName, billDate, billAmount,billID));//custom_view_service.xml and li is the listview object
 
 
                             } else {

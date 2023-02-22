@@ -9,6 +9,7 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -29,6 +30,7 @@ public class sendFeedback extends AppCompatActivity {
     Button feedbackBtn;
 
     SharedPreferences sh;
+    ImageView arrow;
     String url;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,14 @@ public class sendFeedback extends AppCompatActivity {
         setContentView(R.layout.activity_send_feedback);
         feedback=findViewById(R.id.editTextTextPersonName4);
         feedbackBtn=findViewById(R.id.button6);
+        arrow = (ImageView) findViewById(R.id.arrowLeft);
+        arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),UserHome.class);
+                startActivity(i);
+            }
+        });
 
         feedbackBtn.setOnClickListener(new View.OnClickListener() {
             @Override

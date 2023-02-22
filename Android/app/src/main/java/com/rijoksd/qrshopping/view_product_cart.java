@@ -1,9 +1,12 @@
 package com.rijoksd.qrshopping;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -28,6 +31,7 @@ public class view_product_cart extends AppCompatActivity {
     ListView list;
     SharedPreferences sh;
     String ip, url, url1, lid;
+    ImageView arrow;
     String[] productID, productImage,productName,productQuantity,productPrice,sId,billID;
 
 
@@ -37,11 +41,23 @@ public class view_product_cart extends AppCompatActivity {
         setContentView(R.layout.activity_view_product_cart);
         list = (ListView) findViewById(R.id.list);
 
+        arrow = (ImageView) findViewById(R.id.arrowLeft);
+        arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i= new Intent(getApplicationContext(),UserHome.class);
+                startActivity(i);
+            }
+        });
+
+
+
 
         sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         sh.getString("ip", "");
         sh.getString("url", "");
         url = sh.getString("url", "") + "and_view_product_cart";
+
 
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());

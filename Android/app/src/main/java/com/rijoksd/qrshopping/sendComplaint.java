@@ -10,6 +10,7 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -30,15 +31,23 @@ public class sendComplaint extends AppCompatActivity {
     Button complaintBtn;
     SharedPreferences sh;
     String url;
+    ImageView arrow;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_complaint);
-
         complaint=findViewById(R.id.editTextTextPersonName5);
         complaintBtn=findViewById(R.id.button8);
+        arrow = (ImageView) findViewById(R.id.arrowLeft);
+        arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i= new Intent(getApplicationContext(), customViewReply.class);
+                startActivity(i);
+            }
+        });
 
 
         complaintBtn.setOnClickListener(new View.OnClickListener() {

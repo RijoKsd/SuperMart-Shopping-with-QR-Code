@@ -17,6 +17,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".customViewBillProduct"
+            android:exported="false" />
+        <activity
+            android:name=".viewBillProduct"
+            android:exported="false" />
+        <activity
             android:name=".quantity"
             android:exported="false" />
         <activity
