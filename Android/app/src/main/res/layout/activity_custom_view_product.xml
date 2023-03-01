@@ -52,15 +52,13 @@
 
     <Button
         android:id="@+id/buyProduct"
-        android:layout_width="338dp"
+        android:layout_width="150dp"
         android:layout_height="38dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="50dp"
-        android:background="#FEAF39"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="31dp"
+        android:background="#DEDEDE"
         android:text="Add to cart"
-        android:textColor="#FEFEFE"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/offerBtn" />
 
@@ -129,6 +127,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView18"
         app:layout_constraintTop_toBottomOf="@+id/billProduct" />
+
+    <Button
+        android:id="@+id/buySinglePro"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="24dp"
+        android:background="#F59B15"
+        android:text="Buy"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/offerBtn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,6 +17,24 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".customPriceOfProduct"
+            android:exported="false" />
+        <activity
+            android:name=".priceOfProduct"
+            android:exported="false" />
+        <activity
+            android:name=".payment"
+            android:exported="false" />
+        <activity
+            android:name=".singleBuyQuantity"
+            android:exported="false" />
+        <activity
+            android:name=".customCartShop"
+            android:exported="false" />
+        <activity
+            android:name=".cartShop"
+            android:exported="false" />
+        <activity
             android:name=".customViewBillProduct"
             android:exported="false" />
         <activity

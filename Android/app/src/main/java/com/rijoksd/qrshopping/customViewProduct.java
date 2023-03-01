@@ -75,6 +75,25 @@ public class customViewProduct extends BaseAdapter {
 
         Button bt1 = (Button) gridView.findViewById(R.id.buyProduct);
 
+        Button buySingleProduct = (Button) gridView.findViewById(R.id.buySinglePro);
+        buySingleProduct.setTag(i);
+        buySingleProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int pos = (int) view.getTag();
+                SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
+
+                SharedPreferences.Editor ed=sh.edit();
+                ed.putString("productID",productID[pos]);
+                ed.putString("shopID",sId[pos]);
+                ed.putString("productPrice",productPrice[pos]);
+                ed.commit();
+                Intent i=new Intent(context.getApplicationContext(),singleBuyQuantity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(i);
+            }
+        });
+
         Button offerBtn = (Button) gridView.findViewById(R.id.offerBtn);
         offerBtn.setTag(i);
         offerBtn.setOnClickListener(new View.OnClickListener() {

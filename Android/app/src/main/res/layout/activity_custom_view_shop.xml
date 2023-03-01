@@ -126,12 +126,22 @@
         android:id="@+id/star"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="168dp"
+        android:layout_marginStart="84dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="195dp"
         android:background="@drawable/star"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView47"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <TextView
+        android:id="@+id/textView47"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="24dp"
+        android:text="Rate"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 </androidx.constraintlayout.widget.ConstraintLayout>

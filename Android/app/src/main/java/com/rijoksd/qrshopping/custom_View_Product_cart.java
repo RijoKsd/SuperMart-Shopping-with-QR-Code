@@ -33,11 +33,12 @@ public class custom_View_Product_cart extends BaseAdapter {
 
 
     String[] productID,productImage,productName,productQuantity,productPrice,sId,billID ;
+//    String[] productTotal;
     private Context context;
     String url1,url;
     SharedPreferences sh;
 
-    public custom_View_Product_cart(Context applicationContext, String[] productID, String[] productImage, String[] productName, String[] productQuantity, String[] productPrice, String[] sId, String[] billID ) {
+    public custom_View_Product_cart(Context applicationContext, String[] productID, String[] productImage, String[] productName, String[] productQuantity, String[] productPrice, String[] sId, String[] billID  ) {
 
         this.context = applicationContext;
         this.productID = productID;
@@ -47,6 +48,7 @@ public class custom_View_Product_cart extends BaseAdapter {
         this.productPrice = productPrice;
         this.sId = sId;
         this.billID = billID;
+//        this.productTotal = productTotal;
 
     }
 
@@ -83,6 +85,7 @@ public class custom_View_Product_cart extends BaseAdapter {
         ImageView imageView = (ImageView) gridView.findViewById(R.id.productImage);
         TextView tv2 = (TextView) gridView.findViewById(R.id.billQuantity);
         TextView tv3 = (TextView) gridView.findViewById(R.id.billPrice);
+//        TextView tv4 = (TextView) gridView.findViewById(R.id.totalAmount);
 
         ImageView delete = (ImageView) gridView.findViewById(R.id.delete);
         delete.setTag(i);
@@ -228,6 +231,7 @@ public class custom_View_Product_cart extends BaseAdapter {
         tv1.setTextColor(Color.BLACK);//color setting
         tv2.setTextColor(Color.BLACK);
         tv3.setTextColor(Color.BLACK);
+//        tv4.setTextColor(Color.BLUE);
 
 //        tv1.setAllCaps(true);
         Typeface typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD);
@@ -241,6 +245,7 @@ public class custom_View_Product_cart extends BaseAdapter {
         tv1.setText(productName[i]);
         tv2.setText(productQuantity[i]);
         tv3.setText(productPrice[i]);
+//        tv4.setText(productTotal[i]);
 
 
 

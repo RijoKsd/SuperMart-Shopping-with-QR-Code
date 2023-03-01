@@ -1,24 +1,30 @@
 package com.rijoksd.qrshopping;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class customViewOffer extends BaseAdapter {
-    String[] offerPercentage,offerPrice,offerStartDate,offerEndDate;
+    String[] offerPercentage,offerPrice,offerStartDate,offerEndDate,productID,sId;
     private Context context;
 
 
-    public customViewOffer(Context applicationContext, String[] offerPercentage, String[] offerPrice, String[] offerStartDate, String[] offerEndDate) {
+    public customViewOffer(Context applicationContext, String[] offerPercentage, String[] offerPrice, String[] offerStartDate, String[] offerEndDate, String[] productID,String[] sId) {
         this.context = applicationContext;
         this.offerPercentage = offerPercentage;
         this.offerPrice = offerPrice;
         this.offerStartDate = offerStartDate;
         this.offerEndDate = offerEndDate;
+        this.productID = productID;
+        this.sId = sId;
 
     }
 
@@ -58,6 +64,27 @@ public class customViewOffer extends BaseAdapter {
         TextView tv2=(TextView)gridView.findViewById(R.id.offerPrice);
         TextView tv3=(TextView)gridView.findViewById(R.id.offerStart);
         TextView tv4=(TextView)gridView.findViewById(R.id.offerEnd);
+
+        Button buyWithOfferPrice = (Button) gridView.findViewById(R.id.buyWithOffer);
+        buyWithOfferPrice.setTag(i);
+
+
+        buyWithOfferPrice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int pos = (int) view.getTag();
+                SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
+
+                SharedPreferences.Editor ed=sh.edit();
+                ed.putString("productID",productID[pos]);
+                ed.putString("shopID",sId[pos]);
+                ed.putString("productPrice",offerPrice[pos]);
+                ed.commit();
+                Intent i=new Intent(context.getApplicationContext(),singleBuyQuantity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(i);
+            }
+        });
 
 
 

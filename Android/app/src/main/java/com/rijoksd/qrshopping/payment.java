@@ -2,6 +2,7 @@ package com.rijoksd.qrshopping;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -24,32 +27,81 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class quantity extends AppCompatActivity {
-    EditText quantity;
-    Button quantityBtn;
+//public class payment extends AppCompatActivity {
+//
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_payment);
+//    }
+//}
+
+public class payment extends AppCompatActivity {
+
+    EditText bankName,bankAccountNo,bankIFSCCode;
+    TextView totalAmountToPay;
+    Button onlinePay,offlinePay;
     SharedPreferences sh;
     String url;
+    ImageView arrow;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quantity);
-        quantity=findViewById(R.id.quantity);
-        quantityBtn=findViewById(R.id.quantityBtn);
+        setContentView(R.layout.activity_payment);
 
-        quantity.setText("1");
+        bankName = findViewById(R.id.bankName);
+        bankAccountNo = findViewById(R.id.bankAccountNo);
+        bankIFSCCode = findViewById(R.id.bankIFSCCode);
+        totalAmountToPay = findViewById(R.id.totalAmountToPay);
+        onlinePay = findViewById(R.id.onlinePay);
+        offlinePay = findViewById(R.id.offlinePay);
 
-        quantityBtn.setOnClickListener(new View.OnClickListener() {
+        SharedPreferences sh=PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+//        paymentAmount =
+        totalAmountToPay.setText(sh.getString("total",""));
+
+
+
+
+
+
+
+//        arrow = (ImageView) findViewById(R.id.arrowLeft);
+//        arrow.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent i= new Intent(getApplicationContext(), customViewReply.class);
+//                startActivity(i);
+//            }
+//        });
+        offlinePay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String productQuantity = quantity.getText().toString();
+                Intent i = new Intent(getApplicationContext(),UserHome.class);
+                startActivity(i);
+            }
+        });
 
-                sh= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+        onlinePay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String userBankName = bankName.getText().toString();
+                final String userBankAccountNo = bankAccountNo.getText().toString();
+                final String userBankIFSCCode = bankIFSCCode.getText().toString();
+                final String userTotalAmountToPay = totalAmountToPay.getText().toString();
+
+
+
+//                sh= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+
                 sh.getString("ip","");
                 sh.getString("url","");
-                url=sh.getString("url","")+"and_quantity";
-
-
+                url=sh.getString("url","")+"/and_payment";
 
 
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -62,30 +114,9 @@ public class quantity extends AppCompatActivity {
                                 try {
                                     JSONObject jsonObj = new JSONObject(response);
                                     if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
-                                        Toast.makeText(quantity.this, "Quantity send", Toast.LENGTH_SHORT).show();
-                                        Intent i =new Intent(getApplicationContext(),viewProduct.class);
+                                        Toast.makeText(payment.this, "Payment successfully completed", Toast.LENGTH_SHORT).show();
+                                        Intent i =new Intent(getApplicationContext(),UserHome.class);
                                         startActivity(i);
-
-                                    }if (jsonObj.getString("status").equalsIgnoreCase("update")) {
-                                        Toast.makeText(quantity.this, "Quantity updated", Toast.LENGTH_SHORT).show();
-                                        Intent i =new Intent(getApplicationContext(),viewProduct.class);
-                                        startActivity(i);
-
-                                    } if (jsonObj.getString("status").equalsIgnoreCase("cart")) {
-                                        Toast.makeText(quantity.this, "Add to cart", Toast.LENGTH_SHORT).show();
-                                        Intent i =new Intent(getApplicationContext(),viewProduct.class);
-                                        startActivity(i);
-
-                                    } if (jsonObj.getString("status").equalsIgnoreCase("greater")) {
-                                        Toast.makeText(quantity.this, "Out of stock", Toast.LENGTH_SHORT).show();
-                                        Intent i =new Intent(getApplicationContext(),viewProduct.class);
-                                        startActivity(i);
-
-                                    }if (jsonObj.getString("status").equalsIgnoreCase("productqty")) {
-                                        Toast.makeText(quantity.this, "Product quantity updated", Toast.LENGTH_SHORT).show();
-                                        Intent i =new Intent(getApplicationContext(),viewProduct.class);
-                                        startActivity(i);
-
                                     } else {
                                         Toast.makeText(getApplicationContext(), "Not found", Toast.LENGTH_LONG).show();
                                     }
@@ -104,17 +135,22 @@ public class quantity extends AppCompatActivity {
                         }
                 ) {
 
-                    //            value Passing android to python
+                    //                value Passing android to python
                     @Override
                     protected Map<String, String> getParams() {
                         SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                         Map<String, String> params = new HashMap<String, String>();
 
-                        params.put("qua",productQuantity);//passing to python
+                        params.put("bankName", userBankName);//passing to python
+                        params.put("accountNo", userBankAccountNo);//passing to python
+                        params.put("IFSCode", userBankIFSCCode);//passing to python
+                        params.put("totalAmount", userTotalAmountToPay);//passing to python
                         params.put("id", sh.getString("lid",""));//passing to python
-                        params.put("shopID", sh.getString("shopID",""));//passing to python
                         params.put("productPrice", sh.getString("productPrice",""));//passing to python
-                        params.put("productID", sh.getString("productID",""));//passing to python
+                        params.put("total", sh.getString("total",""));//passing to python
+
+
+
                         return params;
                     }
                 };
@@ -127,6 +163,8 @@ public class quantity extends AppCompatActivity {
                         DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                         DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                 requestQueue.add(postRequest);
+
+
             }
         });
     }

@@ -85,9 +85,6 @@ public class UserHome extends AppCompatActivity implements NavigationView.OnNavi
         else if(id == R.id.nav_bill){
             Intent i = new Intent(getApplicationContext(),ViewBill.class);
             startActivity(i);
-//        } else if(id == R.id.nav_rating){
-//            Intent i = new Intent(getApplicationContext(),addRating.class);
-//            startActivity(i);
         } else if(id == R.id.nav_feedback){
             Intent i = new Intent(getApplicationContext(),sendFeedback.class);
             startActivity(i);
@@ -99,7 +96,7 @@ public class UserHome extends AppCompatActivity implements NavigationView.OnNavi
             Intent i = new Intent(getApplicationContext(),Login.class);
             startActivity(i);
         }else if(id == R.id.nav_cart){
-            Intent i = new Intent(getApplicationContext(),view_product_cart.class);
+            Intent i = new Intent(getApplicationContext(),cartShop.class);
             startActivity(i);
         }
 

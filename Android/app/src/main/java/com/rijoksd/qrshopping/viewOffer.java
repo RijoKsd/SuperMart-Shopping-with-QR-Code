@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -29,7 +32,7 @@ public class viewOffer extends AppCompatActivity {
     SharedPreferences sh;
     String ip, url, lid;
 
-    String[] offerPer, offerPrice, offerStartDate, offerEndDate;
+    String[] offerPer, offerPrice, offerStartDate, offerEndDate,productID,sId;
 
 
     @Override
@@ -38,6 +41,8 @@ public class viewOffer extends AppCompatActivity {
         setContentView(R.layout.activity_view_offer);
 
         li = (ListView) findViewById(R.id.list);
+
+
 
         sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         ip = sh.getString("url", "");
@@ -56,10 +61,12 @@ public class viewOffer extends AppCompatActivity {
                             if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
 
                                 JSONArray js = jsonObj.getJSONArray("data");//from python
-                                offerPer = new String[js.length()];
+                                 offerPer = new String[js.length()];
                                 offerPrice = new String[js.length()];
                                 offerStartDate = new String[js.length()];
                                 offerEndDate = new String[js.length()];
+                                productID = new String[js.length()];
+                                sId = new String[js.length()];
 
                                 for (int i = 0; i < js.length(); i++) {
                                     JSONObject u = js.getJSONObject(i);
@@ -67,8 +74,10 @@ public class viewOffer extends AppCompatActivity {
                                     offerPrice[i] = u.getString("total");
                                     offerStartDate[i] = u.getString("date_from");
                                     offerEndDate[i] = u.getString("date_to");
+                                    productID[i] = u.getString("product_id");
+                                    sId[i] = u.getString("shop_id");
                                 }
-                                li.setAdapter(new customViewOffer(getApplicationContext(), offerPer, offerPrice, offerStartDate, offerEndDate));//custom_view_service.xml and li is the listview object
+                                li.setAdapter(new customViewOffer(getApplicationContext(), offerPer, offerPrice, offerStartDate, offerEndDate,productID,sId));//custom_view_service.xml and li is the listview object
 
 
                             } else {
@@ -98,6 +107,7 @@ public class viewOffer extends AppCompatActivity {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("loginID", sh.getString("lid", ""));//passing to python
                 params.put("productID", sh.getString("productID", ""));//passing to python
+                params.put("sId", sh.getString("sId", ""));//passing to python
                 return params;
             }
         };

@@ -1,16 +1,16 @@
 package com.rijoksd.qrshopping;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -26,22 +26,24 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class view_product_cart extends AppCompatActivity {
-
+public class cartShop extends AppCompatActivity {
     ListView list;
+    ImageView arrow;
     SharedPreferences sh;
     String ip, url, url1, lid;
-    ImageView arrow;
-    String[] productID, productImage,productName,productQuantity,productPrice,sId,billID,productTotal;
+
+    String[] shopID, shopName, shopImage;
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_product_cart);
+        setContentView(R.layout.activity_cart_shop);
         list = (ListView) findViewById(R.id.list);
 
-        arrow = (ImageView) findViewById(R.id.arrowLeft);
+        arrow = (ImageView)findViewById(R.id.arrowLeft);
+
         arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,13 +53,10 @@ public class view_product_cart extends AppCompatActivity {
         });
 
 
-
-
         sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         sh.getString("ip", "");
         sh.getString("url", "");
-        url = sh.getString("url", "") + "and_view_product_cart";
-
+        url = sh.getString("url", "") + "and_view_shop_in_cart";
 
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -72,30 +71,20 @@ public class view_product_cart extends AppCompatActivity {
                             if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
 
                                 JSONArray js = jsonObj.getJSONArray("data");//from python
-                                productID = new String[js.length()];
-                                productImage = new String[js.length()];
-                                productName = new String[js.length()];
-                                productQuantity = new String[js.length()];
-                                productPrice = new String[js.length()];
-                                sId = new String[js.length()];
-                                billID = new String[js.length()];
-//                                productTotal = new String[js.length()];
+                                shopID = new String[js.length()];
+                                shopName = new String[js.length()];
+                                shopImage = new String[js.length()];
 
 
                                 for (int i = 0; i < js.length(); i++) {
                                     JSONObject u = js.getJSONObject(i);
                                     //dbcolumn name in double quotes
-                                    productID[i] = u.getString("product_id");
-                                    productImage[i] = u.getString("image");
-                                    productName[i] = u.getString("name");
-                                    productQuantity[i] = u.getString("quantity");
-                                    productPrice[i] = u.getString("price");
-                                    sId[i] = u.getString("shop_id");
-                                    billID[i] = u.getString("bill_id");
-//                                    productTotal[i] = u.getString("total");
+                                    shopID[i] = u.getString("shop_id");
+                                    shopName[i] = u.getString("name");
+                                    shopImage[i] = u.getString("image");
 
                                 }
-                                list.setAdapter(new custom_View_Product_cart(getApplicationContext(), productID, productImage, productName, productQuantity, productPrice,sId,billID));//custom_view_service.xml and li is the listview object
+                                list.setAdapter(new customCartShop(getApplicationContext(), shopID, shopName,  shopImage));//custom_view_service.xml and li is the listview object
 
 
                             } else {
@@ -122,7 +111,6 @@ public class view_product_cart extends AppCompatActivity {
                 SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("id", sh.getString("lid", ""));//passing to python
-                params.put("shopID", sh.getString("shopID", ""));//passing to python
                 return params;
             }
         };

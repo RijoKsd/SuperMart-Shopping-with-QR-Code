@@ -9,6 +9,7 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -24,18 +25,30 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class quantity extends AppCompatActivity {
+public class singleBuyQuantity extends AppCompatActivity {
     EditText quantity;
     Button quantityBtn;
+    ImageView arrow;
+
     SharedPreferences sh;
+
     String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quantity);
+        setContentView(R.layout.activity_single_buy_quantity);
         quantity=findViewById(R.id.quantity);
         quantityBtn=findViewById(R.id.quantityBtn);
+
+        arrow = (ImageView) findViewById(R.id.arrowLeft);
+        arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i= new Intent(getApplicationContext(),viewProduct.class);
+                startActivity(i);
+            }
+        });
 
         quantity.setText("1");
 
@@ -47,10 +60,7 @@ public class quantity extends AppCompatActivity {
                 sh= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 sh.getString("ip","");
                 sh.getString("url","");
-                url=sh.getString("url","")+"and_quantity";
-
-
-
+                url=sh.getString("url","")+"and_single_buy_quantity";
 
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
                 StringRequest postRequest = new StringRequest(Request.Method.POST, url,
@@ -62,31 +72,22 @@ public class quantity extends AppCompatActivity {
                                 try {
                                     JSONObject jsonObj = new JSONObject(response);
                                     if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
-                                        Toast.makeText(quantity.this, "Quantity send", Toast.LENGTH_SHORT).show();
-                                        Intent i =new Intent(getApplicationContext(),viewProduct.class);
+                                        Toast.makeText(singleBuyQuantity.this, "ABooked", Toast.LENGTH_SHORT).show();
+                                        Intent i =new Intent(getApplicationContext(),priceOfProduct.class);
                                         startActivity(i);
 
-                                    }if (jsonObj.getString("status").equalsIgnoreCase("update")) {
-                                        Toast.makeText(quantity.this, "Quantity updated", Toast.LENGTH_SHORT).show();
-                                        Intent i =new Intent(getApplicationContext(),viewProduct.class);
-                                        startActivity(i);
+                                    } else if (jsonObj.getString("status").equalsIgnoreCase("added")) {
+                                        Toast.makeText(singleBuyQuantity.this, "BBoooked", Toast.LENGTH_SHORT).show();
+                                        Intent ii =new Intent(getApplicationContext(),priceOfProduct.class);
+                                        startActivity(ii);
 
-                                    } if (jsonObj.getString("status").equalsIgnoreCase("cart")) {
-                                        Toast.makeText(quantity.this, "Add to cart", Toast.LENGTH_SHORT).show();
-                                        Intent i =new Intent(getApplicationContext(),viewProduct.class);
-                                        startActivity(i);
+                                    }
+                                    else if (jsonObj.getString("status").equalsIgnoreCase("greater")) {
+                                        Toast.makeText(singleBuyQuantity.this, "Out of stock", Toast.LENGTH_SHORT).show();
+                                        Intent im =new Intent(getApplicationContext(),viewProduct.class);
+                                        startActivity(im);
 
-                                    } if (jsonObj.getString("status").equalsIgnoreCase("greater")) {
-                                        Toast.makeText(quantity.this, "Out of stock", Toast.LENGTH_SHORT).show();
-                                        Intent i =new Intent(getApplicationContext(),viewProduct.class);
-                                        startActivity(i);
-
-                                    }if (jsonObj.getString("status").equalsIgnoreCase("productqty")) {
-                                        Toast.makeText(quantity.this, "Product quantity updated", Toast.LENGTH_SHORT).show();
-                                        Intent i =new Intent(getApplicationContext(),viewProduct.class);
-                                        startActivity(i);
-
-                                    } else {
+                                    }  else {
                                         Toast.makeText(getApplicationContext(), "Not found", Toast.LENGTH_LONG).show();
                                     }
 
