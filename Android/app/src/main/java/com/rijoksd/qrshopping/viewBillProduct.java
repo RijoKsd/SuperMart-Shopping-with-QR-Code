@@ -34,7 +34,7 @@ public class viewBillProduct extends AppCompatActivity {
     SharedPreferences sh;
     String ip, url, url1, lid;
 
-    String[] billProductName, quantityBill, priceBill, totalBill ;
+    String[] billProductName, quantityBill, priceBill, totalBill;
 
 
     @SuppressLint("MissingInflatedId")
@@ -47,12 +47,10 @@ public class viewBillProduct extends AppCompatActivity {
         arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),customViewBill.class);
+                Intent i = new Intent(getApplicationContext(), customViewBill.class);
                 startActivity(i);
             }
         });
-
-
 
 
         sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -79,15 +77,13 @@ public class viewBillProduct extends AppCompatActivity {
                                 totalBill = new String[js.length()];
 
 
-
                                 for (int i = 0; i < js.length(); i++) {
                                     JSONObject u = js.getJSONObject(i);
                                     //dbcolumn name in double quotes
                                     billProductName[i] = u.getString("name");
                                     quantityBill[i] = u.getString("quantity");
-                                    priceBill[i] = u.getString("price") ;
+                                    priceBill[i] = u.getString("price");
                                     totalBill[i] = u.getString("total");
-
 
                                 }
                                 list.setAdapter(new customViewBillProduct(getApplicationContext(), billProductName, quantityBill, priceBill, totalBill));//custom_view_service.xml and li is the listview object

@@ -59,6 +59,7 @@
         android:background="#DEDEDE"
         android:text="Add to cart"
         android:textColor="#000000"
+        app:cornerRadius="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/offerBtn" />
 

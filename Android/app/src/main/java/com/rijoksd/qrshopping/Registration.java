@@ -46,11 +46,9 @@ public class Registration extends AppCompatActivity {
     ImageView pho;
     RadioGroup gen;
     Button registerBtn;
-
     Bitmap bitmap = null;
     ProgressDialog pd;
     String url;
-
     SharedPreferences sh;
 
 
@@ -71,9 +69,7 @@ public class Registration extends AppCompatActivity {
         phone=findViewById(R.id.phone);
         pho=findViewById(R.id.image);
         registerPassword=findViewById(R.id.register_password);
-
         registerBtn=findViewById(R.id.register_btn);
-
         gen=findViewById(R.id.radioGroup);
         male=findViewById(R.id.male);
         female=findViewById(R.id.female);
@@ -107,14 +103,9 @@ public class Registration extends AppCompatActivity {
                 String registerUserPhone = phone.getText().toString();
                 String registerUserPassword = registerPassword.getText().toString();
                 String registerUserGender =((RadioButton)findViewById(gen.getCheckedRadioButtonId())).getText().toString();
-
                 uploadBitmap(registerUsername,registerUserPlace,registerUserPinCode,registerUserMail,registerUserGender,registerUserPhone,registerUserPassword );
-
-
-
-            }
-        });
-
+                }
+            });
 
     }
 
@@ -144,72 +135,71 @@ public class Registration extends AppCompatActivity {
         bitmap.compress(Bitmap.CompressFormat.PNG, 80, byteArrayOutputStream);
         return byteArrayOutputStream.toByteArray();
     }
-    private void uploadBitmap(final String registerUsername, final String registerUserPlace, final String registerUserPincode, final String registerUserMail, final String registerUserGender, final String registerUserPhone, final String registerUserPassword) {
+    private void uploadBitmap(final String registerUsername, final String registerUserPlace, final String registerUserPincode, final String registerUserMail, final String registerUserGender, final String registerUserPhone, final String registerUserPassword)
+        {
 
 
-        pd = new ProgressDialog(Registration.this);
-        pd.setMessage("Uploading....");
-        pd.show();
-        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, url,
-                new Response.Listener<NetworkResponse>() {
-                    @Override
-                    public void onResponse(NetworkResponse response) {
-                        try {
-                            pd.dismiss();
+            pd = new ProgressDialog(Registration.this);
+            pd.setMessage("Uploading....");
+            pd.show();
+            VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, url,
+                    new Response.Listener<NetworkResponse>() {
+                        @Override
+                        public void onResponse(NetworkResponse response) {
+                            try {
+                                pd.dismiss();
 
 
-                            JSONObject obj = new JSONObject(new String(response.data));
+                                JSONObject obj = new JSONObject(new String(response.data));
 
-                            if(obj.getString("status").equals("ok")){
-                                Toast.makeText(getApplicationContext(), "Registration successfully completed", Toast.LENGTH_SHORT).show();
-                                Intent i = new Intent(getApplicationContext(), Login.class);
-                                startActivity(i);
+                                if (obj.getString("status").equals("ok")) {
+                                    Toast.makeText(getApplicationContext(), "Registration successfully completed", Toast.LENGTH_SHORT).show();
+                                    Intent i = new Intent(getApplicationContext(), Login.class);
+                                    startActivity(i);
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Registration failed", Toast.LENGTH_SHORT).show();
+                                }
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                            else{
-                                Toast.makeText(getApplicationContext(),"Registration failed" ,Toast.LENGTH_SHORT).show();
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }) {
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }) {
 
 
-
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                params.put("andUserName", registerUsername);//passing to python
-                params.put("andUserPlace", registerUserPlace);//passing to python
-                params.put("andUserPIN", registerUserPincode);
-                params.put("andUserMail", registerUserMail);
-                params.put("andUserPhone", registerUserPhone);
-                params.put("andUserPassword", registerUserPassword);
-                params.put("andUserGender", registerUserGender);
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<>();
+                    SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                    params.put("andUserName", registerUsername);//passing to python
+                    params.put("andUserPlace", registerUserPlace);//passing to python
+                    params.put("andUserPIN", registerUserPincode);
+                    params.put("andUserMail", registerUserMail);
+                    params.put("andUserPhone", registerUserPhone);
+                    params.put("andUserPassword", registerUserPassword);
+                    params.put("andUserGender", registerUserGender);
 //                params.put("g",gender);
 
-                return params;
-            }
+                    return params;
+                }
 
 
-            @Override
-            protected Map<String, DataPart> getByteData() {
-                Map<String, DataPart> params = new HashMap<>();
-                long imagename = System.currentTimeMillis();
-                params.put("pic", new DataPart(imagename + ".png", getFileDataFromDrawable(bitmap)));
-                return params;
-            }
-        };
+                @Override
+                protected Map<String, DataPart> getByteData() {
+                    Map<String, DataPart> params = new HashMap<>();
+                    long imagename = System.currentTimeMillis();
+                    params.put("pic", new DataPart(imagename + ".png", getFileDataFromDrawable(bitmap)));
+                    return params;
+                }
+            };
 
-        Volley.newRequestQueue(this).add(volleyMultipartRequest);
+            Volley.newRequestQueue(this).add(volleyMultipartRequest);
+
     }
-
 }

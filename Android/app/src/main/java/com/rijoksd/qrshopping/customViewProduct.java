@@ -94,6 +94,7 @@ public class customViewProduct extends BaseAdapter {
             }
         });
 
+
         Button offerBtn = (Button) gridView.findViewById(R.id.offerBtn);
         offerBtn.setTag(i);
         offerBtn.setOnClickListener(new View.OnClickListener() {
@@ -104,6 +105,7 @@ public class customViewProduct extends BaseAdapter {
 
                 SharedPreferences.Editor ed=sh.edit();
                 ed.putString("productID",productID[pos]);
+                ed.putString("pqty",productQuantity[pos]);
                 ed.commit();
                 Intent i=new Intent(context.getApplicationContext(),viewOffer.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

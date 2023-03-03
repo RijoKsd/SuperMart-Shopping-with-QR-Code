@@ -131,4 +131,4 @@ public class priceOfProduct extends AppCompatActivity {
 
 
     }
-    }
+}

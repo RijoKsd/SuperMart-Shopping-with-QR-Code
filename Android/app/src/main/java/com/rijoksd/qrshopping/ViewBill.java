@@ -35,7 +35,7 @@ public class ViewBill extends AppCompatActivity {
     String ip, url, url1, lid;
     ImageView arrow;
 
-    String[] billDate,billAmount,billID,billShopName;
+    String[] billDate, billAmount, billID, billShopName;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -48,14 +48,10 @@ public class ViewBill extends AppCompatActivity {
         arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),UserHome.class);
+                Intent i = new Intent(getApplicationContext(), UserHome.class);
                 startActivity(i);
             }
         });
-
-
-
-
 
 
         sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -81,7 +77,6 @@ public class ViewBill extends AppCompatActivity {
                                 billAmount = new String[js.length()];
                                 billID = new String[js.length()];
 
-
                                 for (int i = 0; i < js.length(); i++) {
                                     JSONObject u = js.getJSONObject(i);
                                     //dbcolumn name in double quotes
@@ -89,12 +84,8 @@ public class ViewBill extends AppCompatActivity {
                                     billDate[i] = u.getString("date");
                                     billAmount[i] = u.getString("amount");
                                     billID[i] = u.getString("bill_id");
-
-
-
-
                                 }
-                                list.setAdapter(new customViewBill(getApplicationContext(),billShopName, billDate, billAmount,billID));//custom_view_service.xml and li is the listview object
+                                list.setAdapter(new customViewBill(getApplicationContext(), billShopName, billDate, billAmount, billID));//custom_view_service.xml and li is the listview object
 
 
                             } else {
@@ -124,10 +115,7 @@ public class ViewBill extends AppCompatActivity {
                 return params;
             }
         };
-
-
         int MY_SOCKET_TIMEOUT_MS = 100000;
-
         postRequest.setRetryPolicy(new DefaultRetryPolicy(
                 MY_SOCKET_TIMEOUT_MS,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,

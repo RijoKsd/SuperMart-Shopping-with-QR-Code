@@ -93,76 +93,78 @@ public class payment extends AppCompatActivity {
                 final String userBankAccountNo = bankAccountNo.getText().toString();
                 final String userBankIFSCCode = bankIFSCCode.getText().toString();
                 final String userTotalAmountToPay = totalAmountToPay.getText().toString();
-
-
-
+                if (userBankName.equalsIgnoreCase("" )) {
+                    bankName.setError("Bank name is required");
+                } else if (userBankAccountNo.equalsIgnoreCase("" )) {
+                    bankName.setError("Account number is required");
+                }else  if (userBankIFSCCode.equalsIgnoreCase("" )) {
+                    bankIFSCCode.setError("IFSC code is required");
+                } else {
 //                sh= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                    sh.getString("ip", "");
+                    sh.getString("url", "");
+                    url = sh.getString("url", "") + "/and_payment";
 
 
-                sh.getString("ip","");
-                sh.getString("url","");
-                url=sh.getString("url","")+"/and_payment";
+                    RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                    StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    //  Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
 
+                                    try {
+                                        JSONObject jsonObj = new JSONObject(response);
+                                        if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
+                                            Toast.makeText(payment.this, "Payment successfully completed", Toast.LENGTH_SHORT).show();
+                                            Intent i = new Intent(getApplicationContext(), UserHome.class);
+                                            startActivity(i);
+                                        } else {
+                                            Toast.makeText(getApplicationContext(), "Not found", Toast.LENGTH_LONG).show();
+                                        }
 
-                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-                StringRequest postRequest = new StringRequest(Request.Method.POST, url,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                //  Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
-
-                                try {
-                                    JSONObject jsonObj = new JSONObject(response);
-                                    if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
-                                        Toast.makeText(payment.this, "Payment successfully completed", Toast.LENGTH_SHORT).show();
-                                        Intent i =new Intent(getApplicationContext(),UserHome.class);
-                                        startActivity(i);
-                                    } else {
-                                        Toast.makeText(getApplicationContext(), "Not found", Toast.LENGTH_LONG).show();
+                                    } catch (Exception e) {
+                                        Toast.makeText(getApplicationContext(), "Error" + e.getMessage().toString(), Toast.LENGTH_SHORT).show();
                                     }
-
-                                } catch (Exception e) {
-                                    Toast.makeText(getApplicationContext(), "Error" + e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    // error
+                                    Toast.makeText(getApplicationContext(), "eeeee" + error.toString(), Toast.LENGTH_SHORT).show();
                                 }
                             }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                // error
-                                Toast.makeText(getApplicationContext(), "eeeee" + error.toString(), Toast.LENGTH_SHORT).show();
-                            }
+                    ) {
+
+                        //                value Passing android to python
+                        @Override
+                        protected Map<String, String> getParams() {
+                            SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                            Map<String, String> params = new HashMap<String, String>();
+
+                            params.put("bankName", userBankName);//passing to python
+                            params.put("accountNo", userBankAccountNo);//passing to python
+                            params.put("IFSCode", userBankIFSCCode);//passing to python
+                            params.put("totalAmount", userTotalAmountToPay);//passing to python
+                            params.put("id", sh.getString("lid", ""));//passing to python
+                            params.put("productPrice", sh.getString("productPrice", ""));//passing to python
+                            params.put("total", sh.getString("total", ""));//passing to python
+
+
+                            return params;
                         }
-                ) {
-
-                    //                value Passing android to python
-                    @Override
-                    protected Map<String, String> getParams() {
-                        SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                        Map<String, String> params = new HashMap<String, String>();
-
-                        params.put("bankName", userBankName);//passing to python
-                        params.put("accountNo", userBankAccountNo);//passing to python
-                        params.put("IFSCode", userBankIFSCCode);//passing to python
-                        params.put("totalAmount", userTotalAmountToPay);//passing to python
-                        params.put("id", sh.getString("lid",""));//passing to python
-                        params.put("productPrice", sh.getString("productPrice",""));//passing to python
-                        params.put("total", sh.getString("total",""));//passing to python
+                    };
 
 
+                    int MY_SOCKET_TIMEOUT_MS = 100000;
 
-                        return params;
-                    }
-                };
-
-
-                int MY_SOCKET_TIMEOUT_MS = 100000;
-
-                postRequest.setRetryPolicy(new DefaultRetryPolicy(
-                        MY_SOCKET_TIMEOUT_MS,
-                        DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-                requestQueue.add(postRequest);
+                    postRequest.setRetryPolicy(new DefaultRetryPolicy(
+                            MY_SOCKET_TIMEOUT_MS,
+                            DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                    requestQueue.add(postRequest);
+                }
 
 
             }

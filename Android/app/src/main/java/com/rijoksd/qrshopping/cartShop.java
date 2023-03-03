@@ -42,15 +42,15 @@ public class cartShop extends AppCompatActivity {
         setContentView(R.layout.activity_cart_shop);
         list = (ListView) findViewById(R.id.list);
 
-        arrow = (ImageView)findViewById(R.id.arrowLeft);
-
-        arrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i= new Intent(getApplicationContext(),UserHome.class);
-                startActivity(i);
-            }
-        });
+//        arrow = (ImageView)findViewById(R.id.arrowLeft);
+//
+//        arrow.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent i= new Intent(getApplicationContext(),UserHome.class);
+//                startActivity(i);
+//            }
+//        });
 
 
         sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());

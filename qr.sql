@@ -25,11 +25,11 @@ CREATE TABLE `bill` (
   `product_id` int(20) DEFAULT NULL,
   `quantity` int(20) DEFAULT NULL,
   PRIMARY KEY (`bill_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `bill` */
 
-insert  into `bill`(`bill_id`,`master_id`,`product_id`,`quantity`) values (1,1,20,5),(2,1,20,5),(3,1,20,5),(4,1,20,5),(5,1,20,5),(6,1,20,5),(7,1,20,1),(8,1,20,1),(9,1,20,1),(10,1,20,1),(11,1,20,0),(12,1,20,5),(13,1,20,5),(14,1,20,1),(15,1,20,5),(16,1,20,5),(17,1,20,5),(18,1,20,1),(19,1,20,1),(20,1,20,5),(21,1,20,1),(22,1,20,5),(23,1,20,10),(24,1,20,167),(25,1,20,12),(26,1,20,12),(27,1,20,3),(28,1,20,1),(29,1,20,16),(30,1,20,16),(31,1,20,12),(32,1,20,1),(33,1,20,3),(34,1,20,3),(35,1,23,2),(36,1,20,1),(37,1,20,1),(38,1,20,1),(39,1,20,1);
+insert  into `bill`(`bill_id`,`master_id`,`product_id`,`quantity`) values (1,1,20,5),(2,2,30,600);
 
 /*Table structure for table `bill_master` */
 
@@ -43,11 +43,11 @@ CREATE TABLE `bill_master` (
   `date` date DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`master_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `bill_master` */
 
-insert  into `bill_master`(`master_id`,`shop_id`,`user_id`,`amount`,`date`,`status`) values (1,18,2,10,'2023-02-26','book');
+insert  into `bill_master`(`master_id`,`shop_id`,`user_id`,`amount`,`date`,`status`) values (1,18,2,50,'2023-03-02','book'),(2,23,2,25,'2023-03-02','add to cart');
 
 /*Table structure for table `complaint` */
 
@@ -62,11 +62,11 @@ CREATE TABLE `complaint` (
   `reply_date` varchar(200) DEFAULT 'pending',
   `reply` varchar(200) DEFAULT 'pending',
   PRIMARY KEY (`complaint_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `complaint` */
 
-insert  into `complaint`(`complaint_id`,`type`,`user_id`,`complaint`,`date`,`reply_date`,`reply`) values (33,'user',2,'registration image selection not found','2023-02-15','2023-02-19','We fixed it in this update, please use latest version'),(34,'user',30,'More memmory using','2023-02-15','pending','pending'),(35,'user',31,'bad UI','2023-02-15','pending','pending'),(36,'user',31,'using more memmory ','2023-02-15','pending','pending'),(37,'user',32,'rijo','2023-02-19','2023-02-19','replied\r\n\r\n'),(38,'user',2,'checking...','2023-02-22','pending','pending');
+insert  into `complaint`(`complaint_id`,`type`,`user_id`,`complaint`,`date`,`reply_date`,`reply`) values (1,'user',2,'The UI is very old ','2023-03-02','2023-03-02','We will fix it soon\r\n');
 
 /*Table structure for table `feedback` */
 
@@ -79,11 +79,11 @@ CREATE TABLE `feedback` (
   `date` date DEFAULT NULL,
   `feedback` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`feedback_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `feedback` */
 
-insert  into `feedback`(`feedback_id`,`sender_id`,`type`,`date`,`feedback`) values (25,30,'user','2023-02-15','good app????????'),(26,31,'user','2023-02-15','good application '),(27,2,'user','2023-02-19','today'),(28,32,'user','2023-02-19','rijo'),(29,2,'user','2023-02-22','sending...');
+insert  into `feedback`(`feedback_id`,`sender_id`,`type`,`date`,`feedback`) values (1,2,'user','2023-03-02','Thank You for developing this app');
 
 /*Table structure for table `login` */
 
@@ -116,7 +116,7 @@ CREATE TABLE `offer` (
 
 /*Data for the table `offer` */
 
-insert  into `offer`(`offer_id`,`product_id`,`offer`,`date_from`,`date_to`) values (7,20,'50','2023-02-12','2023-03-11'),(8,23,'23','2023-02-12','2023-03-11'),(9,22,'2','2023-02-12','2023-03-11'),(10,24,'1','2023-02-15','2023-03-08');
+insert  into `offer`(`offer_id`,`product_id`,`offer`,`date_from`,`date_to`) values (7,20,'50','2023-02-12','2023-03-25'),(8,23,'23','2023-02-12','2023-03-11'),(9,22,'2','2023-02-12','2023-03-11'),(10,24,'1','2023-02-15','2023-03-08');
 
 /*Table structure for table `payment` */
 
@@ -127,14 +127,12 @@ CREATE TABLE `payment` (
   `bank_name` varchar(40) DEFAULT NULL,
   `ifsc_code` varchar(40) DEFAULT NULL,
   `account_no` varchar(40) DEFAULT NULL,
-  `amount` float DEFAULT NULL,
+  `account_balance` float DEFAULT NULL,
   `holder_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`bank_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `payment` */
-
-insert  into `payment`(`bank_id`,`bank_name`,`ifsc_code`,`account_no`,`amount`,`holder_id`) values (1,NULL,NULL,NULL,78,NULL);
 
 /*Table structure for table `product` */
 
@@ -165,11 +163,11 @@ CREATE TABLE `rating` (
   `rating` int(20) DEFAULT NULL,
   `shop_id` int(20) DEFAULT NULL,
   PRIMARY KEY (`rating_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `rating` */
 
-insert  into `rating`(`rating_id`,`date`,`user_id`,`rating`,`shop_id`) values (1,'2023-02-19',31,1,18),(2,'2023-02-19',31,0,20),(3,'2023-02-19',2,5,18),(4,'2023-02-19',2,5,20),(5,'2023-02-19',2,5,21),(6,'2023-02-19',2,2,23),(7,'2023-02-19',32,5,21);
+insert  into `rating`(`rating_id`,`date`,`user_id`,`rating`,`shop_id`) values (1,'2023-03-02',2,3,18);
 
 /*Table structure for table `shop` */
 
@@ -187,7 +185,7 @@ CREATE TABLE `shop` (
 
 /*Data for the table `shop` */
 
-insert  into `shop`(`shop_id`,`name`,`place`,`pincode`,`mail`,`phone`,`image`) values (18,'Jio Mart','Kasargod',671541,'jio@gmail.com',9562147895,'/static/images/230125-072019 .jpg'),(20,'Spicy','knr',64646,'spicy@gmail.com',4554,'/static/images/230211-123914 .jpg'),(21,'Max','liuo',565,'max@gmail.com',3132154,'/static/images/230211-124100 .jpg'),(22,'Lucky','ld',66565,'lucky@gmail.com',64664,'/static/images/230211-131049 .jpg'),(23,'aaa','sdf',1654,'aaa@gmail.com',645645,'/static/images/230211-131523 .jpg'),(24,'Test','jl',6565,'test@gmail.com',55454,'/static/images/230212-100628 .jpg');
+insert  into `shop`(`shop_id`,`name`,`place`,`pincode`,`mail`,`phone`,`image`) values (18,'Jio Mart','Kasargod',671541,'jio@gmail.com',9562147895,'/static/images/230125-072019 .jpg'),(20,'Spicy','Kannur',925416,'spicy@gmail.com',9874514785,'/static/images/230211-123914 .jpg'),(21,'Max','Kuttikol',674582,'max@gmail.com',9541237852,'/static/images/230211-124100 .jpg'),(22,'Lucky','Paduppu',652145,'lucky@gmail.com',8745321456,'/static/images/230211-131049 .jpg'),(23,'aaa','Munnad',654124,'aaa@gmail.com',8231456878,'/static/images/230211-131523 .jpg'),(24,'Test','jl',6565,'test@gmail.com',55454,'/static/images/230212-100628 .jpg');
 
 /*Table structure for table `stock` */
 
@@ -202,7 +200,7 @@ CREATE TABLE `stock` (
 
 /*Data for the table `stock` */
 
-insert  into `stock`(`stock_id`,`product_id`,`quantity`) values (43,20,293),(44,21,5),(45,22,1),(46,23,30),(47,24,23),(48,25,45),(49,26,50),(50,27,5),(51,28,12),(52,29,60),(53,30,2),(54,31,11),(55,32,121);
+insert  into `stock`(`stock_id`,`product_id`,`quantity`) values (43,20,793),(44,21,656),(45,22,141),(46,23,30),(47,24,23),(48,25,45),(49,26,50),(50,27,5),(51,28,12),(52,29,60),(53,30,65648),(54,31,11),(55,32,121);
 
 /*Table structure for table `user` */
 

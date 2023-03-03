@@ -54,6 +54,9 @@ public class sendComplaint extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final String userComplaint = complaint.getText().toString();
+                if (userComplaint.equalsIgnoreCase("" )) {
+                    complaint.setError("Complaint is required");
+                }else{
                 sh= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 sh.getString("ip","");
                 sh.getString("url","");
@@ -100,8 +103,6 @@ public class sendComplaint extends AppCompatActivity {
                         params.put("comp", userComplaint);//passing to python
                         params.put("id", sh.getString("lid",""));//passing to python
 
-
-
                         return params;
                     }
                 };
@@ -114,6 +115,8 @@ public class sendComplaint extends AppCompatActivity {
                         DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                         DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                 requestQueue.add(postRequest);
+                }
+
 
 
             }

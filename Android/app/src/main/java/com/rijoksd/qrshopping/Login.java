@@ -67,9 +67,15 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 final String userEmail = email.getText().toString();
                 final String userPassword = password.getText().toString();
-                sh= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                sh.getString("ip","");
-                url=sh.getString("url","")+"and_login";
+                if (userEmail.equalsIgnoreCase("" )) {
+                    email.setError("Username is required");
+                } else if (userPassword.equalsIgnoreCase("" )) {
+                    password.setError("Password is required");
+                }else{
+
+                sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                sh.getString("ip", "");
+                url = sh.getString("url", "") + "and_login";
 
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
                 StringRequest postRequest = new StringRequest(Request.Method.POST, url,
@@ -132,6 +138,7 @@ public class Login extends AppCompatActivity {
                         DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                         DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                 requestQueue.add(postRequest);
+            }
 
 
             }

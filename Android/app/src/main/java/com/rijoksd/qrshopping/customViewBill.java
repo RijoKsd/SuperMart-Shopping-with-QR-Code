@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -102,12 +103,13 @@ public class customViewBill extends BaseAdapter {
             }
         });
 
-
-
-
-        tv1.setTextColor(Color.BLACK);//color setting
+        tv3.setTextColor(Color.parseColor("#fea116"));
         tv2.setTextColor(Color.BLACK);
-        tv3.setTextColor(Color.BLACK);
+        tv1.setTextColor(Color.BLACK);
+
+        tv3.setAllCaps(true);
+        Typeface typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD);
+        tv3.setTypeface(typeface);
 
 
         tv1.setText(billDate[i]);

@@ -1012,18 +1012,14 @@ def and_single_buy_quantity():
     product_price = request.form['productPrice']  # product price
     shop_ID = request.form['shopID']  # shop id
     db = Database()
-    res0 = db.selectOne(
-        "select * from bill_master where user_id = '" + uid + "' and shop_id = '" + shop_ID + "' and bill_master.status='book' ")
-
-    # decrease stock
-
-    # print("update stock set quantity=quantity - '"+product_quantity+"' where product_id='"+productID+"'")
-
+    res0 = db.selectOne("select * from bill_master where user_id = '" + uid + "' and shop_id = '" + shop_ID + "' and bill_master.status='book' ")
+    total_product_quantity = int(product_quantity)
     if res0 is not None:
         res1 = db.selectOne(
             "select * from stock,product where stock.product_id=product.product_id and product.product_id='" + productID + "'")
+
         if res1 is not None:
-            if product_quantity > str(res1['quantity']):
+            if total_product_quantity > int(res1['quantity']):
                 print(product_quantity)
                 return jsonify(status="greater")
             else:
@@ -1072,7 +1068,7 @@ def and_payment():
     res = db.selectOne(
         "select * from payment where bank_name = '" + bank_name + "' and  ifsc_code = '" + bank_ifsc_code + "' and account_no='" + bank_account_no + "' and  amount ='" + total_amount + "' and  holder_id='" + uID + "'")
     if res is not None:
-        if total_amount > str(res['amount']):
+        if total_amount > int(res['amount']):
             return jsonify(status="greater")
         else:
             db.update(
