@@ -6,6 +6,9 @@ app = Flask(__name__)
 app.secret_key = "djljsdl"
 
 
+# systemPath = r"E:\QR shopping\python\static\\"
+
+
 # ---------------------------------------------- Global section started----------------------------------------------
 
 # ********************************************** Logout ********************************************** 
@@ -336,6 +339,45 @@ def add_product():
             date = datetime.datetime.now().strftime("%y%m%d-%H%M%S ")
             image.save(r"E:\QR shopping\python\static\images\\" + date + '.jpg')
             image_path = "/static/images/" + date + '.jpg'
+
+
+            import qrcode
+
+            # Create qr code instance
+            qr = qrcode.QRCode(
+                version = 1,
+                error_correction = qrcode.constants.ERROR_CORRECT_H,
+                box_size = 3,
+                border = 4,
+            )
+
+            # The data that you want to store
+            data = "The Data that you need to store in the QR Code"
+
+            # Add data
+            qr.add_data(data)
+            qr.make(fit=True)
+
+            # Create an image from the QR Code instance
+            img = qr.make_image()
+
+
+            systemPath = r"E:\QR shopping\python\static\\"
+
+
+            # Save it somewhere, change the extension as needed:
+            # img.save("image.png")
+            # img.save("image.bmp")
+            # img.save("image.jpeg")
+            
+
+            img.save(systemPath + "qr_codes/" + date + '.jpg')
+            
+            img.save("image.jpg")
+
+            
+
+
             db = Database()
             data = db.insert(
                 "insert into product VALUE ('','" + product_name + "','" + price + "','" + details + "','" + str(
@@ -1043,6 +1085,7 @@ def and_single_buy_quantity():
         db.update(
             "update bill_master set amount = '" + product_price + "' * '" + product_quantity + "' where user_id = '" + uid + "' and shop_id ='" + shop_ID + "'")
         return jsonify(status="ok")
+
 
 
 # and_view_shop_in_cart

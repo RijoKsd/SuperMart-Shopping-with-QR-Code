@@ -25,11 +25,11 @@ CREATE TABLE `bill` (
   `product_id` int(20) DEFAULT NULL,
   `quantity` int(20) DEFAULT NULL,
   PRIMARY KEY (`bill_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
 /*Data for the table `bill` */
 
-insert  into `bill`(`bill_id`,`master_id`,`product_id`,`quantity`) values (1,1,20,5),(2,2,30,600);
+insert  into `bill`(`bill_id`,`master_id`,`product_id`,`quantity`) values (1,1,20,12),(2,1,20,8),(3,1,20,10),(4,1,20,6),(5,1,20,11),(6,1,20,20),(7,1,23,13),(8,1,20,6),(9,1,20,11),(10,1,42,45),(11,1,20,1),(12,1,20,6),(13,1,20,7),(14,2,22,6),(15,1,20,6),(16,1,20,7),(17,1,20,9),(18,1,20,9),(19,1,31,6),(20,1,20,8),(21,1,20,1),(22,1,31,4),(23,1,20,50),(24,1,20,50),(25,1,20,50),(26,1,20,1),(27,1,23,1),(28,1,32,1),(29,1,23,5),(30,1,23,5);
 
 /*Table structure for table `bill_master` */
 
@@ -47,7 +47,7 @@ CREATE TABLE `bill_master` (
 
 /*Data for the table `bill_master` */
 
-insert  into `bill_master`(`master_id`,`shop_id`,`user_id`,`amount`,`date`,`status`) values (1,18,2,50,'2023-03-02','book'),(2,23,2,25,'2023-03-02','add to cart');
+insert  into `bill_master`(`master_id`,`shop_id`,`user_id`,`amount`,`date`,`status`) values (1,18,2,223.3,'2023-03-04','book'),(2,21,2,630,'2023-03-04','book');
 
 /*Table structure for table `complaint` */
 
@@ -146,11 +146,11 @@ CREATE TABLE `product` (
   `shop_id` int(20) DEFAULT NULL,
   `image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
 
 /*Data for the table `product` */
 
-insert  into `product`(`product_id`,`name`,`price`,`details`,`shop_id`,`image`) values (20,'Salt',20,'1kg salt',18,'/static/images/230127-231204 .jpg'),(21,'Butter',54,'Amul Butter\r\n',20,'/static/images/230211-130940 .jpg'),(22,'Rice',105,'10kg ',21,'/static/images/230211-131014 .jpg'),(23,'Onion',58,'1 kg ',18,'/static/images/230211-143217 .jpg'),(24,'Coffee',30,'Nescafe coffee',21,'/static/images/230212-095623 .jpg'),(25,'Bread',30,'Wheat Bread',20,'/static/images/230212-095908 .jpg'),(26,'Brush',25,'Oral B  brush\r\n',20,'/static/images/230212-100008 .jpg'),(27,'Dettol',50,'100ml Dettol ',20,'/static/images/230212-100037 .jpg'),(28,'Tea Powder',30,' TATA tea',20,'/static/images/230212-100105 .jpg'),(29,'Paste',30,'Colgate paste 200g',20,'/static/images/230212-100133 .jpg'),(30,'Carrot',25,'carrot 500g',23,'/static/images/230212-100732 .jpg'),(31,'Cauliflower',30,'',18,'/static/images/230221-095728 .jpg'),(32,'Turmeric powder',25,'100g turmeric powder',18,'/static/images/230221-095823 .jpg');
+insert  into `product`(`product_id`,`name`,`price`,`details`,`shop_id`,`image`) values (20,'Salt',20,'1kg salt',18,'/static/images/230127-231204 .jpg'),(21,'Butter',54,'Amul Butter\r\n',20,'/static/images/230211-130940 .jpg'),(22,'Rice',105,'10kg ',21,'/static/images/230211-131014 .jpg'),(23,'Onion',58,'1 kg ',18,'/static/images/230211-143217 .jpg'),(24,'Coffee',30,'Nescafe coffee',21,'/static/images/230212-095623 .jpg'),(25,'Bread',30,'Wheat Bread',20,'/static/images/230212-095908 .jpg'),(26,'Brush',25,'Oral B  brush\r\n',20,'/static/images/230212-100008 .jpg'),(27,'Dettol',50,'100ml Dettol ',20,'/static/images/230212-100037 .jpg'),(28,'Tea Powder',30,' TATA tea',20,'/static/images/230212-100105 .jpg'),(29,'Paste',30,'Colgate paste 200g',20,'/static/images/230212-100133 .jpg'),(30,'Carrot',25,'carrot 500g',23,'/static/images/230212-100732 .jpg'),(31,'Cauliflower',30,'',18,'/static/images/230221-095728 .jpg'),(32,'Turmeric powder',25,'100g turmeric powder',18,'/static/images/230221-095823 .jpg'),(35,'Sugar',45,'1 kg sugar',18,'/static/images/230304-145429 .jpg'),(42,'Tomato',30,'1kg tomato',18,'/static/images/230304-151010 .jpg'),(43,'df45',45,'jk',18,'/static/images/230304-162531 .jpg'),(44,'test',33,'test',18,'/static/images/230304-164438 .jpg');
 
 /*Table structure for table `rating` */
 
@@ -196,11 +196,11 @@ CREATE TABLE `stock` (
   `product_id` int(20) DEFAULT NULL,
   `quantity` int(20) DEFAULT NULL,
   PRIMARY KEY (`stock_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=latin1;
 
 /*Data for the table `stock` */
 
-insert  into `stock`(`stock_id`,`product_id`,`quantity`) values (43,20,793),(44,21,656),(45,22,141),(46,23,30),(47,24,23),(48,25,45),(49,26,50),(50,27,5),(51,28,12),(52,29,60),(53,30,65648),(54,31,11),(55,32,121);
+insert  into `stock`(`stock_id`,`product_id`,`quantity`) values (43,20,547),(44,21,656),(45,22,135),(46,23,6),(47,24,23),(48,25,45),(49,26,50),(50,27,5),(51,28,12),(52,29,60),(53,30,65648),(54,31,1),(55,32,221),(56,35,33),(57,42,633);
 
 /*Table structure for table `user` */
 

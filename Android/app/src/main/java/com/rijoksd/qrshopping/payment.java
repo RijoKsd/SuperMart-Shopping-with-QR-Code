@@ -27,14 +27,6 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-//public class payment extends AppCompatActivity {
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_payment);
-//    }
-//}
 
 public class payment extends AppCompatActivity {
 
@@ -43,15 +35,12 @@ public class payment extends AppCompatActivity {
     Button onlinePay,offlinePay;
     SharedPreferences sh;
     String url;
-    ImageView arrow;
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
-
         bankName = findViewById(R.id.bankName);
         bankAccountNo = findViewById(R.id.bankAccountNo);
         bankIFSCCode = findViewById(R.id.bankIFSCCode);
@@ -60,31 +49,19 @@ public class payment extends AppCompatActivity {
         offlinePay = findViewById(R.id.offlinePay);
 
         SharedPreferences sh=PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-//        paymentAmount =
         totalAmountToPay.setText(sh.getString("total",""));
 
 
-
-
-
-
-
-//        arrow = (ImageView) findViewById(R.id.arrowLeft);
-//        arrow.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i= new Intent(getApplicationContext(), customViewReply.class);
-//                startActivity(i);
-//            }
-//        });
         offlinePay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(payment.this, "Pay total amount  in bill counter", Toast.LENGTH_SHORT).show();
+                Toast.makeText(payment.this, "Have a nice day", Toast.LENGTH_SHORT).show();
+
                 Intent i = new Intent(getApplicationContext(),UserHome.class);
                 startActivity(i);
             }
         });
-
 
         onlinePay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,11 +73,11 @@ public class payment extends AppCompatActivity {
                 if (userBankName.equalsIgnoreCase("" )) {
                     bankName.setError("Bank name is required");
                 } else if (userBankAccountNo.equalsIgnoreCase("" )) {
-                    bankName.setError("Account number is required");
+                    bankAccountNo.setError("Account number is required");
                 }else  if (userBankIFSCCode.equalsIgnoreCase("" )) {
                     bankIFSCCode.setError("IFSC code is required");
                 } else {
-//                sh= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+//                    SharedPreferences sh= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     sh.getString("ip", "");
                     sh.getString("url", "");
                     url = sh.getString("url", "") + "/and_payment";
@@ -116,6 +93,9 @@ public class payment extends AppCompatActivity {
                                     try {
                                         JSONObject jsonObj = new JSONObject(response);
                                         if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
+//                                            JSONObject jj = jsonObj.getJSONObject("data");
+//                                            totalAmountToPay.setText(jj.getString("amount"));
+
                                             Toast.makeText(payment.this, "Payment successfully completed", Toast.LENGTH_SHORT).show();
                                             Intent i = new Intent(getApplicationContext(), UserHome.class);
                                             startActivity(i);
@@ -148,6 +128,7 @@ public class payment extends AppCompatActivity {
                             params.put("IFSCode", userBankIFSCCode);//passing to python
                             params.put("totalAmount", userTotalAmountToPay);//passing to python
                             params.put("id", sh.getString("lid", ""));//passing to python
+                            params.put("shopID", sh.getString("shopID", ""));//passing to python
                             params.put("productPrice", sh.getString("productPrice", ""));//passing to python
                             params.put("total", sh.getString("total", ""));//passing to python
 

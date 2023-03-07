@@ -86,12 +86,12 @@ public class singleBuyQuantity extends AppCompatActivity {
                                         JSONObject jsonObj = new JSONObject(response);
                                         if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
                                             Toast.makeText(singleBuyQuantity.this, "ABooked", Toast.LENGTH_SHORT).show();
-                                            Intent i = new Intent(getApplicationContext(), priceOfProduct.class);
+                                            Intent i = new Intent(getApplicationContext(), payment.class);
                                             startActivity(i);
 
                                         } else if (jsonObj.getString("status").equalsIgnoreCase("added")) {
                                             Toast.makeText(singleBuyQuantity.this, "BBoooked", Toast.LENGTH_SHORT).show();
-                                            Intent ii = new Intent(getApplicationContext(), priceOfProduct.class);
+                                            Intent ii = new Intent(getApplicationContext(), payment.class);
                                             startActivity(ii);
 
                                         } else if (jsonObj.getString("status").equalsIgnoreCase("greater")) {

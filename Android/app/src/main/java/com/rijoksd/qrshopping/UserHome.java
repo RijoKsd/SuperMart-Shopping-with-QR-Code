@@ -78,10 +78,10 @@ public class UserHome extends AppCompatActivity implements NavigationView.OnNavi
             Intent i = new Intent(getApplicationContext(), viewShop.class);
             startActivity(i);
         }
-//        else if(id == R.id.nav_scan){
-//            Intent i = new Intent(getApplicationContext(), .class);
-//            startActivity(i);
-//        }
+        else if(id == R.id.nav_scan){
+            Intent i = new Intent(getApplicationContext(), scanQr.class);
+            startActivity(i);
+        }
         else if(id == R.id.nav_bill){
             Intent i = new Intent(getApplicationContext(),ViewBill.class);
             startActivity(i);
