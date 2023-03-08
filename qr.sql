@@ -25,11 +25,11 @@ CREATE TABLE `bill` (
   `product_id` int(20) DEFAULT NULL,
   `quantity` int(20) DEFAULT NULL,
   PRIMARY KEY (`bill_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `bill` */
 
-insert  into `bill`(`bill_id`,`master_id`,`product_id`,`quantity`) values (1,1,20,12),(2,1,20,8),(3,1,20,10),(4,1,20,6),(5,1,20,11),(6,1,20,20),(7,1,23,13),(8,1,20,6),(9,1,20,11),(10,1,42,45),(11,1,20,1),(12,1,20,6),(13,1,20,7),(14,2,22,6),(15,1,20,6),(16,1,20,7),(17,1,20,9),(18,1,20,9),(19,1,31,6),(20,1,20,8),(21,1,20,1),(22,1,31,4),(23,1,20,50),(24,1,20,50),(25,1,20,50),(26,1,20,1),(27,1,23,1),(28,1,32,1),(29,1,23,5),(30,1,23,5);
+insert  into `bill`(`bill_id`,`master_id`,`product_id`,`quantity`) values (1,1,20,2),(2,1,23,7),(3,2,21,3),(4,2,25,5),(5,2,26,3);
 
 /*Table structure for table `bill_master` */
 
@@ -47,7 +47,7 @@ CREATE TABLE `bill_master` (
 
 /*Data for the table `bill_master` */
 
-insert  into `bill_master`(`master_id`,`shop_id`,`user_id`,`amount`,`date`,`status`) values (1,18,2,223.3,'2023-03-04','book'),(2,21,2,630,'2023-03-04','book');
+insert  into `bill_master`(`master_id`,`shop_id`,`user_id`,`amount`,`date`,`status`) values (1,18,2,0,'2023-03-08','cart'),(2,20,2,0,'2023-03-08','cart');
 
 /*Table structure for table `complaint` */
 
@@ -95,11 +95,11 @@ CREATE TABLE `login` (
   `password` varchar(40) DEFAULT NULL,
   `user_type` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`login_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 
 /*Data for the table `login` */
 
-insert  into `login`(`login_id`,`user_name`,`password`,`user_type`) values (1,'admin','admin','admin'),(2,'rijo@gmail.com','rijo','user'),(3,'salman@gmail.com','salman','user'),(18,'jio@gmail.com','jio','shop'),(20,'spicy@gmail.com','spicy','shop'),(21,'max@gmail.com','max','shop'),(22,'lucky@gmail.com','lucky','pending'),(23,'aaa@gmail.com','aaa','shop'),(24,'test@gmail.com','test','pending'),(29,'sanesh@gmail.com','sanesh','user'),(30,'lenin@gmail.com','lenin','user'),(31,'sachin@gmail.com','sachin','user'),(32,'akash@gmail.com','akash','user');
+insert  into `login`(`login_id`,`user_name`,`password`,`user_type`) values (1,'admin','admin','admin'),(2,'rijo@gmail.com','rijo','user'),(3,'salman@gmail.com','salman','user'),(18,'jio@gmail.com','jio','shop'),(20,'spicy@gmail.com','spicy','shop'),(21,'max@gmail.com','max','shop'),(22,'lucky@gmail.com','lucky','pending'),(23,'aaa@gmail.com','aaa','shop'),(24,'test@gmail.com','test','pending'),(29,'sanesh@gmail.com','sanesh','user'),(30,'lenin@gmail.com','lenin','user'),(31,'sachin@gmail.com','sachin','user'),(32,'akash@gmail.com','akash','user'),(33,'aleena@gmail.com','aleena','user');
 
 /*Table structure for table `offer` */
 
@@ -130,9 +130,11 @@ CREATE TABLE `payment` (
   `account_balance` float DEFAULT NULL,
   `holder_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`bank_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `payment` */
+
+insert  into `payment`(`bank_id`,`bank_name`,`ifsc_code`,`account_no`,`account_balance`,`holder_id`) values (1,'rijo','SBI2345','1234567890',13738,2),(2,'jio','ICICI343','2231235635',30862,18),(3,'spicy','SBI4566','3453434232',37159,20),(4,'MAX','ABC4589','3449080005',35025,21);
 
 /*Table structure for table `product` */
 
@@ -146,11 +148,11 @@ CREATE TABLE `product` (
   `shop_id` int(20) DEFAULT NULL,
   `image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
 
 /*Data for the table `product` */
 
-insert  into `product`(`product_id`,`name`,`price`,`details`,`shop_id`,`image`) values (20,'Salt',20,'1kg salt',18,'/static/images/230127-231204 .jpg'),(21,'Butter',54,'Amul Butter\r\n',20,'/static/images/230211-130940 .jpg'),(22,'Rice',105,'10kg ',21,'/static/images/230211-131014 .jpg'),(23,'Onion',58,'1 kg ',18,'/static/images/230211-143217 .jpg'),(24,'Coffee',30,'Nescafe coffee',21,'/static/images/230212-095623 .jpg'),(25,'Bread',30,'Wheat Bread',20,'/static/images/230212-095908 .jpg'),(26,'Brush',25,'Oral B  brush\r\n',20,'/static/images/230212-100008 .jpg'),(27,'Dettol',50,'100ml Dettol ',20,'/static/images/230212-100037 .jpg'),(28,'Tea Powder',30,' TATA tea',20,'/static/images/230212-100105 .jpg'),(29,'Paste',30,'Colgate paste 200g',20,'/static/images/230212-100133 .jpg'),(30,'Carrot',25,'carrot 500g',23,'/static/images/230212-100732 .jpg'),(31,'Cauliflower',30,'',18,'/static/images/230221-095728 .jpg'),(32,'Turmeric powder',25,'100g turmeric powder',18,'/static/images/230221-095823 .jpg'),(35,'Sugar',45,'1 kg sugar',18,'/static/images/230304-145429 .jpg'),(42,'Tomato',30,'1kg tomato',18,'/static/images/230304-151010 .jpg'),(43,'df45',45,'jk',18,'/static/images/230304-162531 .jpg'),(44,'test',33,'test',18,'/static/images/230304-164438 .jpg');
+insert  into `product`(`product_id`,`name`,`price`,`details`,`shop_id`,`image`) values (20,'Salt',20,'1kg salt',18,'/static/images/230127-231204 .jpg'),(21,'Butter',54,'Amul Butter\r\n',20,'/static/images/230211-130940 .jpg'),(22,'Rice',105,'10kg ',21,'/static/images/230211-131014 .jpg'),(23,'Onion',58,'1 kg ',18,'/static/images/230211-143217 .jpg'),(24,'Coffee',30,'Nescafe coffee',21,'/static/images/230212-095623 .jpg'),(25,'Bread',30,'Wheat Bread',20,'/static/images/230212-095908 .jpg'),(26,'Brush',25,'Oral B  brush\r\n',20,'/static/images/230212-100008 .jpg'),(27,'Dettol',50,'100ml Dettol ',20,'/static/images/230212-100037 .jpg'),(28,'Tea Powder',30,' TATA tea',20,'/static/images/230212-100105 .jpg'),(29,'Paste',30,'Colgate paste 200g',20,'/static/images/230212-100133 .jpg'),(30,'Carrot',25,'carrot 500g',23,'/static/images/230212-100732 .jpg'),(31,'Cauliflower',30,'',18,'/static/images/230221-095728 .jpg'),(32,'Turmeric powder',25,'100g turmeric powder',18,'/static/images/230221-095823 .jpg'),(35,'Sugar',45,'1 kg sugar',18,'/static/images/230304-145429 .jpg'),(42,'Tomato',30,'1kg tomato',18,'/static/images/230304-151010 .jpg'),(43,'Carrot',45,'1 kg carrot',18,'/static/images/230304-162531 .jpg'),(44,'Brushes',150,'Pack of 10 brush',18,'/static/images/230307-195326 .jpg'),(45,'Coffee Powder',55,'Nescafe coffe',18,'/static/images/230307-195501 .jpg');
 
 /*Table structure for table `rating` */
 
@@ -163,11 +165,11 @@ CREATE TABLE `rating` (
   `rating` int(20) DEFAULT NULL,
   `shop_id` int(20) DEFAULT NULL,
   PRIMARY KEY (`rating_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `rating` */
 
-insert  into `rating`(`rating_id`,`date`,`user_id`,`rating`,`shop_id`) values (1,'2023-03-02',2,3,18);
+insert  into `rating`(`rating_id`,`date`,`user_id`,`rating`,`shop_id`) values (1,'2023-03-02',2,3,18),(2,'2023-03-08',2,5,21);
 
 /*Table structure for table `shop` */
 
@@ -196,11 +198,11 @@ CREATE TABLE `stock` (
   `product_id` int(20) DEFAULT NULL,
   `quantity` int(20) DEFAULT NULL,
   PRIMARY KEY (`stock_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
 
 /*Data for the table `stock` */
 
-insert  into `stock`(`stock_id`,`product_id`,`quantity`) values (43,20,547),(44,21,656),(45,22,135),(46,23,6),(47,24,23),(48,25,45),(49,26,50),(50,27,5),(51,28,12),(52,29,60),(53,30,65648),(54,31,1),(55,32,221),(56,35,33),(57,42,633);
+insert  into `stock`(`stock_id`,`product_id`,`quantity`) values (43,20,332),(44,21,630),(45,22,130),(46,23,577),(47,24,23),(48,25,45),(49,26,50),(50,27,5),(51,28,12),(52,29,60),(53,30,65148),(54,31,145),(55,32,221),(56,35,33),(57,42,633),(58,44,400),(59,43,68),(60,45,67);
 
 /*Table structure for table `user` */
 
@@ -216,11 +218,11 @@ CREATE TABLE `user` (
   `phone_no` bigint(20) DEFAULT NULL,
   `image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 
 /*Data for the table `user` */
 
-insert  into `user`(`user_id`,`name`,`place`,`pincode`,`email`,`gender`,`phone_no`,`image`) values (2,'rijo','ksd',671541,'rijo@gmail.com','male',9446626926,'/static/images/230125-073807 .jpg'),(3,'salman','ksd',671123,'salman@gmail.com','male',9456324789,'/static/images/230125-211830 .jpg'),(29,'Sanesh','kasargod ',671541,'sanesh@gmail.com','Male',9468123564,'/static/images/230214-141007 .jpg'),(30,'Lenin','Kasargod',671541,'lenin@gmail.com','Male',9421386480,'/static/images/230215-073018 .jpg'),(31,'Sachin','Kannur',671544,'sachin@gmail.com','Male',9564812398,'/static/images/230215-195411 .jpg'),(32,'Akash','Udma',671543,'akash@gmail.com','Male',9547832159,'/static/images/230219-130138 .jpg');
+insert  into `user`(`user_id`,`name`,`place`,`pincode`,`email`,`gender`,`phone_no`,`image`) values (2,'rijo','ksd',671541,'rijo@gmail.com','male',9446626926,'/static/images/230125-073807 .jpg'),(3,'salman','ksd',671123,'salman@gmail.com','male',9456324789,'/static/images/230125-211830 .jpg'),(29,'Sanesh','kasargod ',671541,'sanesh@gmail.com','Male',9468123564,'/static/images/230214-141007 .jpg'),(30,'Lenin','Kasargod',671541,'lenin@gmail.com','Male',9421386480,'/static/images/230215-073018 .jpg'),(31,'Sachin','Kannur',671544,'sachin@gmail.com','Male',9564812398,'/static/images/230215-195411 .jpg'),(32,'Akash','Udma',671543,'akash@gmail.com','Male',9547832159,'/static/images/230219-130138 .jpg'),(33,'Aleena ','Paduppu',67154,'aleena@gmail.com','Female',9452139874,'/static/images/230307-195737 .jpg');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

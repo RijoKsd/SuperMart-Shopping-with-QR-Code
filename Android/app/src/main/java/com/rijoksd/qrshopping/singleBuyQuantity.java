@@ -85,16 +85,24 @@ public class singleBuyQuantity extends AppCompatActivity {
                                     try {
                                         JSONObject jsonObj = new JSONObject(response);
                                         if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
-                                            Toast.makeText(singleBuyQuantity.this, "ABooked", Toast.LENGTH_SHORT).show();
+                                            String amount=jsonObj.getString("am");
+                                            String masterid=jsonObj.getString("mid");
+                                            SharedPreferences.Editor ed = sh.edit();
+                                            ed.putString("am", amount);
+                                            ed.putString("mid", masterid);
+                                            ed.commit();
+//                                            Toast.makeText(singleBuyQuantity.this, "ABooked", Toast.LENGTH_SHORT).show();
                                             Intent i = new Intent(getApplicationContext(), payment.class);
                                             startActivity(i);
 
-                                        } else if (jsonObj.getString("status").equalsIgnoreCase("added")) {
-                                            Toast.makeText(singleBuyQuantity.this, "BBoooked", Toast.LENGTH_SHORT).show();
-                                            Intent ii = new Intent(getApplicationContext(), payment.class);
-                                            startActivity(ii);
-
-                                        } else if (jsonObj.getString("status").equalsIgnoreCase("greater")) {
+                                        }
+//                                        else if (jsonObj.getString("status").equalsIgnoreCase("added")) {
+//                                            Toast.makeText(singleBuyQuantity.this, "BBoooked", Toast.LENGTH_SHORT).show();
+//                                            Intent ii = new Intent(getApplicationContext(), payment.class);
+//                                            startActivity(ii);
+//
+//                                        }
+                                        else if (jsonObj.getString("status").equalsIgnoreCase("greater")) {
                                             Toast.makeText(singleBuyQuantity.this, "Out of stock", Toast.LENGTH_SHORT).show();
                                             Intent im = new Intent(getApplicationContext(), viewProduct.class);
                                             startActivity(im);

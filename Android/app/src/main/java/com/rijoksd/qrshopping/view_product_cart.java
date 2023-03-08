@@ -2,12 +2,14 @@ package com.rijoksd.qrshopping;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +24,7 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,8 +34,11 @@ public class view_product_cart extends AppCompatActivity {
     ListView list;
     SharedPreferences sh;
     String ip, url, url1, lid;
+    TextView grandTotal;
+    Button placeOrder;
+
     ImageView arrow;
-    String[] productID, productImage,productName,productQuantity,productPrice,sId,billID,productTotal;
+    String[] productID, productImage,productName,productQuantity,productPrice,sId,billID,productShopName,totalPrice;
 
 
     @Override
@@ -40,12 +46,23 @@ public class view_product_cart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_product_cart);
         list = (ListView) findViewById(R.id.list);
+        grandTotal = (TextView) findViewById(R.id.totalAmount);
+        placeOrder = (Button) findViewById(R.id.buyAll);
 
         arrow = (ImageView) findViewById(R.id.arrowLeft);
         arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i= new Intent(getApplicationContext(),UserHome.class);
+                startActivity(i);
+            }
+        });
+
+
+        placeOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),cartPayment.class);
                 startActivity(i);
             }
         });
@@ -71,6 +88,15 @@ public class view_product_cart extends AppCompatActivity {
                             JSONObject jsonObj = new JSONObject(response);
                             if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
 
+                                String grnd_totl=jsonObj.getString("gt");
+                                String ssid=jsonObj.getString("sid");
+                                grandTotal.setText(grnd_totl);
+                                grandTotal.setTextColor(Color.RED);
+                                SharedPreferences.Editor ed = sh.edit();
+                                ed.putString("gnd_totl", grnd_totl);
+                                ed.putString("shopid", ssid);
+                                ed.commit();
+
                                 JSONArray js = jsonObj.getJSONArray("data");//from python
                                 productID = new String[js.length()];
                                 productImage = new String[js.length()];
@@ -79,7 +105,9 @@ public class view_product_cart extends AppCompatActivity {
                                 productPrice = new String[js.length()];
                                 sId = new String[js.length()];
                                 billID = new String[js.length()];
-//                                productTotal = new String[js.length()];
+                                productShopName = new String[js.length()];
+                                totalPrice = new String[js.length()];
+
 
 
                                 for (int i = 0; i < js.length(); i++) {
@@ -92,10 +120,11 @@ public class view_product_cart extends AppCompatActivity {
                                     productPrice[i] = u.getString("price");
                                     sId[i] = u.getString("shop_id");
                                     billID[i] = u.getString("bill_id");
-//                                    productTotal[i] = u.getString("total");
+                                    productShopName[i] = u.getString("sn");
+                                    totalPrice[i] = u.getString("total");
 
                                 }
-                                list.setAdapter(new custom_View_Product_cart(getApplicationContext(), productID, productImage, productName, productQuantity, productPrice,sId,billID));//custom_view_service.xml and li is the listview object
+                                list.setAdapter(new custom_View_Product_cart(getApplicationContext(), productID, productImage, productName, productQuantity, productPrice,sId,billID,productShopName,totalPrice));//custom_view_service.xml and li is the listview object
 
 
                             } else {
@@ -122,7 +151,7 @@ public class view_product_cart extends AppCompatActivity {
                 SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("id", sh.getString("lid", ""));//passing to python
-                params.put("shopID", sh.getString("shopID", ""));//passing to python
+                params.put("shopid", sh.getString("shopID", ""));//passing to python
                 return params;
             }
         };

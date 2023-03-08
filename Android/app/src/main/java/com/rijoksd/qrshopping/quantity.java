@@ -63,19 +63,12 @@ public class quantity extends AppCompatActivity {
                                     try {
                                         JSONObject jsonObj = new JSONObject(response);
                                         if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
-                                            Toast.makeText(quantity.this, "Quantity send", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(quantity.this, "Add to Cart", Toast.LENGTH_SHORT).show();
                                             Intent i = new Intent(getApplicationContext(), viewProduct.class);
                                             startActivity(i);
-
                                         }
                                         if (jsonObj.getString("status").equalsIgnoreCase("update")) {
                                             Toast.makeText(quantity.this, "Quantity updated", Toast.LENGTH_SHORT).show();
-                                            Intent i = new Intent(getApplicationContext(), viewProduct.class);
-                                            startActivity(i);
-
-                                        }
-                                        if (jsonObj.getString("status").equalsIgnoreCase("cart")) {
-                                            Toast.makeText(quantity.this, "Add to cart", Toast.LENGTH_SHORT).show();
                                             Intent i = new Intent(getApplicationContext(), viewProduct.class);
                                             startActivity(i);
 
@@ -84,15 +77,8 @@ public class quantity extends AppCompatActivity {
                                             Toast.makeText(quantity.this, "Out of stock", Toast.LENGTH_SHORT).show();
                                             Intent i = new Intent(getApplicationContext(), viewProduct.class);
                                             startActivity(i);
-
-                                        }
-                                        if (jsonObj.getString("status").equalsIgnoreCase("productqty")) {
-                                            Toast.makeText(quantity.this, "Product quantity updated", Toast.LENGTH_SHORT).show();
-                                            Intent i = new Intent(getApplicationContext(), viewProduct.class);
-                                            startActivity(i);
-
                                         } else {
-                                            Toast.makeText(getApplicationContext(), "Not found", Toast.LENGTH_LONG).show();
+//                                            Toast.makeText(getApplicationContext(), "Not found", Toast.LENGTH_LONG).show();
                                         }
 
                                     } catch (Exception e) {
@@ -108,7 +94,6 @@ public class quantity extends AppCompatActivity {
                                 }
                             }
                     ) {
-
                         //            value Passing android to python
                         @Override
                         protected Map<String, String> getParams() {

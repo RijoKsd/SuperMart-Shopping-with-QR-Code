@@ -86,7 +86,7 @@ public class customViewProduct extends BaseAdapter {
                 SharedPreferences.Editor ed=sh.edit();
                 ed.putString("productID",productID[pos]);
                 ed.putString("shopID",sId[pos]);
-                ed.putString("productPrice",productPrice[pos]);
+                ed.putString("productPrice",productPrice[i]);
                 ed.commit();
                 Intent i=new Intent(context.getApplicationContext(),singleBuyQuantity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

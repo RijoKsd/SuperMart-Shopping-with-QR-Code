@@ -1,3 +1,4 @@
+
 package com.rijoksd.qrshopping;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class payment extends AppCompatActivity {
+public class cartPayment extends AppCompatActivity {
 
     EditText bankName,bankAccountNo,bankIFSCCode;
     TextView totalAmountToPay;
@@ -41,7 +42,7 @@ public class payment extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_payment);
+        setContentView(R.layout.activity_cart_payment);
         bankName = findViewById(R.id.bankName);
         bankAccountNo = findViewById(R.id.bankAccountNo);
         bankIFSCCode = findViewById(R.id.bankIFSCCode);
@@ -53,7 +54,7 @@ public class payment extends AppCompatActivity {
 //        String p=sh.getString("productPrice","");
 
 //        Toast.makeText(this, "ppppppppp"+p, Toast.LENGTH_SHORT).show();
-        totalAmountToPay.setText(sh.getString("am",""));
+        totalAmountToPay.setText(sh.getString("gnd_totl",""));
 
 
         offlinePay.setOnClickListener(new View.OnClickListener() {
@@ -62,9 +63,7 @@ public class payment extends AppCompatActivity {
                 SharedPreferences sh= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 sh.getString("ip","");
                 sh.getString("url","");
-                url1=sh.getString("url","")+"/and_offline_payment";
-
-
+                url1=sh.getString("url","")+"/and_offline_payment_from_cart";
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
                 StringRequest postRequest = new StringRequest(Request.Method.POST, url1,
                         new Response.Listener<String>() {
@@ -75,10 +74,10 @@ public class payment extends AppCompatActivity {
                                 try {
                                     JSONObject jsonObj = new JSONObject(response);
                                     if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
-                                        Toast.makeText(payment.this, "Pay total amount  in bill counter", Toast.LENGTH_SHORT).show();
-                                        Toast.makeText(payment.this, "Have a nice day", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(cartPayment.this, "Pay total amount  in bill counter", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(cartPayment.this, "Have a nice day", Toast.LENGTH_SHORT).show();
 
-                                        Intent i = new Intent(getApplicationContext(),viewProduct.class);
+                                        Intent i = new Intent(getApplicationContext(),UserHome.class);
                                         startActivity(i);
                                     } else {
                                         Toast.makeText(getApplicationContext(), "Not found", Toast.LENGTH_LONG).show();
@@ -104,8 +103,10 @@ public class payment extends AppCompatActivity {
                         SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                         Map<String, String> params = new HashMap<String, String>();
 
-                        params.put("mid", sh.getString("mid", ""));//passing to python
-//                        params.put("id", sh.getString("lid",""));//passing to python
+//                        params.put("mid", sh.getString("mid", ""));//passing to python
+                        params.put("id", sh.getString("lid",""));//passing to python
+                        params.put("shopid", sh.getString("shopid", ""));//passing to python
+
 
                         return params;
                     }
@@ -139,20 +140,20 @@ public class payment extends AppCompatActivity {
 //                } else {
 
 //                    SharedPreferences sh= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                    sh.getString("ip", "");
-                    sh.getString("url", "");
-                    url = sh.getString("url", "") + "/and_payment";
+                sh.getString("ip", "");
+                sh.getString("url", "");
+                url = sh.getString("url", "") + "/and_payment_from_cart";
 
-                    RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-                    StringRequest postRequest = new StringRequest(Request.Method.POST, url,
-                            new Response.Listener<String>() {
-                                @Override
-                                public void onResponse(String response) {
-                                    //  Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                //  Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
 
-                                    try {
-                                        JSONObject jsonObj = new JSONObject(response);
-                                        if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
+                                try {
+                                    JSONObject jsonObj = new JSONObject(response);
+                                    if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
 ////                                            JSONArray js = jsonObj.getJSONArray("data");
 //
 ////                                            totalAmountToPay = new String[js.length()];
@@ -161,65 +162,67 @@ public class payment extends AppCompatActivity {
 //                                                JSONObject jj = jsonObj.getJSONObject("data");
 //                                                totalAmountToPay.setText(jj.getString("amount"));
 
-                                            Toast.makeText(payment.this, "Payment successfully completed", Toast.LENGTH_SHORT).show();
-                                            Intent i = new Intent(getApplicationContext(), viewProduct.class);
-                                            startActivity(i);
-                                        }
-                                        if (jsonObj.getString("status").equalsIgnoreCase("insufficient")) {
+                                        Toast.makeText(cartPayment.this, "Payment successfully completed", Toast.LENGTH_SHORT).show();
+                                        Intent i = new Intent(getApplicationContext(), viewProduct.class);
+                                        startActivity(i);
+                                    }
+                                    if (jsonObj.getString("status").equalsIgnoreCase("insufficient")) {
 ////
 
-                                            Toast.makeText(payment.this, "Please check you bank balance!!!", Toast.LENGTH_SHORT).show();
-                                            Intent i = new Intent(getApplicationContext(), payment.class);
-                                            startActivity(i);
-                                        }
-                                        else {
-                                            Toast.makeText(getApplicationContext(), "Wrong Bank details", Toast.LENGTH_LONG).show();
-                                        }
-
-                                    } catch (Exception e) {
-                                        Toast.makeText(getApplicationContext(), "Error" + e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(cartPayment.this, "Please check you bank balance!!!", Toast.LENGTH_SHORT).show();
+                                        Intent i = new Intent(getApplicationContext(), payment.class);
+                                        startActivity(i);
                                     }
-                                }
-                            },
-                            new Response.ErrorListener() {
-                                @Override
-                                public void onErrorResponse(VolleyError error) {
-                                    // error
-                                    Toast.makeText(getApplicationContext(), "eeeee" + error.toString(), Toast.LENGTH_SHORT).show();
+                                    else {
+                                        Toast.makeText(getApplicationContext(), "Wrong Bank details", Toast.LENGTH_LONG).show();
+                                    }
+
+                                } catch (Exception e) {
+                                    Toast.makeText(getApplicationContext(), "Error" + e.getMessage().toString(), Toast.LENGTH_SHORT).show();
                                 }
                             }
-                    ) {
-
-                        //                value Passing android to python
-                        @Override
-                        protected Map<String, String> getParams() {
-                            SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                            Map<String, String> params = new HashMap<String, String>();
-
-                            params.put("bankName", userBankName);//passing to python
-                            params.put("accountNo", userBankAccountNo);//passing to python
-                            params.put("IFSCode", userBankIFSCCode);//passing to python
-                            params.put("totalAmount", userTotalAmountToPay);//passing to python
-                            params.put("id", sh.getString("lid", ""));//passing to python
-                            params.put("shopID", sh.getString("shopID", ""));//passing to python
-                            params.put("mid", sh.getString("mid", ""));//passing to python
-                            params.put("total", sh.getString("am", ""));//passing to python
-
-
-
-                            return params;
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                // error
+                                Toast.makeText(getApplicationContext(), "eeeee" + error.toString(), Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    };
+                ) {
+
+                    //                value Passing android to python
+                    @Override
+                    protected Map<String, String> getParams() {
+                        SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        Map<String, String> params = new HashMap<String, String>();
+
+                        params.put("bankName", userBankName);//passing to python
+                        params.put("accountNo", userBankAccountNo);//passing to python
+                        params.put("IFSCode", userBankIFSCCode);//passing to python
+                        params.put("totalAmount", userTotalAmountToPay);//passing to python
+                        params.put("id", sh.getString("lid", ""));//passing to python
+                        params.put("shopid", sh.getString("shopid", ""));//passing to python
+
+//                        params.put("shopID", sh.getString("shopID", ""));//passing to python
+//                        params.put("mid", sh.getString("mid", ""));//passing to python
+                        params.put("total", sh.getString("gnd_totl", ""));//passing to python
 
 
-                    int MY_SOCKET_TIMEOUT_MS = 100000;
 
-                    postRequest.setRetryPolicy(new DefaultRetryPolicy(
-                            MY_SOCKET_TIMEOUT_MS,
-                            DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-                    requestQueue.add(postRequest);
-                }
+                        return params;
+                    }
+                };
+
+
+                int MY_SOCKET_TIMEOUT_MS = 100000;
+
+                postRequest.setRetryPolicy(new DefaultRetryPolicy(
+                        MY_SOCKET_TIMEOUT_MS,
+                        DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                requestQueue.add(postRequest);
+            }
 
 
 

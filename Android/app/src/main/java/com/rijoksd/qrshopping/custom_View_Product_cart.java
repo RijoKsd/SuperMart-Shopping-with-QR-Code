@@ -32,13 +32,13 @@ import java.util.Map;
 public class custom_View_Product_cart extends BaseAdapter {
 
 
-    String[] productID,productImage,productName,productQuantity,productPrice,sId,billID ;
+    String[] productID,productImage,productName,productQuantity,productPrice,sId,billID,productShopName,totalPrice ;
 //    String[] productTotal;
     private Context context;
     String url1,url;
     SharedPreferences sh;
 
-    public custom_View_Product_cart(Context applicationContext, String[] productID, String[] productImage, String[] productName, String[] productQuantity, String[] productPrice, String[] sId, String[] billID  ) {
+    public custom_View_Product_cart(Context applicationContext, String[] productID, String[] productImage, String[] productName, String[] productQuantity, String[] productPrice, String[] sId, String[] billID,String[] productShopName, String[] totalPrice  ) {
 
         this.context = applicationContext;
         this.productID = productID;
@@ -48,7 +48,8 @@ public class custom_View_Product_cart extends BaseAdapter {
         this.productPrice = productPrice;
         this.sId = sId;
         this.billID = billID;
-//        this.productTotal = productTotal;
+        this.productShopName = productShopName;
+        this.totalPrice = totalPrice;
 
     }
 
@@ -85,6 +86,8 @@ public class custom_View_Product_cart extends BaseAdapter {
         ImageView imageView = (ImageView) gridView.findViewById(R.id.productImage);
         TextView tv2 = (TextView) gridView.findViewById(R.id.billQuantity);
         TextView tv3 = (TextView) gridView.findViewById(R.id.billPrice);
+        TextView tv4 = (TextView) gridView.findViewById(R.id.prodShopName);
+        TextView tv5 = (TextView) gridView.findViewById(R.id.totalPrice);
 //        TextView tv4 = (TextView) gridView.findViewById(R.id.totalAmount);
 
         ImageView delete = (ImageView) gridView.findViewById(R.id.delete);
@@ -103,7 +106,8 @@ public class custom_View_Product_cart extends BaseAdapter {
 
                 RequestQueue requestQueue = Volley.newRequestQueue(context.getApplicationContext());
                 StringRequest postRequest = new StringRequest(Request.Method.POST, url,
-                        new Response.Listener<String>() {
+
+                   new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
                                 //  Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
@@ -166,7 +170,7 @@ public class custom_View_Product_cart extends BaseAdapter {
 
 
 
-        Button bt1 = (Button) gridView.findViewById(R.id.buyProduct);
+//        Button offerBtn = (Button) gridView.findViewById(R.id.buyProduct);
 
 
         Button offerBtn = (Button) gridView.findViewById(R.id.offerBtn);
@@ -179,33 +183,34 @@ public class custom_View_Product_cart extends BaseAdapter {
 
                 SharedPreferences.Editor ed=sh.edit();
                 ed.putString("productID",productID[pos]);
+
                 ed.commit();
-                Intent i=new Intent(context.getApplicationContext(),viewOffer.class);
+                Intent i=new Intent(context.getApplicationContext(),viewOfferFromCart.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(i);
 
 
             }
         });
-
-        bt1.setTag(i);
-        bt1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int pos = (int) view.getTag();
-                SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
-                SharedPreferences.Editor ed=sh.edit();
-                ed.putString("productID",productID[pos]);
-                ed.putString("shopID",sId[pos]);
-                ed.putString("productPrice",productPrice[pos]);
-                ed.commit();
-                Intent i=new Intent(context.getApplicationContext(),quantity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(i);
-
-
-            }
-        });
+//
+//        bt1.setTag(i);
+//        bt1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                int pos = (int) view.getTag();
+//                SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
+//                SharedPreferences.Editor ed=sh.edit();
+//                ed.putString("productID",productID[pos]);
+//                ed.putString("shopID",sId[pos]);
+//                ed.putString("productPrice",productPrice[pos]);
+//                ed.commit();
+//                Intent i=new Intent(context.getApplicationContext(),quantity.class);
+//                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                context.startActivity(i);
+//
+//
+//            }
+//        });
 
 
 //        bt1.setTag(i);
@@ -231,6 +236,8 @@ public class custom_View_Product_cart extends BaseAdapter {
         tv1.setTextColor(Color.BLACK);//color setting
         tv2.setTextColor(Color.BLACK);
         tv3.setTextColor(Color.BLACK);
+        tv4.setTextColor(Color.BLACK);
+        tv5.setTextColor(Color.BLACK);
 //        tv4.setTextColor(Color.BLUE);
 
 //        tv1.setAllCaps(true);
@@ -245,6 +252,8 @@ public class custom_View_Product_cart extends BaseAdapter {
         tv1.setText(productName[i]);
         tv2.setText(productQuantity[i]);
         tv3.setText(productPrice[i]);
+        tv4.setText(productShopName[i]);
+        tv5.setText(totalPrice[i]);
 //        tv4.setText(productTotal[i]);
 
 

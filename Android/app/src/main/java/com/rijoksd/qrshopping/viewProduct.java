@@ -79,6 +79,7 @@ public class viewProduct extends AppCompatActivity {
                                 productDetails = new String[js.length()];
 
 
+
                                 for (int i = 0; i < js.length(); i++) {
                                     JSONObject u = js.getJSONObject(i);
                                     //dbcolumn name in double quotes
@@ -89,6 +90,10 @@ public class viewProduct extends AppCompatActivity {
                                     productQuantity[i] = u.getString("quantity");
                                     productPrice[i] = u.getString("price");
                                     sId[i] = u.getString("shop_id");
+//                                    SharedPreferences.Editor ed = sh.edit();
+//                                    ed.putString("productprice", productPrice[i]);
+//                                    ed.commit();
+//                                    Toast.makeText(viewProduct.this, ""+productPrice[i], Toast.LENGTH_SHORT).show();
 
                                 }
                                 list.setAdapter(new customViewProduct(getApplicationContext(), productID, productImage, productName,productDetails, productQuantity, productPrice,sId ));//custom_view_service.xml and li is the listview object

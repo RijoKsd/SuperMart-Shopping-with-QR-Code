@@ -101,7 +101,6 @@ public class Login extends AppCompatActivity {
                                     } else {
                                         Toast.makeText(getApplicationContext(), "Invalid email or password", Toast.LENGTH_LONG).show();
                                     }
-
                                 } catch (Exception e) {
                                     Toast.makeText(getApplicationContext(), "Error" + e.getMessage().toString(), Toast.LENGTH_SHORT).show();
                                 }

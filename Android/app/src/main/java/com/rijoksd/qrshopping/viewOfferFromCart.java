@@ -1,8 +1,24 @@
+//package com.rijoksd.qrshopping;
+//
+//import androidx.appcompat.app.AppCompatActivity;
+//
+//import android.os.Bundle;
+//
+//public class viewOfferFromCart extends AppCompatActivity {
+//
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_view_offer_from_cart);
+//    }
+//}
+
+
+
 package com.rijoksd.qrshopping;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -27,36 +43,27 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ViewBill extends AppCompatActivity {
+public class viewOfferFromCart extends AppCompatActivity {
 
-    ListView list;
-
+    ListView li;
     SharedPreferences sh;
-    String ip, url, url1, lid;
-    ImageView arrow;
-    String[] billDate, billAmount, billID, billShopName;
+    String ip, url, lid;
 
-    @SuppressLint("MissingInflatedId")
+    String[] offerPer, offerPrice, offerStartDate, offerEndDate,productID,sId;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_bill);
+        setContentView(R.layout.activity_view_offer_from_cart);
 
-        list = (ListView) findViewById(R.id.list);
-        arrow = (ImageView) findViewById(R.id.arrowLeft);
-        arrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), UserHome.class);
-                startActivity(i);
-            }
-        });
+        li = (ListView) findViewById(R.id.list);
+
 
 
         sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        sh.getString("ip", "");
-        sh.getString("url", "");
-        url = sh.getString("url", "") + "and_view_bill";
+        ip = sh.getString("url", "");
+        url = ip + "and_view_offer";
 
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -71,24 +78,29 @@ public class ViewBill extends AppCompatActivity {
                             if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
 
                                 JSONArray js = jsonObj.getJSONArray("data");//from python
-                                billShopName = new String[js.length()];
-                                billDate = new String[js.length()];
-                                billAmount = new String[js.length()];
-                                billID = new String[js.length()];
+                                offerPer = new String[js.length()];
+                                offerPrice = new String[js.length()];
+                                offerStartDate = new String[js.length()];
+                                offerEndDate = new String[js.length()];
+                                productID = new String[js.length()];
+                                sId = new String[js.length()];
 
                                 for (int i = 0; i < js.length(); i++) {
                                     JSONObject u = js.getJSONObject(i);
-                                    //dbcolumn name in double quotes
-                                    billShopName[i] = u.getString("name");
-                                    billDate[i] = u.getString("date");
-                                    billAmount[i] = u.getString("amount");
-                                    billID[i] = u.getString("bill_id");
+                                    offerPer[i] = u.getString("offer");//dbcolumn name in double quotes
+                                    offerPrice[i] = u.getString("total");
+                                    offerStartDate[i] = u.getString("date_from");
+                                    offerEndDate[i] = u.getString("date_to");
+                                    productID[i] = u.getString("product_id");
+                                    sId[i] = u.getString("shop_id");
                                 }
-                                list.setAdapter(new customViewBill(getApplicationContext(), billShopName, billDate, billAmount, billID));//custom_view_service.xml and li is the listview object
+                                li.setAdapter(new customViewOfferFromCart(getApplicationContext(), offerPer, offerPrice, offerStartDate, offerEndDate,productID,sId));//custom_view_service.xml and li is the listview object
 
 
                             } else {
-                                Toast.makeText(getApplicationContext(), "Not found", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "No offer for this product", Toast.LENGTH_LONG).show();
+//                                Intent i = new Intent(getApplicationContext(), viewProduct.class);
+//                                startActivity(i);
                             }
 
                         } catch (Exception e) {
@@ -110,15 +122,21 @@ public class ViewBill extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("id", sh.getString("lid", ""));//passing to python
+                params.put("loginID", sh.getString("lid", ""));//passing to python
+                params.put("productID", sh.getString("productID", ""));//passing to python
+                params.put("sId", sh.getString("sId", ""));//passing to python
                 return params;
             }
         };
+
+
         int MY_SOCKET_TIMEOUT_MS = 100000;
+
         postRequest.setRetryPolicy(new DefaultRetryPolicy(
                 MY_SOCKET_TIMEOUT_MS,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(postRequest);
+
     }
 }
