@@ -25,11 +25,11 @@ CREATE TABLE `bill` (
   `product_id` int(20) DEFAULT NULL,
   `quantity` int(20) DEFAULT NULL,
   PRIMARY KEY (`bill_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `bill` */
 
-insert  into `bill`(`bill_id`,`master_id`,`product_id`,`quantity`) values (1,1,20,2),(2,1,23,7),(3,2,21,3),(4,2,25,5),(5,2,26,3);
+insert  into `bill`(`bill_id`,`master_id`,`product_id`,`quantity`) values (1,1,20,3),(2,2,20,4),(3,3,21,3);
 
 /*Table structure for table `bill_master` */
 
@@ -43,11 +43,11 @@ CREATE TABLE `bill_master` (
   `date` date DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`master_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `bill_master` */
 
-insert  into `bill_master`(`master_id`,`shop_id`,`user_id`,`amount`,`date`,`status`) values (1,18,2,0,'2023-03-08','cart'),(2,20,2,0,'2023-03-08','cart');
+insert  into `bill_master`(`master_id`,`shop_id`,`user_id`,`amount`,`date`,`status`) values (1,18,2,30,'2023-03-09','paid'),(2,18,2,40,'2023-03-09','Cash on delivery'),(3,20,2,162,'2023-03-09','Cash on delivery');
 
 /*Table structure for table `complaint` */
 
@@ -134,7 +134,7 @@ CREATE TABLE `payment` (
 
 /*Data for the table `payment` */
 
-insert  into `payment`(`bank_id`,`bank_name`,`ifsc_code`,`account_no`,`account_balance`,`holder_id`) values (1,'rijo','SBI2345','1234567890',13738,2),(2,'jio','ICICI343','2231235635',30862,18),(3,'spicy','SBI4566','3453434232',37159,20),(4,'MAX','ABC4589','3449080005',35025,21);
+insert  into `payment`(`bank_id`,`bank_name`,`ifsc_code`,`account_no`,`account_balance`,`holder_id`) values (1,'rijo','SBI2345','1234567890',11893.7,2),(2,'jio','ICICI343','2231235635',31761.3,18),(3,'spicy','SBI4566','3453434232',37159,20),(4,'MAX','ABC4589','3449080005',35970,21);
 
 /*Table structure for table `product` */
 
@@ -148,11 +148,11 @@ CREATE TABLE `product` (
   `shop_id` int(20) DEFAULT NULL,
   `image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
 
 /*Data for the table `product` */
 
-insert  into `product`(`product_id`,`name`,`price`,`details`,`shop_id`,`image`) values (20,'Salt',20,'1kg salt',18,'/static/images/230127-231204 .jpg'),(21,'Butter',54,'Amul Butter\r\n',20,'/static/images/230211-130940 .jpg'),(22,'Rice',105,'10kg ',21,'/static/images/230211-131014 .jpg'),(23,'Onion',58,'1 kg ',18,'/static/images/230211-143217 .jpg'),(24,'Coffee',30,'Nescafe coffee',21,'/static/images/230212-095623 .jpg'),(25,'Bread',30,'Wheat Bread',20,'/static/images/230212-095908 .jpg'),(26,'Brush',25,'Oral B  brush\r\n',20,'/static/images/230212-100008 .jpg'),(27,'Dettol',50,'100ml Dettol ',20,'/static/images/230212-100037 .jpg'),(28,'Tea Powder',30,' TATA tea',20,'/static/images/230212-100105 .jpg'),(29,'Paste',30,'Colgate paste 200g',20,'/static/images/230212-100133 .jpg'),(30,'Carrot',25,'carrot 500g',23,'/static/images/230212-100732 .jpg'),(31,'Cauliflower',30,'',18,'/static/images/230221-095728 .jpg'),(32,'Turmeric powder',25,'100g turmeric powder',18,'/static/images/230221-095823 .jpg'),(35,'Sugar',45,'1 kg sugar',18,'/static/images/230304-145429 .jpg'),(42,'Tomato',30,'1kg tomato',18,'/static/images/230304-151010 .jpg'),(43,'Carrot',45,'1 kg carrot',18,'/static/images/230304-162531 .jpg'),(44,'Brushes',150,'Pack of 10 brush',18,'/static/images/230307-195326 .jpg'),(45,'Coffee Powder',55,'Nescafe coffe',18,'/static/images/230307-195501 .jpg');
+insert  into `product`(`product_id`,`name`,`price`,`details`,`shop_id`,`image`) values (20,'Salt',20,'1kg salt',18,'/static/images/230127-231204 .jpg'),(21,'Butter',54,'Amul Butter\r\n',20,'/static/images/230211-130940 .jpg'),(22,'Rice',105,'10kg ',21,'/static/images/230211-131014 .jpg'),(23,'Onion',58,'1 kg ',18,'/static/images/230211-143217 .jpg'),(24,'Coffee',30,'Nescafe coffee',21,'/static/images/230212-095623 .jpg'),(25,'Bread',30,'Wheat Bread',20,'/static/images/230212-095908 .jpg'),(26,'Brush',25,'Oral B  brush\r\n',20,'/static/images/230212-100008 .jpg'),(27,'Dettol',50,'100ml Dettol ',20,'/static/images/230212-100037 .jpg'),(28,'Tea Powder',30,' TATA tea',20,'/static/images/230212-100105 .jpg'),(29,'Paste',30,'Colgate paste 200g',20,'/static/images/230212-100133 .jpg'),(30,'Carrot',25,'carrot 500g',23,'/static/images/230212-100732 .jpg'),(31,'Cauliflower',30,'',18,'/static/images/230221-095728 .jpg'),(32,'Turmeric powder',25,'100g turmeric powder',18,'/static/images/230221-095823 .jpg'),(35,'Sugar',45,'1 kg sugar',18,'/static/images/230304-145429 .jpg'),(42,'Tomato',30,'1kg tomato',18,'/static/images/230304-151010 .jpg'),(43,'Carrot',45,'1 kg carrot',18,'/static/images/230304-162531 .jpg'),(44,'Brushes',150,'Pack of 10 brush',18,'/static/images/230307-195326 .jpg'),(45,'Coffee Powder',55,'Nescafe coffe',18,'/static/images/230307-195501 .jpg'),(46,'Chicken Masala',30,'100 g\r\nAachi chicken masala',18,'/static/images/230309-110535 .jpg'),(47,'Tomato',40,'1kg  Tomato',18,'/static/images/230309-111716 .jpg');
 
 /*Table structure for table `rating` */
 
@@ -198,11 +198,11 @@ CREATE TABLE `stock` (
   `product_id` int(20) DEFAULT NULL,
   `quantity` int(20) DEFAULT NULL,
   PRIMARY KEY (`stock_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=latin1;
 
 /*Data for the table `stock` */
 
-insert  into `stock`(`stock_id`,`product_id`,`quantity`) values (43,20,332),(44,21,630),(45,22,130),(46,23,577),(47,24,23),(48,25,45),(49,26,50),(50,27,5),(51,28,12),(52,29,60),(53,30,65148),(54,31,145),(55,32,221),(56,35,33),(57,42,633),(58,44,400),(59,43,68),(60,45,67);
+insert  into `stock`(`stock_id`,`product_id`,`quantity`) values (43,20,305),(44,21,624),(45,22,121),(46,23,572),(47,24,23),(48,25,45),(49,26,50),(50,27,5),(51,28,12),(52,29,60),(53,30,65148),(54,31,145),(55,32,221),(56,35,30),(57,42,633),(58,44,400),(59,43,68),(60,45,67),(61,46,340),(62,47,234);
 
 /*Table structure for table `user` */
 

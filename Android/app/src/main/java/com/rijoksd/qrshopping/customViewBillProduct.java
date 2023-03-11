@@ -1,13 +1,8 @@
 package com.rijoksd.qrshopping;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.Typeface;
-import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,17 +15,18 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 public class customViewBillProduct extends BaseAdapter {
-    String[] billProductName, quantityBill, priceBill, totalBill ;
+    String[] billProductName, quantityBill, priceBill, totalBill,productImage ;
     private Context context;
     Button b1;
 
-    public customViewBillProduct(Context applicationContext, String[] billProductName, String[] quantityBill, String[] priceBill, String[] totalBill ) {
+    public customViewBillProduct(Context applicationContext, String[] billProductName, String[] quantityBill, String[] priceBill, String[] totalBill, String[] productImage ) {
 
         this.context = applicationContext;
         this.billProductName = billProductName;
         this.quantityBill = quantityBill;
         this.priceBill = priceBill;
         this.totalBill = totalBill;
+        this.productImage = productImage;
 
     }
 
@@ -66,7 +62,9 @@ public class customViewBillProduct extends BaseAdapter {
         TextView tv1 = (TextView) gridView.findViewById(R.id.billProduct);
         TextView tv2 = (TextView) gridView.findViewById(R.id.billQuantity);
         TextView tv3 = (TextView) gridView.findViewById(R.id.billPrice);
-        TextView tv4 = (TextView) gridView.findViewById(R.id.billTotal);
+        TextView tv4 = (TextView) gridView.findViewById(R.id.billDetails);
+        ImageView imageView = (ImageView) gridView.findViewById(R.id.imageView3);
+
 
 
 
@@ -85,10 +83,10 @@ public class customViewBillProduct extends BaseAdapter {
         tv3.setText(priceBill[i]);
         tv4.setText(totalBill[i]);
 
-//        SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
-//        String ip = sh.getString("ip", "");
-//        String url = "http://" + ip + ":4000" + shopImage[i];
-//        Picasso.with(context).load(url).transform(new CircleTransform()).into(imageView);//circle
+        SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
+        String ip = sh.getString("ip", "");
+        String url = "http://" + ip + ":4000" + productImage[i];
+        Picasso.with(context).load(url).transform(new CircleTransform()).into(imageView);//circle
 
 
 

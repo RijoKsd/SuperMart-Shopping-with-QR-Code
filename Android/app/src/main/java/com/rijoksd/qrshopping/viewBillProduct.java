@@ -34,7 +34,7 @@ public class viewBillProduct extends AppCompatActivity {
     SharedPreferences sh;
     String ip, url, url1, lid;
 
-    String[] billProductName, quantityBill, priceBill, totalBill;
+    String[] billProductName, quantityBill, priceBill, totalBill,productImage;
 
 
     @SuppressLint("MissingInflatedId")
@@ -75,6 +75,7 @@ public class viewBillProduct extends AppCompatActivity {
                                 quantityBill = new String[js.length()];
                                 priceBill = new String[js.length()];
                                 totalBill = new String[js.length()];
+                                productImage = new String[js.length()];
 
 
                                 for (int i = 0; i < js.length(); i++) {
@@ -83,10 +84,11 @@ public class viewBillProduct extends AppCompatActivity {
                                     billProductName[i] = u.getString("name");
                                     quantityBill[i] = u.getString("quantity");
                                     priceBill[i] = u.getString("price");
-                                    totalBill[i] = u.getString("total");
+                                    productImage[i] = u.getString("image");
+                                    totalBill[i] = String.valueOf(Integer.parseInt( u.getString("quantity"))* Integer.parseInt(u.getString("price")));
 
                                 }
-                                list.setAdapter(new customViewBillProduct(getApplicationContext(), billProductName, quantityBill, priceBill, totalBill));//custom_view_service.xml and li is the listview object
+                                list.setAdapter(new customViewBillProduct(getApplicationContext(), billProductName, quantityBill, priceBill, totalBill,productImage));//custom_view_service.xml and li is the listview object
 
 
                             } else {

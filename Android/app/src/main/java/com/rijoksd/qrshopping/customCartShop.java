@@ -44,7 +44,6 @@ public class customCartShop extends BaseAdapter {
         this.context = applicationContext;
         this.shopID = shopID;
         this.shopName = shopName;
-
         this.shopImage = shopImage;
     }
 
@@ -98,7 +97,6 @@ public class customCartShop extends BaseAdapter {
             }
         });
 
-
         tv1.setTextColor(Color.parseColor("#fea116"));
 
 
@@ -112,12 +110,6 @@ public class customCartShop extends BaseAdapter {
         String ip = sh.getString("ip", "");
         String url = "http://" + ip + ":4000" + shopImage[i];
         Picasso.with(context).load(url).transform(new CircleTransform()).into(imageView);//circle
-
-
-
-//
         return gridView;
-
-
     }
 }

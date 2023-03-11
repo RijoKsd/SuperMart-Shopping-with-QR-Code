@@ -106,7 +106,6 @@ public class customViewBill extends BaseAdapter {
         tv3.setTextColor(Color.parseColor("#fea116"));
         tv2.setTextColor(Color.BLACK);
         tv1.setTextColor(Color.BLACK);
-
         tv3.setAllCaps(true);
         Typeface typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD);
         tv3.setTypeface(typeface);

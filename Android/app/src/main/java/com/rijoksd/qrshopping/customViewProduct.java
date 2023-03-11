@@ -69,7 +69,7 @@ public class customViewProduct extends BaseAdapter {
         ImageView imageView = (ImageView) gridView.findViewById(R.id.productImage);
         TextView tv2 = (TextView) gridView.findViewById(R.id.billQuantity);
         TextView tv3 = (TextView) gridView.findViewById(R.id.billPrice);
-        TextView tv4 = (TextView) gridView.findViewById(R.id.billTotal);
+        TextView tv4 = (TextView) gridView.findViewById(R.id.billDetails);
 
 
 

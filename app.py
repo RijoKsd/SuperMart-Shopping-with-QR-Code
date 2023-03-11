@@ -339,16 +339,18 @@ def add_product():
             date = datetime.datetime.now().strftime("%y%m%d-%H%M%S ")
             image.save(r"E:\QR shopping\python\static\images\\" + date + '.jpg')
             image_path = "/static/images/" + date + '.jpg'
-
-
+            db = Database()
+            qry = db.insert(
+                "insert into product VALUE ('','" + product_name + "','" + price + "','" + details + "','" + str(
+                    session['lid']) + "','" + image_path + "')")
             import qrcode
 
             # Create qr code instance
             qr = qrcode.QRCode(
-                version = 1,
-                error_correction = qrcode.constants.ERROR_CORRECT_H,
-                box_size = 3,
-                border = 4,
+                version=1,
+                error_correction=qrcode.constants.ERROR_CORRECT_H,
+                box_size=3,
+                border=4,
             )
 
             # The data that you want to store
@@ -361,27 +363,16 @@ def add_product():
             # Create an image from the QR Code instance
             img = qr.make_image()
 
-
             systemPath = r"E:\QR shopping\python\static\\"
-
 
             # Save it somewhere, change the extension as needed:
             # img.save("image.png")
             # img.save("image.bmp")
             # img.save("image.jpeg")
-            
-
-            img.save(systemPath + "qr_codes/" + date + '.jpg')
-            
-            img.save("image.jpg")
-
-            
 
 
-            db = Database()
-            data = db.insert(
-                "insert into product VALUE ('','" + product_name + "','" + price + "','" + details + "','" + str(
-                    session['lid']) + "','" + image_path + "')")
+            img.save(systemPath + "qr_codes/" + str(qry) + date + '.jpg')
+            # img.save("image.jpg")
             return '<script>alert("Added successfully ");window.location="/view_product"</script>'
         else:
             return render_template('shop/add_product.html')
@@ -733,14 +724,23 @@ def view_user_rating():
 def view_bill():
     if session['lin'] == "1":
         db = Database()
+
         data = db.select(
-            "select sum(product.price*bill.quantity) as total,user.name as un,user.*, bill_master.*,product.*,bill.* from bill_master,user,bill,product where bill_master.user_id=user.user_id and bill_master.shop_id='" + str(
-                session['lid']) + "' and bill.master_id=bill_master.master_id and bill.product_id=product.product_id")
+            "select sum(product.price*bill.quantity) as total,user.name as un,user.*, bill_master.*,product.*,bill.* from bill_master,user,bill,product where bill_master.user_id=user.user_id and bill_master.shop_id='" + str(session['lid']) + "' and bill.master_id=bill_master.master_id and bill.product_id=product.product_id and   bill_master.status = 'booked' or bill_master.status = 'cash' or bill_master.status = 'paid'")
+
+
+
         # and bill_master.status = 'book'
 
         # data = db.select(
         #     "select user.name as un,user.*,bill_master.*,product.*,bill.* from bill_master,user,product,bill where bill_master.user_id = user.user_id and bill_master.master_id = bill.master_id and product.product_id = bill.product_id  and bill_master.shop_id = '" + str(
         #         session['lid']) + "'")
+
+        # data = db.select(
+        #     "select * from bill_master,shop,user where bill_master.shop_id = shop.shop_id and bill_master.user_id = user.user_id and bill_master.shop_id = '" + str(session['lid']) + "'")
+
+    
+     
         return render_template("shop/view_bill.html", data=data)
     return redirect('/')
 
@@ -948,32 +948,35 @@ def and_quantity():
     shop_ID = request.form['shopID']  # shop id
 
     db = Database()
-    res1 = db.selectOne("select * from stock,product where stock.product_id = product.product_id and product.product_id = '" + productID + "'")
+    res1 = db.selectOne(
+        "select * from stock,product where stock.product_id = product.product_id and product.product_id = '" + productID + "'")
     p_qunty = res1['quantity']
     if int(product_quantity) >= int(p_qunty):
         print(product_quantity)
         return jsonify(status="greater")
     else:
 
-        res2 = db.selectOne("select * from bill_master where user_id='" + uid + "' and shop_id='"+shop_ID+"' and status='cart'")
+        res2 = db.selectOne(
+            "select * from bill_master where user_id='" + uid + "' and shop_id='" + shop_ID + "' and status='cart'")
         if res2 is not None:
-            mid=res2['master_id']
-            qry=db.selectOne("select * from bill where product_id='"+productID+"' and master_id='"+str(mid)+"'")
+            mid = res2['master_id']
+            qry = db.selectOne(
+                "select * from bill where product_id='" + productID + "' and master_id='" + str(mid) + "'")
             if qry is not None:
-                bid=qry['bill_id']
-                db.update("update bill set quantity=quantity + '" + product_quantity + "' where bill_id='" + str(bid) + "'")
+                bid = qry['bill_id']
+                db.update(
+                    "update bill set quantity=quantity + '" + product_quantity + "' where bill_id='" + str(bid) + "'")
                 return jsonify(status="update")
             else:
-                db.insert("insert into bill VALUES ('','"+str(mid)+"','"+productID+"','"+product_quantity+"')")
+                db.insert(
+                    "insert into bill VALUES ('','" + str(mid) + "','" + productID + "','" + product_quantity + "')")
                 return jsonify(status="ok")
         else:
-            qry1 = db.insert("insert into bill_master (shop_id,user_id,amount,date,status) VALUES ('" + shop_ID + "','" + uid + "','0',curdate(),'cart')")
-            db.insert("insert into bill (master_id,product_id,quantity) VALUES ('" + str(qry1) + "','" + productID + "','" + product_quantity + "')")
+            qry1 = db.insert(
+                "insert into bill_master (shop_id,user_id,amount,date,status) VALUES ('" + shop_ID + "','" + uid + "','0',curdate(),'cart')")
+            db.insert("insert into bill (master_id,product_id,quantity) VALUES ('" + str(
+                qry1) + "','" + productID + "','" + product_quantity + "')")
             return jsonify(status="ok")
-
-
-
-
 
 
 # ****************************************** Android user delete cart product ***************************************
@@ -991,19 +994,24 @@ def and_view_bill():
     uid = request.form['id']
     db = Database()
     data = db.select(
-        "select * from bill_master, bill,shop where bill.master_id=bill_master.master_id and bill_master.shop_id=shop.shop_id and bill_master.user_id='" + uid + "' and (bill_master.status = 'Booked' or bill_master.status='Cash on delivery') ")
+        "select * from bill_master, bill,shop where bill.master_id=bill_master.master_id and bill_master.shop_id=shop.shop_id and bill_master.user_id='" + uid + "' and (bill_master.status = 'paid' or bill_master.status='cash') ")
+
     # data=db.select("select sum(product.price*bill.quantity) as total,bill.*,bill_master.*,product.* from bill,bill_master,product where bill.master_id = bill_master.master_id and product.product_id = bill.product_id and bill_master.user_id = '"+uid+"'")
 
-    return jsonify(status="ok", data=data)
+    if len(data) > 0:
+        return jsonify(status="ok", data=data)
+    else:
+        return jsonify(status="no")
+
 
 
 @app.route('/and_view_product_bill', methods=['post'])
 def and_view_product_bill():
-    billID = request.form['billID']
+    billmster_id = request.form['billID']
     uID = request.form['id']
     db = Database()
     data = db.select(
-        "select * from bill,bill_master,product where bill.product_id=product.product_id and bill.bill_id='" + billID + "' and bill.master_id=bill_master.master_id and bill_master.user_id='" + uID + "'")
+        "select * from bill,product where bill.product_id=product.product_id and   bill.master_id='" + billmster_id + "'")
     return jsonify(status="ok", data=data)
 
 
@@ -1020,40 +1028,36 @@ def and_single_buy_quantity():
     product_price = request.form['productPrice']  # product price
     shop_ID = request.form['shopID']  # shop id
     db = Database()
-    qry=db.selectOne("select * from product,stock where product.product_id=stock.product_id and  product.product_id='"+productID+"'")
-    p_qunty=qry['quantity']
-    if int(product_quantity) <= int(p_qunty) :
-        pprice=float(product_price)
-        print("pppppppppp",pprice)
-        amount=int(product_quantity)*pprice
+    qry = db.selectOne(
+        "select * from product,stock where product.product_id=stock.product_id and  product.product_id='" + productID + "'")
+    p_qunty = qry['quantity']
+    if int(product_quantity) <= int(p_qunty):
+        pprice = float(product_price)
+        amount = int(product_quantity) * pprice
         # print("aaaaaaaaaaaa",amount)
-        qry1=db.insert("insert into bill_master (shop_id,user_id,amount,date,status) VALUES ('"+shop_ID+"','"+uid+"','"+str(amount)+"',curdate(),'Booked')")
-        db.insert("insert into bill (master_id,product_id,quantity) VALUES ('"+str(qry1)+"','"+productID+"','"+product_quantity+"')")
-        db.update("update stock set quantity=quantity-'"+product_quantity+"' where product_id='"+productID+"'")
-        mid=str(qry1)
-        print("mmmmmmmmmmmmmmmmm",mid)
-        return jsonify(status="ok",am=amount,mid=mid)
+        qry1 = db.insert(
+            "insert into bill_master (shop_id,user_id,amount,date,status) VALUES ('" + shop_ID + "','" + uid + "','" + str(
+                amount) + "',curdate(),'booked')")
+        db.insert("insert into bill (master_id,product_id,quantity) VALUES ('" + str(
+            qry1) + "','" + productID + "','" + product_quantity + "')")
+        db.update("update stock set quantity=quantity-'" + product_quantity + "' where product_id='" + productID + "'")
+        mid = str(qry1)
+        return jsonify(status="ok", am=amount, mid=mid)
     else:
         return jsonify(status="greater")
 
 
-
-
-
-
-
-@app.route('/and_view_product_cart',methods=['post'])
+@app.route('/and_view_product_cart', methods=['post'])
 def and_view_product_cart():
     uid = request.form['id']
     sid = request.form['shopid']
     db = Database()
-    qry = db.select("select bill.quantity * product.price as total ,shop.name as sn,bill_master.*,bill.*,shop.*,product.* from bill_master,bill,product,shop where bill_master.master_id = bill.master_id and bill.product_id = product.product_id and product.shop_id = shop.shop_id and bill_master.user_id = '"+uid+"' and  bill_master.status='cart' and bill_master.shop_id='"+sid+"' ")
-    qry1 = db.selectOne("select sum(bill.quantity * product.price) as gt,bill_master.shop_id as sid,bill_master.*,bill.*,shop.*,product.* from bill_master,bill,product,shop where bill_master.master_id = bill.master_id and bill.product_id = product.product_id and product.shop_id = shop.shop_id and bill_master.user_id = '"+uid+"' and  bill_master.status='cart' and bill_master.shop_id='"+sid+"'")
+    qry = db.select(
+        "select bill.quantity * product.price as total ,shop.name as sn,bill_master.*,bill.*,shop.*,product.* from bill_master,bill,product,shop where bill_master.master_id = bill.master_id and bill.product_id = product.product_id and product.shop_id = shop.shop_id and bill_master.user_id = '" + uid + "' and  bill_master.status='cart' and bill_master.shop_id='" + sid + "' ")
+    qry1 = db.selectOne(
+        "select sum(bill.quantity * product.price) as gt,bill_master.shop_id as sid,bill_master.*,bill.*,shop.*,product.* from bill_master,bill,product,shop where bill_master.master_id = bill.master_id and bill.product_id = product.product_id and product.shop_id = shop.shop_id and bill_master.user_id = '" + uid + "' and  bill_master.status='cart' and bill_master.shop_id='" + sid + "'")
 
-    return jsonify(status="ok",data = qry,gt = qry1['gt'],shopid=qry1['sid'])
-
-
-
+    return jsonify(status="ok", data=qry, gt=qry1['gt'], shopid=qry1['sid'])
 
 
 @app.route('/and_view_shop_in_cart', methods=['post'])
@@ -1062,7 +1066,12 @@ def and_view_shop_in_cart():
     db = Database()
     data = db.select(
         "select * from bill_master,shop where bill_master.shop_id=shop.shop_id and bill_master.user_id='" + uid + "' and bill_master.status='cart'")
-    return jsonify(status="ok", data=data)
+    if len(data) > 0:
+        return jsonify(status="ok", data=data)
+    else:
+        return jsonify(status="no")
+
+
 
 
 @app.route('/and_payment', methods=['post'])
@@ -1077,15 +1086,18 @@ def and_payment():
     db = Database()
     res = db.selectOne(
         "select * from payment where bank_name = '" + bank_name + "' and  ifsc_code = '" + bank_ifsc_code + "' and account_no='" + bank_account_no + "' and    holder_id='" + uID + "'")
-    print("select * from payment where bank_name = '" + bank_name + "' and  ifsc_code = '" + bank_ifsc_code + "' and account_no='" + bank_account_no + "' and    holder_id='" + uID + "'")
+    print(
+        "select * from payment where bank_name = '" + bank_name + "' and  ifsc_code = '" + bank_ifsc_code + "' and account_no='" + bank_account_no + "' and    holder_id='" + uID + "'")
     if res is not None:
-        ab=res['account_balance']
-        tm=float(total_amount)
+        ab = res['account_balance']
+        tm = float(total_amount)
         if tm > int(ab):
             return jsonify(status="insufficient")
         else:
-            db.update("update payment set account_balance=account_balance - '" + total_amount + "' where  holder_id='" + uID + "'")
-            db.update("update payment set account_balance=account_balance+ '" + total_amount + "' where  holder_id='" + sid + "'")
+            db.update(
+                "update payment set account_balance=account_balance - '" + total_amount + "' where  holder_id='" + uID + "'")
+            db.update(
+                "update payment set account_balance=account_balance+ '" + total_amount + "' where  holder_id='" + sid + "'")
             db.update("update bill_master set status='paid' where master_id='" + mid + "'")
 
             return jsonify(status="ok")
@@ -1095,7 +1107,7 @@ def and_payment():
         # return jsonify(status="ok")
 
 
-@app.route('/and_payment_from_cart',methods=['post'])
+@app.route('/and_payment_from_cart', methods=['post'])
 def and_payment_from_cart():
     bank_name = request.form['bankName']
     bank_account_no = request.form['accountNo']
@@ -1126,65 +1138,73 @@ def and_payment_from_cart():
             qry1 = db.select(
                 "select sum(bill.quantity * product.price) as gt,bill_master.master_id as mid,bill_master.*,bill.*,shop.*,product.* from bill_master,bill,product,shop where bill_master.master_id = bill.master_id and bill.product_id = product.product_id and product.shop_id = shop.shop_id and bill_master.user_id = '" + uid + "' and  bill_master.status='cart' and bill_master.shop_id='" + sid + "'")
             for i in qry1:
-                total=i['gt']
-                mid=i['mid']
-                productid=i['product_id']
-                qty=i['quantity']
-                db.update("update payment set account_balance=account_balance - '" + total_amount + "' where  holder_id='" + uid + "'")
-                db.update("update payment set account_balance=account_balance+ '" + total_amount + "' where  holder_id='" + sid + "'")
+                total = i['gt']
+                mid = i['mid']
+                productid = i['product_id']
+                qty = i['quantity']
+                db.update(
+                    "update payment set account_balance=account_balance - '" + total_amount + "' where  holder_id='" + uid + "'")
+                db.update(
+                    "update payment set account_balance=account_balance+ '" + total_amount + "' where  holder_id='" + sid + "'")
                 db.update("update bill_master set status = 'paid',amount='" + str(
-                        total) + "' where master_id = '" + str(mid) + "'")
-                db.update("update stock set quantity=quantity-'" + str(qty) + "' where product_id='" + str(productid) + "'")
+                    total) + "' where master_id = '" + str(mid) + "'")
+                db.update(
+                    "update stock set quantity=quantity-'" + str(qty) + "' where product_id='" + str(productid) + "'")
             return jsonify(status="ok")
     else:
         return jsonify(status="wrong")
 
 
-@app.route('/and_offline_payment',methods=['post'])
+@app.route('/and_offline_payment', methods=['post'])
 def and_offline_payment():
     master_id = request.form['mid']
     db = Database()
-    db.update("update bill_master set status='Cash on delivery' where master_id = '"+master_id+"'" )
+    db.update("update bill_master set status='cash' where master_id = '" + master_id + "'")
     return jsonify(status="ok")
 
 
-@app.route('/and_offline_payment_from_cart',methods=['post'])
+@app.route('/and_offline_payment_from_cart', methods=['post'])
 def and_offline_payment_from_cart():
     uid = request.form['id']
     db = Database()
-    qry = db.select("select sum(bill.quantity * product.price) as gt,bill_master.master_id as msid,bill.product_id as pid,bill_master.*,bill.*,shop.*,product.* from bill_master,bill,product,shop where bill_master.master_id = bill.master_id and bill.product_id = product.product_id and product.shop_id = shop.shop_id and bill_master.user_id = '"+uid+"' and  bill_master.status='cart' group by bill.master_id")
+    qry = db.select(
+        "select sum(bill.quantity * product.price) as gt,bill_master.master_id as msid,bill.product_id as pid,bill_master.*,bill.*,shop.*,product.* from bill_master,bill,product,shop where bill_master.master_id = bill.master_id and bill.product_id = product.product_id and product.shop_id = shop.shop_id and bill_master.user_id = '" + uid + "' and  bill_master.status='cart' group by bill.master_id")
     for i in qry:
-        mid=i['msid']
-        productid=i['pid']
-        qty=i['quantity']
-        total=i['gt']
-        db.update("update bill_master set status = 'Cash on delivery',amount='"+str(total)+"' where master_id = '"+str(mid)+"'")
-        db.update("update stock set quantity=quantity-'"+str(qty)+"' where product_id='"+str(productid)+"'")
+        mid = i['msid']
+        productid = i['pid']
+        qty = i['quantity']
+        total = i['gt']
+        db.update(
+            "update bill_master set status = 'cash',amount='" + str(total) + "' where master_id = '" + str(
+                mid) + "'")
+        db.update("update stock set quantity=quantity-'" + str(qty) + "' where product_id='" + str(productid) + "'")
     return jsonify(status="ok")
- 
 
 
-    # db.update("update bill_master set status='Cash on delivery' where master_id = '"+master_id+"'" )
+
+    # db.update("update bill_master set status='cash' where master_id = '"+master_id+"'" )
     # return jsonify(status="ok")
 
 
-
-
-
-
-
-
-@app.route('/and_product_price',methods=['post'])
+@app.route('/and_product_price', methods=['post'])
 def and_product_price():
     uid = request.form['id']
     shopID = request.form['shopID']
     productID = request.form['productID']
     db = Database()
-    res=db.selectOne("select * from bill_master,bill where  bill_master.master_id=bill.master_id and bill.product_id='"+productID+"' and bill_master.shop_id='"+shopID+"' and  user_id = '"+uid+"'")
+    res = db.selectOne(
+        "select * from bill_master,bill where  bill_master.master_id=bill.master_id and bill.product_id='" + productID + "' and bill_master.shop_id='" + shopID + "' and  user_id = '" + uid + "'")
 
-    return jsonify(status="ok",data=res)
+    return jsonify(status="ok", data=res)
 
 
+@app.route('/and_view_product_with_qr', methods=['post'])
+def and_view_product_with_qr():
+    and_shop_id = request.form['shopID']
+    db = Database()
+    data = db.select(
+        "select * from product,stock where product.product_id = stock.product_id and  product.shop_id ='" + and_shop_id + "' ")
+    return jsonify(status="ok", data=data)
 
 
 if __name__ == '__main__':

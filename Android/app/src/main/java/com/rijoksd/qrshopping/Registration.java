@@ -103,8 +103,25 @@ public class Registration extends AppCompatActivity {
                 String registerUserPhone = phone.getText().toString();
                 String registerUserPassword = registerPassword.getText().toString();
                 String registerUserGender =((RadioButton)findViewById(gen.getCheckedRadioButtonId())).getText().toString();
+
+
+//                if (registerUsername.equalsIgnoreCase("" )) {
+//                    username.setError("Username is required");
+//                } else if (registerUserPlace.equalsIgnoreCase("" )) {
+//                    place.setError("Place is required");
+//                } else if (registerUserPinCode.equalsIgnoreCase("" )) {
+//                    pinCode.setError("Pincode is required");
+//                } else if (registerUserMail.equalsIgnoreCase("" )) {
+//                    mail.setError("Mail is required");
+//                } else if (registerUserPhone.equalsIgnoreCase("" )) {
+//                    phone.setError("Phone is required");
+//                } else if (registerUserPassword.equalsIgnoreCase("" )) {
+//                    registerPassword.setError("Password is required");
+//                }else{
+
                 uploadBitmap(registerUsername,registerUserPlace,registerUserPinCode,registerUserMail,registerUserGender,registerUserPhone,registerUserPassword );
                 }
+
             });
 
     }
@@ -197,6 +214,7 @@ public class Registration extends AppCompatActivity {
                     params.put("pic", new DataPart(imagename + ".png", getFileDataFromDrawable(bitmap)));
                     return params;
                 }
+
             };
 
             Volley.newRequestQueue(this).add(volleyMultipartRequest);

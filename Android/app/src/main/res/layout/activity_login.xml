@@ -18,7 +18,9 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        android:background="@drawable/blue_border_rounded_cornwe"
+        android:padding="5dp"/>
 
     <Button
         android:id="@+id/login"
@@ -44,7 +46,9 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintTop_toBottomOf="@+id/email"
+        android:background="@drawable/blue_border_rounded_cornwe"
+        android:padding="5dp"/>
 
     <TextView
         android:id="@+id/textView4"
@@ -93,17 +97,23 @@
         android:textColor="#F59B15"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        android:fontFamily="@font/pacifico_regular"
+        android:textSize="20dp"/>
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="130dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/pacifico_regular"
         android:text="Login to "
+        android:textColor="#E72B2929"
+        android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

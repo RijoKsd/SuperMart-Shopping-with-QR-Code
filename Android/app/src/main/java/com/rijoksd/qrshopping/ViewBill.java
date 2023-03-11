@@ -82,13 +82,14 @@ public class ViewBill extends AppCompatActivity {
                                     billShopName[i] = u.getString("name");
                                     billDate[i] = u.getString("date");
                                     billAmount[i] = u.getString("amount");
-                                    billID[i] = u.getString("bill_id");
+                                    billID[i] = u.getString("master_id");
                                 }
                                 list.setAdapter(new customViewBill(getApplicationContext(), billShopName, billDate, billAmount, billID));//custom_view_service.xml and li is the listview object
 
-
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Not found", Toast.LENGTH_LONG).show();
+                            }  else {
+                                Toast.makeText(getApplicationContext(), "No product purchased yet", Toast.LENGTH_LONG).show();
+//                                Intent i = new Intent(getApplicationContext(), viewProduct.class);
+//                                startActivity(i);
                             }
 
                         } catch (Exception e) {

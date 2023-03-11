@@ -25,7 +25,7 @@
         android:layout_marginEnd="32dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView18"
+        app:layout_constraintStart_toEndOf="@+id/textView60"
         app:layout_constraintTop_toBottomOf="@+id/productImage" />
 
     <TextView
@@ -35,7 +35,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/textView18"
+        app:layout_constraintStart_toEndOf="@+id/textView60"
         app:layout_constraintTop_toBottomOf="@+id/billQuantity" />
 
     <Button
@@ -54,14 +54,16 @@
         android:id="@+id/buyProduct"
         android:layout_width="150dp"
         android:layout_height="38dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="31dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="63dp"
         android:background="#DEDEDE"
         android:text="Add to cart"
         android:textColor="#000000"
         app:cornerRadius="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/buySinglePro"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/offerBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/textView60" />
 
     <TextView
         android:id="@+id/billQuantity"
@@ -72,8 +74,8 @@
         android:layout_marginEnd="32dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView18"
-        app:layout_constraintTop_toBottomOf="@+id/billTotal" />
+        app:layout_constraintStart_toEndOf="@+id/textView60"
+        app:layout_constraintTop_toBottomOf="@+id/billDetails" />
 
     <TextView
         android:id="@+id/textView18"
@@ -83,7 +85,7 @@
         android:layout_marginTop="24dp"
         android:text="Quantity"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/billTotal" />
+        app:layout_constraintTop_toBottomOf="@+id/billDetails" />
 
     <TextView
         android:id="@+id/textView20"
@@ -118,7 +120,7 @@
         app:layout_constraintTop_toBottomOf="@+id/billProduct" />
 
     <TextView
-        android:id="@+id/billTotal"
+        android:id="@+id/billDetails"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -126,20 +128,42 @@
         android:layout_marginEnd="32dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView18"
+        app:layout_constraintStart_toEndOf="@+id/textView60"
         app:layout_constraintTop_toBottomOf="@+id/billProduct" />
 
     <Button
         android:id="@+id/buySinglePro"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="32dp"
         android:background="#F59B15"
         android:text="Buy"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/offerBtn" />
+
+    <TextView
+        android:id="@+id/textView60"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="Offer Price"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/billPrice" />
+
+    <TextView
+        android:id="@+id/textView62"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView60"
+        app:layout_constraintTop_toBottomOf="@+id/billPrice" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -87,10 +87,11 @@ public class cartShop extends AppCompatActivity {
                                 list.setAdapter(new customCartShop(getApplicationContext(), shopID, shopName,  shopImage));//custom_view_service.xml and li is the listview object
 
 
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Not found", Toast.LENGTH_LONG).show();
+                            }  else {
+                                Toast.makeText(getApplicationContext(), "Cart is empty", Toast.LENGTH_LONG).show();
+//                                Intent i = new Intent(getApplicationContext(), viewProduct.class);
+//                                startActivity(i);
                             }
-
                         } catch (Exception e) {
                             Toast.makeText(getApplicationContext(), "Error" + e.getMessage().toString(), Toast.LENGTH_SHORT).show();
                         }

@@ -29,7 +29,9 @@
       android:text=" "
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toEndOf="@+id/textView21"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toTopOf="parent"
+      android:background="@drawable/blue_border_rounded_cornwe"
+      android:padding="5dp"/>
 
   <TextView
       android:id="@+id/textView21"
@@ -52,7 +54,9 @@
       android:inputType="number"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toEndOf="@+id/textView21"
-      app:layout_constraintTop_toBottomOf="@+id/bankName" />
+      app:layout_constraintTop_toBottomOf="@+id/bankName"
+      android:background="@drawable/blue_border_rounded_cornwe"
+      android:padding="5dp"/>
 
   <TextView
       android:id="@+id/textView40"
@@ -76,7 +80,9 @@
       android:text=" "
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toEndOf="@+id/textView21"
-      app:layout_constraintTop_toBottomOf="@+id/bankAccountNo" />
+      app:layout_constraintTop_toBottomOf="@+id/bankAccountNo"
+      android:background="@drawable/blue_border_rounded_cornwe"
+      android:padding="5dp"/>
 
   <TextView
       android:id="@+id/textView42"
