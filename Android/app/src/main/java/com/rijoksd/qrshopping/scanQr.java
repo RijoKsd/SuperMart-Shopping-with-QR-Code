@@ -36,6 +36,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class scanQr extends AppCompatActivity {
 
     static final String ACTION_SCAN = "com.google.zxing.client.android.SCAN";
+//    static final String ACTION_SCAN = "com.google.twmobile.client.android.SCAN";
     public static String contents = "";
     Button b11;
     TextView t1, t2;
@@ -49,6 +50,8 @@ public class scanQr extends AppCompatActivity {
         downloadDialog.setPositiveButton(buttonYes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialogInterface, int i) {
                 Uri uri = Uri.parse("market://search?q=pname:" + "com.google.zxing.client.android");
+//                Uri uri = Uri.parse("market://search?q" + "com.google.twmobile.client.android");
+//
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 try {
                     act.startActivity(intent);
@@ -82,13 +85,10 @@ public class scanQr extends AppCompatActivity {
 //        contents="32";
 //        startActivity(new Intent(Scan_qr.this,Student_details.class));
         scanQR();
-
-
     }
 
     public void scanQR() {
         try {
-
             Intent intent = new Intent(ACTION_SCAN);
             intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
             startActivityForResult(intent, 0);
@@ -105,7 +105,12 @@ public class scanQr extends AppCompatActivity {
                 String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
 
                 Toast.makeText(this, contents, Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(scanQr.this, scanQr.class));
+                SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(this);
+
+                SharedPreferences.Editor ed=sh.edit();
+                ed.putString("contents",contents);
+                ed.commit();
+                startActivity(new Intent(scanQr.this, viewProductInfoWhenScan.class));
 
             }
         }
@@ -117,7 +122,5 @@ public class scanQr extends AppCompatActivity {
         Intent i = new Intent(getApplicationContext(), UserHome.class);
         startActivity(i);
     }
-
-
 }
 

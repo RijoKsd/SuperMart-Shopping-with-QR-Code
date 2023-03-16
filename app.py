@@ -362,7 +362,6 @@ def add_product():
 
             # Create an image from the QR Code instance
             img = qr.make_image()
-
             systemPath = r"E:\QR shopping\python\static\\"
 
             # Save it somewhere, change the extension as needed:
@@ -371,7 +370,7 @@ def add_product():
             # img.save("image.jpeg")
 
 
-            img.save(systemPath + "qr_codes/" + str(qry) + date + '.jpg')
+            img.save(systemPath + "qr_codes/" + str(qry) +"-"+ date + '.jpg')
             # img.save("image.jpg")
             return '<script>alert("Added successfully ");window.location="/view_product"</script>'
         else:
@@ -1200,11 +1199,17 @@ def and_product_price():
 
 @app.route('/and_view_product_with_qr', methods=['post'])
 def and_view_product_with_qr():
-    and_shop_id = request.form['shopID']
+    # and_shop_id = request.form['shopID']
+    contents = request.form['contents']
+    print(contents)
     db = Database()
-    data = db.select(
-        "select * from product,stock where product.product_id = stock.product_id and  product.shop_id ='" + and_shop_id + "' ")
-    return jsonify(status="ok", data=data)
+     # join product,stock,shop,offer
+    dataa = db.selectOne("select product.name as n,product.image as im,product.*,shop.*,stock.*,offer.* from product,stock,shop,offer where product.product_id = stock.product_id  and product.shop_id=shop.shop_id and offer.product_id = product.product_id   ")
+    # dataa = db.selectOne("select * from product,stock,shop,offer where product.product_id = stock.product_id  and product.shop_id=shop.shop_id and offer.product_id = product.product_id and product.product_id='"+contents+"' ")
+
+    return jsonify(status="ok", data=dataa)
+
+    # return jsonify(status="ok", name=data['name'],details=data['details'],quantity=data['quantity'],price=data['price'],offer=data['offer'],image=data['image'])
 
 
 if __name__ == '__main__':

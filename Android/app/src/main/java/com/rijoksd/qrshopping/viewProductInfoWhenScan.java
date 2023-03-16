@@ -2,9 +2,11 @@ package com.rijoksd.qrshopping;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,6 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -29,18 +32,16 @@ public class viewProductInfoWhenScan extends AppCompatActivity {
     TextView scannedProductName,scannedProductDetails,scannedProductQuantity,scannedProductPrice,scannedProductOfferPrice;
     ImageView scannedProductImage;
 
-    SharedPreferences sh;
-    String ip, url, url1, lid;
 
-    String[] productID, productImage,productName,productDetails,productQuantity,productPrice,productOfferPrice;
+    SharedPreferences sh;
+    String ip, url, url1, lid,contents;
+
+//    String[] productID, productImage,productName,productDetails,productQuantity,productPrice,productOfferPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_product_info_when_scan);
-
-        addToCart = (Button) findViewById(R.id.button2);
-        scanNow= (Button) findViewById(R.id.button);
 
         scannedProductImage = (ImageView) findViewById(R.id.imageView5);
 
@@ -50,10 +51,20 @@ public class viewProductInfoWhenScan extends AppCompatActivity {
         scannedProductPrice = (TextView) findViewById(R.id.textView57);
         scannedProductOfferPrice = (TextView) findViewById(R.id.textView59);
 
+        scanNow = (Button) findViewById(R.id.button);
+        scanNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),scanQr.class);
+                startActivity(i);
+            }
+        });
+
+
         sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        sh.getString("ip", "");
-        sh.getString("url", "");
-        url = sh.getString("url", "") + "and_view_product_with_qr";
+        ip = sh.getString("ip", "");
+        url = "http://" + ip + ":4000/and_view_product_with_qr";
+        lid = sh.getString("lid", "");
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,
@@ -61,35 +72,24 @@ public class viewProductInfoWhenScan extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
 //                        Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+
                         try {
                             JSONObject jsonObj = new JSONObject(response);
                             if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
+                                JSONObject jj = jsonObj.getJSONObject("data");
 
-                                JSONArray js = jsonObj.getJSONArray("data");//from python
-                                productID = new String[js.length()];
-                                productImage = new String[js.length()];
-                                productName = new String[js.length()];
-                                productQuantity = new String[js.length()];
-                                productPrice = new String[js.length()];
-//                                sId = new String[js.length()];
-                                productDetails = new String[js.length()];
-                                productOfferPrice = new String[js.length()];
+                                scannedProductName.setText(jj.getString("n"));
+                                scannedProductDetails.setText(jj.getString("details"));
+                                scannedProductQuantity.setText(jj.getString("quantity"));
+                                scannedProductPrice.setText(jj.getString("price"));
+                                scannedProductOfferPrice.setText(jj.getString("price"));
 
-                                for (int i = 0; i < js.length(); i++) {
-                                    JSONObject u = js.getJSONObject(i);
-                                    //dbcolumn name in double quotes
-                                    productID[i] = u.getString("product_id");
-                                    productImage[i] = u.getString("image");
-                                    productName[i] = u.getString("name");
-                                    productDetails[i] = u.getString("details");
-                                    productQuantity[i] = u.getString("quantity");
-                                    productPrice[i] = u.getString("price");
-                                    productOfferPrice[i] = u.getString("offer");
-//
-                                }
-//                                list.setAdapter(new customViewProduct(getApplicationContext(), productID, productImage, productName,productDetails, productQuantity, productPrice,sId ));
-                                //custom_view_service.xml and li is the listview object
 
+                                String image = jj.getString("im");
+                                SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                                String ip = sh.getString("ip", "");
+                                String url = "http://" + ip + ":4000" + image;
+                                Picasso.with(getApplicationContext()).load(url).transform(new CircleTransform()).into(scannedProductImage);//circle
 
                             } else {
                                 Toast.makeText(getApplicationContext(), "Not found", Toast.LENGTH_LONG).show();
@@ -114,8 +114,10 @@ public class viewProductInfoWhenScan extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("id", sh.getString("lid", ""));//passing to python
-                params.put("shopID", sh.getString("shopID", ""));//passing to python
+
+//                params.put("login", lid);//passing to python
+                params.put("contents", sh.getString("contents", ""));//passing to python
+                params.put("login", sh.getString("lid", ""));//passing to python
                 return params;
             }
         };
@@ -126,9 +128,6 @@ public class viewProductInfoWhenScan extends AppCompatActivity {
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(postRequest);
-
-
-
     }
 }
 

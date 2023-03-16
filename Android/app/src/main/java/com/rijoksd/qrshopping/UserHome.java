@@ -79,7 +79,7 @@ public class UserHome extends AppCompatActivity implements NavigationView.OnNavi
             startActivity(i);
         }
         else if(id == R.id.nav_scan){
-            Intent i = new Intent(getApplicationContext(), scanQr.class);
+            Intent i = new Intent(getApplicationContext(), viewProductInfoWhenScan.class);
             startActivity(i);
         }
         else if(id == R.id.nav_bill){
