@@ -29,7 +29,7 @@ import java.util.Map;
 
 public class viewProductInfoWhenScan extends AppCompatActivity {
     Button addToCart,scanNow;
-    TextView scannedProductName,scannedProductDetails,scannedProductQuantity,scannedProductPrice,scannedProductOfferPrice;
+    TextView scannedProductName,scannedProductDetails,scannedProductQuantity,scannedProductPrice,scannedProductOfferPrice,tagOffer;
     ImageView scannedProductImage;
 
 
@@ -50,6 +50,7 @@ public class viewProductInfoWhenScan extends AppCompatActivity {
         scannedProductQuantity = (TextView) findViewById(R.id.textView55);
         scannedProductPrice = (TextView) findViewById(R.id.textView57);
         scannedProductOfferPrice = (TextView) findViewById(R.id.textView59);
+        tagOffer = (TextView) findViewById(R.id.textView58);
 
         scanNow = (Button) findViewById(R.id.button);
         scanNow.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +60,17 @@ public class viewProductInfoWhenScan extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        addToCart = (Button) findViewById(R.id.button2);
+
+        addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(getApplicationContext(),ScannedQrQuantity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
+            }
+        });
+
 
 
         sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -76,17 +88,38 @@ public class viewProductInfoWhenScan extends AppCompatActivity {
                         try {
                             JSONObject jsonObj = new JSONObject(response);
                             if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
-                                JSONObject jj = jsonObj.getJSONObject("data");
 
-                                scannedProductName.setText(jj.getString("n"));
+
+                                if(jsonObj.getString("offer").equalsIgnoreCase("0"))
+                                {
+                                    scannedProductOfferPrice.setVisibility(View.INVISIBLE);
+                                    tagOffer.setVisibility(View.INVISIBLE);
+                                }
+                                else {
+                                    tagOffer.setVisibility(View.VISIBLE);
+                                    scannedProductOfferPrice.setVisibility(View.VISIBLE);
+                                }
+                                JSONObject jj = jsonObj.getJSONObject("data");
+                               scannedProductName.setText(jj.getString("n"));
                                 scannedProductDetails.setText(jj.getString("details"));
                                 scannedProductQuantity.setText(jj.getString("quantity"));
                                 scannedProductPrice.setText(jj.getString("price"));
-                                scannedProductOfferPrice.setText(jj.getString("price"));
+//                                    # Discount = ActualPrice - (ActualPrice * Discount_Rate / 100;
+                                int offerPrice = Integer.parseInt(jj.getString("price")) - ( Integer.parseInt(jj.getString("price")) * Integer.parseInt(jsonObj.getString("offer")) /100);
+                                scannedProductOfferPrice.setText(offerPrice+"");
 
+
+
+                                SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+                                SharedPreferences.Editor ed=sh.edit();
+                                ed.putString("productID",jj.getString("product_id"));
+                                ed.putString("shopID",jj.getString("shop_id"));
+                                ed.putString("productPrice",jj.getString("price"));
+                                ed.commit();
 
                                 String image = jj.getString("im");
-                                SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+//                                SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                                 String ip = sh.getString("ip", "");
                                 String url = "http://" + ip + ":4000" + image;
                                 Picasso.with(getApplicationContext()).load(url).transform(new CircleTransform()).into(scannedProductImage);//circle

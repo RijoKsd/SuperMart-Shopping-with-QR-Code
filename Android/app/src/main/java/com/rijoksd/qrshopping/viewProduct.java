@@ -32,7 +32,7 @@ public class viewProduct extends AppCompatActivity {
     SharedPreferences sh;
     String ip, url, url1, lid;
 
-    String[] productID, productImage,productName,productQuantity,productPrice,sId,productDetails;
+    String[] productID, productImage,productName,productQuantity,productPrice,sId,productDetails,offerprice;
 
 
 
@@ -77,6 +77,7 @@ public class viewProduct extends AppCompatActivity {
                                 productPrice = new String[js.length()];
                                 sId = new String[js.length()];
                                 productDetails = new String[js.length()];
+                                offerprice = new String[js.length()];
 
 
 
@@ -90,13 +91,14 @@ public class viewProduct extends AppCompatActivity {
                                     productQuantity[i] = u.getString("quantity");
                                     productPrice[i] = u.getString("price");
                                     sId[i] = u.getString("shop_id");
+                                    offerprice[i] = u.getString("offerprice");
 //                                    SharedPreferences.Editor ed = sh.edit();
 //                                    ed.putString("productprice", productPrice[i]);
 //                                    ed.commit();
 //                                    Toast.makeText(viewProduct.this, ""+productPrice[i], Toast.LENGTH_SHORT).show();
 
                                 }
-                                list.setAdapter(new customViewProduct(getApplicationContext(), productID, productImage, productName,productDetails, productQuantity, productPrice,sId ));//custom_view_service.xml and li is the listview object
+                                list.setAdapter(new customViewProduct(getApplicationContext(), productID, productImage, productName,productDetails, productQuantity, productPrice,sId,offerprice));//custom_view_service.xml and li is the listview object
 
 
                             } else {
@@ -136,6 +138,12 @@ public class viewProduct extends AppCompatActivity {
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(postRequest);
+
+    }
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(),viewShop.class);
+        startActivity(i);
 
     }
 }

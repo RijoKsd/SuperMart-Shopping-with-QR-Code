@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -35,18 +36,18 @@ public class UserHome extends AppCompatActivity implements NavigationView.OnNavi
         binding.appBarUserHome.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();\
+                Toast.makeText(UserHome.this, "Scan the product using SCAN HERE button", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(), viewProductInfoWhenScan.class);
+                startActivity(i);
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
-                .setOpenableLayout(drawer)
-                .build();
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow).setOpenableLayout(drawer).build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_user_home);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
@@ -71,32 +72,29 @@ public class UserHome extends AppCompatActivity implements NavigationView.OnNavi
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.nav_view_profile){
-            Intent i = new Intent(getApplicationContext(),viewProfile.class);
+        if (id == R.id.nav_view_profile) {
+            Intent i = new Intent(getApplicationContext(), viewProfile.class);
             startActivity(i);
-        } else if ( id == R.id.nav_shop){
+        } else if (id == R.id.nav_shop) {
             Intent i = new Intent(getApplicationContext(), viewShop.class);
             startActivity(i);
-        }
-        else if(id == R.id.nav_scan){
+        } else if (id == R.id.nav_scan) {
             Intent i = new Intent(getApplicationContext(), viewProductInfoWhenScan.class);
             startActivity(i);
-        }
-        else if(id == R.id.nav_bill){
-            Intent i = new Intent(getApplicationContext(),ViewBill.class);
+        } else if (id == R.id.nav_bill) {
+            Intent i = new Intent(getApplicationContext(), ViewBill.class);
             startActivity(i);
-        } else if(id == R.id.nav_feedback){
-            Intent i = new Intent(getApplicationContext(),sendFeedback.class);
+        } else if (id == R.id.nav_feedback) {
+            Intent i = new Intent(getApplicationContext(), sendFeedback.class);
             startActivity(i);
-        }else if(id == R.id.nav_complaint){
-            Intent i = new Intent(getApplicationContext(),viewReply.class);
+        } else if (id == R.id.nav_complaint) {
+            Intent i = new Intent(getApplicationContext(), viewReply.class);
             startActivity(i);
-        }
-        else if(id == R.id.nav_logout){
-            Intent i = new Intent(getApplicationContext(),Login.class);
+        } else if (id == R.id.nav_logout) {
+            Intent i = new Intent(getApplicationContext(), Login.class);
             startActivity(i);
-        }else if(id == R.id.nav_cart){
-            Intent i = new Intent(getApplicationContext(),cartShop.class);
+        } else if (id == R.id.nav_cart) {
+            Intent i = new Intent(getApplicationContext(), cartShop.class);
             startActivity(i);
         }
 

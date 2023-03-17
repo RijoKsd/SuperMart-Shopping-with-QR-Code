@@ -137,4 +137,9 @@ public class viewReply extends AppCompatActivity {
 
 
     }
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(),UserHome.class);
+        startActivity(i);
+    }
 }

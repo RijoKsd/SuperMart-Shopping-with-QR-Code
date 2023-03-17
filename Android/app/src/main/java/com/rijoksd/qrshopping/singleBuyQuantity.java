@@ -86,9 +86,11 @@ public class singleBuyQuantity extends AppCompatActivity {
                                         JSONObject jsonObj = new JSONObject(response);
                                         if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
                                             String amount=jsonObj.getString("am");
+//                                            String offerprice=jsonObj.getString("offerprice");
                                             String masterid=jsonObj.getString("mid");
                                             SharedPreferences.Editor ed = sh.edit();
                                             ed.putString("am", amount);
+//                                            ed.putString("offerprice", offerprice);
                                             ed.putString("mid", masterid);
                                             ed.commit();
 //                                            Toast.makeText(singleBuyQuantity.this, "ABooked", Toast.LENGTH_SHORT).show();
@@ -135,6 +137,7 @@ public class singleBuyQuantity extends AppCompatActivity {
                             params.put("id", sh.getString("lid", ""));//passing to python
                             params.put("shopID", sh.getString("shopID", ""));//passing to python
                             params.put("productPrice", sh.getString("productPrice", ""));//passing to python
+                            params.put("offerprice", sh.getString("offerprice", ""));//passing to python
                             params.put("productID", sh.getString("productID", ""));//passing to python
                             return params;
                         }

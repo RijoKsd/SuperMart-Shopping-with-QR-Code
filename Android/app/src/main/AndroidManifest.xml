@@ -17,6 +17,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ScannedQrQuantity"
+            android:exported="false" />
+        <activity
             android:name=".about"
             android:exported="false" />
         <activity

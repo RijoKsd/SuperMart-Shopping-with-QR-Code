@@ -50,9 +50,6 @@ public class payment extends AppCompatActivity {
         offlinePay = findViewById(R.id.offlinePay);
 
         SharedPreferences sh=PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-//        String p=sh.getString("productPrice","");
-
-//        Toast.makeText(this, "ppppppppp"+p, Toast.LENGTH_SHORT).show();
         totalAmountToPay.setText(sh.getString("am",""));
 
 
@@ -165,7 +162,7 @@ public class payment extends AppCompatActivity {
                                             Intent i = new Intent(getApplicationContext(), viewProduct.class);
                                             startActivity(i);
                                         }
-                                        if (jsonObj.getString("status").equalsIgnoreCase("insufficient")) {
+                                        else if (jsonObj.getString("status").equalsIgnoreCase("insufficient")) {
 ////
 
                                             Toast.makeText(payment.this, "Please check you bank balance!!!", Toast.LENGTH_SHORT).show();
@@ -220,9 +217,12 @@ public class payment extends AppCompatActivity {
                             DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                     requestQueue.add(postRequest);
                 }
-
-
-
         });
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(getApplicationContext(), payment.class);
+        startActivity(i);
     }
 }

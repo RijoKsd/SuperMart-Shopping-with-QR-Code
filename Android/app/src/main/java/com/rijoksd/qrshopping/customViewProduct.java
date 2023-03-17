@@ -19,10 +19,10 @@ import com.squareup.picasso.Picasso;
 public class customViewProduct extends BaseAdapter {
 
 
-    String[] productID,productImage,productName,productQuantity,productPrice,sId,productDetails ;
-    private Context context;
+    String[] productID, productImage, productName, productQuantity, productPrice, sId, productDetails, offerprice;
+    private final Context context;
 
-    public customViewProduct(Context applicationContext, String[] productID, String[] productImage, String[] productName,String[] productDetails, String[] productQuantity, String[] productPrice, String[] sId ) {
+    public customViewProduct(Context applicationContext, String[] productID, String[] productImage, String[] productName, String[] productDetails, String[] productQuantity, String[] productPrice, String[] sId, String[] offerprice) {
 
         this.context = applicationContext;
         this.productID = productID;
@@ -32,6 +32,7 @@ public class customViewProduct extends BaseAdapter {
         this.productQuantity = productQuantity;
         this.productPrice = productPrice;
         this.sId = sId;
+        this.offerprice = offerprice;
 
 
     }
@@ -70,29 +71,53 @@ public class customViewProduct extends BaseAdapter {
         TextView tv2 = (TextView) gridView.findViewById(R.id.billQuantity);
         TextView tv3 = (TextView) gridView.findViewById(R.id.billPrice);
         TextView tv4 = (TextView) gridView.findViewById(R.id.billDetails);
-
+        TextView tv5 = (TextView) gridView.findViewById(R.id.textView62);
 
 
         Button bt1 = (Button) gridView.findViewById(R.id.buyProduct);
 
         Button buySingleProduct = (Button) gridView.findViewById(R.id.buySinglePro);
         buySingleProduct.setTag(i);
-        buySingleProduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int pos = (int) view.getTag();
-                SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
+        if (offerprice[i].equalsIgnoreCase("0")){
+            buySingleProduct.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int pos = (int) view.getTag();
+                    SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
 
-                SharedPreferences.Editor ed=sh.edit();
-                ed.putString("productID",productID[pos]);
-                ed.putString("shopID",sId[pos]);
-                ed.putString("productPrice",productPrice[i]);
-                ed.commit();
-                Intent i=new Intent(context.getApplicationContext(),singleBuyQuantity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(i);
-            }
-        });
+                    SharedPreferences.Editor ed = sh.edit();
+                    ed.putString("productID", productID[pos]);
+                    ed.putString("shopID", sId[pos]);
+                    ed.putString("productPrice", productPrice[i]);
+//                    ed.putString("offerprice", offerprice[i]);
+                    ed.commit();
+                    Intent i = new Intent(context.getApplicationContext(), singleBuyQuantity.class);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(i);
+                }
+            });
+        }
+        else {
+            buySingleProduct.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int pos = (int) view.getTag();
+                    SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
+
+                    SharedPreferences.Editor ed = sh.edit();
+                    ed.putString("productID", productID[pos]);
+                    ed.putString("shopID", sId[pos]);
+//                    ed.putString("productPrice", productPrice[i]);
+                    ed.putString("productPrice", offerprice[i]);
+                    ed.commit();
+                    Intent i = new Intent(context.getApplicationContext(), singleBuyQuantity.class);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(i);
+                }
+            });
+        }
+
+
 
 
         Button offerBtn = (Button) gridView.findViewById(R.id.offerBtn);
@@ -103,15 +128,13 @@ public class customViewProduct extends BaseAdapter {
                 int pos = (int) view.getTag();
                 SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
 
-                SharedPreferences.Editor ed=sh.edit();
-                ed.putString("productID",productID[pos]);
-                ed.putString("pqty",productQuantity[pos]);
+                SharedPreferences.Editor ed = sh.edit();
+                ed.putString("productID", productID[pos]);
+                ed.putString("pqty", productQuantity[pos]);
                 ed.commit();
-                Intent i=new Intent(context.getApplicationContext(),viewOffer.class);
+                Intent i = new Intent(context.getApplicationContext(), viewOffer.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(i);
-
-
             }
         });
 
@@ -122,16 +145,14 @@ public class customViewProduct extends BaseAdapter {
                 int pos = (int) view.getTag();
                 SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
 
-                SharedPreferences.Editor ed=sh.edit();
-                ed.putString("productID",productID[pos]);
-                ed.putString("shopID",sId[pos]);
-                ed.putString("productPrice",productPrice[pos]);
+                SharedPreferences.Editor ed = sh.edit();
+                ed.putString("productID", productID[pos]);
+                ed.putString("shopID", sId[pos]);
+                ed.putString("productPrice", productPrice[pos]);
                 ed.commit();
-                Intent i=new Intent(context.getApplicationContext(),quantity.class);
+                Intent i = new Intent(context.getApplicationContext(), quantity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(i);
-
-
             }
         });
 
@@ -140,21 +161,21 @@ public class customViewProduct extends BaseAdapter {
         tv2.setTextColor(Color.BLACK);
         tv3.setTextColor(Color.BLACK);
         tv4.setTextColor(Color.BLACK);
+        tv5.setTextColor(Color.BLACK);
 
 //        tv1.setAllCaps(true);
         Typeface typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD);
         tv1.setTypeface(typeface);
 
         //    Discount = Actual Price - (Actual Price * Discount_Rate/100)
-//        tv4 = productPrice - (productPrice * productOffer/100);
-
+//        tv4 =  - (productPrice * productOffer/100);
 
 
         tv1.setText(productName[i]);
         tv2.setText(productQuantity[i]);
         tv3.setText(productPrice[i]);
         tv4.setText(productDetails[i]);
-
+        tv5.setText(offerprice[i]);
 
 
         SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);

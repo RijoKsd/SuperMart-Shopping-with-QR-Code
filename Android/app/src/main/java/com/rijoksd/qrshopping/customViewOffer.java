@@ -65,26 +65,26 @@ public class customViewOffer extends BaseAdapter {
         TextView tv3=(TextView)gridView.findViewById(R.id.offerStart);
         TextView tv4=(TextView)gridView.findViewById(R.id.offerEnd);
 
-        Button buyWithOfferPrice = (Button) gridView.findViewById(R.id.buyWithOffer);
-        buyWithOfferPrice.setTag(i);
-
-
-        buyWithOfferPrice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int pos = (int) view.getTag();
-                SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
-
-                SharedPreferences.Editor ed=sh.edit();
-                ed.putString("productID",productID[pos]);
-                ed.putString("shopID",sId[pos]);
-                ed.putString("productPrice",offerPrice[pos]);
-                ed.commit();
-                Intent i=new Intent(context.getApplicationContext(),singleBuyQuantity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(i);
-            }
-        });
+//        Button buyWithOfferPrice = (Button) gridView.findViewById(R.id.buyWithOffer);
+//        buyWithOfferPrice.setTag(i);
+//
+//
+//        buyWithOfferPrice.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                int pos = (int) view.getTag();
+//                SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
+//
+//                SharedPreferences.Editor ed=sh.edit();
+//                ed.putString("productID",productID[pos]);
+//                ed.putString("shopID",sId[pos]);
+//                ed.putString("productPrice",offerPrice[pos]);
+//                ed.commit();
+//                Intent i=new Intent(context.getApplicationContext(),singleBuyQuantity.class);
+//                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                context.startActivity(i);
+//            }
+//        });
 
 
 

@@ -116,10 +116,12 @@ public class sendComplaint extends AppCompatActivity {
                         DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                 requestQueue.add(postRequest);
                 }
-
-
-
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(),viewReply.class);
+        startActivity(i);
     }
 }

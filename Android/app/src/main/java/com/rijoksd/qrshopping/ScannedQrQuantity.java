@@ -1,5 +1,6 @@
 package com.rijoksd.qrshopping;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -24,7 +25,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class quantity extends AppCompatActivity {
+public class ScannedQrQuantity extends AppCompatActivity {
     EditText quantity;
     Button quantityBtn;
     SharedPreferences sh;
@@ -33,9 +34,10 @@ public class quantity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quantity);
-        quantity=findViewById(R.id.quantity);
-        quantityBtn=findViewById(R.id.quantityBtn);
+        setContentView(R.layout.activity_scanned_qr_quantity);
+
+        quantity=findViewById(R.id.editTextTextPersonName);
+        quantityBtn=findViewById(R.id.button3);
 
         quantity.setText("1");
 
@@ -63,27 +65,21 @@ public class quantity extends AppCompatActivity {
                                     try {
                                         JSONObject jsonObj = new JSONObject(response);
                                         if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
-                                            Toast.makeText(quantity.this, "Add to Cart", Toast.LENGTH_SHORT).show();
-                                            Intent i = new Intent(getApplicationContext(), viewProduct.class);
+                                            Toast.makeText(ScannedQrQuantity.this, "Add to Cart", Toast.LENGTH_SHORT).show();
+                                            Intent i = new Intent(getApplicationContext(), view_product_cart.class);
                                             startActivity(i);
                                         }
                                         if (jsonObj.getString("status").equalsIgnoreCase("update")) {
-                                            Toast.makeText(quantity.this, "Quantity updated", Toast.LENGTH_SHORT).show();
-                                            Intent i = new Intent(getApplicationContext(), viewProduct.class);
+                                            Toast.makeText(ScannedQrQuantity.this, "Quantity updated", Toast.LENGTH_SHORT).show();
+                                            Intent i = new Intent(getApplicationContext(), view_product_cart.class);
                                             startActivity(i);
 
                                         }
-                                        else if (jsonObj.getString("status").equalsIgnoreCase("greater")) {
-                                            Toast.makeText(quantity.this, "Out of stock", Toast.LENGTH_SHORT).show();
-                                            Intent i = new Intent(getApplicationContext(), viewProduct.class);
+                                        if (jsonObj.getString("status").equalsIgnoreCase("greater")) {
+                                            Toast.makeText(ScannedQrQuantity.this, "Out of stock", Toast.LENGTH_SHORT).show();
+                                            Intent i = new Intent(getApplicationContext(), viewProductInfoWhenScan.class);
                                             startActivity(i);
-                                        }
-//                                        else if (jsonObj.getString("status").equalsIgnoreCase("outofstock")) {
-//                                            Toast.makeText(quantity.this, "Quantity exceed", Toast.LENGTH_SHORT).show();
-//                                            Intent i = new Intent(getApplicationContext(), viewProduct.class);
-//                                            startActivity(i);
-//                                        }
-                                        else {
+                                        } else {
 //                                            Toast.makeText(getApplicationContext(), "Not found", Toast.LENGTH_LONG).show();
                                         }
 

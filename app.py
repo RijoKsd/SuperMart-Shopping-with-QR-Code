@@ -354,7 +354,7 @@ def add_product():
             )
 
             # The data that you want to store
-            data = "The Data that you need to store in the QR Code"
+            data = str(qry)
 
             # Add data
             qr.add_data(data)
@@ -370,7 +370,7 @@ def add_product():
             # img.save("image.jpeg")
 
 
-            img.save(systemPath + "qr_codes/" + str(qry) +"-"+ date + '.jpg')
+            img.save(systemPath + "qr_codes/" + str(qry) + "-" + date + '.jpg')
             # img.save("image.jpg")
             return '<script>alert("Added successfully ");window.location="/view_product"</script>'
         else:
@@ -725,9 +725,9 @@ def view_bill():
         db = Database()
 
         data = db.select(
-            "select sum(product.price*bill.quantity) as total,user.name as un,user.*, bill_master.*,product.*,bill.* from bill_master,user,bill,product where bill_master.user_id=user.user_id and bill_master.shop_id='" + str(session['lid']) + "' and bill.master_id=bill_master.master_id and bill.product_id=product.product_id and   bill_master.status = 'booked' or bill_master.status = 'cash' or bill_master.status = 'paid'")
-
-
+            "select sum(product.price*bill.quantity) as total,user.name as un,user.*, bill_master.*,product.*,bill.* from bill_master,user,bill,product where bill_master.user_id=user.user_id and bill_master.shop_id='" + str(
+                session[
+                    'lid']) + "' and bill.master_id=bill_master.master_id and bill.product_id=product.product_id and   bill_master.status = 'booked' or bill_master.status = 'cash' or bill_master.status = 'paid'")
 
         # and bill_master.status = 'book'
 
@@ -738,8 +738,8 @@ def view_bill():
         # data = db.select(
         #     "select * from bill_master,shop,user where bill_master.shop_id = shop.shop_id and bill_master.user_id = user.user_id and bill_master.shop_id = '" + str(session['lid']) + "'")
 
-    
-     
+
+
         return render_template("shop/view_bill.html", data=data)
     return redirect('/')
 
@@ -837,9 +837,36 @@ def and_view_shop():
 def and_view_product():
     and_shop_id = request.form['shopID']
     db = Database()
+    final_data=[]
     data = db.select(
         "select * from product,stock where product.product_id = stock.product_id and  product.shop_id ='" + and_shop_id + "' ")
-    return jsonify(status="ok", data=data)
+    for i in data:
+        q2=db.selectOne("select * from offer where curdate() between date_from and date_to and product_id='"+str(i['product_id'])+"'")
+        if q2 is not None:
+            offerprice= int(i['price'])-( int(i['price']) * int(q2['offer']) /100);
+            final_data.append({'product_id':i['product_id'],
+                               'image':i['image'],
+                               'name':i['name'],
+                               'details':i['details'],
+                               'quantity':i['quantity'],
+                               'price':i['price'],
+                               'shop_id':i['shop_id'],
+                               'offerprice':offerprice
+                               })
+
+        else:
+            print("no offer")
+            final_data.append({'product_id': i['product_id'],
+                               'image': i['image'],
+                               'name': i['name'],
+                               'details': i['details'],
+                               'quantity': i['quantity'],
+                               'price': i['price'],
+                               'shop_id': i['shop_id'],
+                               'offerprice': '0'
+                               })
+
+    return jsonify(status="ok", data=final_data)
 
 
 # ********************************************** Android user view offer *********************************************
@@ -910,33 +937,8 @@ def and_add_rating():
 
 
 # ********************************************** Android user view quantity *******************************************
-#
-# @app.route('/and_quantity', methods=['post'])
-# def and_quantity():
-#     productID = request.form['productID']
-#     product_quantity = request.form['qua']
-#     uid = request.form['id']
-#     product_price = request.form['productPrice']
-#     shop_ID = request.form['shopID']
-#     db = Database()
-#     res2 = db.selectOne("select * from bill,bill_master where bill.master_id = bill_master.master_id and bill.product_id = '"+productID+"' and bill_master.user_id = '"+uid+"' and bill_master.status = 'add to cart'")
-#
-#     res1 = db.selectOne(
-#         "select * from stock,product where stock.product_id = product.product_id and product.product_id = '" + productID + "'")
-#     if product_quantity >= str(res1['quantity']):
-#         return jsonify(status="greater")
-#     elif res2 is not None:
-#         db = Database()
-#         db.update("update bill set quantity = '"+product_quantity+"' where product_id = '"+productID+"'")
-#         return jsonify(status="update")
-#
-#
-#
-#
 
-#####################
 # -------------------------------------------------add to cart-------------------------------
-
 
 @app.route('/and_quantity', methods=['post'])
 def and_quantity():
@@ -945,16 +947,16 @@ def and_quantity():
     uid = request.form['id']  # user id
     product_price = request.form['productPrice']  # product price
     shop_ID = request.form['shopID']  # shop id
-
     db = Database()
     res1 = db.selectOne(
         "select * from stock,product where stock.product_id = product.product_id and product.product_id = '" + productID + "'")
     p_qunty = res1['quantity']
+
     if int(product_quantity) >= int(p_qunty):
         print(product_quantity)
         return jsonify(status="greater")
-    else:
 
+    else:
         res2 = db.selectOne(
             "select * from bill_master where user_id='" + uid + "' and shop_id='" + shop_ID + "' and status='cart'")
         if res2 is not None:
@@ -984,7 +986,14 @@ def and_quantity():
 def and_product_cart_delete():
     bill_ID = request.form['bill']
     db = Database()
-    db.delete("delete from bill where bill_id = '" + bill_ID + "' ")
+    res = db.selectOne("select * from bill where bill_id='" + bill_ID + "'")
+    mid = res['master_id']
+    db = Database()
+    db.delete("delete from bill where bill_id = '" + bill_ID + "'")
+    res2 = db.selectOne("select count(bill_id) as cnt from bill where master_id = '" + str(mid) + "'")
+    if res2['cnt'] == 0:
+        db = Database()
+        db.delete("delete from bill_master where master_id = '" + str(mid) + "'")
     return jsonify(status="ok")
 
 
@@ -1001,7 +1010,6 @@ def and_view_bill():
         return jsonify(status="ok", data=data)
     else:
         return jsonify(status="no")
-
 
 
 @app.route('/and_view_product_bill', methods=['post'])
@@ -1071,8 +1079,6 @@ def and_view_shop_in_cart():
         return jsonify(status="no")
 
 
-
-
 @app.route('/and_payment', methods=['post'])
 def and_payment():
     bank_name = request.form['bankName']
@@ -1125,15 +1131,6 @@ def and_payment_from_cart():
         if tm > int(ab):
             return jsonify(status="insufficient")
         else:
-
-            # qry = db.select(
-            #     "select sum(bill.quantity * product.price) as gt,bill_master.master_id as msid,bill_master.shop_id as sid,bill.product_id as pid,bill_master.*,bill.*,shop.*,product.* from bill_master,bill,product,shop where bill_master.master_id = bill.master_id and bill.product_id = product.product_id and product.shop_id = shop.shop_id and bill_master.user_id = '" + uid + "' and  bill_master.status='cart' group by bill.master_id")
-            # for i in qry:
-            #     mid = i['msid']
-            #     productid = i['pid']
-            #     shopid = i['sid']
-            #     qty = i['quantity']
-            #     total = i['gt']
             qry1 = db.select(
                 "select sum(bill.quantity * product.price) as gt,bill_master.master_id as mid,bill_master.*,bill.*,shop.*,product.* from bill_master,bill,product,shop where bill_master.master_id = bill.master_id and bill.product_id = product.product_id and product.shop_id = shop.shop_id and bill_master.user_id = '" + uid + "' and  bill_master.status='cart' and bill_master.shop_id='" + sid + "'")
             for i in qry1:
@@ -1203,13 +1200,18 @@ def and_view_product_with_qr():
     contents = request.form['contents']
     print(contents)
     db = Database()
-     # join product,stock,shop,offer
-    dataa = db.selectOne("select product.name as n,product.image as im,product.*,shop.*,stock.*,offer.* from product,stock,shop,offer where product.product_id = stock.product_id  and product.shop_id=shop.shop_id and offer.product_id = product.product_id   ")
-    # dataa = db.selectOne("select * from product,stock,shop,offer where product.product_id = stock.product_id  and product.shop_id=shop.shop_id and offer.product_id = product.product_id and product.product_id='"+contents+"' ")
+    # join product,stock,shop,offer
+    dataa = db.selectOne(
+        "select product.name as n,product.image as im,product.*,shop.*,stock.* from product,stock,shop where product.product_id = stock.product_id  and product.shop_id=shop.shop_id   and product.product_id='" + contents + "' ")
+    off= db.selectOne("select * from offer where product_id = '" + contents + "'")
+    if off is not None:
+        print(off)
+        return jsonify(status="ok", data=dataa, offer=off['offer'])
+    else:
+        return jsonify(status="ok", data=dataa,offer="0")
 
-    return jsonify(status="ok", data=dataa)
 
-    # return jsonify(status="ok", name=data['name'],details=data['details'],quantity=data['quantity'],price=data['price'],offer=data['offer'],image=data['image'])
+        # return jsonify(status="ok", name=data['name'],details=data['details'],quantity=data['quantity'],price=data['price'],offer=data['offer'],image=data['image'])
 
 
 if __name__ == '__main__':
