@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -41,8 +40,8 @@ import java.util.Map;
 
 
 public class Registration extends AppCompatActivity {
-    EditText username,place,pinCode,mail,phone,registerPassword;
-    RadioButton male,female,other;
+    EditText username, place, pinCode, mail, phone, registerPassword;
+    RadioButton male, female, other;
     ImageView pho;
     RadioGroup gen;
     Button registerBtn;
@@ -52,34 +51,27 @@ public class Registration extends AppCompatActivity {
     SharedPreferences sh;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-
-        sh= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        sh.getString("ip","");
-        url=sh.getString("url","")+"and_user_register";
-
-        username=findViewById(R.id.username);
-        place=findViewById(R.id.place);
-        pinCode=findViewById(R.id.pincode);
-        mail=findViewById(R.id.mail);
-        phone=findViewById(R.id.phone);
-        pho=findViewById(R.id.image);
-        registerPassword=findViewById(R.id.register_password);
-        registerBtn=findViewById(R.id.register_btn);
-        gen=findViewById(R.id.radioGroup);
-        male=findViewById(R.id.male);
-        female=findViewById(R.id.female);
-        other=findViewById(R.id.other);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(this,
-                Manifest.permission.READ_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                    Uri.parse("package:" + getPackageName()));
+        sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        sh.getString("ip", "");
+        url = sh.getString("url", "") + "and_user_register";
+        username = findViewById(R.id.username);
+        place = findViewById(R.id.place);
+        pinCode = findViewById(R.id.pincode);
+        mail = findViewById(R.id.mail);
+        phone = findViewById(R.id.phone);
+        pho = findViewById(R.id.image);
+        registerPassword = findViewById(R.id.register_password);
+        registerBtn = findViewById(R.id.register_btn);
+        gen = findViewById(R.id.radioGroup);
+        male = findViewById(R.id.male);
+        female = findViewById(R.id.female);
+        other = findViewById(R.id.other);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + getPackageName()));
             finish();
             startActivity(intent);
             return;
@@ -92,37 +84,54 @@ public class Registration extends AppCompatActivity {
             }
         });
 
-
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int flag = 0;
                 String registerUsername = username.getText().toString();
                 String registerUserPlace = place.getText().toString();
                 String registerUserPinCode = pinCode.getText().toString();
                 String registerUserMail = mail.getText().toString();
                 String registerUserPhone = phone.getText().toString();
                 String registerUserPassword = registerPassword.getText().toString();
-                String registerUserGender =((RadioButton)findViewById(gen.getCheckedRadioButtonId())).getText().toString();
+                String registerUserGender = ((RadioButton) findViewById(gen.getCheckedRadioButtonId())).getText().toString();
 
 
-//                if (registerUsername.equalsIgnoreCase("" )) {
-//                    username.setError("Username is required");
-//                } else if (registerUserPlace.equalsIgnoreCase("" )) {
-//                    place.setError("Place is required");
-//                } else if (registerUserPinCode.equalsIgnoreCase("" )) {
-//                    pinCode.setError("Pincode is required");
-//                } else if (registerUserMail.equalsIgnoreCase("" )) {
-//                    mail.setError("Mail is required");
-//                } else if (registerUserPhone.equalsIgnoreCase("" )) {
-//                    phone.setError("Phone is required");
-//                } else if (registerUserPassword.equalsIgnoreCase("" )) {
-//                    registerPassword.setError("Password is required");
-//                }else{
-
-                uploadBitmap(registerUsername,registerUserPlace,registerUserPinCode,registerUserMail,registerUserGender,registerUserPhone,registerUserPassword );
+                if (registerUsername.equalsIgnoreCase("")) {
+                    flag++;
+                    username.setError("Username is required");
                 }
+                if (registerUserPlace.equalsIgnoreCase("")) {
+                    flag++;
+                    place.setError("Place is required");
+                }
+                if (registerUserPinCode.equalsIgnoreCase("")) {
+                    flag++;
+                    pinCode.setError("Pincode is required");
+                }
+                if (registerUserMail.equalsIgnoreCase("")) {
+                    flag++;
+                    mail.setError("Mail is required");
+                }
+                if (registerUserPhone.equalsIgnoreCase("")) {
+                    flag++;
+                    phone.setError("Phone is required");
+                }
+                if (registerUserPassword.equalsIgnoreCase("")) {
+                    flag++;
+                    registerPassword.setError("Password is required");
+                }
+                if (bitmap == null) {
+                    flag++;
+                    Toast.makeText(Registration.this, "Please Choose Image", Toast.LENGTH_SHORT).show();
+                }
+                if (flag == 0) {
 
-            });
+                    uploadBitmap(registerUsername, registerUserPlace, registerUserPinCode, registerUserMail, registerUserGender, registerUserPhone, registerUserPassword);
+                }
+            }
+
+        });
 
     }
 
@@ -134,17 +143,12 @@ public class Registration extends AppCompatActivity {
             Uri imageUri = data.getData();
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
-
                 pho.setImageBitmap(bitmap);
-
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
-
-
 
     //converting to bitarray
     public byte[] getFileDataFromDrawable(Bitmap bitmap) {
@@ -152,72 +156,60 @@ public class Registration extends AppCompatActivity {
         bitmap.compress(Bitmap.CompressFormat.PNG, 80, byteArrayOutputStream);
         return byteArrayOutputStream.toByteArray();
     }
-    private void uploadBitmap(final String registerUsername, final String registerUserPlace, final String registerUserPincode, final String registerUserMail, final String registerUserGender, final String registerUserPhone, final String registerUserPassword)
-        {
 
-
-            pd = new ProgressDialog(Registration.this);
-            pd.setMessage("Uploading....");
-            pd.show();
-            VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, url,
-                    new Response.Listener<NetworkResponse>() {
-                        @Override
-                        public void onResponse(NetworkResponse response) {
-                            try {
-                                pd.dismiss();
-
-
-                                JSONObject obj = new JSONObject(new String(response.data));
-
-                                if (obj.getString("status").equals("ok")) {
-                                    Toast.makeText(getApplicationContext(), "Registration successfully completed", Toast.LENGTH_SHORT).show();
-                                    Intent i = new Intent(getApplicationContext(), Login.class);
-                                    startActivity(i);
-                                } else {
-                                    Toast.makeText(getApplicationContext(), "Registration failed", Toast.LENGTH_SHORT).show();
-                                }
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }) {
-
-
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> params = new HashMap<>();
-                    SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                    params.put("andUserName", registerUsername);//passing to python
-                    params.put("andUserPlace", registerUserPlace);//passing to python
-                    params.put("andUserPIN", registerUserPincode);
-                    params.put("andUserMail", registerUserMail);
-                    params.put("andUserPhone", registerUserPhone);
-                    params.put("andUserPassword", registerUserPassword);
-                    params.put("andUserGender", registerUserGender);
-//                params.put("g",gender);
-
-                    return params;
+    private void uploadBitmap(final String registerUsername, final String registerUserPlace, final String registerUserPincode, final String registerUserMail, final String registerUserGender, final String registerUserPhone, final String registerUserPassword) {
+        pd = new ProgressDialog(Registration.this);
+        pd.setMessage("Uploading....");
+        pd.show();
+        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, url, new Response.Listener<NetworkResponse>() {
+            @Override
+            public void onResponse(NetworkResponse response) {
+                try {
+                    pd.dismiss();
+                    JSONObject obj = new JSONObject(new String(response.data));
+                    if (obj.getString("status").equals("ok")) {
+                        Toast.makeText(getApplicationContext(), "Registration successfully completed", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(getApplicationContext(), Login.class);
+                        startActivity(i);
+                    } else if (obj.getString("status").equals("already")) {
+                        Toast.makeText(getApplicationContext(), "Email already exist", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(getApplicationContext(), Login.class);
+                        startActivity(i);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Registration failed", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                params.put("andUserName", registerUsername);//passing to python
+                params.put("andUserPlace", registerUserPlace);//passing to python
+                params.put("andUserPIN", registerUserPincode);
+                params.put("andUserMail", registerUserMail);
+                params.put("andUserPhone", registerUserPhone);
+                params.put("andUserPassword", registerUserPassword);
+                params.put("andUserGender", registerUserGender);
+                return params;
+            }
 
-
-                @Override
-                protected Map<String, DataPart> getByteData() {
-                    Map<String, DataPart> params = new HashMap<>();
-                    long imagename = System.currentTimeMillis();
-                    params.put("pic", new DataPart(imagename + ".png", getFileDataFromDrawable(bitmap)));
-                    return params;
-                }
-
-            };
-
-            Volley.newRequestQueue(this).add(volleyMultipartRequest);
-
+            @Override
+            protected Map<String, DataPart> getByteData() {
+                Map<String, DataPart> params = new HashMap<>();
+                long imagename = System.currentTimeMillis();
+                params.put("pic", new DataPart(imagename + ".png", getFileDataFromDrawable(bitmap)));
+                return params;
+            }
+        };
+        Volley.newRequestQueue(this).add(volleyMultipartRequest);
     }
 }

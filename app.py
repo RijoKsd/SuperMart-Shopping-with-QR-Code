@@ -315,6 +315,12 @@ def register():
         image_path = "/static/images/" + date + '.jpg'
         password = request.form['password']
         db = Database()
+
+        # check email already exist or not
+        res = db.select("select * from login where user_name = '" + email + "'")
+        if len(res) > 0:
+            return '<script>alert("Email already exist");window.location="/register"</script>'
+        
         login_id = db.insert(
             "insert into login values('','" + email + "','" + password + "','pending')")
         db.insert("insert into shop values('" + str(
@@ -336,7 +342,8 @@ def add_product():
             details = request.form['details']
             image = request.files['image']
             # image path
-            date = datetime.datetime.now().strftime("%y%m%d-%H%M%S ")
+            # date = datetime.datetime.now().strftime("%y%m%d-%H%M%S ")
+            date = datetime.datetime.now().strftime("%d%m%y-%H%M%S ")
             image.save(r"E:\QR shopping\python\static\images\\" + date + '.jpg')
             image_path = "/static/images/" + date + '.jpg'
             db = Database()
@@ -362,14 +369,7 @@ def add_product():
 
             # Create an image from the QR Code instance
             img = qr.make_image()
-            systemPath = r"E:\QR shopping\python\static\\"
-
-            # Save it somewhere, change the extension as needed:
-            # img.save("image.png")
-            # img.save("image.bmp")
-            # img.save("image.jpeg")
-
-
+            systemPath = r"E:\QR shopping\python\static\\"  # path to save the image
             img.save(systemPath + "qr_codes/" + str(qry) + "-" + date + '.jpg')
             # img.save("image.jpg")
             return '<script>alert("Added successfully ");window.location="/view_product"</script>'
@@ -472,6 +472,10 @@ def add_offer(product_id):
 def view_offer(product_id):
     if session['lin'] == "1":
         db = Database()
+
+        # delete the offer when the offer is expired
+        db.delete(
+            "delete from offer where date_to < '" + str(datetime.datetime.now().strftime("%Y-%m-%d")) + "'")
         res = db.selectOne(
             "select * from offer where product_id = '" + product_id + "'")
         if res is not None:
@@ -726,8 +730,7 @@ def view_bill():
 
         data = db.select(
             "select sum(product.price*bill.quantity) as total,user.name as un,user.*, bill_master.*,product.*,bill.* from bill_master,user,bill,product where bill_master.user_id=user.user_id and bill_master.shop_id='" + str(
-                session[
-                    'lid']) + "' and bill.master_id=bill_master.master_id and bill.product_id=product.product_id and   bill_master.status = 'booked' or bill_master.status = 'cash' or bill_master.status = 'paid'")
+                session['lid']) + "' and bill.master_id=bill_master.master_id and bill.product_id=product.product_id and   bill_master.status = 'booked' or bill_master.status = 'cash' or bill_master.status = 'paid'")
 
         # and bill_master.status = 'book'
 
@@ -783,6 +786,14 @@ def and_user_register():
     image_path = "/static/images/" + date + '.jpg'
 
     db = Database()
+
+    # check the gmail is already register or not
+    q = db.selectOne(
+        "select * from login where user_name = '" + and_register_user_mail + "'")
+    if q is not None:
+        return jsonify(status="already")
+    
+    
     q = db.insert(
         "insert into login VALUES ('','" + and_register_user_mail + "','" + and_register_user_password + "','user')")
 
@@ -855,7 +866,7 @@ def and_view_product():
                                })
 
         else:
-            print("no offer")
+            # print("no offer")
             final_data.append({'product_id': i['product_id'],
                                'image': i['image'],
                                'name': i['name'],
@@ -936,7 +947,6 @@ def and_add_rating():
         return jsonify(status="ok")
 
 
-# ********************************************** Android user view quantity *******************************************
 
 # -------------------------------------------------add to cart-------------------------------
 
@@ -957,26 +967,33 @@ def and_quantity():
         return jsonify(status="greater")
 
     else:
-        res2 = db.selectOne(
-            "select * from bill_master where user_id='" + uid + "' and shop_id='" + shop_ID + "' and status='cart'")
+        res2 = db.selectOne("select * from bill_master where user_id='" + uid + "' and shop_id='" + shop_ID + "' and status='cart'")
         if res2 is not None:
             mid = res2['master_id']
             qry = db.selectOne(
                 "select * from bill where product_id='" + productID + "' and master_id='" + str(mid) + "'")
             if qry is not None:
+                bill_quantity = qry['quantity']
                 bid = qry['bill_id']
-                db.update(
-                    "update bill set quantity=quantity + '" + product_quantity + "' where bill_id='" + str(bid) + "'")
-                return jsonify(status="update")
+                print(bill_quantity)
+
+                if bill_quantity >= p_qunty:
+                    print("quantity exceeded")
+                    return jsonify(status="outofstock")
+                else:
+                    if bill_quantity <= p_qunty:
+                        print("quantity exceeded")
+                        # return jsonify(status="outofstock")
+                    db.update(
+                        "update bill set quantity=quantity + '" + product_quantity + "' where bill_id='" + str(bid) + "'")
+                    return jsonify(status="update")
             else:
-                db.insert(
-                    "insert into bill VALUES ('','" + str(mid) + "','" + productID + "','" + product_quantity + "')")
+                db.insert("insert into bill VALUES ('','" + str(mid) + "','" + productID + "','" + product_quantity + "')")
                 return jsonify(status="ok")
         else:
             qry1 = db.insert(
                 "insert into bill_master (shop_id,user_id,amount,date,status) VALUES ('" + shop_ID + "','" + uid + "','0',curdate(),'cart')")
-            db.insert("insert into bill (master_id,product_id,quantity) VALUES ('" + str(
-                qry1) + "','" + productID + "','" + product_quantity + "')")
+            db.insert("insert into bill (master_id,product_id,quantity) VALUES ('" + str(qry1) + "','" + productID + "','" + product_quantity + "')")
             return jsonify(status="ok")
 
 
@@ -985,6 +1002,7 @@ def and_quantity():
 @app.route('/and_product_cart_delete', methods=['post'])
 def and_product_cart_delete():
     bill_ID = request.form['bill']
+
     db = Database()
     res = db.selectOne("select * from bill where bill_id='" + bill_ID + "'")
     mid = res['master_id']
@@ -1005,7 +1023,6 @@ def and_view_bill():
         "select * from bill_master, bill,shop where bill.master_id=bill_master.master_id and bill_master.shop_id=shop.shop_id and bill_master.user_id='" + uid + "' and (bill_master.status = 'paid' or bill_master.status='cash') ")
 
     # data=db.select("select sum(product.price*bill.quantity) as total,bill.*,bill_master.*,product.* from bill,bill_master,product where bill.master_id = bill_master.master_id and product.product_id = bill.product_id and bill_master.user_id = '"+uid+"'")
-
     if len(data) > 0:
         return jsonify(status="ok", data=data)
     else:
@@ -1015,6 +1032,7 @@ def and_view_bill():
 @app.route('/and_view_product_bill', methods=['post'])
 def and_view_product_bill():
     billmster_id = request.form['billID']
+    bill_amount = request.form['billAmount']
     uID = request.form['id']
     db = Database()
     data = db.select(
@@ -1022,10 +1040,7 @@ def and_view_product_bill():
     return jsonify(status="ok", data=data)
 
 
-#
-
 # ----------------------------single buy product----------------------------
-
 
 @app.route('/and_single_buy_quantity', methods=['post'])
 def and_single_buy_quantity():
@@ -1041,7 +1056,6 @@ def and_single_buy_quantity():
     if int(product_quantity) <= int(p_qunty):
         pprice = float(product_price)
         amount = int(product_quantity) * pprice
-        # print("aaaaaaaaaaaa",amount)
         qry1 = db.insert(
             "insert into bill_master (shop_id,user_id,amount,date,status) VALUES ('" + shop_ID + "','" + uid + "','" + str(
                 amount) + "',curdate(),'booked')")
@@ -1091,8 +1105,8 @@ def and_payment():
     db = Database()
     res = db.selectOne(
         "select * from payment where bank_name = '" + bank_name + "' and  ifsc_code = '" + bank_ifsc_code + "' and account_no='" + bank_account_no + "' and    holder_id='" + uID + "'")
-    print(
-        "select * from payment where bank_name = '" + bank_name + "' and  ifsc_code = '" + bank_ifsc_code + "' and account_no='" + bank_account_no + "' and    holder_id='" + uID + "'")
+    # print(
+    #     "select * from payment where bank_name = '" + bank_name + "' and  ifsc_code = '" + bank_ifsc_code + "' and account_no='" + bank_account_no + "' and    holder_id='" + uID + "'")
     if res is not None:
         ab = res['account_balance']
         tm = float(total_amount)
@@ -1198,14 +1212,14 @@ def and_product_price():
 def and_view_product_with_qr():
     # and_shop_id = request.form['shopID']
     contents = request.form['contents']
-    print(contents)
+    # print(contents)
     db = Database()
     # join product,stock,shop,offer
     dataa = db.selectOne(
         "select product.name as n,product.image as im,product.*,shop.*,stock.* from product,stock,shop where product.product_id = stock.product_id  and product.shop_id=shop.shop_id   and product.product_id='" + contents + "' ")
     off= db.selectOne("select * from offer where product_id = '" + contents + "'")
     if off is not None:
-        print(off)
+        # print(off)
         return jsonify(status="ok", data=dataa, offer=off['offer'])
     else:
         return jsonify(status="ok", data=dataa,offer="0")

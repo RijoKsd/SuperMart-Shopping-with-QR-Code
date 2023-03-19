@@ -78,11 +78,11 @@ public class quantity extends AppCompatActivity {
                                             Intent i = new Intent(getApplicationContext(), viewProduct.class);
                                             startActivity(i);
                                         }
-//                                        else if (jsonObj.getString("status").equalsIgnoreCase("outofstock")) {
-//                                            Toast.makeText(quantity.this, "Quantity exceed", Toast.LENGTH_SHORT).show();
-//                                            Intent i = new Intent(getApplicationContext(), viewProduct.class);
-//                                            startActivity(i);
-//                                        }
+                                        else if (jsonObj.getString("status").equalsIgnoreCase("outofstock")) {
+                                            Toast.makeText(quantity.this, "Quantity exceed", Toast.LENGTH_SHORT).show();
+                                            Intent i = new Intent(getApplicationContext(), viewProduct.class);
+                                            startActivity(i);
+                                        }
                                         else {
 //                                            Toast.makeText(getApplicationContext(), "Not found", Toast.LENGTH_LONG).show();
                                         }

@@ -39,20 +39,14 @@ import kotlin.jvm.internal.PackageReference;
 
 public class customViewBill extends BaseAdapter {
     String[] billDate,billAmount,billID,billShopName;
-
     private Context context;
-
-
-
     public customViewBill(Context applicationContext,String[] billShopName, String[] billDate, String[] billAmount, String[] billID) {
-
         this.context = applicationContext;
         this.billShopName = billShopName;
         this.billDate = billDate;
         this.billAmount = billAmount;
         this.billID = billID;
     }
-
 
     @Override
     public int getCount() {
@@ -96,6 +90,7 @@ public class customViewBill extends BaseAdapter {
 
                 SharedPreferences.Editor ed=sh.edit();
                 ed.putString("billID",billID[pos]);
+                ed.putString("billAmount",billAmount[pos]);
                 ed.commit();
                 Intent i=new Intent(context.getApplicationContext(),viewBillProduct.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -109,7 +104,6 @@ public class customViewBill extends BaseAdapter {
         tv3.setAllCaps(true);
         Typeface typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD);
         tv3.setTypeface(typeface);
-
 
         tv1.setText(billDate[i]);
         tv2.setText(billAmount[i]);

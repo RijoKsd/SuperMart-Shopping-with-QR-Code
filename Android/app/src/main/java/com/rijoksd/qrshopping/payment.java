@@ -75,7 +75,7 @@ public class payment extends AppCompatActivity {
                                         Toast.makeText(payment.this, "Pay total amount  in bill counter", Toast.LENGTH_SHORT).show();
                                         Toast.makeText(payment.this, "Have a nice day", Toast.LENGTH_SHORT).show();
 
-                                        Intent i = new Intent(getApplicationContext(),viewProduct.class);
+                                        Intent i = new Intent(getApplicationContext(),UserHome.class);
                                         startActivity(i);
                                     } else {
                                         Toast.makeText(getApplicationContext(), "Not found", Toast.LENGTH_LONG).show();
@@ -127,13 +127,13 @@ public class payment extends AppCompatActivity {
                 final String userBankAccountNo = bankAccountNo.getText().toString();
                 final String userBankIFSCCode = bankIFSCCode.getText().toString();
                 final String userTotalAmountToPay = totalAmountToPay.getText().toString();
-//                if (userBankName.equalsIgnoreCase("" )) {
-//                    bankName.setError("Bank name is required");
-//                } else if (userBankAccountNo.equalsIgnoreCase("" )) {
-//                    bankAccountNo.setError("Account number is required");
-//                }else  if (userBankIFSCCode.equalsIgnoreCase("" )) {
-//                    bankIFSCCode.setError("IFSC code is required");
-//                } else {
+                if (userBankName.equalsIgnoreCase("")) {
+                    bankName.setError("Bank name is required");
+                } else if (userBankAccountNo.equalsIgnoreCase("")) {
+                    bankAccountNo.setError("Account number is required");
+                } else if (userBankIFSCCode.equalsIgnoreCase("")) {
+                    bankIFSCCode.setError("IFSC code is required");
+                } else {
 
 //                    SharedPreferences sh= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     sh.getString("ip", "");
@@ -159,17 +159,15 @@ public class payment extends AppCompatActivity {
 //                                                totalAmountToPay.setText(jj.getString("amount"));
 
                                             Toast.makeText(payment.this, "Payment successfully completed", Toast.LENGTH_SHORT).show();
-                                            Intent i = new Intent(getApplicationContext(), viewProduct.class);
+                                            Intent i = new Intent(getApplicationContext(), UserHome.class);
                                             startActivity(i);
-                                        }
-                                        else if (jsonObj.getString("status").equalsIgnoreCase("insufficient")) {
+                                        } else if (jsonObj.getString("status").equalsIgnoreCase("insufficient")) {
 ////
 
                                             Toast.makeText(payment.this, "Please check you bank balance!!!", Toast.LENGTH_SHORT).show();
                                             Intent i = new Intent(getApplicationContext(), payment.class);
                                             startActivity(i);
-                                        }
-                                        else {
+                                        } else {
                                             Toast.makeText(getApplicationContext(), "Wrong Bank details", Toast.LENGTH_LONG).show();
                                         }
 
@@ -203,7 +201,6 @@ public class payment extends AppCompatActivity {
                             params.put("total", sh.getString("am", ""));//passing to python
 
 
-
                             return params;
                         }
                     };
@@ -217,6 +214,7 @@ public class payment extends AppCompatActivity {
                             DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                     requestQueue.add(postRequest);
                 }
+            }
         });
     }
     @Override

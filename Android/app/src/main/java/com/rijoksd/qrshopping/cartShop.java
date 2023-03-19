@@ -126,4 +126,10 @@ public class cartShop extends AppCompatActivity {
         requestQueue.add(postRequest);
 
     }
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(),UserHome.class);
+        startActivity(i);
+
+    }
 }

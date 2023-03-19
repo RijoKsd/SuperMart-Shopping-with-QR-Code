@@ -57,26 +57,21 @@ public class viewBillProduct extends AppCompatActivity {
         sh.getString("ip", "");
         sh.getString("url", "");
         url = sh.getString("url", "") + "and_view_product_bill";
-
-
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 //                        Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
-
                         try {
                             JSONObject jsonObj = new JSONObject(response);
                             if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
-
                                 JSONArray js = jsonObj.getJSONArray("data");//from python
                                 billProductName = new String[js.length()];
                                 quantityBill = new String[js.length()];
                                 priceBill = new String[js.length()];
                                 totalBill = new String[js.length()];
                                 productImage = new String[js.length()];
-
 
                                 for (int i = 0; i < js.length(); i++) {
                                     JSONObject u = js.getJSONObject(i);
@@ -88,13 +83,11 @@ public class viewBillProduct extends AppCompatActivity {
                                     totalBill[i] = String.valueOf(Integer.parseInt( u.getString("quantity"))* Integer.parseInt(u.getString("price")));
 
                                 }
-                                list.setAdapter(new customViewBillProduct(getApplicationContext(), billProductName, quantityBill, priceBill, totalBill,productImage));//custom_view_service.xml and li is the listview object
-
-
+                                list.setAdapter(new customViewBillProduct(getApplicationContext(), billProductName, quantityBill, priceBill, totalBill,productImage));
+                                //custom_view_service.xml and li is the listview object
                             } else {
                                 Toast.makeText(getApplicationContext(), "Not found", Toast.LENGTH_LONG).show();
                             }
-
                         } catch (Exception e) {
                             Toast.makeText(getApplicationContext(), "Error" + e.getMessage().toString(), Toast.LENGTH_SHORT).show();
                         }
@@ -108,7 +101,6 @@ public class viewBillProduct extends AppCompatActivity {
                     }
                 }
         ) {
-
             //                value Passing android to python
             @Override
             protected Map<String, String> getParams() {
@@ -116,6 +108,7 @@ public class viewBillProduct extends AppCompatActivity {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("id", sh.getString("lid", ""));//passing to python
                 params.put("billID", sh.getString("billID", ""));//passing to python
+                params.put("billAmount", sh.getString("billAmount", ""));//passing to python
                 return params;
             }
         };

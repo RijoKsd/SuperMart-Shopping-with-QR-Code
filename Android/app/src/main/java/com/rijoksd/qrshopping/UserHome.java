@@ -100,4 +100,10 @@ public class UserHome extends AppCompatActivity implements NavigationView.OnNavi
 
         return true;
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(getApplicationContext(), UserHome.class);
+        startActivity(i);
+    }
 }

@@ -72,7 +72,7 @@ public class sendFeedback extends AppCompatActivity {
                                         JSONObject jsonObj = new JSONObject(response);
                                         if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
                                             Toast.makeText(sendFeedback.this, "Feedback Send", Toast.LENGTH_SHORT).show();
-                                            Intent i = new Intent(getApplicationContext(), sendFeedback.class);
+                                            Intent i = new Intent(getApplicationContext(), UserHome.class);
                                             startActivity(i);
 
                                         } else {

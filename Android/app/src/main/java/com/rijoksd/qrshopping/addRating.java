@@ -46,31 +46,23 @@ public class addRating extends AppCompatActivity {
                 sh.getString("ip", "");
                 sh.getString("url", "");
                 url = sh.getString("url", "") + "and_add_rating";
-
-
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
                 StringRequest postRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        //  Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
-
                         try {
-
                             JSONObject jsonObj = new JSONObject(response);
                             if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
                                 Toast.makeText(addRating.this, "Rating Send", Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(getApplicationContext(), viewShop.class);
                                 startActivity(i);
-
                             } else if (jsonObj.getString("status").equalsIgnoreCase("updated")) {
                                 Toast.makeText(addRating.this, "Rating Send", Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(getApplicationContext(), viewShop.class);
                                 startActivity(i);
-
                             } else {
                                 Toast.makeText(getApplicationContext(), "Not found", Toast.LENGTH_LONG).show();
                             }
-
                         } catch (Exception e) {
                             Toast.makeText(getApplicationContext(), "Error" + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -82,8 +74,6 @@ public class addRating extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "eeeee" + error.toString(), Toast.LENGTH_SHORT).show();
                     }
                 }) {
-
-                    //                value Passing android to python
                     @Override
                     protected Map<String, String> getParams() {
                         SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -92,8 +82,6 @@ public class addRating extends AppCompatActivity {
                         params.put("rate", rating);//passing to python
                         params.put("id", sh.getString("lid", ""));//passing to python
                         params.put("shopID", sh.getString("shopID", ""));//passing to python
-
-
                         return params;
                     }
                 };

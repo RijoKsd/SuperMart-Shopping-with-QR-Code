@@ -55,8 +55,6 @@ public class cartPayment extends AppCompatActivity {
 
 //        Toast.makeText(this, "ppppppppp"+p, Toast.LENGTH_SHORT).show();
         totalAmountToPay.setText(sh.getString("gnd_totl",""));
-
-
         offlinePay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
