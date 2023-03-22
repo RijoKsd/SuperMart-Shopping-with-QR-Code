@@ -28,11 +28,10 @@ import java.util.Map;
 
 public class cartShop extends AppCompatActivity {
     ListView list;
-    ImageView arrow;
     SharedPreferences sh;
     String ip, url, url1, lid;
 
-    String[] shopID, shopName, shopImage;
+    String[] shopID, shopName, shopImage,csmid;
 
 
     @SuppressLint("MissingInflatedId")
@@ -41,16 +40,6 @@ public class cartShop extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart_shop);
         list = (ListView) findViewById(R.id.list);
-
-//        arrow = (ImageView)findViewById(R.id.arrowLeft);
-//
-//        arrow.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i= new Intent(getApplicationContext(),UserHome.class);
-//                startActivity(i);
-//            }
-//        });
 
 
         sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -74,6 +63,7 @@ public class cartShop extends AppCompatActivity {
                                 shopID = new String[js.length()];
                                 shopName = new String[js.length()];
                                 shopImage = new String[js.length()];
+                                csmid = new String[js.length()];
 
 
                                 for (int i = 0; i < js.length(); i++) {
@@ -82,9 +72,10 @@ public class cartShop extends AppCompatActivity {
                                     shopID[i] = u.getString("shop_id");
                                     shopName[i] = u.getString("name");
                                     shopImage[i] = u.getString("image");
+                                    csmid[i] = u.getString("master_id");
 
                                 }
-                                list.setAdapter(new customCartShop(getApplicationContext(), shopID, shopName,  shopImage));//custom_view_service.xml and li is the listview object
+                                list.setAdapter(new customCartShop(getApplicationContext(), shopID, shopName,  shopImage,csmid));//custom_view_service.xml and li is the listview object
 
 
                             }  else {

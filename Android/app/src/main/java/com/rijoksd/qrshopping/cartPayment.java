@@ -104,6 +104,7 @@ public class cartPayment extends AppCompatActivity {
 //                        params.put("mid", sh.getString("mid", ""));//passing to python
                         params.put("id", sh.getString("lid",""));//passing to python
                         params.put("shopid", sh.getString("shopid", ""));//passing to python
+                        params.put("mid", sh.getString("mid", ""));//passing to python
 
 
                         return params;
@@ -201,7 +202,7 @@ public class cartPayment extends AppCompatActivity {
                         params.put("totalAmount", userTotalAmountToPay);//passing to python
                         params.put("id", sh.getString("lid", ""));//passing to python
                         params.put("shopid", sh.getString("shopid", ""));//passing to python
-
+                        params.put("mid", sh.getString("mid", ""));//passing to python
 //                        params.put("shopID", sh.getString("shopID", ""));//passing to python
 //                        params.put("mid", sh.getString("mid", ""));//passing to python
                         params.put("total", sh.getString("gnd_totl", ""));//passing to python

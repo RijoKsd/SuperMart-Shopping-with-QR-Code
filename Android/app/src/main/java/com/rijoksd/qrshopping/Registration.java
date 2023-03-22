@@ -105,18 +105,51 @@ public class Registration extends AppCompatActivity {
                     flag++;
                     place.setError("Place is required");
                 }
-                if (registerUserPinCode.equalsIgnoreCase("")) {
+                // if (registerUserPinCode.equalsIgnoreCase("")) {
+                //     flag++;
+                //     pinCode.setError("Pincode is required");
+
+                // }
+                // pin code must be of 6 digits only and must start with 6
+                if (registerUserPinCode.length() != 6) {
                     flag++;
-                    pinCode.setError("Pincode is required");
+                    pinCode.setError("Invalid pincode");
+                } else {
+                    // String pinPattern = "[6][0-9]{5}";
+ 
+                    String pinPattern = "^[6][0-9]{5}$";
+                    if (!registerUserPinCode.matches(pinPattern)) {
+                        flag++;
+                        pinCode.setError("Invalid pincode");
+                    }
                 }
                 if (registerUserMail.equalsIgnoreCase("")) {
                     flag++;
                     mail.setError("Mail is required");
+                }else{
+
+                    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+                    if (!registerUserMail.matches(emailPattern)) {
+                        flag++;
+                        mail.setError("Invalid email address");
+                    }
                 }
-                if (registerUserPhone.equalsIgnoreCase("")) {
+                if (registerUserPhone.length() != 10) {
                     flag++;
-                    phone.setError("Phone is required");
+                    phone.setError("Invalid phone number");
+                } else {
+                    
+                    // number must start with 6,7,8,9 and must be of 10 digits
+                    String phonePattern = "[6-9][0-9]{9}";
+                    // String phonePattern = "^[789]\d{9}$";
+
+                    if (!registerUserPhone.matches(phonePattern)) {
+                        flag++;
+                        phone.setError("Invalid phone number");
+
+                    }   
                 }
+
                 if (registerUserPassword.equalsIgnoreCase("")) {
                     flag++;
                     registerPassword.setError("Password is required");
@@ -175,7 +208,11 @@ public class Registration extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Email already exist", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(getApplicationContext(), Login.class);
                         startActivity(i);
-                    } else {
+                    } else if (obj.getString("status").equals("phone_already")) {
+                        Toast.makeText(getApplicationContext(), "Phone number already exist", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(getApplicationContext(), Login.class);
+                        startActivity(i);
+                    }else {
                         Toast.makeText(getApplicationContext(), "Registration failed", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {

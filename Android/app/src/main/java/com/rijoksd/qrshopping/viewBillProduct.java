@@ -78,9 +78,9 @@ public class viewBillProduct extends AppCompatActivity {
                                     //dbcolumn name in double quotes
                                     billProductName[i] = u.getString("name");
                                     quantityBill[i] = u.getString("quantity");
-                                    priceBill[i] = u.getString("price");
+                                    priceBill[i] = u.getString("order_price");
                                     productImage[i] = u.getString("image");
-                                    totalBill[i] = String.valueOf(Integer.parseInt( u.getString("quantity"))* Integer.parseInt(u.getString("price")));
+                                    totalBill[i] = String.valueOf(Integer.parseInt( u.getString("quantity"))* Integer.parseInt(u.getString("order_price")));
 
                                 }
                                 list.setAdapter(new customViewBillProduct(getApplicationContext(), billProductName, quantityBill, priceBill, totalBill,productImage));

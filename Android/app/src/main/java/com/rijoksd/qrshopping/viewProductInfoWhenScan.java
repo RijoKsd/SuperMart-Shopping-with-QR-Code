@@ -94,6 +94,9 @@ public class viewProductInfoWhenScan extends AppCompatActivity {
                                 {
                                     scannedProductOfferPrice.setVisibility(View.INVISIBLE);
                                     tagOffer.setVisibility(View.INVISIBLE);
+
+
+
                                 }
                                 else {
                                     tagOffer.setVisibility(View.VISIBLE);
@@ -110,9 +113,12 @@ public class viewProductInfoWhenScan extends AppCompatActivity {
 
 
 
+
                                 SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
                                 SharedPreferences.Editor ed=sh.edit();
+
+//                                ed.putString("ofrprice", String.valueOf(offerPrice));
                                 ed.putString("productID",jj.getString("product_id"));
                                 ed.putString("shopID",jj.getString("shop_id"));
                                 ed.putString("productPrice",jj.getString("price"));

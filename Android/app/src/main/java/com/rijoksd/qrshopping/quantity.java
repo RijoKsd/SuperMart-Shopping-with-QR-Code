@@ -39,13 +39,24 @@ public class quantity extends AppCompatActivity {
 
         quantity.setText("1");
 
+
         quantityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final String productQuantity = quantity.getText().toString();
-                if (productQuantity.equalsIgnoreCase("" )) {
+//                Integer qty = Integer.parseInt(productQuantity);
+                 if ( productQuantity.equalsIgnoreCase("")) {
                     quantity.setError("Quantity is required");
-                }else{
+
+
+                    
+                }
+                else if ( Integer.parseInt(productQuantity) < 1) {
+                    quantity.setError("Quantity is required");
+
+
+                }
+                else{
 
                     sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     sh.getString("ip", "");
@@ -111,6 +122,7 @@ public class quantity extends AppCompatActivity {
                             params.put("shopID", sh.getString("shopID", ""));//passing to python
                             params.put("productPrice", sh.getString("productPrice", ""));//passing to python
                             params.put("productID", sh.getString("productID", ""));//passing to python
+                            params.put("type", sh.getString("type", ""));//passing to python
                             return params;
                         }
                     };

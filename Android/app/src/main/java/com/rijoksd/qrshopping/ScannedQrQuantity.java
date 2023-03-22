@@ -45,14 +45,18 @@ public class ScannedQrQuantity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final String productQuantity = quantity.getText().toString();
-                if (productQuantity.equalsIgnoreCase("" )) {
+                if ( productQuantity.equalsIgnoreCase("")) {
                     quantity.setError("Quantity is required");
-                }else{
+                }
+                else if ( Integer.parseInt(productQuantity) < 1) {
+                    quantity.setError("Quantity is required");
+                }
+                else{
 
                     sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     sh.getString("ip", "");
                     sh.getString("url", "");
-                    url = sh.getString("url", "") + "and_quantity";
+                    url = sh.getString("url", "") + "and_qr_quantity";
 
 
                     RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -66,12 +70,12 @@ public class ScannedQrQuantity extends AppCompatActivity {
                                         JSONObject jsonObj = new JSONObject(response);
                                         if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
                                             Toast.makeText(ScannedQrQuantity.this, "Add to Cart", Toast.LENGTH_SHORT).show();
-                                            Intent i = new Intent(getApplicationContext(), view_product_cart.class);
+                                            Intent i = new Intent(getApplicationContext(), viewProduct.class);
                                             startActivity(i);
                                         }
                                         if (jsonObj.getString("status").equalsIgnoreCase("update")) {
                                             Toast.makeText(ScannedQrQuantity.this, "Quantity updated", Toast.LENGTH_SHORT).show();
-                                            Intent i = new Intent(getApplicationContext(), view_product_cart.class);
+                                            Intent i = new Intent(getApplicationContext(), viewProduct.class);
                                             startActivity(i);
 
                                         }
@@ -107,6 +111,7 @@ public class ScannedQrQuantity extends AppCompatActivity {
                             params.put("shopID", sh.getString("shopID", ""));//passing to python
                             params.put("productPrice", sh.getString("productPrice", ""));//passing to python
                             params.put("productID", sh.getString("productID", ""));//passing to python
+//                            params.put("ofrprice", sh.getString("ofrprice", ""));//passing to python
                             return params;
                         }
                     };

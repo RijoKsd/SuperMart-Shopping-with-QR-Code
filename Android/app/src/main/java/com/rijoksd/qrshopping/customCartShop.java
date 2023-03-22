@@ -35,16 +35,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class customCartShop extends BaseAdapter {
-    String[] shopID, shopName, shopImage;
+    String[] shopID, shopName, shopImage,csmid;
     private Context context;
     Button b1;
 
-    public customCartShop(Context applicationContext, String[] shopID, String[] shopName, String[] shopImage) {
+    public customCartShop(Context applicationContext, String[] shopID, String[] shopName, String[] shopImage, String[] csmid) {
 
         this.context = applicationContext;
         this.shopID = shopID;
         this.shopName = shopName;
         this.shopImage = shopImage;
+        this.csmid = csmid;
     }
 
     @Override
@@ -89,6 +90,7 @@ public class customCartShop extends BaseAdapter {
 
                 SharedPreferences.Editor ed=sh.edit();
                 ed.putString("shopID",shopID[pos]);
+                ed.putString("csid",csmid[pos]);
                 ed.commit();
                 Intent i=new Intent(context.getApplicationContext(),view_product_cart.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

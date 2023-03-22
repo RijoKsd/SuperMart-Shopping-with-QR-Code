@@ -75,47 +75,47 @@ public class customViewProduct extends BaseAdapter {
 
 
         Button bt1 = (Button) gridView.findViewById(R.id.buyProduct);
-
-        Button buySingleProduct = (Button) gridView.findViewById(R.id.buySinglePro);
-        buySingleProduct.setTag(i);
-        if (offerprice[i].equalsIgnoreCase("0")){
-            buySingleProduct.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int pos = (int) view.getTag();
-                    SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
-
-                    SharedPreferences.Editor ed = sh.edit();
-                    ed.putString("productID", productID[pos]);
-                    ed.putString("shopID", sId[pos]);
-                    ed.putString("productPrice", productPrice[i]);
-//                    ed.putString("offerprice", offerprice[i]);
-                    ed.commit();
-                    Intent i = new Intent(context.getApplicationContext(), singleBuyQuantity.class);
-                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(i);
-                }
-            });
-        }
-        else {
-            buySingleProduct.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int pos = (int) view.getTag();
-                    SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
-
-                    SharedPreferences.Editor ed = sh.edit();
-                    ed.putString("productID", productID[pos]);
-                    ed.putString("shopID", sId[pos]);
+//
+//        Button buySingleProduct = (Button) gridView.findViewById(R.id.buySinglePro);
+//        buySingleProduct.setTag(i);
+//        if (offerprice[i].equalsIgnoreCase("0")){
+//            buySingleProduct.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    int pos = (int) view.getTag();
+//                    SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
+//
+//                    SharedPreferences.Editor ed = sh.edit();
+//                    ed.putString("productID", productID[pos]);
+//                    ed.putString("shopID", sId[pos]);
 //                    ed.putString("productPrice", productPrice[i]);
-                    ed.putString("productPrice", offerprice[i]);
-                    ed.commit();
-                    Intent i = new Intent(context.getApplicationContext(), singleBuyQuantity.class);
-                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(i);
-                }
-            });
-        }
+////                    ed.putString("offerprice", offerprice[i]);
+//                    ed.commit();
+//                    Intent i = new Intent(context.getApplicationContext(), singleBuyQuantity.class);
+//                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    context.startActivity(i);
+//                }
+//            });
+//        }
+//        else {
+//            buySingleProduct.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    int pos = (int) view.getTag();
+//                    SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
+//
+//                    SharedPreferences.Editor ed = sh.edit();
+//                    ed.putString("productID", productID[pos]);
+//                    ed.putString("shopID", sId[pos]);
+////                    ed.putString("productPrice", productPrice[i]);
+//                    ed.putString("productPrice", offerprice[i]);
+//                    ed.commit();
+//                    Intent i = new Intent(context.getApplicationContext(), singleBuyQuantity.class);
+//                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    context.startActivity(i);
+//                }
+//            });
+//        }
 
 
 
@@ -139,23 +139,45 @@ public class customViewProduct extends BaseAdapter {
         });
 
         bt1.setTag(i);
-        bt1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int pos = (int) view.getTag();
-                SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
 
-                SharedPreferences.Editor ed = sh.edit();
-                ed.putString("productID", productID[pos]);
-                ed.putString("shopID", sId[pos]);
-                ed.putString("productPrice", productPrice[pos]);
-                ed.commit();
-                Intent i = new Intent(context.getApplicationContext(), quantity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(i);
-            }
-        });
+        if (offerprice[i].equalsIgnoreCase("0")) {
+            bt1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int pos = (int) view.getTag();
+                    SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
 
+                    SharedPreferences.Editor ed = sh.edit();
+                    ed.putString("productID", productID[pos]);
+                    ed.putString("shopID", sId[pos]);
+                    ed.putString("productPrice", productPrice[pos]);
+                    ed.putString("type", "no_offer");
+                    ed.commit();
+                    Intent i = new Intent(context.getApplicationContext(), quantity.class);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(i);
+                }
+            });
+        }
+        else {
+            bt1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int pos = (int) view.getTag();
+                    SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
+
+                    SharedPreferences.Editor ed = sh.edit();
+                    ed.putString("productID", productID[pos]);
+                    ed.putString("shopID", sId[pos]);
+                    ed.putString("productPrice", offerprice[pos]);
+                    ed.putString("type", "offer");
+                    ed.commit();
+                    Intent i = new Intent(context.getApplicationContext(), quantity.class);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(i);
+                }
+            });
+        }
 
         tv1.setTextColor(Color.BLACK);//color setting
         tv2.setTextColor(Color.BLACK);

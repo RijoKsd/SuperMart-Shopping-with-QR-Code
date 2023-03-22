@@ -32,13 +32,13 @@ import java.util.Map;
 public class custom_View_Product_cart extends BaseAdapter {
 
 
-    String[] productID,productImage,productName,productQuantity,productPrice,sId,billID,productShopName,totalPrice ;
+    String[] productID,productImage,productName,productQuantity,productPrice,sId,billID,productShopName,totalPrice,productOfferAmount,ofstatus;
 //    String[] productTotal;
     private Context context;
     String url1,url;
     SharedPreferences sh;
 
-    public custom_View_Product_cart(Context applicationContext, String[] productID, String[] productImage, String[] productName, String[] productQuantity, String[] productPrice, String[] sId, String[] billID,String[] productShopName, String[] totalPrice  ) {
+    public custom_View_Product_cart(Context applicationContext, String[] productID, String[] productImage, String[] productName, String[] productQuantity, String[] productPrice,String[] productOfferAmount, String[] sId, String[] billID,String[] productShopName, String[] totalPrice,String[] ofstatus  ) {
 
         this.context = applicationContext;
         this.productID = productID;
@@ -46,10 +46,12 @@ public class custom_View_Product_cart extends BaseAdapter {
         this.productName = productName;
         this.productQuantity = productQuantity;
         this.productPrice = productPrice;
+        this.productOfferAmount = productOfferAmount;
         this.sId = sId;
         this.billID = billID;
         this.productShopName = productShopName;
         this.totalPrice = totalPrice;
+        this.ofstatus = ofstatus;
 
     }
 
@@ -86,8 +88,8 @@ public class custom_View_Product_cart extends BaseAdapter {
         ImageView imageView = (ImageView) gridView.findViewById(R.id.productImage);
         TextView tv2 = (TextView) gridView.findViewById(R.id.billQuantity);
         TextView tv3 = (TextView) gridView.findViewById(R.id.billPrice);
-        TextView tv4 = (TextView) gridView.findViewById(R.id.prodShopName);
         TextView tv5 = (TextView) gridView.findViewById(R.id.totalPrice);
+        TextView tv6 = (TextView) gridView.findViewById(R.id.textView69);
 //        TextView tv4 = (TextView) gridView.findViewById(R.id.totalAmount);
 
         ImageView delete = (ImageView) gridView.findViewById(R.id.delete);
@@ -236,8 +238,8 @@ public class custom_View_Product_cart extends BaseAdapter {
         tv1.setTextColor(Color.BLACK);//color setting
         tv2.setTextColor(Color.BLACK);
         tv3.setTextColor(Color.BLACK);
-        tv4.setTextColor(Color.BLACK);
         tv5.setTextColor(Color.BLACK);
+        tv6.setTextColor(Color.BLACK);
 //        tv4.setTextColor(Color.BLUE);
 
 //        tv1.setAllCaps(true);
@@ -252,8 +254,13 @@ public class custom_View_Product_cart extends BaseAdapter {
         tv1.setText(productName[i]);
         tv2.setText(productQuantity[i]);
         tv3.setText(productPrice[i]);
-        tv4.setText(productShopName[i]);
         tv5.setText(totalPrice[i]);
+        if (ofstatus[i].equalsIgnoreCase("no_offer")){
+            tv6.setText("0");
+        }
+        else {
+            tv6.setText(productOfferAmount[i]);
+        }
 //        tv4.setText(productTotal[i]);
 
 

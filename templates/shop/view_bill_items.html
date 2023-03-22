@@ -123,6 +123,7 @@
                                         <th scope="col">Quantity</th>
                                         <th scope="col">Amount</th>
 
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -130,14 +131,12 @@
                                     <tr>
                                         <td>&nbsp; {{loop.index}}</td>
                                         <td>&nbsp;{{i.name}}</td>
-                                        <td>&nbsp;{{i.price}}</td>
+                                        <td>&nbsp;{{i.order_price}}</td>
                                         <td>&nbsp;{{i.quantity}}</td>
-                                        <td>&nbsp;{{i.price|int * i.quantity|int }}</td>
+                                        <td>&nbsp;{{i.bprice }}</td>
                                     </tr>
                                     {% endfor %}
-                                    <tr>
-                                        <td colspan="5" align="right">Total :{{ total }}</td>
-                                    </tr>
+
                                 </tbody>
                             </table>
                         </form>

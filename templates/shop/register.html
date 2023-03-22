@@ -115,21 +115,21 @@
                                     <div class="col-lg-6">
                                         <div class="form-floating">
                                             <input type="text" class="form-control" id="pin" placeholder="Pin"
-                                                name="pin" required>
+                                                name="pin" required pattern="[6][0-9]{5}">
                                             <label for="pin">Pin</label>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-floating">
                                             <input type="email" class="form-control" id="email" placeholder="Your Email"
-                                                name="email" required>
+                                                name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                                             <label for="email">Your Email</label>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-floating">
                                             <input type="text" class="form-control" id="phone" placeholder="Phone"
-                                                name="phone" required>
+                                                name="phone" required  pattern="^[6-9]\d{9}$">
                                             <label for="phone">Phone</label>
                                         </div>
                                     </div>

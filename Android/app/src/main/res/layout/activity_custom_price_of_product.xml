@@ -15,6 +15,7 @@
         android:text="Total amount to pay : "
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    dfgdd
 
     <TextView
         android:id="@+id/totalProductsAmount"

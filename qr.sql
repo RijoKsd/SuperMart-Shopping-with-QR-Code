@@ -24,12 +24,14 @@ CREATE TABLE `bill` (
   `master_id` int(20) DEFAULT NULL,
   `product_id` int(20) DEFAULT NULL,
   `quantity` int(20) DEFAULT NULL,
+  `order_price` int(20) DEFAULT NULL,
+  `status_offer` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`bill_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `bill` */
 
-insert  into `bill`(`bill_id`,`master_id`,`product_id`,`quantity`) values (1,1,20,5),(2,2,21,1),(3,3,30,5);
+insert  into `bill`(`bill_id`,`master_id`,`product_id`,`quantity`,`order_price`,`status_offer`) values (1,1,13,45,80,'offer'),(2,2,9,4,20,'no_offer'),(3,2,10,2,570,'offer');
 
 /*Table structure for table `bill_master` */
 
@@ -40,14 +42,14 @@ CREATE TABLE `bill_master` (
   `shop_id` int(20) DEFAULT NULL,
   `user_id` int(20) DEFAULT NULL,
   `amount` float DEFAULT NULL,
-  `date` date DEFAULT NULL,
+  `date` varchar(200) DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`master_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `bill_master` */
 
-insert  into `bill_master`(`master_id`,`shop_id`,`user_id`,`amount`,`date`,`status`) values (1,18,2,100,'2023-03-18','cash'),(2,20,2,29.7,'2023-03-18','cash'),(3,23,2,125,'2023-03-18','cash');
+insert  into `bill_master`(`master_id`,`shop_id`,`user_id`,`amount`,`date`,`status`) values (1,5,4,3600,'2023-03-23','paid'),(2,8,4,1220,'2023-03-23','cash');
 
 /*Table structure for table `complaint` */
 
@@ -58,15 +60,15 @@ CREATE TABLE `complaint` (
   `type` varchar(20) DEFAULT NULL,
   `user_id` int(20) DEFAULT NULL,
   `complaint` varchar(200) DEFAULT NULL,
-  `date` date DEFAULT NULL,
+  `date` varchar(200) DEFAULT NULL,
   `reply_date` varchar(200) DEFAULT 'pending',
   `reply` varchar(200) DEFAULT 'pending',
   PRIMARY KEY (`complaint_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `complaint` */
 
-insert  into `complaint`(`complaint_id`,`type`,`user_id`,`complaint`,`date`,`reply_date`,`reply`) values (1,'user',2,'The UI is very old ','2023-03-02','2023-03-02','We will fix it soon\r\n'),(2,'user',2,'hfidit','2023-03-17','pending','pending'),(3,'user',2,'567hdcy','2023-03-17','pending','pending'),(4,'user',2,'chhh','2023-03-18','pending','pending');
+insert  into `complaint`(`complaint_id`,`type`,`user_id`,`complaint`,`date`,`reply_date`,`reply`) values (1,'shop',5,'sending by we mart','2023-03-23','2023-03-23','fixed wishing'),(2,'user',4,'bad app','2023-03-23','2023-03-23','Thankyou ');
 
 /*Table structure for table `feedback` */
 
@@ -76,14 +78,14 @@ CREATE TABLE `feedback` (
   `feedback_id` int(30) NOT NULL AUTO_INCREMENT,
   `sender_id` int(30) DEFAULT NULL,
   `type` varchar(30) DEFAULT NULL,
-  `date` date DEFAULT NULL,
+  `date` varchar(200) DEFAULT NULL,
   `feedback` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`feedback_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `feedback` */
 
-insert  into `feedback`(`feedback_id`,`sender_id`,`type`,`date`,`feedback`) values (1,2,'user','2023-03-02','Thank You for developing this app'),(2,2,'user','2023-03-18','djgxigdiyd7ts75e'),(3,2,'user','2023-03-18','xgg'),(4,2,'user','2023-03-18','fggy'),(5,2,'user','2023-03-18','ygg'),(6,2,'user','2023-03-18','h');
+insert  into `feedback`(`feedback_id`,`sender_id`,`type`,`date`,`feedback`) values (1,5,'shop','2023-03-23','sending by we mart'),(2,4,'user','2023-03-23','good app ');
 
 /*Table structure for table `login` */
 
@@ -95,11 +97,11 @@ CREATE TABLE `login` (
   `password` varchar(40) DEFAULT NULL,
   `user_type` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`login_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 /*Data for the table `login` */
 
-insert  into `login`(`login_id`,`user_name`,`password`,`user_type`) values (1,'admin','admin','admin'),(2,'rijo@gmail.com','rijo','user'),(3,'salman@gmail.com','salman','user'),(18,'jio@gmail.com','jio','shop'),(20,'spicy@gmail.com','spicy','shop'),(21,'max@gmail.com','max','shop'),(22,'lucky@gmail.com','lucky','pending'),(23,'aaa@gmail.com','aaa','shop'),(24,'test@gmail.com','test','pending'),(29,'sanesh@gmail.com','sanesh','user'),(30,'lenin@gmail.com','lenin','user'),(31,'sachin@gmail.com','sachin','user'),(32,'akash@gmail.com','akash','user'),(33,'aleena@gmail.com','aleena','user'),(34,'jinsha@gmail.com','jinsha','user'),(36,'nzbn@gmail.com','bzhs','user');
+insert  into `login`(`login_id`,`user_name`,`password`,`user_type`) values (1,'admin','admin','admin'),(2,'rijo@gmail.com','rijo','user'),(3,'salman@gmail.com','salman','user'),(4,'sachin@gmail.com','sachin','user'),(5,'wemart@gmail.com','wemart','shop'),(6,'orange@gmail.com','orange','shop'),(7,'bismi@gmail.com','bismi','shop'),(8,'green@gmail.com','green','shop'),(9,'mgmart@gmail.com','mgmart','pending');
 
 /*Table structure for table `offer` */
 
@@ -109,14 +111,14 @@ CREATE TABLE `offer` (
   `offer_id` int(20) NOT NULL AUTO_INCREMENT,
   `product_id` int(20) DEFAULT NULL,
   `offer` varchar(20) DEFAULT NULL,
-  `date_from` date DEFAULT NULL,
-  `date_to` date DEFAULT NULL,
+  `date_from` varchar(200) DEFAULT NULL,
+  `date_to` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`offer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 /*Data for the table `offer` */
 
-insert  into `offer`(`offer_id`,`product_id`,`offer`,`date_from`,`date_to`) values (7,20,'50','2023-02-12','2023-03-25'),(11,47,'34','2023-03-17','2023-04-08'),(12,46,'54','2023-03-11','2023-04-07'),(13,45,'34','2023-03-11','2023-04-08'),(14,44,'23','2023-03-11','2023-04-07'),(15,31,'1','2023-04-08','2023-04-29'),(16,35,'5','2023-03-11','2023-03-31'),(17,56,'5','2023-03-16','2023-03-31'),(18,21,'45','2023-03-16','2023-04-08'),(19,25,'45','2023-03-16','2023-04-06'),(20,26,'34','2023-03-16','2023-03-27');
+insert  into `offer`(`offer_id`,`product_id`,`offer`,`date_from`,`date_to`) values (1,1,'5','2023-03-22','2023-03-22'),(2,2,'8','2023-03-22','2023-03-24'),(3,3,'2','2023-03-24','2023-04-06'),(4,5,'20','2023-03-23','2023-04-08'),(5,7,'3','2023-03-24','2023-04-07'),(6,10,'18','2023-03-23','2023-04-07'),(7,12,'25','2023-03-23','2023-03-31'),(8,13,'60','2023-03-23','2023-04-08');
 
 /*Table structure for table `payment` */
 
@@ -130,11 +132,11 @@ CREATE TABLE `payment` (
   `account_balance` float DEFAULT NULL,
   `holder_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`bank_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Data for the table `payment` */
 
-insert  into `payment`(`bank_id`,`bank_name`,`ifsc_code`,`account_no`,`account_balance`,`holder_id`) values (1,'rijo','SBI2345','1234567890',6079.7,2),(2,'jio','ICICI343','2231235635',37396.3,18),(3,'spicy','SBI4566','3453434232',37338,20),(4,'MAX','ABC4589','3449080005',35970,21);
+insert  into `payment`(`bank_id`,`bank_name`,`ifsc_code`,`account_no`,`account_balance`,`holder_id`) values (1,'rijo','SBI123','123123',100000,2),(2,'salman','SBI234','124124',90000,3),(3,'sachin','SBI124','125125',116400,4),(4,'we mart','SBI125','126126',3600,5),(5,'orange','SBI126','127127',0,6),(6,'bismi','SBI127','128128',0,7),(7,'green','SBI128','129129',0,8);
 
 /*Table structure for table `product` */
 
@@ -148,11 +150,11 @@ CREATE TABLE `product` (
   `shop_id` int(20) DEFAULT NULL,
   `image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 /*Data for the table `product` */
 
-insert  into `product`(`product_id`,`name`,`price`,`details`,`shop_id`,`image`) values (20,'Salt',20,'1kg salt',18,'/static/images/230127-231204 .jpg'),(21,'Butter',54,'Amul Butter\r\n',20,'/static/images/230211-130940 .jpg'),(22,'Rice',105,'10kg ',21,'/static/images/230211-131014 .jpg'),(23,'Onion',58,'1 kg ',18,'/static/images/230211-143217 .jpg'),(24,'Coffee',30,'Nescafe coffee',21,'/static/images/230212-095623 .jpg'),(25,'Bread',30,'Wheat Bread',20,'/static/images/230212-095908 .jpg'),(26,'Brush',25,'Oral B  brush\r\n',20,'/static/images/230212-100008 .jpg'),(27,'Dettol',50,'100ml Dettol ',20,'/static/images/230212-100037 .jpg'),(28,'Tea Powder',30,' TATA tea',20,'/static/images/230212-100105 .jpg'),(29,'Paste',30,'Colgate paste 200g',20,'/static/images/230212-100133 .jpg'),(30,'Carrot',25,'carrot 500g',23,'/static/images/230212-100732 .jpg'),(31,'Cauliflower',30,' 1 kg cauliflower\r\n',18,'/static/images/230221-095728 .jpg'),(32,'Turmeric powder',25,'100g turmeric powder',18,'/static/images/230221-095823 .jpg'),(35,'Sugar',45,'1 kg sugar',18,'/static/images/230304-145429 .jpg'),(42,'Tomato',30,'1kg tomato',18,'/static/images/230304-151010 .jpg'),(43,'Carrot',45,'1 kg carrot',18,'/static/images/230304-162531 .jpg'),(44,'Brushes',150,'Pack of 10 brush',18,'/static/images/230307-195326 .jpg'),(45,'Coffee Powder',55,'Nescafe coffe',18,'/static/images/230307-195501 .jpg'),(46,'Chicken Masala',30,'100 g\r\nAachi chicken masala',18,'/static/images/230309-110535 .jpg'),(47,'Tomato',40,'1kg  Tomato',18,'/static/images/230309-111716 .jpg'),(52,'Bread',34,'Wheat bread',18,'/static/images/230312-160419 .jpg'),(53,'Salt',20,'1kg tata salt',18,'/static/images/230312-160747 .jpg'),(54,'Coffe',30,'100g bru coffee powder',18,'/static/images/230316-094133 .jpg'),(55,'Chaat Masala',45,' 200g chatt masala',18,'/static/images/230316-095210 .jpg'),(56,'Biriyani Rice',100,'10kg daawat biriyani rice\r\n\r\n',18,'/static/images/230316-101328 .jpg'),(57,'Cauliflower',45,'  1kg cauliflower',20,'/static/images/230316-154020 .jpg'),(58,'Curry Masala',40,'150g aachi curry masala',18,'/static/images/230318-115100 .jpg');
+insert  into `product`(`product_id`,`name`,`price`,`details`,`shop_id`,`image`) values (1,'Potato',20,' Potato per kg\r\n\r\nPotato is a root vegetable and the most versatile of all. It is widely used across Indian kitchens paired with numerous other vegetables for preparation of several delicacies.',5,'/static/images/230322-235141 .jpg'),(2,'Onion',25,'Onion 1 kg\r\nThe beauty of an Onion is that it can go just about anywhere. Chopped Onions are perfect for fish dishes, quiche, stews and chili. Onions can be roasted whole until tender and then chopped, or caramelized by slowly cooking them in butter for a delicious treat for a delicious treat. ',5,'/static/images/220323-235415 .jpg'),(3,'Ginger',25,'Ginger Indian 200 g\r\nGinger give a good kick to any dish with the perfect amount of spicy, tangy, and bold flavor in just a pinch.',5,'/static/images/220323-235948 .jpg'),(4,'Grapes',37,'Sonaka Seedless Grapes 500 g\r\nGrapes offer a wealth of health benefits due to their high nutrient and antioxidant contents. ',6,'/static/images/230323-000421 .jpg'),(5,'Watermelon',54,'Watermelon Kiran Big 1 pc (Approx. 2800 g - 4000 g)\r\nThis summer, get creative with your Watermelon! While cutting the Watermelon into thick slices and serving it with salt is the standard way to eat Watermelon, but there are plenty of other options for getting creative with this sweet and hydrating fruit.',6,'/static/images/230323-000518 .jpg'),(6,'Grapes',53,'Sharad Seedless Grapes 500 g\r\nGrapes offer a wealth of health benefits due to their high nutrient and antioxidant contents. ',6,'/static/images/230323-000633 .jpg'),(7,'Colouring Book',99,'Quixot Colouring Book (3 + yrs)',7,'/static/images/230323-000846 .jpg'),(8,'Animal picture book',99,'Animal Picture Book (3 + yrs)',7,'/static/images/230323-001011 .jpg'),(9,'Amul milk',20,'Amul Kool Kesar Flavoured Milk 180 ml (Bottle)\r\nFlavoured milk is one of the best options to make children have milk without any complaints.',8,'/static/images/230323-001416 .jpg'),(10,'Ghee',695,'Gowardhan Pure Cow Ghee 1 L (Pouch)\r\nGhee is a class of clarified butter that originated in ancient India. It is commonly used in Indian cooking.\r\n',8,'/static/images/230323-001552 .jpg'),(11,'Britannia ',21,'Britannia 100% Veg Choco Chill Sliced Cake 70 g\r\nBritannia 100% Veg Choco Chill Sliced Cake 70 g is one of the most loved treats.',8,'/static/images/230323-001844 .jpg'),(12,'Bauli Moonfils Veg Choco Puff ',50,'  Bauli Moonfils Veg Choco Puff Rolls is a piece of heavenly dessert that is so light and tasty! ',5,'/static/images/230323-002036 .jpg'),(13,'Sunfeast Dark Fantasy Belgian ',199,'Start your day on a refreshing note with Sunfeast Dark Fantasy Belgian Chocolate Milkshake. ',5,'/static/images/230323-002324 .jpg'),(14,'Maggi',24,'Maggi 2-Minute Masala Instant Noodles 70 g\r\nMaggi 2-Minutes Noodles have been a classic Indian snack for a good few decades now. Nestle brings you another delicious instant food product - Maggi 2-Minute Masala Instant Noodles',5,'/static/images/230323-002604 .jpg');
 
 /*Table structure for table `rating` */
 
@@ -169,7 +171,7 @@ CREATE TABLE `rating` (
 
 /*Data for the table `rating` */
 
-insert  into `rating`(`rating_id`,`date`,`user_id`,`rating`,`shop_id`) values (1,'2023-03-02',2,4,18),(2,'2023-03-08',2,2,21),(3,'2023-03-14',2,5,20),(4,'2023-03-18',2,5,23);
+insert  into `rating`(`rating_id`,`date`,`user_id`,`rating`,`shop_id`) values (1,'2023-03-23',2,4,5),(2,'2023-03-23',4,1,5),(3,'2023-03-23',4,2,6),(4,'2023-03-23',4,3,7);
 
 /*Table structure for table `shop` */
 
@@ -187,7 +189,7 @@ CREATE TABLE `shop` (
 
 /*Data for the table `shop` */
 
-insert  into `shop`(`shop_id`,`name`,`place`,`pincode`,`mail`,`phone`,`image`) values (18,'Jio Mart','Kasargod',671541,'jio@gmail.com',9562147895,'/static/images/230125-072019 .jpg'),(20,'Spicy','Kannur',925416,'spicy@gmail.com',9874514785,'/static/images/230211-123914 .jpg'),(21,'Max','Kuttikol',674582,'max@gmail.com',9541237852,'/static/images/230211-124100 .jpg'),(22,'Lucky','Paduppu',652145,'lucky@gmail.com',8745321456,'/static/images/230211-131049 .jpg'),(23,'aaa','Munnad',654124,'aaa@gmail.com',8231456878,'/static/images/230211-131523 .jpg'),(24,'Test','jl',6565,'test@gmail.com',55454,'/static/images/230212-100628 .jpg');
+insert  into `shop`(`shop_id`,`name`,`place`,`pincode`,`mail`,`phone`,`image`) values (5,'We mart','Ernakulam',675487,'wemart@gmail.com',9526108886,'/static/images/230322-234331 .jpg'),(6,'Orange','Kanhangad',671542,'orange@gmail.com',7854123698,'/static/images/230322-234419 .jpg'),(7,'Bismi','Bandaduka',671541,'bismi@gmail.com',8541236974,'/static/images/230322-234510 .jpg'),(8,'Green Hyper Market','Kasargod',671521,'green@gmail.com',9851478523,'/static/images/230322-234553 .jpg'),(9,'MG mart','Munnad',671541,'mgmart@gmail.com',9654123987,'/static/images/230322-234655 .jpg');
 
 /*Table structure for table `stock` */
 
@@ -198,11 +200,11 @@ CREATE TABLE `stock` (
   `product_id` int(20) DEFAULT NULL,
   `quantity` int(20) DEFAULT NULL,
   PRIMARY KEY (`stock_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 /*Data for the table `stock` */
 
-insert  into `stock`(`stock_id`,`product_id`,`quantity`) values (43,20,555),(44,21,618),(45,22,118),(46,23,566),(47,24,675),(48,25,45),(49,26,50),(50,27,65),(51,28,5845),(52,29,60),(53,30,65143),(54,31,145),(55,32,566),(56,35,30),(57,42,633),(58,44,400),(59,43,68),(60,45,67),(61,46,302),(62,47,234),(63,53,343),(64,52,343),(65,54,343),(66,55,422),(67,56,38),(68,57,565),(69,58,456);
+insert  into `stock`(`stock_id`,`product_id`,`quantity`) values (1,1,500),(2,2,567),(3,3,234),(4,4,400),(5,5,343),(6,6,324),(7,7,50),(8,8,56),(9,9,41),(10,10,453),(11,11,598),(12,12,555),(13,13,3400),(14,14,56);
 
 /*Table structure for table `user` */
 
@@ -218,11 +220,11 @@ CREATE TABLE `user` (
   `phone_no` bigint(20) DEFAULT NULL,
   `image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `user` */
 
-insert  into `user`(`user_id`,`name`,`place`,`pincode`,`email`,`gender`,`phone_no`,`image`) values (2,'rijo','ksd',671541,'rijo@gmail.com','male',9446626926,'/static/images/230125-073807 .jpg'),(3,'salman','ksd',671123,'salman@gmail.com','male',9456324789,'/static/images/230125-211830 .jpg'),(29,'Sanesh','kasargod ',671541,'sanesh@gmail.com','Male',9468123564,'/static/images/230214-141007 .jpg'),(30,'Lenin','Kasargod',671541,'lenin@gmail.com','Male',9421386480,'/static/images/230215-073018 .jpg'),(31,'Sachin','Kannur',671544,'sachin@gmail.com','Male',9564812398,'/static/images/230316-153837 .jpg'),(32,'Akash','Udma',671543,'akash@gmail.com','Male',9547832159,'/static/images/230219-130138 .jpg'),(33,'Aleena ','Paduppu',67154,'aleena@gmail.com','Female',9452139874,'/static/images/230307-195737 .jpg'),(34,'Jinsha','Udma ',685148,'jinsha@gmail.com','Female',9157081239,'/static/images/230311-194424 .jpg'),(36,'jsj','jsjs',646,'nzbn@gmail.com','Male',9465,'/static/images/230318-150547 .jpg');
+insert  into `user`(`user_id`,`name`,`place`,`pincode`,`email`,`gender`,`phone_no`,`image`) values (2,'Rijo Sebastian ','Paduppu',671541,'rijo@gmail.com','Male',9446626926,'/static/images/220323-235004 .jpg'),(3,'Salman Farisi','Kasargod',671121,'salman@gmail.com','Male',9521488932,'/static/images/230322-232327 .jpg'),(4,'Sachin Santhosh ','Kolichal',671526,'sachin@gmail.com','Male',9621470896,'/static/images/230322-232440 .jpg');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
