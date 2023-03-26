@@ -1,7 +1,7 @@
   # SuperMart
 
-SuperMart is my final year computer science project for shopping with QR code. With this app, users can shop the product from supermarkets with ease. There is a QR code scan section in my Android app, by using it the user can scan the product and add quantity and add to cart, user can also add product to cart without scanning. This app shows every product   details in the app
-   * Users can select products from a variety of shopkeepers on the website.  
+SuperMart is my final year computer science project for shopping with QR code. With this app, users can shop the product from supermarkets with ease. There is a QR code scan section in my Android app, by using it the user can scan the product and add quantity and add to cart, user can also add product to cart without scanning. This app shows every product details of the product
+   * Users can select products from a variety of shopkeepers using our app.  
    * Once the user adds the product to their cart and presses the “booked” button, a request is sent to the shopkeeper’s bill section in the website . 
  * The shopkeeper needs to verify the product and the product quantity before they can proceed.
  * Once the shopkeeper presses the “verified” button, the user can proceed to the payment section in the Android app and make the payment either online or offline.  
@@ -14,7 +14,7 @@ SuperMart is my final year computer science project for shopping with QR code. W
 * When a shop adds a new product, a QR code will be generated for that product. The user can then scan the QR code to add the product to their cart.
 
 ## Technologies Used
-* Frontend: HTML, CSS, JavaScript
+* Frontend: HTML, CSS, JavaScript,Bootstrap
 * Backend: Python Flask
 * Database: MySQL
 * Android: Java, Android Studio
@@ -29,7 +29,7 @@ To install SuperMart, you will need the following software:
 - PyCharm for the Flask application
 - SQLLog for the database
 - Wamp for the local server
-- Python 3.8 width="100"
+- Python 3.8  
 <!-- <img src="./screenshot/2.jpg"  width="100" alt="screenshot">
 <img src="./screenshot/3.jpg"  width="100" alt="screenshot">
 <img src="./screenshot/4.jpg"  width="100" alt="screenshot">
@@ -47,6 +47,9 @@ To install SuperMart, you will need the following software:
 <img src="./screenshot/16.png"  width="100" alt="screenshot">
 <img src="./screenshot/17.png"  width="100"  alt="screenshot">
  <p> -->
+
+ ## Sample website and android app images
+ [Sample images](./screenshot)
 
 |Android  | Web  |
 |--|--|
