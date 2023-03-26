@@ -32,20 +32,21 @@ To install SuperMart, you will need the following software:
 - Python 3.8
 
 
-![screenshot](./screenshot/1.jpg)
-![screenshot](./screenshot/2.jpg)
-![screenshot](./screenshot/3.jpg)
-![screenshot](./screenshot/4.jpg)
-![screenshot](./screenshot/5.jpg)
-![screenshot](./screenshot/6.jpg)
-![screenshot](./screenshot/7.jpg)
-![screenshot](./screenshot/8.jpg)
-![screenshot](./screenshot/9.jpg)
-![screenshot](./screenshot/10.jpg)
-![screenshot](./screenshot/11.jpg)
-![screenshot](./screenshot/12.jpg)
-![screenshot](./screenshot/13.jpg)
-![screenshot](./screenshot/14.jpg)
-![screenshot](./screenshot/15.jpg)
-![screenshot](./screenshot/16.jpg)
-![screenshot](./screenshot/17.jpg)
+<img src="./screenshot/1.jpg" width="100" height="100" alt="screenshot">
+<img src="./screenshot/2.jpg" width="100" height="100" alt="screenshot">
+<img src="./screenshot/3.jpg" width="100" height="100" alt="screenshot">
+<img src="./screenshot/4.jpg" width="100" height="100" alt="screenshot">
+<img src="./screenshot/5.jpg" width="100" height="100" alt="screenshot">
+<img src="./screenshot/6.jpg" width="100" height="100" alt="screenshot">
+<img src="./screenshot/7.jpg" width="100" height="100" alt="screenshot">
+<img src="./screenshot/8.jpg" width="100" height="100" alt="screenshot">
+<img src="./screenshot/9.jpg" width="100" height="100" alt="screenshot">
+<img src="./screenshot/10.jpg" width="100" height="100" alt="screenshot">
+<img src="./screenshot/11.png" width="100" height="100" alt="screenshot">
+<img src="./screenshot/12.png" width="100" height="100" alt="screenshot">
+<img src="./screenshot/13.png" width="100" height="100" alt="screenshot">
+<img src="./screenshot/14.png" width="100" height="100" alt="screenshot">
+<img src="./screenshot/15.png" width="100" height="100" alt="screenshot">
+<img src="./screenshot/16.png" width="100" height="100" alt="screenshot">
+<img src="./screenshot/17.png" width="100" height="100" alt="screenshot">
+ 
