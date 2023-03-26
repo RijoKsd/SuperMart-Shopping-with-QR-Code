@@ -30,8 +30,7 @@ To install SuperMart, you will need the following software:
 - SQLLog for the database
 - Wamp for the local server
 - Python 3.8 width="100"
-<img src="./screenshot/1.jpg"  width="100" alt="screenshot">
-<img src="./screenshot/2.jpg"  width="100" alt="screenshot">
+<!-- <img src="./screenshot/2.jpg"  width="100" alt="screenshot">
 <img src="./screenshot/3.jpg"  width="100" alt="screenshot">
 <img src="./screenshot/4.jpg"  width="100" alt="screenshot">
 <img src="./screenshot/5.jpg"  width="100" alt="screenshot">
@@ -47,4 +46,10 @@ To install SuperMart, you will need the following software:
 <img src="./screenshot/15.png"  width="100" alt="screenshot">
 <img src="./screenshot/16.png"  width="100" alt="screenshot">
 <img src="./screenshot/17.png"  width="100"  alt="screenshot">
- <p>
+ <p> -->
+
+|Android  | Web  |
+|--|--|
+|![screenshot](./screenshot/1.jpg) | ![screenshot](./screenshot/11.png)| 
+|![screenshot](./screenshot/2.jpg) | ![screenshot](./screenshot/12.png)| 
+ 
