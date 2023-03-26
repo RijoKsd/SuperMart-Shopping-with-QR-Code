@@ -33,16 +33,27 @@ public class ip extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final String ip = ipAddress.getText().toString();
+                if (ip.equalsIgnoreCase("" )) {
+                    ipAddress.setError("IP address  is required");
+                }else {
 
-                String url1 = "http://" + ip + ":4000/";
-                SharedPreferences.Editor ed=sh.edit();
-                ed.putString("ip",ip);
-                ed.putString("url",url1);
-                ed.commit();
-                Intent i=new Intent(getApplicationContext(),Login.class);
-                startActivity(i);
+
+                    String url1 = "http://" + ip + ":4000/";
+                    SharedPreferences.Editor ed = sh.edit();
+                    ed.putString("ip", ip);
+                    ed.putString("url", url1);
+                    ed.commit();
+                    Intent i = new Intent(getApplicationContext(), Login.class);
+                    startActivity(i);
+                }
             }
         });
+
+    }
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(),ip.class);
+        startActivity(i);
 
     }
 }

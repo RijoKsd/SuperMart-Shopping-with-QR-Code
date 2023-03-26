@@ -47,14 +47,9 @@ public class quantity extends AppCompatActivity {
 //                Integer qty = Integer.parseInt(productQuantity);
                  if ( productQuantity.equalsIgnoreCase("")) {
                     quantity.setError("Quantity is required");
-
-
-                    
                 }
                 else if ( Integer.parseInt(productQuantity) < 1) {
                     quantity.setError("Quantity is required");
-
-
                 }
                 else{
 
@@ -62,8 +57,6 @@ public class quantity extends AppCompatActivity {
                     sh.getString("ip", "");
                     sh.getString("url", "");
                     url = sh.getString("url", "") + "and_quantity";
-
-
                     RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
                     StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                             new Response.Listener<String>() {

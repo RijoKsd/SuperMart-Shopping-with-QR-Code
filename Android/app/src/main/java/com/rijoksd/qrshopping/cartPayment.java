@@ -153,20 +153,13 @@ public class cartPayment extends AppCompatActivity {
                                 try {
                                     JSONObject jsonObj = new JSONObject(response);
                                     if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
-////                                            JSONArray js = jsonObj.getJSONArray("data");
-//
-////                                            totalAmountToPay = new String[js.length()];
-////                                            for (int i = 0; i < js.length(); i++) {
-////                                                JSONObject u = js.getJSONObject(i);
-//                                                JSONObject jj = jsonObj.getJSONObject("data");
-//                                                totalAmountToPay.setText(jj.getString("amount"));
 
                                         Toast.makeText(cartPayment.this, "Payment successfully completed", Toast.LENGTH_SHORT).show();
-                                        Intent i = new Intent(getApplicationContext(), viewProduct.class);
+                                        Intent i = new Intent(getApplicationContext(), UserHome.class);
                                         startActivity(i);
                                     }
                                     if (jsonObj.getString("status").equalsIgnoreCase("insufficient")) {
-////
+
 
                                         Toast.makeText(cartPayment.this, "Please check you bank balance!!!", Toast.LENGTH_SHORT).show();
                                         Intent i = new Intent(getApplicationContext(), payment.class);
@@ -203,16 +196,10 @@ public class cartPayment extends AppCompatActivity {
                         params.put("id", sh.getString("lid", ""));//passing to python
                         params.put("shopid", sh.getString("shopid", ""));//passing to python
                         params.put("mid", sh.getString("mid", ""));//passing to python
-//                        params.put("shopID", sh.getString("shopID", ""));//passing to python
-//                        params.put("mid", sh.getString("mid", ""));//passing to python
                         params.put("total", sh.getString("gnd_totl", ""));//passing to python
-
-
-
                         return params;
                     }
                 };
-
 
                 int MY_SOCKET_TIMEOUT_MS = 100000;
 
@@ -222,8 +209,6 @@ public class cartPayment extends AppCompatActivity {
                         DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                 requestQueue.add(postRequest);
             }
-
-
 
         });
     }

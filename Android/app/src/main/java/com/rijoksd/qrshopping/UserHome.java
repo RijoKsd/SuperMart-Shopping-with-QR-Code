@@ -41,8 +41,8 @@ public class UserHome extends AppCompatActivity implements NavigationView.OnNavi
             public void onClick(View view) {
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();\
-                Toast.makeText(UserHome.this, "Scan the product using SCAN HERE button", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(getApplicationContext(), viewProductInfoWhenScan.class);
+                Toast.makeText(UserHome.this, "Scan your product", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(), scanQr.class);
                 startActivity(i);
             }
         });

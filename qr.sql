@@ -27,11 +27,11 @@ CREATE TABLE `bill` (
   `order_price` int(20) DEFAULT NULL,
   `status_offer` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`bill_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 /*Data for the table `bill` */
 
-insert  into `bill`(`bill_id`,`master_id`,`product_id`,`quantity`,`order_price`,`status_offer`) values (1,1,13,45,80,'offer'),(2,2,9,4,20,'no_offer'),(3,2,10,2,570,'offer');
+insert  into `bill`(`bill_id`,`master_id`,`product_id`,`quantity`,`order_price`,`status_offer`) values (16,14,1,294,20,'no_offer'),(17,14,2,450,23,'offer');
 
 /*Table structure for table `bill_master` */
 
@@ -45,11 +45,11 @@ CREATE TABLE `bill_master` (
   `date` varchar(200) DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`master_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 /*Data for the table `bill_master` */
 
-insert  into `bill_master`(`master_id`,`shop_id`,`user_id`,`amount`,`date`,`status`) values (1,5,4,3600,'2023-03-23','paid'),(2,8,4,1220,'2023-03-23','cash');
+insert  into `bill_master`(`master_id`,`shop_id`,`user_id`,`amount`,`date`,`status`) values (14,5,4,16230,'2023-03-23','paid');
 
 /*Table structure for table `complaint` */
 
@@ -64,11 +64,11 @@ CREATE TABLE `complaint` (
   `reply_date` varchar(200) DEFAULT 'pending',
   `reply` varchar(200) DEFAULT 'pending',
   PRIMARY KEY (`complaint_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `complaint` */
 
-insert  into `complaint`(`complaint_id`,`type`,`user_id`,`complaint`,`date`,`reply_date`,`reply`) values (1,'shop',5,'sending by we mart','2023-03-23','2023-03-23','fixed wishing'),(2,'user',4,'bad app','2023-03-23','2023-03-23','Thankyou ');
+insert  into `complaint`(`complaint_id`,`type`,`user_id`,`complaint`,`date`,`reply_date`,`reply`) values (1,'shop',5,'sending by we mart','2023-03-23','2023-03-23','fixed wishing'),(2,'user',4,'bad app','2023-03-23','2023-03-23','Thankyou '),(3,'user',3,'salman farisi','2023-03-23','pending','pending');
 
 /*Table structure for table `feedback` */
 
@@ -81,11 +81,11 @@ CREATE TABLE `feedback` (
   `date` varchar(200) DEFAULT NULL,
   `feedback` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`feedback_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `feedback` */
 
-insert  into `feedback`(`feedback_id`,`sender_id`,`type`,`date`,`feedback`) values (1,5,'shop','2023-03-23','sending by we mart'),(2,4,'user','2023-03-23','good app ');
+insert  into `feedback`(`feedback_id`,`sender_id`,`type`,`date`,`feedback`) values (1,5,'shop','2023-03-23','sending by we mart'),(2,4,'user','2023-03-23','good app '),(3,3,'user','2023-03-23','salman farisi ');
 
 /*Table structure for table `login` */
 
@@ -136,7 +136,7 @@ CREATE TABLE `payment` (
 
 /*Data for the table `payment` */
 
-insert  into `payment`(`bank_id`,`bank_name`,`ifsc_code`,`account_no`,`account_balance`,`holder_id`) values (1,'rijo','SBI123','123123',100000,2),(2,'salman','SBI234','124124',90000,3),(3,'sachin','SBI124','125125',116400,4),(4,'we mart','SBI125','126126',3600,5),(5,'orange','SBI126','127127',0,6),(6,'bismi','SBI127','128128',0,7),(7,'green','SBI128','129129',0,8);
+insert  into `payment`(`bank_id`,`bank_name`,`ifsc_code`,`account_no`,`account_balance`,`holder_id`) values (1,'rijo','SBI123','123123',86934,2),(2,'salman','SBI234','124124',89603,3),(3,'sachin','SBI124','125125',96903,4),(4,'we mart','SBI125','126126',28817,5),(5,'orange','SBI126','127127',0,6),(6,'bismi','SBI127','128128',7623,7),(7,'green','SBI128','129129',120,8);
 
 /*Table structure for table `product` */
 
@@ -167,11 +167,11 @@ CREATE TABLE `rating` (
   `rating` int(20) DEFAULT NULL,
   `shop_id` int(20) DEFAULT NULL,
   PRIMARY KEY (`rating_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `rating` */
 
-insert  into `rating`(`rating_id`,`date`,`user_id`,`rating`,`shop_id`) values (1,'2023-03-23',2,4,5),(2,'2023-03-23',4,1,5),(3,'2023-03-23',4,2,6),(4,'2023-03-23',4,3,7);
+insert  into `rating`(`rating_id`,`date`,`user_id`,`rating`,`shop_id`) values (1,'2023-03-23',2,4,5),(2,'2023-03-23',4,1,5),(3,'2023-03-23',4,2,6),(4,'2023-03-23',4,3,7),(5,'2023-03-23',3,2,7);
 
 /*Table structure for table `shop` */
 
@@ -204,7 +204,7 @@ CREATE TABLE `stock` (
 
 /*Data for the table `stock` */
 
-insert  into `stock`(`stock_id`,`product_id`,`quantity`) values (1,1,500),(2,2,567),(3,3,234),(4,4,400),(5,5,343),(6,6,324),(7,7,50),(8,8,56),(9,9,41),(10,10,453),(11,11,598),(12,12,555),(13,13,3400),(14,14,56);
+insert  into `stock`(`stock_id`,`product_id`,`quantity`) values (1,1,6),(2,2,12),(3,3,134),(4,4,400),(5,5,343),(6,6,324),(7,7,20),(8,8,9),(9,9,35),(10,10,453),(11,11,598),(12,12,555),(13,13,3400),(14,14,53);
 
 /*Table structure for table `user` */
 

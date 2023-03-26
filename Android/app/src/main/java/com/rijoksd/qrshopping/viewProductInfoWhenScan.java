@@ -94,9 +94,6 @@ public class viewProductInfoWhenScan extends AppCompatActivity {
                                 {
                                     scannedProductOfferPrice.setVisibility(View.INVISIBLE);
                                     tagOffer.setVisibility(View.INVISIBLE);
-
-
-
                                 }
                                 else {
                                     tagOffer.setVisibility(View.VISIBLE);

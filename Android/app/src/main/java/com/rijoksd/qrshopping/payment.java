@@ -150,19 +150,10 @@ public class payment extends AppCompatActivity {
                                     try {
                                         JSONObject jsonObj = new JSONObject(response);
                                         if (jsonObj.getString("status").equalsIgnoreCase("ok")) {
-////                                            JSONArray js = jsonObj.getJSONArray("data");
-//
-////                                            totalAmountToPay = new String[js.length()];
-////                                            for (int i = 0; i < js.length(); i++) {
-////                                                JSONObject u = js.getJSONObject(i);
-//                                                JSONObject jj = jsonObj.getJSONObject("data");
-//                                                totalAmountToPay.setText(jj.getString("amount"));
-
                                             Toast.makeText(payment.this, "Payment successfully completed", Toast.LENGTH_SHORT).show();
                                             Intent i = new Intent(getApplicationContext(), UserHome.class);
                                             startActivity(i);
                                         } else if (jsonObj.getString("status").equalsIgnoreCase("insufficient")) {
-////
 
                                             Toast.makeText(payment.this, "Please check you bank balance!!!", Toast.LENGTH_SHORT).show();
                                             Intent i = new Intent(getApplicationContext(), payment.class);

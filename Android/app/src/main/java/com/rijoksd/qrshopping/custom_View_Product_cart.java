@@ -146,15 +146,10 @@ public class custom_View_Product_cart extends BaseAdapter {
                     protected Map<String, String> getParams() {
                         SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
                         Map<String, String> params = new HashMap<String, String>();
-
                         params.put("bill", billID[pos]);//passing to python
-
-
-
                         return params;
                     }
                 };
-
 
                 int MY_SOCKET_TIMEOUT_MS = 100000;
 

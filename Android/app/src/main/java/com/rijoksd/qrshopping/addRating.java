@@ -97,7 +97,7 @@ public class addRating extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent i = new Intent(getApplicationContext(), UserHome.class);
+        Intent i = new Intent(getApplicationContext(), viewShop.class);
         startActivity(i);
     }
 }
