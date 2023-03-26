@@ -4,28 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/app.py" line="609" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2caaea73-e7a3-4115-af7d-b5ad6c7174e0" name="Default" comment="Added database support to android sections">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Android/app/src/main/res/drawable/bg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Android/app/src/main/res/drawable/register.png" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/Scan.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Android/app/src/main/res/drawable/bg.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Android/app/src/main/res/layout/activity_scan.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/UserHome.java" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/UserHome.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/addRating.java" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/addRating.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/cartPayment.java" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/cartPayment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/customViewOffer.java" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/customViewOffer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/custom_View_Product_cart.java" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/custom_View_Product_cart.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/ip.java" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/ip.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/payment.java" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/payment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/quantity.java" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/quantity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/scanQr.java" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/rijoksd/qrshopping/scanQr.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android/app/src/main/res/layout/activity_cart_payment.xml" afterPath="$PROJECT_DIR$/Android/app/src/main/res/layout/activity_cart_payment.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android/app/src/main/res/layout/activity_registration.xml" afterPath="$PROJECT_DIR$/Android/app/src/main/res/layout/activity_registration.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/Android/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.py" afterPath="$PROJECT_DIR$/app.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/qr.sql" afterPath="$PROJECT_DIR$/qr.sql" />
-    </list>
+    <list default="true" id="2caaea73-e7a3-4115-af7d-b5ad6c7174e0" name="Default" comment="Added database support to android sections" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +16,7 @@
     <SUITE FILE_PATH="coverage/python$qrcode.coverage" NAME="qrcode Coverage Results" MODIFIED="1677917772110" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/python$mainqr.coverage" NAME="mainqr Coverage Results" MODIFIED="1677921829919" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/python$python.coverage" NAME="python Coverage Results" MODIFIED="1672211631454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/python$app.coverage" NAME="app Coverage Results" MODIFIED="1679809885690" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/python$app.coverage" NAME="app Coverage Results" MODIFIED="1679822501446" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -54,7 +33,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="428">
@@ -199,39 +178,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="view_bill.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/shop/view_bill.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="149" column="60" lean-forward="false" selection-start-line="149" selection-start-column="54" selection-end-line="149" selection-end-column="60" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="15-260323-093126 .jpg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/qr_codes/15-260323-093126 .jpg">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="13-230323-002324 .jpg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/qr_codes/13-230323-002324 .jpg">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="9-230323-001416 .jpg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/qr_codes/9-230323-001416 .jpg">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="7-230323-000846 .jpg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/qr_codes/7-230323-000846 .jpg">
+      <file leaf-file-name="16-260323-122632 .jpg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/qr_codes/16-260323-122632 .jpg">
           <provider selected="true" editor-type-id="images">
             <state />
           </provider>
@@ -386,24 +334,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="python" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="python" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shop" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -756,13 +686,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1038" extended-state="1" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32873562" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26807564" sideWeight="0.50416666" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988507" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32873562" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32068965" sideWeight="0.49583334" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32068965" sideWeight="0.49583334" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988507" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18367347" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953313" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -857,9 +786,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/images/230311-221549 .jpg" />
-    <entry file="file://$PROJECT_DIR$/static/images/230312-160419 .jpg" />
-    <entry file="file://$PROJECT_DIR$/static/qr_codes/51230311-221549 .jpg" />
     <entry file="file://$PROJECT_DIR$/static/qr_codes/52230312-160419 .jpg" />
     <entry file="file://$PROJECT_DIR$/static/images/230312-160747 .jpg" />
     <entry file="file://$PROJECT_DIR$/static/qr_codes/53-230312-160747 .jpg" />
@@ -972,6 +898,32 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/qr_codes/15-260323-093126 .jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/shop/view_bill.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="149" column="60" lean-forward="false" selection-start-line="149" selection-start-column="54" selection-end-line="149" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/image.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainqr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/qr_codes/16-260323-122632 .jpg">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -1116,14 +1068,6 @@
             <marker date="1679809885690" expanded="true" signature="51642:51701" ph="select * fro... offer" />
             <marker date="1679809885690" expanded="true" signature="52321:52411" ph="update bill_... " />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/shop/view_bill.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="149" column="60" lean-forward="false" selection-start-line="149" selection-start-column="54" selection-end-line="149" selection-end-column="60" />
-          <folding />
         </state>
       </provider>
     </entry>
