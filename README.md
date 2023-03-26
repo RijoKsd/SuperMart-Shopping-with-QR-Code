@@ -52,4 +52,12 @@ To install SuperMart, you will need the following software:
 |--|--|
 |![screenshot](./screenshot/1.jpg) | ![screenshot](./screenshot/11.png)| 
 |![screenshot](./screenshot/2.jpg) | ![screenshot](./screenshot/12.png)| 
+|![screenshot](./screenshot/3.jpg) | ![screenshot](./screenshot/13.png)| 
+|![screenshot](./screenshot/4.jpg) | ![screenshot](./screenshot/14.png)| 
+|![screenshot](./screenshot/5.jpg) | ![screenshot](./screenshot/15.png)| 
+|![screenshot](./screenshot/6.jpg) | ![screenshot](./screenshot/16.png)| 
+|![screenshot](./screenshot/7.jpg) | ![screenshot](./screenshot/17.png)| 
+|![screenshot](./screenshot/8.jpg) |  
+|![screenshot](./screenshot/9.jpg) | 
+|![screenshot](./screenshot/10.jpg) |  
  
