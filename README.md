@@ -29,24 +29,22 @@ To install SuperMart, you will need the following software:
 - PyCharm for the Flask application
 - SQLLog for the database
 - Wamp for the local server
-- Python 3.8
-
-
-<img src="./screenshot/1.jpg" width="100" height="100" alt="screenshot">
-<img src="./screenshot/2.jpg" width="100" height="100" alt="screenshot">
-<img src="./screenshot/3.jpg" width="100" height="100" alt="screenshot">
-<img src="./screenshot/4.jpg" width="100" height="100" alt="screenshot">
-<img src="./screenshot/5.jpg" width="100" height="100" alt="screenshot">
-<img src="./screenshot/6.jpg" width="100" height="100" alt="screenshot">
-<img src="./screenshot/7.jpg" width="100" height="100" alt="screenshot">
-<img src="./screenshot/8.jpg" width="100" height="100" alt="screenshot">
-<img src="./screenshot/9.jpg" width="100" height="100" alt="screenshot">
-<img src="./screenshot/10.jpg" width="100" height="100" alt="screenshot">
-<img src="./screenshot/11.png" width="100" height="100" alt="screenshot">
-<img src="./screenshot/12.png" width="100" height="100" alt="screenshot">
-<img src="./screenshot/13.png" width="100" height="100" alt="screenshot">
-<img src="./screenshot/14.png" width="100" height="100" alt="screenshot">
-<img src="./screenshot/15.png" width="100" height="100" alt="screenshot">
-<img src="./screenshot/16.png" width="100" height="100" alt="screenshot">
-<img src="./screenshot/17.png" width="100" height="100" alt="screenshot">
- 
+- Python 3.8 width="100"
+<img src="./screenshot/1.jpg"  width="100" alt="screenshot">
+<img src="./screenshot/2.jpg"  width="100" alt="screenshot">
+<img src="./screenshot/3.jpg"  width="100" alt="screenshot">
+<img src="./screenshot/4.jpg"  width="100" alt="screenshot">
+<img src="./screenshot/5.jpg"  width="100" alt="screenshot">
+<img src="./screenshot/6.jpg"  width="100" alt="screenshot">
+<img src="./screenshot/7.jpg"  width="100" alt="screenshot">
+<img src="./screenshot/8.jpg"  width="100"  alt="screenshot">
+<img src="./screenshot/9.jpg"  width="100" alt="screenshot">
+<img src="./screenshot/10.jpg"  width="100" alt="screenshot">
+<img src="./screenshot/11.png"  width="100" alt="screenshot">
+<img src="./screenshot/12.png"  width="100" alt="screenshot">
+<img src="./screenshot/13.png"  width="100" alt="screenshot">
+<img src="./screenshot/14.png"  width="100" alt="screenshot">
+<img src="./screenshot/15.png"  width="100" alt="screenshot">
+<img src="./screenshot/16.png"  width="100" alt="screenshot">
+<img src="./screenshot/17.png"  width="100"  alt="screenshot">
+ <p>
