@@ -156,7 +156,7 @@ public class payment extends AppCompatActivity {
                                         } else if (jsonObj.getString("status").equalsIgnoreCase("insufficient")) {
 
                                             Toast.makeText(payment.this, "Please check you bank balance!!!", Toast.LENGTH_SHORT).show();
-                                            Intent i = new Intent(getApplicationContext(), payment.class);
+                                            Intent i = new Intent(getApplicationContext(), cartShop.class);
                                             startActivity(i);
                                         } else {
                                             Toast.makeText(getApplicationContext(), "Wrong Bank details", Toast.LENGTH_LONG).show();

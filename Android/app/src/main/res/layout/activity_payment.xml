@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="100dp"
-        android:text="Bank Name : "
+        android:text="Owner Name : "
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,7 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView21"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/blue_border_rounded_cornwe"
+        android:background="@drawable/border"
         android:padding="5dp"/>
 
     <TextView
@@ -55,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView21"
         app:layout_constraintTop_toBottomOf="@+id/bankName"
-        android:background="@drawable/blue_border_rounded_cornwe"
+        android:background="@drawable/border"
         android:padding="5dp"/>
 
     <TextView
@@ -81,7 +81,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView21"
         app:layout_constraintTop_toBottomOf="@+id/bankAccountNo"
-        android:background="@drawable/blue_border_rounded_cornwe"
+        android:background="@drawable/border"
         android:padding="5dp"/>
 
     <TextView

@@ -117,7 +117,7 @@ public class Registration extends AppCompatActivity {
                 } else {
                     // String pinPattern = "[6][0-9]{5}";
  
-                    String pinPattern = "^[6][0-9]{5}$";
+                    String pinPattern = "^[1-8][0-9]{5}$";
                     if (!registerUserPinCode.matches(pinPattern)) {
                         flag++;
                         pinCode.setError("Invalid pincode");

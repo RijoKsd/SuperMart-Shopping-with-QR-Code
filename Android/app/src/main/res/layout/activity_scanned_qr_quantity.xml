@@ -13,7 +13,7 @@
         android:layout_marginStart="70dp"
         android:layout_marginTop="250dp"
         android:layout_marginEnd="70dp"
-        android:background="@drawable/blue_border_rounded_cornwe"
+        android:background="@drawable/border"
         android:ems="10"
         android:hint="Enter quantity here"
         android:inputType="textPersonName"

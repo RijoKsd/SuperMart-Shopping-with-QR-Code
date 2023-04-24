@@ -32,13 +32,13 @@ import java.util.Map;
 public class custom_View_Product_cart extends BaseAdapter {
 
 
-    String[] productID,productImage,productName,productQuantity,productPrice,sId,billID,productShopName,totalPrice,productOfferAmount,ofstatus;
+    String[] productID,productImage,productName,productQuantity,productPrice,sId,billID,productShopName,totalPrice,productOfferAmount,ofstatus,mstatus;
 //    String[] productTotal;
     private Context context;
     String url1,url;
     SharedPreferences sh;
 
-    public custom_View_Product_cart(Context applicationContext, String[] productID, String[] productImage, String[] productName, String[] productQuantity, String[] productPrice,String[] productOfferAmount, String[] sId, String[] billID,String[] productShopName, String[] totalPrice,String[] ofstatus  ) {
+    public custom_View_Product_cart(Context applicationContext, String[] productID, String[] productImage, String[] productName, String[] productQuantity, String[] productPrice,String[] productOfferAmount, String[] sId, String[] billID,String[] productShopName, String[] totalPrice,String[] ofstatus,String[] mstatus  ) {
 
         this.context = applicationContext;
         this.productID = productID;
@@ -52,6 +52,7 @@ public class custom_View_Product_cart extends BaseAdapter {
         this.productShopName = productShopName;
         this.totalPrice = totalPrice;
         this.ofstatus = ofstatus;
+        this.mstatus = mstatus;
 
     }
 
@@ -93,6 +94,13 @@ public class custom_View_Product_cart extends BaseAdapter {
 //        TextView tv4 = (TextView) gridView.findViewById(R.id.totalAmount);
 
         ImageView delete = (ImageView) gridView.findViewById(R.id.delete);
+
+        if (mstatus[i].equalsIgnoreCase("cart")){
+            delete.setVisibility(View.VISIBLE);
+        }
+        else {
+            delete.setVisibility(View.INVISIBLE);
+        }
         delete.setTag(i);
 
         delete.setOnClickListener(new View.OnClickListener() {
@@ -171,6 +179,14 @@ public class custom_View_Product_cart extends BaseAdapter {
 
 
         Button offerBtn = (Button) gridView.findViewById(R.id.offerBtn);
+
+        if (mstatus[i].equalsIgnoreCase("cart")){
+            offerBtn.setVisibility(View.VISIBLE);
+        }
+        else {
+            offerBtn.setVisibility(View.INVISIBLE);
+        }
+//
         offerBtn.setTag(i);
         offerBtn.setOnClickListener(new View.OnClickListener() {
             @Override

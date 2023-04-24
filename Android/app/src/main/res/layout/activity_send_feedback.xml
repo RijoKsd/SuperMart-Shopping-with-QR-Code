@@ -24,7 +24,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="264dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/blue_border_rounded_cornwe"
+        android:background="@drawable/border"
         android:ems="10"
         android:hint="Enter feedback here"
         android:inputType="textPersonName"

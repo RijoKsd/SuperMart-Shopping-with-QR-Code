@@ -343,7 +343,7 @@ def add_product():
             systemPath = r"E:\QR shopping\python\static\\"  # path to save the image
             img.save(systemPath + "qr_codes/" + str(qry) + "-" + date + '.jpg')
             # img.save("image.jpg")
-            return '<script>alert("Added successfully ");window.location="/view_product"</script>'
+            return '<script>alert("Added successfully ");window.location="/add_stock"</script>'
         else:
             return render_template('shop/add_product.html')
     return redirect('/')
@@ -442,9 +442,8 @@ def add_offer(product_id):
 def view_offer(product_id):
     if session['lin'] == "1":
         db = Database()
-        # delete the offer when the offer is expired
-        db.delete(
-            "delete from offer where date_to < '" + str(datetime.datetime.now().strftime("%Y-%m-%d")) + "'")
+        # delete the offer if date is expired
+        db.delete("delete from offer where date_to < '" + datetime.datetime.now().strftime("%Y-%m-%d") + "'")
         res = db.selectOne(
             "select * from offer where product_id = '" + product_id + "'")
         if res is not None:
@@ -712,6 +711,14 @@ def verified_cart(masterid):
     db = Database()
     db.update("update bill_master set status='verified' where master_id='" + masterid + "'")
     return redirect('/view_bill')
+
+
+@app.route('/cancel_cart/<masterid>')
+def cancel_cart(masterid):
+    db = Database()
+    db.update("update bill_master set status='cart' where master_id='" + masterid + "'")
+    return redirect('/view_bill')
+
 
 
 # ------------------------------------ shop section End -----------------------------------
@@ -1201,7 +1208,7 @@ def and_payment_from_cart():
         return jsonify(status="wrong")
 
 
-# ****************************************** offline payment  ***************************************
+# ***************************** offline payment  *****************************
 
 
 @app.route('/and_offline_payment_from_cart', methods=['post'])
@@ -1222,7 +1229,7 @@ def and_offline_payment_from_cart():
     return jsonify(status="ok")
 
 
-# ****************************************** view products when scanning ***************************************
+# ***************************** view products when scanning *************************
 
 @app.route('/and_view_product_with_qr', methods=['post'])
 def and_view_product_with_qr():
@@ -1242,7 +1249,7 @@ def and_view_product_with_qr():
         return jsonify(status="ok", data=dataa, offer="0")
 
 
-# ****************************************** verify cart ***************************************
+# ******************************* verify cart *******************************
 
 @app.route('/and_verify_cart', methods=['post'])
 def and_verify_cart():

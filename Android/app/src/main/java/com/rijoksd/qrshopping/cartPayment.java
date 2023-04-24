@@ -162,7 +162,7 @@ public class cartPayment extends AppCompatActivity {
 
 
                                         Toast.makeText(cartPayment.this, "Please check you bank balance!!!", Toast.LENGTH_SHORT).show();
-                                        Intent i = new Intent(getApplicationContext(), payment.class);
+                                        Intent i = new Intent(getApplicationContext(), UserHome.class);
                                         startActivity(i);
                                     }
                                     else {

@@ -5,6 +5,7 @@
     android:id="@+id/register"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg3"
     tools:context=".Registration">
 
 
@@ -32,7 +33,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        android:background="@drawable/blue_border_rounded_cornwe"
+        android:background="@drawable/border"
         android:padding="5dp"/>
 
     <TextView
@@ -62,7 +63,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-        android:background="@drawable/blue_border_rounded_cornwe"
+        android:background="@drawable/border"
         android:padding="5dp"/>
 
     <EditText
@@ -78,7 +79,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/place"
-        android:background="@drawable/blue_border_rounded_cornwe"
+        android:background="@drawable/border"
         android:padding="5dp"/>
 
     <EditText
@@ -94,7 +95,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pincode"
-        android:background="@drawable/blue_border_rounded_cornwe"
+        android:background="@drawable/border"
         android:padding="5dp"/>
 
     <EditText
@@ -110,7 +111,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mail"
-        android:background="@drawable/blue_border_rounded_cornwe"
+        android:background="@drawable/border"
         android:padding="5dp"/>
 
     <Button
@@ -171,7 +172,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phone"
-        android:background="@drawable/blue_border_rounded_cornwe"
+        android:background="@drawable/border"
         android:padding="5dp"/>
 
     <TextView

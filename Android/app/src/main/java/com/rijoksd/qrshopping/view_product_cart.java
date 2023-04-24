@@ -39,7 +39,7 @@ public class view_product_cart extends AppCompatActivity {
     Button placeOrder,booked;
 
     ImageView arrow;
-    String[] productID, productImage,productName,productQuantity,productPrice,sId,billID,productShopName,totalPrice,productOfferAmount,ofstatus;
+    String[] productID, productImage,productName,productQuantity,productPrice,sId,billID,productShopName,totalPrice,productOfferAmount,ofstatus,mstatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -188,6 +188,7 @@ public class view_product_cart extends AppCompatActivity {
                                 productShopName = new String[js.length()];
                                 totalPrice = new String[js.length()];
                                 ofstatus = new String[js.length()];
+                                mstatus = new String[js.length()];
 
 
 
@@ -205,9 +206,10 @@ public class view_product_cart extends AppCompatActivity {
                                     productShopName[i] = u.getString("sn");
                                     totalPrice[i] = u.getString("total");
                                     ofstatus[i] = u.getString("status_offer");
+                                    mstatus[i] = u.getString("status");
 
                                 }
-                                list.setAdapter(new custom_View_Product_cart(getApplicationContext(), productID, productImage, productName, productQuantity, productPrice,productOfferAmount,sId,billID,productShopName,totalPrice,ofstatus));//custom_view_service.xml and li is the listview object
+                                list.setAdapter(new custom_View_Product_cart(getApplicationContext(), productID, productImage, productName, productQuantity, productPrice,productOfferAmount,sId,billID,productShopName,totalPrice,ofstatus,mstatus));//custom_view_service.xml and li is the listview object
                             } else {
                                 Toast.makeText(getApplicationContext(), "Not found", Toast.LENGTH_LONG).show();
                             }

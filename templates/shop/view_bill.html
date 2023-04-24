@@ -8,8 +8,8 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
- <!-- Favicon -->
- <link href="../../static/assests/images/favicon.svg" rel="icon">
+    <!-- Favicon -->
+    <link href="../../static/assests/images/favicon.svg" rel="icon">
 
 
     <!-- Google Web Fonts -->
@@ -36,7 +36,7 @@
 </head>
 
 <body>
-    <div class=" bg-white p-0"> 
+    <div class=" bg-white p-0">
         <!-- Spinner Start   -->
         <div id="spinner"
             class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -107,25 +107,25 @@
         <!-- Navbar & Hero End -->
 
 
- 
+
         <div class=" py-5">
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                     <h5 class="section-title ff-secondary text-center text-primary fw-normal">View Bill</h5>
 
 
-                <div class="container pt-4 table-responsive ">
+                    <div class="container pt-4 table-responsive ">
                         <form method="post">
-                    <div class="input-group mt-5 mb-5">
-                        <label>Enter customer mobile number : </label> 
-                        <div class="form-outline ms-5">
-                            <input type="search" id="form1" name="nb" class="form-control" />
-                        </div>
-                        <button type="submit" class="btn btn-primary h-25">
-                          <i class="fas fa-search" ></i>
-                        </button>
-                      </div>
-    
+                            <div class="input-group mt-5 mb-5">
+                                <label>Enter customer mobile number : </label>
+                                <div class="form-outline ms-5">
+                                    <input type="search" id="form1" name="nb" class="form-control" />
+                                </div>
+                                <button type="submit" class="btn btn-primary h-25">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+
 
                             <table class="table table-hover table-sm">
                                 <thead>
@@ -135,10 +135,8 @@
                                         <th scope="col">User Name</th>
                                         <th scope="col">Amount</th>
                                         <th scope="col">Payment status</th>
-
                                         <th scope="col"> </th>
-                                       
-            
+                                        <th scope="col" colspan="2"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -151,7 +149,16 @@
                                         <td>&nbsp;{{i.status}}</td>
                                         <td><a href="/view_bill_items/{{i.master_id}}">view more</a></td>
                                         {% if i['status'] == 'booked' %}
-                                        <td><a href="/verified_cart/{{i.master_id}}" onclick="return confirm('Are you sure?')" class="btn btn-success">Verified</a></td>
+                                        <td>
+
+                                            <a href="/verified_cart/{{i.master_id}}"
+                                                onclick="return confirm('Are you sure?')"
+                                                class="btn btn-success">Verified</a>
+                                            <a href="/cancel_cart/{{i.master_id}}"
+                                                onclick="return confirm('Are you sure?')"
+                                                class="btn btn-danger m-1">Cancel</a>
+
+                                        </td>
                                         {% endif %}
                                     </tr>
                                     {% endfor %}
@@ -161,46 +168,46 @@
                     </div>
                 </div>
 
-       
-                </div>
+
             </div>
         </div>
- 
+    </div>
 
 
-        <!-- Footer Start -->
-        <div class="container-fluid bg-dark text-light footer pt-5  wow fadeIn" data-wow-delay="0.1s">
-           
-            <footer class="bg-dark text-center text-light">
-                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-                  © 2023 Copyright:
-                  <a   href="">SuperMart.</a> &nbsp; All Rights Reserved
-                </div>
-              </footer>
-        </div>
-        <!-- Footer End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer pt-5  wow fadeIn" data-wow-delay="0.1s">
+
+        <footer class="bg-dark text-center text-light">
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2023 Copyright:
+                <a href="">SuperMart.</a> &nbsp; All Rights Reserved
+            </div>
+        </footer>
+    </div>
+    <!-- Footer End -->
 
 
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
     <!-- JavaScript Libraries -->
     <script src="../../static/assests/js/jquery-3.4.1.min.js"></script>
     <script src="../../static/assests/js/bootstrap.bundle.min.js"></script>
- 
- <script src="../../static/assests/lib/wow/wow.min.js"></script>
- <script src="../../static/assests/lib/easing/easing.min.js"></script>
- <script src="../../static/assests/lib/waypoints/waypoints.min.js"></script>
- <script src="../../static/assests/lib/counterup/counterup.min.js"></script>
- <script src="../../static/assests/lib/owlcarousel/assets/owl.carousel.min.css"></script>
- <script src="../../static/assests/lib/tempusdominus/js/moment.min.js"></script>
- <script src="../../static/assests/lib/tempusdominus/js/moment-timezone.min.js"></script>
- <script src="../../static/assests/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <script src="../../static/assests/lib/wow/wow.min.js"></script>
+    <script src="../../static/assests/lib/easing/easing.min.js"></script>
+    <script src="../../static/assests/lib/waypoints/waypoints.min.js"></script>
+    <script src="../../static/assests/lib/counterup/counterup.min.js"></script>
+    <script src="../../static/assests/lib/owlcarousel/assets/owl.carousel.min.css"></script>
+    <script src="../../static/assests/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="../../static/assests/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="../../static/assests/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
 
- <!-- Template Javascript -->
-<script src="../../static/assests/js/main.js"></script>
+    <!-- Template Javascript -->
+    <script src="../../static/assests/js/main.js"></script>
 
 </body>
 
